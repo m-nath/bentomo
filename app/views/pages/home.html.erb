@@ -2,19 +2,21 @@
 
 <% @kitchens.each do |kitchen|%>
   <%= cl_image_tag kitchen.photo %>
-  <%= kitchen.name %>
+  <%= link_to kitchen.name, kitchen_path(kitchen) %>
   <%= kitchen.description%>
 <% end %>
 
-<%= link_to "more kitchens", kitchens_path %>
+<p><%= link_to "more kitchens", kitchens_path %></p>
+
 
 
 
 <h3> Plans </h3>
 <% @plans.each do |plan|%>
   <%= cl_image_tag plan.photo %>
-  <%= plan.name %>
-  <%= plan.description%>
+  <%= link_to plan.name, plan_path(plan) %>
+  <%= plan.price%>
 <% end %>
 
-<%= link_to "more plans", plans_path %>
+<p><%= link_to "more plans", plans_path %></p>
+
