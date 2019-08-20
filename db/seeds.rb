@@ -146,7 +146,14 @@ User.all.each do |user|
     Order.create!(
       amount: plan.price,
       user: user,
-      plan: plan
+      plan: plan,
+      date: Faker::Date.forward(days: 20)
+    )
+    Order.create!(
+      amount: plan.price,
+      user: user,
+      plan: plan,
+      date: Faker::Date.backward(days: 20)
     )
   end
 end

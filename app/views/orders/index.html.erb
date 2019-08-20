@@ -1,0 +1,17 @@
+<h1>My Orders</h1>
+<h2>Upcoming Orders</h2>
+<% @current_user.orders.each do |order| %>
+  <ul>
+    <li><%= order.plan.name %></li>
+    <li><%= order.date %></li>
+    <li><%= order.amount %></li>
+  </ul>
+<% end %>
+<h2>Order History</h2>
+<% @current_user.orders.each do |order| %>
+  <ul>
+    <li><%= order.plan.name %></li>
+    <li><%= order.date %></li>
+    <li><%= order.amount %></li>
+  </ul>
+<% end %>
