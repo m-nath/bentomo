@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="4QgKZObLNCNFv3FXiAC2wznCPbes3kGB2u77oLdG/ES6MN0EteBad5UlgrIcEIJU9dXfQz0VC862JcFbLtkXzg==" />
+    <link rel="stylesheet" media="screen" href="https://d26jy9fbi4q9wx.cloudfront.net/assets/wwwsqldesigner-efc8e4c5509b099f67abc16b5115623582b5f601cb53f5edea0a2c40404055c1.css" />
+  </head>
+  <body>
+    <div id="wwwsqldesigner">
+  <div id="area"></div>
+
+  <div id="controls">
+    <div id="bar">
+      <div id="toggle"></div>
+      <input type="button" id="saveload" />
+
+      <hr/>
+
+      <input type="button" id="addtable" />
+      <input type="button" id="edittable" />
+      <input type="button" id="tablekeys" style="display: none" />
+      <input type="button" id="removetable" />
+      <input type="button" id="aligntables" style="display: none" />
+      <input type="button" id="cleartables" />
+
+      <hr/>
+
+      <input type="button" id="addrow" />
+      <input type="button" id="editrow" />
+      <input type="button" id="uprow" class="small" /><input type="button" id="downrow" class="small"/>
+      <input type="button" id="foreigncreate" />
+      <input type="button" id="foreignconnect" />
+      <input type="button" id="foreigndisconnect" />
+      <input type="button" id="removerow" />
+
+      <input type="button" id="options" style="display: none"/>
+      <a href="https://github.com/ondras/wwwsqldesigner/wiki" target='_blank'><input type="button" id="docs" value=""  style="display: none"/></a>
+    </div>
+
+    <div id="rubberband"></div>
+
+    <div id="minimap"></div>
+
+    <div id="background"></div>
+
+    <div id="window">
+      <div id="windowtitle">
+        <img id="throbber" src="https://d26jy9fbi4q9wx.cloudfront.net/assets/wwwsqldesigner/images/throbber-067582da751d24b9ff1ad262df7c65f5854e38135716ceaf5935a9f36095df03.gif" />
+        <!-- <img id="throbber" src="images/throbber.gif" alt="" title=""/> -->
+      </div>
+      <div id="windowcontent"></div>
+      <input type="button" id="windowok" />
+      <input type="button" id="windowcancel" />
+    </div>
+  </div> <!-- #controls -->
+
+  <div id="opts">
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            * <label id="language" for="optionlocale"></label>
+          </td>
+          <td>
+            <select id="optionlocale"><option></option></select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            * <label id="db" for="optiondb"></label>
+          </td>
+          <td>
+            <select id="optiondb"><option></option></select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label id="snap" for="optionsnap"></label>
+          </td>
+          <td>
+            <input type="text" size="4" id="optionsnap" />
+            <span class="small" id="optionsnapnotice"></span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label id="pattern" for="optionpattern"></label>
+          </td>
+          <td>
+            <input type="text" size="6" id="optionpattern" />
+            <span class="small" id="optionpatternnotice"></span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label id="hide" for="optionhide"></label>
+          </td>
+          <td>
+            <input type="checkbox" id="optionhide" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            * <label id="vector" for="optionvector"></label>
+          </td>
+          <td>
+            <input type="checkbox" id="optionvector" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            * <label id="showsize" for="optionshowsize"></label>
+          </td>
+          <td>
+            <input type="checkbox" id="optionshowsize" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            * <label id="showtype" for="optionshowtype"></label>
+          </td>
+          <td>
+            <input type="checkbox" id="optionshowtype" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr />
+
+    * <span class="small" id="optionsnotice"></span>
+  </div>
+
+  <div id="io">
+    <table>
+      <tbody>
+        <tr>
+          <td style="width:60%">
+            <fieldset>
+              <legend id="client"></legend>
+              <div id="singlerow">
+              <input type="button" id="clientsave" />
+              <input type="button" id="clientload" />
+              </div>
+              <div id="singlerow"  style="display: none">
+              <input type="button" id="clientlocalsave" style="display: none" />
+              <input type="button" id="clientlocalload" style="display: none" />
+              <input type="button" id="clientlocallist" style="display: none" />
+              </div>
+              <div id="singlerow" style="display: none">
+                <input type="button" id="dropboxsave" /><!-- may get hidden by dropBoxInit() -->
+                <input type="button" id="dropboxload" /><!-- may get hidden by dropBoxInit() -->
+                <input type="button" id="dropboxlist" /><!-- may get hidden by dropBoxInit() -->
+              </div>
+              <input type="button" id="clientsql" style="display: none" />
+            </fieldset>
+          </td>
+          <td style="width:40%">
+            <fieldset>
+              <legend id="server"></legend>
+              <label style="display: none" for="backend" id="backendlabel"></label>
+              <select id="backend" style="display: none"><option></option></select>
+              <input type="button" id="serversave"  style="display: none" />
+              <input type="button" id="quicksave" />
+              <input type="button" id="serverload"  style="display: none"/>
+              <input type="button" id="serverlist" style="display: none" />
+              <input type="button" id="serverimport" style="display: none" />
+            </fieldset>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <fieldset>
+              <legend id="output"></legend>
+              <textarea id="textarea" rows="1" cols="1"></textarea><!--modified by javascript later-->
+            </fieldset>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div id="keys">
+    <fieldset>
+      <legend id="keyslistlabel"></legend>
+      <select id="keyslist"><option></option></select>
+      <input type="button" id="keyadd" />
+      <input type="button" id="keyremove" />
+    </fieldset>
+    <fieldset>
+      <legend id="keyedit"></legend>
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <label for="keytype" id="keytypelabel"></label>
+              <select id="keytype"><option></option></select>
+            </td>
+            <td></td>
+            <td>
+              <label for="keyname" id="keynamelabel"></label>
+              <input type="text" id="keyname" size="10" />
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3"><hr/></td>
+          </tr>
+          <tr>
+            <td>
+              <label for="keyfields" id="keyfieldslabel"></label><br/>
+              <select id="keyfields" size="5" multiple="multiple"><option></option></select>
+            </td>
+            <td>
+              <input type="button" id="keyleft" value="&lt;&lt;" /><br/>
+              <input type="button" id="keyright" value="&gt;&gt;" /><br/>
+            </td>
+            <td>
+              <label for="keyavail" id="keyavaillabel"></label><br/>
+              <select id="keyavail" size="5" multiple="multiple"><option></option></select>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </fieldset>
+  </div>
+
+  <div id="table">
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            <label id="tablenamelabel" for="tablename"></label>
+          </td>
+          <td>
+            <input id="tablename" type="text" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label id="tablecommentlabel" for="tablecomment"></label>
+          </td>
+          <td>
+            <textarea rows="5" cols="40" id="tablecomment"></textarea>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+    <script src="https://d26jy9fbi4q9wx.cloudfront.net/assets/wwwsqldesigner/wwwsqldesigner_packed-9928031c2696612729399275917c33341415e6792a7d2f34e09bd719b6169176.js"></script>
+    
+  <script type="text/javascript">
+    var designer = new SQL.Designer();
+    designer.languageResponse((new DOMParser()).parseFromString(
+      '<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<locale>\n	<!-- table management -->\n	<string name=\"addtable\">Add table<\/string>\n	<string name=\"edittable\">Edit table<\/string>\n	<string name=\"removetable\">Remove table<\/string>\n	<string name=\"removetables\">Remove tables<\/string>\n	<string name=\"aligntables\">Align tables<\/string>\n	<string name=\"cleartables\">Clear tables<\/string>\n	<string name=\"confirmall\">Really delete all tables<\/string>\n	<string name=\"newtable\">new table<\/string>\n	<string name=\"addpending\">place table<\/string>\n	<string name=\"tablenamelabel\">Name<\/string>\n	<string name=\"tablecommentlabel\">Comment<\/string>\n	\n	<!-- row management -->\n	<string name=\"addrow\">Add field<\/string>\n	<string name=\"editrow\">Edit field<\/string>\n	<string name=\"removerow\">Remove field<\/string>\n	<string name=\"uprow\">Up<\/string>\n	<string name=\"downrow\">Down<\/string>\n	<string name=\"newrow\">new field<\/string>\n	<string name=\"foreigncreate\">Create foreign key<\/string>\n	<string name=\"foreignpending\">click target table<\/string>\n	<string name=\"foreignconnect\">Connect foreign key<\/string>\n	<string name=\"foreignconnectpending\">click target row<\/string>\n	<string name=\"foreigndisconnect\">Remove foreign key<\/string>\n	<string name=\"confirmtable\">Really delete table<\/string>\n	<string name=\"confirmrow\">Really delete field<\/string>\n\n	<!-- row edit -->\n	<string name=\"name\">Name<\/string>\n	<string name=\"type\">Type<\/string>\n	<string name=\"size\">Size<\/string>\n	<string name=\"def\">Default<\/string>\n	<string name=\"notnull\">NOT NULL<\/string>\n	<string name=\"null\">NULL<\/string>\n	<string name=\"ai\">Autoincrement<\/string>\n	<string name=\"comment\">Edit comment<\/string>\n	<string name=\"commenttext\">Enter comment for this field<\/string>\n	\n	<!-- windows & options -->\n	<string name=\"windowok\">OK<\/string>\n	<string name=\"windowcancel\">Cancel<\/string>\n	<string name=\"throbber\">Please wait...<\/string>\n	<string name=\"options\">Options<\/string>\n	<string name=\"language\">Language<\/string>\n	<string name=\"db\">Database for new designs<\/string>\n	<string name=\"optionsnotice\">Some options are applied only after full page reload. Cookies must be enabled for options to work.<\/string>\n	<string name=\"snap\">Table snap distance<\/string>\n	<string name=\"optionsnapnotice\">In pixels, 0 = disable snapping<\/string>\n	<string name=\"pattern\">Pattern for foreign names<\/string>\n	<string name=\"optionpatternnotice\">%T = primary table, %R = primary key, %t = foreign table<\/string>\n	<string name=\"hide\">Hide connectors on table drag?<\/string>\n	<string name=\"vector\">Draw smooth connectors (if supported by browser)?<\/string>\n	<string name=\"showsize\">Show field size in table design?<\/string>\n	<string name=\"showtype\">Show field datatype in table design?<\/string>\n	\n	<!-- keys -->\n	<string name=\"tablekeys\">Keys<\/string>\n	<string name=\"keyslistlabel\">Keys in table \"%s\"<\/string>\n	<string name=\"keytypelabel\">Type:<\/string>\n	<string name=\"keynamelabel\">Name:<\/string>\n	<string name=\"keyfieldslabel\">Fields in key<\/string>\n	<string name=\"keyavaillabel\">Available fields<\/string>\n	<string name=\"keyedit\">Edit key<\/string>\n	<string name=\"keyadd\">Add key<\/string>\n	<string name=\"keyremove\">Remove key<\/string>\n	\n	<!-- io -->\n	<string name=\"saveload\">Save / Load<\/string>\n	<string name=\"empty\">Please paste XML data into the text area below and try again.<\/string>\n	<string name=\"client\">Client<\/string>\n	<string name=\"server\">Server<\/string>\n	<string name=\"output\">Input / Output<\/string>\n	<string name=\"clientsave\">Save XML<\/string>\n	<string name=\"clientload\">Load XML<\/string>\n	<string name=\"clientlocalsave\">Save in Browser<\/string>\n	<string name=\"clientlocalload\">Load from Browser<\/string>\n	<string name=\"clientlocallist\">List from Browser<\/string>\n	<string name=\"dropboxsave\">Save to Dropbox<\/string>\n	<string name=\"dropboxload\">Load from Dropbox<\/string>\n	<string name=\"dropboxlist\">List from Dropbox<\/string>\n	<string name=\"clientsql\">Generate SQL<\/string>\n	<string name=\"backendlabel\">Server backend:<\/string>\n	<string name=\"serversave\">Save<\/string>\n	<string name=\"quicksave\">Quicksave<\/string>\n	<string name=\"serverload\">Load<\/string>\n	<string name=\"serverlist\">List items<\/string>\n	<string name=\"serverimport\">Import from DB<\/string>\n	<string name=\"serverloadprompt\">Enter keyword under which your design was saved:<\/string>\n	<string name=\"serversaveprompt\">Enter keyword under which your design will be saved:<\/string>\n	<string name=\"serverimportprompt\">Enter name of database to be imported:<\/string>\n	<string name=\"httpresponse\">Server response<\/string>\n	<string name=\"http201\">Saved<\/string>\n	<string name=\"http404\">Not Found<\/string>\n	<string name=\"http500\">Internal Server Error<\/string>\n	<string name=\"http501\">Not Implemented<\/string>\n	<string name=\"http503\">Service Unavailable<\/string>\n	\n	<!-- misc -->\n	<string name=\"xmlerror\">XML error<\/string>\n	<string name=\"docs\">Documentation<\/string>\n	\n<\/locale>\n',
+      'text/xml'));
+    designer.dbResponse((new DOMParser()).parseFromString(
+      '<?xml version=\"1.0\"?>\n<datatypes db=\"postgresql\">\n  <group label=\"Numeric\" color=\"rgb(238,238,170)\">\n    <type label=\"Integer\" length=\"0\" sql=\"INTEGER\" re=\"INT\" quote=\"\" />\n    <type label=\"Small Integer\" length=\"0\" sql=\"SMALLINT\" quote=\"\" />\n    <type label=\"Big Integer\" length=\"0\" sql=\"BIGINT\" quote=\"\" />\n    <type label=\"Decimal\" length=\"1\" sql=\"DECIMAL\" re=\"numeric\" quote=\"\" />\n    <type label=\"Serial\" length=\"0\" sql=\"SERIAL\" re=\"SERIAL4\" fk=\"Integer\" quote=\"\" />\n    <type label=\"Big Serial\" length=\"0\" sql=\"BIGSERIAL\" re=\"SERIAL8\" fk=\"Big Integer\" quote=\"\" />\n    <type label=\"Real\" length=\"0\" sql=\"BIGINT\" quote=\"\" />\n    <type label=\"Single precision\" length=\"0\" sql=\"FLOAT\" quote=\"\" />\n    <type label=\"Double precision\" length=\"0\" sql=\"DOUBLE\" re=\"DOUBLE\" quote=\"\" />\n  <\/group>\n\n  <group label=\"Character\" color=\"rgb(255,200,200)\">\n    <type label=\"Char\" length=\"1\" sql=\"CHAR\" quote=\"\'\"/>\n    <type label=\"Varchar\" length=\"1\" sql=\"VARCHAR\" re=\"CHARACTER VARYING\" quote=\"\'\"/>\n    <type label=\"Text\" length=\"0\" sql=\"TEXT\" quote=\"\'\"/>\n    <type label=\"Binary\" length=\"1\" sql=\"BYTEA\" quote=\"\'\"/>\n    <type label=\"Boolean\" length=\"0\" sql=\"BOOLEAN\" quote=\"\'\"/>\n  <\/group>\n\n  <group label=\"Date &amp; Time\" color=\"rgb(200,255,200)\">\n    <type label=\"Date\" length=\"0\" sql=\"DATE\" quote=\"\'\" />\n    <type label=\"Time\" length=\"1\" sql=\"TIME\" quote=\"\'\" />\n    <type label=\"Time w/ TZ\" length=\"0\" sql=\"TIME WITH TIME ZONE\" quote=\"\'\" />\n    <type label=\"Interval\" length=\"1\" sql=\"INTERVAL\" quote=\"\'\" />\n    <type label=\"Timestamp\" length=\"1\" sql=\"TIMESTAMP\" quote=\"\'\" />\n    <type label=\"Timestamp w/ TZ\" length=\"0\" sql=\"TIMESTAMP WITH TIME ZONE\" quote=\"\'\" />\n    <type label=\"Timestamp wo/ TZ\" length=\"0\" sql=\"TIMESTAMP WITHOUT TIME ZONE\" quote=\"\'\" />\n  <\/group>\n\n  <group label=\"Miscellaneous\" color=\"rgb(200,200,255)\">\n    <type label=\"XML\" length=\"1\" sql=\"XML\" quote=\"\'\" />\n    <type label=\"Bit\" length=\"1\" sql=\"BIT\" quote=\"\'\" />\n    <type label=\"Bit Varying\" length=\"1\" sql=\"VARBIT\" re=\"BIT VARYING\" quote=\"\'\" />\n    <type label=\"Inet Host Addr\" length=\"0\" sql=\"INET\" quote=\"\'\" />\n    <type label=\"Inet CIDR Addr\" length=\"0\" sql=\"CIDR\" quote=\"\'\" />\n    <type label=\"Geometry\" length=\"0\" sql=\"GEOMETRY\" quote=\"\'\" />\n  <\/group>\n<\/datatypes>\n',
+      'text/xml'));
+
+    designer.setSaveUrl('/db/2552?authenticity_token=oywUHrRedfv1KpBGzdn3BoQJVr9tcGxIEMPBOkrKTx34FMN%2B53UbryWwY6NZycORSB60S%2Fy7Jgd8CPvB01Wklw%3D%3D');
+    designer.io.loadresponse((new DOMParser()).parseFromString(
+      '<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<!-- SQL XML created by WWW SQL Designer, https://github.com/ondras/wwwsqldesigner/ -->\n<!-- Active URL: https://kitt.lewagon.com/db/2552 -->\n<sql>\n<datatypes db=\"postgresql\">\n  <group label=\"Numeric\" color=\"rgb(238,238,170)\">\n    <type label=\"Integer\" length=\"0\" sql=\"INTEGER\" re=\"INT\" quote=\"\"/>\n    <type label=\"Small Integer\" length=\"0\" sql=\"SMALLINT\" quote=\"\"/>\n    <type label=\"Big Integer\" length=\"0\" sql=\"BIGINT\" quote=\"\"/>\n    <type label=\"Decimal\" length=\"1\" sql=\"DECIMAL\" re=\"numeric\" quote=\"\"/>\n    <type label=\"Serial\" length=\"0\" sql=\"SERIAL\" re=\"SERIAL4\" fk=\"Integer\" quote=\"\"/>\n    <type label=\"Big Serial\" length=\"0\" sql=\"BIGSERIAL\" re=\"SERIAL8\" fk=\"Big Integer\" quote=\"\"/>\n    <type label=\"Real\" length=\"0\" sql=\"BIGINT\" quote=\"\"/>\n    <type label=\"Single precision\" length=\"0\" sql=\"FLOAT\" quote=\"\"/>\n    <type label=\"Double precision\" length=\"0\" sql=\"DOUBLE\" re=\"DOUBLE\" quote=\"\"/>\n  <\/group>\n\n  <group label=\"Character\" color=\"rgb(255,200,200)\">\n    <type label=\"Char\" length=\"1\" sql=\"CHAR\" quote=\"\'\"/>\n    <type label=\"Varchar\" length=\"1\" sql=\"VARCHAR\" re=\"CHARACTER VARYING\" quote=\"\'\"/>\n    <type label=\"Text\" length=\"0\" sql=\"TEXT\" quote=\"\'\"/>\n    <type label=\"Binary\" length=\"1\" sql=\"BYTEA\" quote=\"\'\"/>\n    <type label=\"Boolean\" length=\"0\" sql=\"BOOLEAN\" quote=\"\'\"/>\n  <\/group>\n\n  <group label=\"Date &amp; Time\" color=\"rgb(200,255,200)\">\n    <type label=\"Date\" length=\"0\" sql=\"DATE\" quote=\"\'\"/>\n    <type label=\"Time\" length=\"1\" sql=\"TIME\" quote=\"\'\"/>\n    <type label=\"Time w/ TZ\" length=\"0\" sql=\"TIME WITH TIME ZONE\" quote=\"\'\"/>\n    <type label=\"Interval\" length=\"1\" sql=\"INTERVAL\" quote=\"\'\"/>\n    <type label=\"Timestamp\" length=\"1\" sql=\"TIMESTAMP\" quote=\"\'\"/>\n    <type label=\"Timestamp w/ TZ\" length=\"0\" sql=\"TIMESTAMP WITH TIME ZONE\" quote=\"\'\"/>\n    <type label=\"Timestamp wo/ TZ\" length=\"0\" sql=\"TIMESTAMP WITHOUT TIME ZONE\" quote=\"\'\"/>\n  <\/group>\n\n  <group label=\"Miscellaneous\" color=\"rgb(200,200,255)\">\n    <type label=\"XML\" length=\"1\" sql=\"XML\" quote=\"\'\"/>\n    <type label=\"Bit\" length=\"1\" sql=\"BIT\" quote=\"\'\"/>\n    <type label=\"Bit Varying\" length=\"1\" sql=\"VARBIT\" re=\"BIT VARYING\" quote=\"\'\"/>\n    <type label=\"Inet Host Addr\" length=\"0\" sql=\"INET\" quote=\"\'\"/>\n    <type label=\"Inet CIDR Addr\" length=\"0\" sql=\"CIDR\" quote=\"\'\"/>\n    <type label=\"Geometry\" length=\"0\" sql=\"GEOMETRY\" quote=\"\'\"/>\n  <\/group>\n<\/datatypes><table x=\"229\" y=\"203\" name=\"users\">\n<row name=\"id\" null=\"1\" autoincrement=\"1\">\n<datatype>INTEGER<\/datatype>\n<default>NULL<\/default><\/row>\n<row name=\"first_name\" null=\"1\" autoincrement=\"0\">\n<datatype>INTEGER<\/datatype>\n<default>NULL<\/default><\/row>\n<row name=\"last_name\" null=\"1\" autoincrement=\"0\">\n<datatype>INTEGER<\/datatype>\n<default>NULL<\/default><\/row>\n<row name=\"email\" null=\"1\" autoincrement=\"0\">\n<datatype>INTEGER<\/datatype>\n<default>NULL<\/default><\/row>\n<key type=\"PRIMARY\" name=\"\">\n<part>id<\/part>\n<\/key>\n<\/table>\n<\/sql>\n', 'text/xml'), 200);
+  </script>
+
+  </body>
+</html>
