@@ -12,6 +12,7 @@ class OrdersController < ApplicationController
     @plan = Plan.find(params[:plan_id])
     @order.user = current_user
     @order.plan = @plan
+    authorize @order
     if @order.save
       redirect_to plan_path(@plan)
     end

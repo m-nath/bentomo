@@ -1,9 +1,9 @@
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">Make an order</button>
-<div class="modal fade" id="order" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#order_form" data-whatever="@getbootstrap">Make an order</button>
+<div class="modal fade" id="order_form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="order-title">Make an order</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Make an order</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -25,9 +25,10 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Confirm</button>
+        <div class="text-center btn-big-flat m-2"><%= link_to plan_orders_path(@plan, order: { :plan_id => @plan.id }), method: :post, data: { confirm: "You have booked this meal plan, please wait for confirmation" } do %>Make an Order<% end %>
+        </div>
+        <!--           <button type="button" class="btn btn-primary">Confirm</button> -->
       </div>
     </div>
   </div>
-</div>
 </div>
