@@ -1,0 +1,20 @@
+<h2><%= @kitchen.name %></h2>
+
+<% @kitchen.plans.each do |plan| %>
+  <!-- plan details -->
+  <h4><%= plan.name  %></h4>
+  <%= plan.price  %>
+
+  <!-- dishes details -->
+  <% plan.dishes.each do |dish| %>
+    <%= cl_image_tag dish.photo %>
+    <h5> <%= dish.name %></h5>
+  <% end %>
+
+<% end %>
+
+<!-- this is for map (st)-->
+<h4>Pick up location:</h4>
+<%= @kitchen.konbini %>
+<!-- this is for map (fin)-->
+
