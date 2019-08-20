@@ -16,6 +16,7 @@
   <%= cl_image_tag plan.photo %>
   <%= link_to plan.name, plan_path(plan) %>
   <%= plan.price%>
+  <%= plan.description%>
 <% end %>
 
 <p><%= link_to "more plans", plans_path %></p>
