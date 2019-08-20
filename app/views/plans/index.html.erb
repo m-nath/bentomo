@@ -1,5 +1,18 @@
 <title>Bentomo Meal Plans</title>
 <h1>Plans</h1>
+<div class="container">
+  <div class="d-flex mt-5 mx-5">
+    <div class="search-bar-long"><%= form_tag plans_path, method: :get do %>
+        <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Find your next golf event"
+    %>
+      </div>
+      <div><%= submit_tag "Search", class: "btn btn-flat search-button" %></div>
+    <% end %>
+  </div>
+</div>
 <% Plan.all.each do |plan|%>
   <ul>
     <li><%= plan.name %></li>
