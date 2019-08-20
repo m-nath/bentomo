@@ -4,4 +4,5 @@ class Dish < ApplicationRecord
   has_many :plans, through: :dish_plans
 
   validates :name, presence: true
+  mount_uploader :photo, PhotoUploader
 end
