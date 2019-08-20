@@ -1,0 +1,51 @@
+.btn-main {
+  color: $white;
+  padding: 6px 24px;
+  border-radius: 100px;
+  background: $red;
+  transition: background 0.3s ease;
+}
+
+.btn-main:hover {
+  color: $white;
+  padding: 6px 24px;
+  border-radius: 100px;
+  background: $pink;
+  transition: background 0.3s ease;
+}
+
+.btn-secondery {
+  color: $red;
+  padding: 6px 24px;
+  border-radius: 100px;
+  border-color: $red;
+  transition: background 0.3s ease;
+}
+
+.btn-secondery:hover {
+  color: $pink;
+  padding: 6px 24px;
+  border-radius: 100px;
+  border-color: $pink;
+  transition: background 0.3s ease;
+}
+
+.btn-short {
+  color: $red;
+  font-weight: lighter;
+  padding: 0px 24px;
+  border-radius: 100px;
+  border-width: 0.5px;
+  border-color: $red;
+  transition: background 0.3s ease;
+}
+
+.btn-short:hover {
+  color: $pink;
+  font-weight: lighter;
+  padding: 0px 24px;
+  border-radius: 100px;
+  border-width: 0.5px;
+  border-color: $pink;
+  transition: background 0.3s ease;
+}
