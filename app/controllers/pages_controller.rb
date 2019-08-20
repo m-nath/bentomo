@@ -1,7 +1,8 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :uikit]
+  skip_before_action :authenticate_user!, only: [:home, :uikit, :uikit_kid]
 
   def home
+
   end
 
   def uikit
@@ -9,4 +10,5 @@ class PagesController < ApplicationController
 
   def uikit_kid
   end
+
 end
