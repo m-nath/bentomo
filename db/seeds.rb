@@ -90,7 +90,7 @@ User.all.each do |user|
   e = Kitchen.create!(
     name: Faker::Restaurant.name,
     description: Faker::Food.description,
-    remote_photo_url: "https://source.unsplash.com/1000x700/?food",
+    remote_photo_url: "https://source.unsplash.com/1000x700/?lunch",
     konbini: ["Lawson Shibuya", "Family-mart Shinjuku", "Seven-eleven Meguro", "Lawson Jingu-mae"].sample,
     user: user
   )
@@ -116,14 +116,16 @@ Kitchen.all.each do |kitchen|
     Plan.create!(
       name: Faker::Restaurant.type,
       price: 99,
-      kitchen: kitchen
+      kitchen: kitchen,
+      remote_photo_url: "https://source.unsplash.com/1000x700/?dinner"
     )
   end
 
   rand(5..8).times do
     Dish.create!(
       name: Faker::Food.dish,
-      kitchen: kitchen
+      kitchen: kitchen,
+      remote_photo_url: "https://source.unsplash.com/1000x700/?meal"
     )
   end
 end

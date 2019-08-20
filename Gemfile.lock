@@ -79,6 +79,8 @@ GEM
     faker (2.1.2)
       i18n (>= 0.8)
     ffi (1.11.1)
+    flatpickr_rails (1.1.0)
+      railties (>= 3.0)
     font-awesome-sass (5.6.1)
       sassc (>= 1.11)
     globalid (0.4.2)
@@ -226,6 +228,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   faker (~> 2.1)
+  flatpickr_rails
   font-awesome-sass (~> 5.6.1)
   jbuilder (~> 2.0)
   listen (~> 3.0.5)
