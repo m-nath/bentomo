@@ -1,2 +1,20 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h3> Kitchens</h3>
+
+<% @kitchens.each do |kitchen|%>
+  <%= cl_image_tag kitchen.photo %>
+  <%= kitchen.name %>
+  <%= kitchen.description%>
+<% end %>
+
+<%= link_to "more kitchens", kitchens_path %>
+
+
+
+<h3> Plans </h3>
+<% @plans.each do |plan|%>
+  <%= cl_image_tag plan.photo %>
+  <%= plan.name %>
+  <%= plan.description%>
+<% end %>
+
+<%= link_to "more plans", plans_path %>
