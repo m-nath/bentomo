@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+
+  #----------usually useless above----------
   devise_for :users
   root to: 'pages#home'
   get 'uikit', to: 'pages#uikit'
