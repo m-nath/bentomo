@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   get 'uikit', to: 'pages#uikit'
+  get 'uikit_kid', to: 'pages#uikit_kid'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :kitchens, only: [:show, :new, :create, :edit, :update, :destroy] do

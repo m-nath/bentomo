@@ -6,4 +6,7 @@ class PagesController < ApplicationController
 
   def uikit
   end
+
+  def uikit_kid
+  end
 end
