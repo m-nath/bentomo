@@ -74,8 +74,9 @@
                 <%= image_tag "hw4.jpg", class:"card-trip-user avatar-bordered" %>
               </div>
               <div class="mx-3">
-                <a class=" " href=#>hashtag</a>
-                <a class=" " href=#>hashtag</a>
+                <% plan.tag_list.each do |tag| %>
+                  <%= link_to tag, plans_tagged_path(tag: tag) %>
+                <% end %>
               </div>
             </div>
           </div>

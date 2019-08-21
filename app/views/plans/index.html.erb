@@ -1,8 +1,8 @@
 
 <h1>Plans</h1>
 
-<!-- this is search bar start-->
-  <%= form_tag plans_path, method: :get do %>
+<!-- search bar start-->
+  <% form_tag plans_path, method: :get do %>
     <%= text_field_tag :query,
       params[:query],
       class: "form-control",
@@ -10,18 +10,34 @@
     %>
     <%= submit_tag "Search", class: "btn btn-secondery" %>
   <% end %>
-<!-- this is search bar end-->
+<!-- search bar end-->
 
-<p>normal search</p>
+<!-- filter start-->
+<%= simple_form_for :search, url: plans_path, method: "GET" do |f| %>
+  <%= f.input :query, input_html: {class: 'form-control', value: (params[:search][:query] if params[:search])} %>
+
+      <%  ActsAsTaggableOn::Tag.most_used(10).map do |tag|%>
+        <%= check_box_tag 'search[tags][]', tag.name, (params[:search] ? params[:search][:tags].include?(tag.name) : false) %>
+        <%= tag.name %>
+      <% end %>
+      <br>
+    <%= f.submit "Search", class: "btn btn-secondery" %>
+    <%= link_to "Reset", plans_path %>
+<% end %>
+<!-- filter end-->
+
+
 <div class="container">
   <% @plans.each do |plan|%>
     <ul>
       <li><%= plan.name %></li>
       <%= cl_image_tag plan.photo, width: 200, height: 100, crop: :fill %>
       <li><%= plan.description %></li>
+      <!-- tags start-->
       <li><% plan.tag_list.each do |tag| %>
         <%= link_to tag, plans_tagged_path(tag: tag) %>
       <% end %></li>
+      <!-- tags end-->
       <li><%= plan.price %></li>
       <li><%= link_to "Details", plan_path(plan) %></li>
     </ul>
