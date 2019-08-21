@@ -1,0 +1,27 @@
+.tab-text {
+  color: $gray;
+}
+
+.tab-text.avtive {
+  color: $red;
+}
+
+.tab-text a {
+  color: $red;
+}
+
+.tab-text:hover {
+  color: $pink;
+}
+
+.tab-text-content {
+  text-decoration: none;
+}
+
+.tab-text-content a {
+  text-decoration: none;
+}
+
+.tab-text-content:hover {
+  text-decoration: none;
+}
