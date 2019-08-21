@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 puts "seed starts"
+puts 'destroy previous seeds'
 
 Order.destroy_all if Rails.env.development?
 DishPlan.destroy_all if Rails.env.development?
@@ -73,25 +74,41 @@ avatar =
    "https://res.cloudinary.com/dxouryvao/image/upload/v1566268732/hw9_sgyhyr.jpg",
    "https://res.cloudinary.com/dxouryvao/image/upload/v1566268731/hw2_hynsuc.jpg",
    "https://res.cloudinary.com/dxouryvao/image/upload/v1566268731/hw3_mj1vpe.jpg",
-   "https://res.cloudinary.com/dxouryvao/image/upload/v1566268732/hw5_l5gr7w.jpg",
    "https://res.cloudinary.com/dxouryvao/image/upload/v1566268732/hw6_dfhsv3.webp",
    "https://res.cloudinary.com/dxouryvao/image/upload/v1566268731/hw1_qyo2vh.jpg",
    "https://res.cloudinary.com/dxouryvao/image/upload/v1566268731/hw4_unvhly.jpg"]
 
   puts "uploading photos"
 
+demo_hw = User.create!(
+  email:'hw@gmail.com',
+  first_name: 'Tomo',
+  last_name: 'Mama',
+  password: "123123",
+  remote_photo_url: 'https://res.cloudinary.com/dxouryvao/image/upload/v1566268732/hw5_l5gr7w.jpg'
+  )
+
+demo_kitchen = Kitchen.create!(
+    name: 'Tomo Mama`s kitchen',
+    description: 'Healthy homemade food full of nutrition',
+    remote_photo_url: "https://source.unsplash.com/1000x700/?healthy-food",
+    konbini: "Family-mart Meguro",
+    user: demo_hw
+  )
+
 9.times do
   User.create!(email: Faker::Internet.email, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, password: "123123", remote_photo_url: avatar.sample)
 end
+
 
 puts "added #{User.count} users."
 
 User.all.each do |user|
   e = Kitchen.create!(
     name: Faker::Restaurant.name,
-    description: Faker::Food.description,
+    description: Faker::Restaurant.description,
     remote_photo_url: "https://source.unsplash.com/1000x700/?lunch",
-    konbini: ["Lawson Shibuya", "Family-mart Shinjuku", "Seven-eleven Meguro", "Lawson Jingu-mae"].sample,
+    konbini: ["Lawson Shibuya", "Family-mart Shinjuku", "Family-mart Meguro", "Mybasket Meguro", "Seven-eleven Meguro", "Lawson Jingu-mae"].sample,
     user: user
   )
   puts "created #{e.name}"
@@ -115,9 +132,10 @@ Kitchen.all.each do |kitchen|
   rand(1..3).times do
     Plan.create!(
       name: Faker::Restaurant.type,
-      price: [20..50].sample * 100,
+      price: [2000, 3000, 4000, 5000, 2500, 3500, 4500, 2300, 2800, 3800, 3200, 4200, 4800].sample,
       kitchen: kitchen,
-      remote_photo_url: "https://source.unsplash.com/1000x700/?dinner"
+      remote_photo_url: "https://source.unsplash.com/1000x700/?dinner" || "https://source.unsplash.com/1000x700/?healthy-food" ,
+      description: Faker::Restaurant.description,
     )
   end
 
@@ -140,6 +158,16 @@ Plan.all.each do |plan|
 end
 
 User.all.each do |user|
+    # create order for future
+    kitchen = Kitchen.where.not(user: user).sample
+    plan = kitchen.plans.sample
+    Order.create!(
+      amount: plan.price,
+      user: user,
+      plan: plan,
+      date: Faker::Time.between_dates(from: Date.today, to: Date.today + 7, period: :morning, format: :short)
+    )
+  # create order for past
   rand(2..4).times do
     kitchen = Kitchen.where.not(user: user).sample
     plan = kitchen.plans.sample
@@ -147,17 +175,10 @@ User.all.each do |user|
       amount: plan.price,
       user: user,
       plan: plan,
-      date: Faker::Date.forward(days: 20)
-    )
-    Order.create!(
-      amount: plan.price,
-      user: user,
-      plan: plan,
-      date: Faker::Date.backward(days: 20)
+      date: Faker::Time.between_dates(from: Date.today - 60, to: Date.today - 7, period: :morning, format: :short)
     )
   end
 end
-
 
 puts "added #{Plan.count} Plans."
 
