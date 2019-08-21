@@ -1,5 +1,4 @@
 class OrdersController < ApplicationController
-  require ‘date’
 
   def index
     @orders = policy_scope(Order).where(user: current_user).order(date: :desc)
@@ -7,13 +6,11 @@ class OrdersController < ApplicationController
     @coming_orders = @orders.select do |order|
       authorize order
       order.date.to_date - Date.today >= 0
-      # order.date.to_date - Date.today >= 0
     end
 
     @history_orders = @orders.select do |order|
       authorize order
       order.date.to_date - Date.today < 0
-      # order.date.to_date - Date.today < 0
     end
   end
 
