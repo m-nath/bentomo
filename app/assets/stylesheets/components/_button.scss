@@ -4,7 +4,6 @@
   border-radius: 100px;
   background: $red;
   transition: background 0.3s ease;
-  height: 3.5rem;
 }
 
 .btn-main:hover {
@@ -48,5 +47,22 @@
   border-radius: 100px;
   border-width: 0.5px;
   border-color: $pink;
+  transition: background 0.3s ease;
+}
+
+.btn-search {
+  color: $white;
+  padding: 6px 24px;
+  border-radius: 100px;
+  background: $red;
+  transition: background 0.3s ease;
+  height: 3.5rem;
+}
+
+.btn-search:hover {
+  color: $white;
+  padding: 6px 24px;
+  border-radius: 100px;
+  background: $pink;
   transition: background 0.3s ease;
 }
