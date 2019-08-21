@@ -1,5 +1,17 @@
 .meal-card-image {
-  width: auto;
-  height: 100px;
-  object-fit: contain;
+  height: 100%;
+  width: 250px;
+  object-fit: cover;
+}
+
+.card {
+  height: 250px;
+  width: 250px;
+  margin: 100px;
+}
+
+.card-info {
+  height: 150px;
+  width: 250px;
+  border: 1px solid $light-gray;
 }
