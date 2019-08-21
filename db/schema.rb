@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_21_021316) do
+ActiveRecord::Schema.define(version: 2019_08_21_064850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,22 +36,32 @@ ActiveRecord::Schema.define(version: 2019_08_21_021316) do
   create_table "kitchens", force: :cascade do |t|
     t.string "name"
     t.string "photo"
-    t.string "konbini"
     t.string "description"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "konbini_id"
+    t.index ["konbini_id"], name: "index_kitchens_on_konbini_id"
     t.index ["user_id"], name: "index_kitchens_on_user_id"
+  end
+
+  create_table "konbinis", force: :cascade do |t|
+    t.string "name"
+    t.text "address"
+    t.float "longitude"
+    t.float "latitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "locations", force: :cascade do |t|
     t.string "label"
     t.text "address"
     t.float "latitude"
-    t.float "longtitude"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "longitude"
     t.index ["user_id"], name: "index_locations_on_user_id"
   end
 
@@ -97,6 +107,7 @@ ActiveRecord::Schema.define(version: 2019_08_21_021316) do
   add_foreign_key "dish_plans", "dishes"
   add_foreign_key "dish_plans", "plans"
   add_foreign_key "dishes", "kitchens"
+  add_foreign_key "kitchens", "konbinis"
   add_foreign_key "kitchens", "users"
   add_foreign_key "locations", "users"
   add_foreign_key "orders", "plans"
