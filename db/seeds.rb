@@ -20,24 +20,20 @@ require 'net/http'
 require 'uri'
 
 puts 'creating konbini'
-namespace :konbini do
-  desc "Calling mapbox api to create konbini"
-  task seed: :environment do
-    areas = ["139.7038,35.6620", "139.749460,35.686960"]
-    areas.each do |area|
-      uri = URI.parse("https://api.mapbox.com/geocoding/v5/mapbox.places/convenience%20store.json?types=poi&proximity=#{area}&access_token=#{ENV['MAPBOX_API_KEY']}")
-      response = Net::HTTP.get_response(uri)
-      list = JSON.parse(response.body)
-      list["features"].each do |feature|
-        features_hash = {}
-        features_hash[:mapbox_id] = feature["id"]
-        features_hash[:name] = feature["text"]
-        features_hash[:address] = feature["place_name"]
-        features_hash[:latitude] = feature["center"][0]
-        features_hash[:longitude] = feature["center"][1]
-        Konbini.create(features_hash)
-      end
-    end
+
+areas = ["139.7038,35.6620", "139.749460,35.686960"]
+areas.each do |area|
+  uri = URI.parse("https://api.mapbox.com/geocoding/v5/mapbox.places/convenience%20store.json?types=poi&proximity=#{area}&access_token=#{ENV['MAPBOX_API_KEY']}")
+  response = Net::HTTP.get_response(uri)
+  list = JSON.parse(response.body)
+  list["features"].each do |feature|
+    features_hash = {}
+    features_hash[:mapbox_id] = feature["id"]
+    features_hash[:name] = feature["text"]
+    features_hash[:address] = feature["place_name"]
+    features_hash[:latitude] = feature["center"][0]
+    features_hash[:longitude] = feature["center"][1]
+    Konbini.create(features_hash)
   end
 end
 
@@ -119,7 +115,7 @@ demo_kitchen = Kitchen.create!(
     description: 'Healthy homemade food full of nutrition',
     remote_photo_url: "https://source.unsplash.com/400x300/?healthy-food",
     user: demo_hw,
-    konbini: Kobini.first,
+    konbini_id: Konbini.first.id,
   )
 
 3.times do #change to more times later
@@ -142,11 +138,11 @@ tags_array =[
 User.all.each do |user|
   e = Kitchen.create!(
     name: Faker::Restaurant.name,
-    description: Faker::Restaurant.description[0..50],
+    description: Faker::Restaurant.description[0..100],
     remote_photo_url: "https://source.unsplash.com/400x300/?lunch",
     user: user,
     tag_list: tags_array.sample,
-    konbini: Konbini.all.sample
+    konbini_id: Konbini.all.ids.sample
   )
   puts "created #{e.name}"
 
@@ -172,7 +168,7 @@ Kitchen.all.each do |kitchen|
       price: [2000, 3000, 4000, 5000, 2500, 3500, 4500, 2300, 2800, 3800, 3200, 4200, 4800].sample,
       kitchen: kitchen,
       remote_photo_url: "https://source.unsplash.com/400x300/?healthy-food" || "https://source.unsplash.com/400x300/?dinner",
-      description: Faker::Restaurant.description[0..50],
+      description: Faker::Restaurant.description[0..100],
       tag_list: tags_array.sample
     )
   end
