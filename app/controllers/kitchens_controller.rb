@@ -10,4 +10,12 @@ class KitchensController < ApplicationController
     @kitchen = Kitchen.new
     authorize @kitchen
   end
+
+
+  private
+
+  def kitchen_params
+  params.require(:kitchen).permit(:name, :description, :photo, :tag_list)
+  end
+
 end

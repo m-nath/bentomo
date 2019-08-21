@@ -7,6 +7,8 @@ class Plan < ApplicationRecord
   validates :price, presence: true
   mount_uploader :photo, PhotoUploader
 
+  acts_as_taggable_on :tags
+
   include PgSearch
   pg_search_scope :global_search,
     against: [ :name, :description ],
