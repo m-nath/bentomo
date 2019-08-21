@@ -1,21 +1,96 @@
-<h3> Kitchens</h3>
+<div class="banner mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= image_path "banner.jpg" %>');">
+  <div class="d-flex align-items-end justify-content-center" style="height: 60vh;">
+    <form novalidate="novalidate" class="simple_form search  banner-search" action="/" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+      <div class="search-form-control form-group" style="width: 80vw;">
+        <input class="form-control string required" type="text" name="search[query]" id="search_query" placeholder="Enter keywords here"/>
+        <button name="button" type="submit" class="btn btn-search">
+          <i class="fas fa-search"></i> Search
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- above are banner! -->
 
-<% @kitchens.each do |kitchen|%>
-  <%= cl_image_tag kitchen.photo, width: 300, height: 200, crop: :fill %>
-  <h4><%= link_to kitchen.name, kitchen_path(kitchen) %></h4>
-  <p><%= kitchen.description%></p>
-<% end %>
+<div class="container">
 
-<p><%= link_to "more kitchens", kitchens_path %></p>
+<!-- TAB SECTION START -->
+<!-- TAB -->
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Kitchens</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Plans</a>
+  </li>
+</ul>
+<!-- CONTENT -->
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+    <div class="d-flex align-content-start flex-wrap">
+      <% @kitchens.each do |kitchen|%>
 
 
-<h3> Plans </h3>
-<% @plans.each do |plan|%>
-  <%= cl_image_tag plan.photo, width: 300, height: 200, crop: :fill  %>
-  <h4><%= link_to plan.name, plan_path(plan) %></h4>
-  <h6><%= plan.price%></h6>
-  <p><%= plan.description%></p>
-<% end %>
+        <div class="card-trip">
+          <%= cl_image_tag(kitchen.photo) %>
+          <div class="card-trip-infos">
+            <div>
+              <h2><%= kitchen.name %></h2>
+              <p><%= kitchen.description %></p>
+            </div>
+            <h2 class="card-trip-pricing">£99.99</h2>
+            <%= image_tag "hw4.jpg", class:"card-trip-user avatar-bordered" %>
+          </div>
+          <a class="btn btn-short" href=#>Button</a>
+          <a class="btn btn-short" href=#>Button</a>
+        </div>
+    </div>
 
-<p><%= link_to "more plans", plans_path %></p>
 
+      <%= cl_image_tag kitchen.photo, width: 300, height: 200, crop: :fill %>
+      <h4><%= link_to kitchen.name, kitchen_path(kitchen) %></h4>
+      <p><%= kitchen.description%></p>
+    <% end %>
+
+  <p><%= link_to "more kitchens", kitchens_path %></p>
+
+  </div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+    <% @plans.each do |plan|%>
+      <%= cl_image_tag plan.photo, width: 300, height: 200, crop: :fill  %>
+      <h4><%= link_to plan.name, plan_path(plan) %></h4>
+      <h6><%= plan.price%></h6>
+      <p><%= plan.description%></p>
+    <% end %>
+
+  <p><%= link_to "more plans", plans_path %></p>
+
+  </div>
+</div>
+<!-- TAB SECTION END -->
+
+
+  <h3> Kitchens</h3>
+
+  <% @kitchens.each do |kitchen|%>
+    <%= cl_image_tag kitchen.photo, width: 300, height: 200, crop: :fill %>
+    <h4><%= link_to kitchen.name, kitchen_path(kitchen) %></h4>
+    <p><%= kitchen.description%></p>
+  <% end %>
+
+  <p><%= link_to "more kitchens", kitchens_path %></p>
+
+
+  <h3> Plans </h3>
+  <% @plans.each do |plan|%>
+    <%= cl_image_tag plan.photo, width: 300, height: 200, crop: :fill  %>
+    <h4><%= link_to plan.name, plan_path(plan) %></h4>
+    <h6><%= plan.price%></h6>
+    <p><%= plan.description%></p>
+  <% end %>
+
+  <p><%= link_to "more plans", plans_path %></p>
+
+</div>
