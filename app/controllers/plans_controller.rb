@@ -1,12 +1,21 @@
 class PlansController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-
   def index
-    if params[:query].present?
-      @plans = policy_scope(Plan).global_search(params[:query])
+    if params[:search]
+      query = params[:search][:query]
+      tags = params[:search][:tags].reject(&:blank?)
+
+      if query.present? && tags.any?
+        @plans = policy_scope(Plan).global_search(query).tagged_with(tags)
+      elsif query.present?
+        @plans = policy_scope(Plan).global_search(query)
+      elsif tags.any?
+        @plans = policy_scope(Plan).tagged_with(tags)
+      end
     else
       @plans = policy_scope(Plan)
     end
+# raise
   end
 
   def tagged

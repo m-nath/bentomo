@@ -11,9 +11,9 @@ class Plan < ApplicationRecord
 
   include PgSearch
   pg_search_scope :global_search,
-    against: [ :name, :description ],
+    against: [ :name, :description],
   associated_against: {
-    kitchen: [ :name, :description, :konbini ]
+    kitchen: [ :name, :description]
   },
   using: {
     tsearch: { prefix: true }
