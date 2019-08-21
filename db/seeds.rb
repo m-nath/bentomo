@@ -115,7 +115,7 @@ Kitchen.all.each do |kitchen|
   rand(1..3).times do
     Plan.create!(
       name: Faker::Restaurant.type,
-      price: 99,
+      price: [20..50].sample * 100,
       kitchen: kitchen,
       remote_photo_url: "https://source.unsplash.com/1000x700/?dinner"
     )
@@ -146,7 +146,14 @@ User.all.each do |user|
     Order.create!(
       amount: plan.price,
       user: user,
-      plan: plan
+      plan: plan,
+      date: Faker::Date.forward(days: 20)
+    )
+    Order.create!(
+      amount: plan.price,
+      user: user,
+      plan: plan,
+      date: Faker::Date.backward(days: 20)
     )
   end
 end

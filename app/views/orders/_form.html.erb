@@ -1,13 +1,34 @@
-<%= simple_form_for[@plan, @order] do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-  <div class="form-inputs">
-    <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
-    <%= f.input :request, placeholder: 'Additional request about your meal' %>
-    <%= f.input :amount %>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#order_form" data-whatever="@getbootstrap">Make an order</button>
+<div class="modal fade" id="order_form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Make an order</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="start-date" class="col-form-label">Start Date:</label>
+            <input type="date" class="form-control" id="start-date">
+          </div>
+          <div class="form-group">
+            <label for="konbini" class="col-form-label">Pickup Location: <%= @plan.kitchen.konbini %></label>
+          </div>
+          <div class="form-group">
+            <label for="request" class="col-form-label">Request:</label>
+            <textarea class="form-control" id="request"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <div class="text-center btn-big-flat m-2"><%= link_to plan_orders_path(@plan, order: { :plan_id => @plan.id }), method: :post, data: { confirm: "You have booked this meal plan, please wait for confirmation" } do %>Make an Order<% end %>
+        </div>
+        <!--           <button type="button" class="btn btn-primary">Confirm</button> -->
+      </div>
+    </div>
   </div>
-  <div class="form-actions d-flex justify-content-between">
-    <%= f.button :submit, class: "btn-flat" %>
-    <%= link_to 'Home', plans_path, class: "back-button"%>
-  </div>
-<% end %>
+</div>

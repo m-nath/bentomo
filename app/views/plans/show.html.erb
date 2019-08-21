@@ -1,7 +1,9 @@
 <div class="container">
   <h1><%= @plan.name %></h1>
   <h3><%= @plan.price %></h3>
-  <%= link_to "Back", plans_path %>
+  <% @plan.dishes.each do |dish| %>
+    <li><%= dish.name %></li>
+    <%= cl_image_tag dish.photo, width: 200, height: 100, crop: :fill %>
+  <% end %>
   <%= render 'orders/form' %>
-  <%= link_to "Make an Order", plan_orders_path(@plan) %>
 </div>

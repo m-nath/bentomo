@@ -4,8 +4,11 @@
   <% Plan.all.each do |plan|%>
     <ul>
       <li><%= plan.name %></li>
+      <%= cl_image_tag plan.photo, width: 200, height: 100, crop: :fill %>
       <li><%= plan.price %></li>
       <li><%= link_to "Details", plan_path(plan) %></li>
     </ul>
   <% end %>
+  <%= link_to "check the kitchen", kitchens_path, class: "btn-secondery" %>
+  <%= link_to "Home", root_path, class: "btn-secondery" %>
 </div>
