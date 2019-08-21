@@ -7,4 +7,6 @@ class Kitchen < ApplicationRecord
   validates :konbini, presence: true
   validates :description, presence: true
   mount_uploader :photo, PhotoUploader
+
+  acts_as_taggable_on :tags
 end

@@ -91,25 +91,36 @@ demo_hw = User.create!(
 demo_kitchen = Kitchen.create!(
     name: 'Tomo Mama`s kitchen',
     description: 'Healthy homemade food full of nutrition',
-    remote_photo_url: "https://source.unsplash.com/1000x700/?healthy-food",
+    remote_photo_url: "https://source.unsplash.com/400x300/?healthy-food",
     konbini: "Family-mart Meguro",
     user: demo_hw
   )
 
-9.times do
+3.times do #change to more times later
   User.create!(email: Faker::Internet.email, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, password: "123123", remote_photo_url: avatar.sample)
 end
 
 
 puts "added #{User.count} users."
 
+tags_array =[
+  ['healthy', 'low carb'],
+  ['gluten free', 'keto'],
+  ['protein'],
+  ['muscle'],
+  ['keto', 'low carb'],
+  ['japanese', 'low carb', 'low calorie'],
+  ['chinese', 'low carb'],
+]
+
 User.all.each do |user|
   e = Kitchen.create!(
     name: Faker::Restaurant.name,
     description: Faker::Restaurant.description,
-    remote_photo_url: "https://source.unsplash.com/1000x700/?lunch",
+    remote_photo_url: "https://source.unsplash.com/400x300/?lunch",
     konbini: ["Lawson Shibuya", "Family-mart Shinjuku", "Family-mart Meguro", "Mybasket Meguro", "Seven-eleven Meguro", "Lawson Jingu-mae"].sample,
-    user: user
+    user: user,
+    tag_list: tags_array.sample
   )
   puts "created #{e.name}"
 
@@ -129,21 +140,22 @@ puts "added #{Location.count} locations."
 
 
 Kitchen.all.each do |kitchen|
-  rand(1..3).times do
+  rand(1..2).times do
     Plan.create!(
       name: Faker::Restaurant.type,
       price: [2000, 3000, 4000, 5000, 2500, 3500, 4500, 2300, 2800, 3800, 3200, 4200, 4800].sample,
       kitchen: kitchen,
-      remote_photo_url: "https://source.unsplash.com/1000x700/?dinner" || "https://source.unsplash.com/1000x700/?healthy-food" ,
+      remote_photo_url: "https://source.unsplash.com/400x300/?dinner" || "https://source.unsplash.com/400x300/?healthy-food" ,
       description: Faker::Restaurant.description,
+      tag_list: tags_array.sample
     )
   end
 
-  rand(5..8).times do
+  rand(2..7).times do
     Dish.create!(
       name: Faker::Food.dish,
       kitchen: kitchen,
-      remote_photo_url: "https://source.unsplash.com/1000x700/?meal"
+      remote_photo_url: "https://source.unsplash.com/400x300/?meal"
     )
   end
 end

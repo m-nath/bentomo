@@ -9,6 +9,14 @@ class PlansController < ApplicationController
     end
   end
 
+  def tagged
+    if params[:tag].present?
+      @plans = policy_scope(Plan).tagged_with(params[:tag])
+    else
+      @plans = policy_scope(Plan)
+    end
+  end
+
   def show
     @plan = policy_scope(Plan).find(params[:id])
     @order = Order.new
@@ -28,5 +36,9 @@ class PlansController < ApplicationController
     else
       render :new
     end
+  end
+
+  def plan_params
+    params.require(:plan).permit(:name, :description, :photo, :tag_list)
   end
 end
