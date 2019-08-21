@@ -1,20 +1,11 @@
 class OrdersController < ApplicationController
 
   def index
-
-    # @user = policy_scope(User).where(order:)
-    # @orders = policy_scope(User).where(order).order(date: :desc)
-    # @coming_orders = @orders.select do |order|
     @orders = policy_scope(Order)
     @current_orders = Order.where(user: current_user).order(date: :desc)
     @past_orders = Order.where(user: current_user).order(date: :asc)
     # order.date.to_date - Date.today >= 0
   end
-
-  # @history_orders = @orders.select do |order|
-  #   authorize order
-  #   # order.date.to_date - Date.today < 0
-  # end
 
   def show
     @order = policy_scope(Order).find(params[:id])
