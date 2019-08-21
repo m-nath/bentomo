@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.6.3'
 
+gem 'acts-as-taggable-on', '~> 6.0'
+gem 'pg_search'
 gem 'pundit'
 gem 'bootsnap', require: false
 gem 'devise'

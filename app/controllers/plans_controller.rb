@@ -3,9 +3,17 @@ class PlansController < ApplicationController
 
   def index
     if params[:query].present?
-      @events = policy_scope(Plan).global_search(params[:query])
+      @plans = policy_scope(Plan).global_search(params[:query])
     else
-      @events = policy_scope(Plan).order(date: :desc)
+      @plans = policy_scope(Plan)
+    end
+  end
+
+  def tagged
+    if params[:tag].present?
+      @plans = policy_scope(Plan).tagged_with(params[:tag])
+    else
+      @plans = policy_scope(Plan)
     end
   end
 
@@ -28,5 +36,9 @@ class PlansController < ApplicationController
     else
       render :new
     end
+  end
+
+  def plan_params
+    params.require(:plan).permit(:name, :description, :photo, :tag_list)
   end
 end

@@ -1,14 +1,32 @@
-<title>Bentomo Meal Plans</title>
+
 <h1>Plans</h1>
+
+<!-- this is search bar start-->
+  <%= form_tag plans_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Find a meal plan"
+    %>
+    <%= submit_tag "Search", class: "btn btn-secondery" %>
+  <% end %>
+<!-- this is search bar end-->
+
+<p>normal search</p>
 <div class="container">
-  <% Plan.all.each do |plan|%>
+  <% @plans.each do |plan|%>
     <ul>
       <li><%= plan.name %></li>
       <%= cl_image_tag plan.photo, width: 200, height: 100, crop: :fill %>
+      <li><%= plan.description %></li>
+      <li><% plan.tag_list.each do |tag| %>
+        <%= link_to tag, plans_tagged_path(tag: tag) %>
+      <% end %></li>
       <li><%= plan.price %></li>
       <li><%= link_to "Details", plan_path(plan) %></li>
     </ul>
   <% end %>
-  <%= link_to "check the kitchen", kitchens_path, class: "btn-secondery" %>
-  <%= link_to "Home", root_path, class: "btn-secondery" %>
 </div>
+
+  <%= link_to "check the kitchen", kitchens_path, class: "btn btn-secondery" %>
+  <%= link_to "Home", root_path, class: "btn btn-secondery" %>
