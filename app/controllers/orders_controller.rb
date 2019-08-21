@@ -4,7 +4,6 @@ class OrdersController < ApplicationController
     @orders = policy_scope(Order)
     @current_orders = current_user.orders.where("date > ?", Time.now).order(date: :desc)
     @past_orders = current_user.orders.where("date < ?", Time.now).order(date: :desc)
-    # @past_orders = Order.where(user: current_user).ofrder(date: :asc)
   end
 
   def show
