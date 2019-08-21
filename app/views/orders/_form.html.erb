@@ -9,19 +9,19 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label for="start-date" class="col-form-label">Start Date:</label>
-            <input type="date" class="form-control" id="start-date">
+        <%= simple_form_for ([@plan, @order]) do |f| %>
+          <%= f.error_notification %>
+          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+          <div class="form-inputs">
+            <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
+            <%= f.input :amount, value: @plan.price, as: :hidden %>
+            <%= f.input :request %>
           </div>
-          <div class="form-group">
-            <label for="konbini" class="col-form-label">Pickup Location: <%= @plan.kitchen.konbini %></label>
+          <div class="form-actions d-flex justify-content-between">
+            <%= f.button :submit, class: "btn-flat" %>
+            <%= link_to 'Home', plans_path, class: "back-button"%>
           </div>
-          <div class="form-group">
-            <label for="request" class="col-form-label">Request:</label>
-            <textarea class="form-control" id="request"></textarea>
-          </div>
-        </form>
+        <% end %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
