@@ -3,9 +3,9 @@ class PlansController < ApplicationController
 
   def index
     if params[:query].present?
-      @events = policy_scope(Plan).global_search(params[:query])
+      @plans = policy_scope(Plan).global_search(params[:query])
     else
-      @events = policy_scope(Plan).order(date: :desc)
+      @plans = policy_scope(Plan)
     end
   end
 

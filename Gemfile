@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.6.3'
 
+gem 'pg_search'
 gem 'pundit'
 gem 'bootsnap', require: false
 gem 'devise'
