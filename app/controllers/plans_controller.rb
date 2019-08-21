@@ -11,6 +11,7 @@ class PlansController < ApplicationController
 
   def show
     @plan = policy_scope(Plan).find(params[:id])
+    @order = Order.new
   end
 
   def new
