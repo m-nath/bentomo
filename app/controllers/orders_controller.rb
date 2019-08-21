@@ -1,17 +1,10 @@
 class OrdersController < ApplicationController
 
   def index
-    @orders = policy_scope(Order).where(user: current_user).order(date: :desc)
-    # @orders = Order.all.order(date: :desc).where(user: current_user)
-    @coming_orders = @orders.select do |order|
-      authorize order
-      order.date.to_date - Date.today >= 0
-    end
-
-    @history_orders = @orders.select do |order|
-      authorize order
-      order.date.to_date - Date.today < 0
-    end
+    @orders = policy_scope(Order)
+    @current_orders = current_user.orders.where("date > ?", Time.now).order(date: :desc)
+    @past_orders = current_user.orders.where("date < ?", Time.now).order(date: :desc)
+    # @past_orders = Order.where(user: current_user).ofrder(date: :asc)
   end
 
   def show
@@ -43,6 +36,6 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:user_id, :plan_id, :amount)
+    params.require(:order).permit(:user_id, :plan_id, :amount, :date)
   end
 end

@@ -1,0 +1,2 @@
+class Konbini < ApplicationRecord
+end
