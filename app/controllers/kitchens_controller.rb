@@ -10,5 +10,4 @@ class KitchensController < ApplicationController
     @kitchen = Kitchen.new
     authorize @kitchen
   end
-
 end
