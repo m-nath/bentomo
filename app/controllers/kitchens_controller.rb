@@ -4,9 +4,9 @@ class KitchensController < ApplicationController
   def index
     if params[:search]
       query = params[:search][:query]
-      tags = params[:search][:tags].reject(&:blank?)
+      konbini = params[:search][:konbini_id]
 
-      if query.present? && tags.any?
+      if query.present? && konbini.any?
         @kitchens = policy_scope(Kitchen).global_search(query).tagged_with(tags)
       elsif query.present?
         @kitchens = policy_scope(Kitchen).global_search(query)
