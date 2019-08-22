@@ -1,6 +1,6 @@
 <div class="container">
   <h1><%= @plan.name %></h1>
-  <h3><%= @plan.price %></h3>
+  <h3><%= humanized_money_with_symbol(@plan.price) %></h3>
   <% @plan.dishes.each do |dish| %>
     <li><%= dish.name %></li>
     <%= cl_image_tag dish.photo, width: 200, height: 100, crop: :fill %>
