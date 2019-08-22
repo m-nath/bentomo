@@ -8,7 +8,7 @@
             <h4 class="tab-text-content"><%= link_to plan.name, plan_path(plan) %></h4>
             <p><%= plan.description%></p>
           </div>
-          <%= cl_image_tag plan.kitchen.user.photo, class:"card-trip-user-big avatar-bordered" %>
+          <%= link_to (cl_image_tag plan.kitchen.user.photo, class:"card-trip-user-big avatar-bordered"), kitchen_path(plan.kitchen) %>
         </div>
         <div class="mx-3 d-flex justify-content-between">
           <div>
