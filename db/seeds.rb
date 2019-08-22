@@ -196,7 +196,6 @@ User.all.each do |user|
   kitchen = Kitchen.where.not(user: user).sample
   plan = kitchen.plans.sample
   Order.create!(
-    amount: plan.price,
     user: user,
     plan: plan,
     date: Faker::Time.between_dates(from: Date.today, to: Date.today + 7, period: :morning, format: :short)
@@ -206,7 +205,6 @@ User.all.each do |user|
     kitchen = Kitchen.where.not(user: user).sample
     plan = kitchen.plans.sample
     Order.create!(
-      amount: plan.price,
       user: user,
       plan: plan,
       date: Faker::Time.between_dates(from: Date.today - 60, to: Date.today - 7, period: :morning, format: :short)
