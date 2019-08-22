@@ -1,9 +1,26 @@
+<!-- banner in kitchen showpage (start)-->
+<div class="banner mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @plan.photo %>');">
+  <div class="d-flex align-items-end justify-content-center" style="height: 60vh;">
+    <div class="d-flex flex-column">
+      <h2 class="white"><%= @plan.name %></h2>
+      <p class="plan-description"><%= @plan.description %></p>
+      <div class="plan-price"><%= render 'orders/form' %></div>
+    </div>
+    <%= cl_image_tag @plan.kitchen.user.photo, class: "avatar-extra-large" %>
+  </div>
+</div>
+<!-- banner in kitchen showpage (finish)-->
+
 <div class="container">
-  <h1><%= @plan.name %></h1>
-  <h3><%= humanized_money_with_symbol(@plan.price) %></h3>
   <% @plan.dishes.each do |dish| %>
-    <li><%= dish.name %></li>
-    <%= cl_image_tag dish.photo, width: 200, height: 100, crop: :fill %>
+    <div class="card-product">
+      <%= cl_image_tag dish.photo %>
+      <div class="card-product-infos">
+        <h2><%= dish.name %></h2>
+        <p>This plan is good for <strong>getting mascular</strong></p>
+        <p>Nutrition details</p>
+      </div>
+    </div>
   <% end %>
-  <%= render 'orders/form' %>
+  <div class="m-5"><%= render 'orders/form' %></div>
 </div>

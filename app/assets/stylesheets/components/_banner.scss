@@ -35,9 +35,25 @@
   top: 250px;
 }
 
+.plan-description {
+  position: absolute;
+  left: 50px;
+  top: 320px;
+  color: $white;
+  font-weight: 300;
+  width: 60vw;
+}
 
+.plan-price {
+  position: absolute;
+  left: 50px;
+  top: 400px;
+  color: $white;
+  font-weight:4000;
+}
 
-
-
-
-
+.plan-order {
+  position: absolute;
+  left: 50px;
+  top: 450px;
+}
