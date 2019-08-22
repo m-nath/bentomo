@@ -42,7 +42,7 @@
                   <h4 class="tab-text-content"><%= link_to kitchen.name, kitchen_path(kitchen) %></h4>
 
                 </div>
-                <%= cl_image_tag kitchen.user.photo, class:"card-trip-user-big avatar-bordered" %>
+                <%= link_to (cl_image_tag kitchen.user.photo, class:"card-trip-user-big avatar-bordered"), kitchen_path(kitchen) %>
               </div>
               <div class="mx-3">
                 <% kitchen.plans.each do |plan|

@@ -5,8 +5,11 @@
       <h2 class="white"><%= @plan.name %></h2>
       <p class="plan-description"><%= @plan.description %></p>
       <div class="plan-price"><%= render 'orders/form' %></div>
+      <%= link_to 'check the kitchen',  kitchen_path(@plan.kitchen), class: 'btn btn-secondary'%>
     </div>
-    <%= cl_image_tag @plan.kitchen.user.photo, class: "avatar-extra-large" %>
+
+      <%= link_to (cl_image_tag @plan.kitchen.user.photo, class: "avatar-extra-large"), kitchen_path(@plan.kitchen) %>
+
   </div>
 </div>
 <!-- banner in kitchen showpage (finish)-->
