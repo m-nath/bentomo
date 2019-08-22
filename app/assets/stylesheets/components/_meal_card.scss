@@ -15,3 +15,15 @@
   width: 250px;
   border: 1px solid $gray;
 }
+
+.card-category {
+  position: relative;
+}
+
+.plan-info {
+  position: absolute;
+  top: 100px;
+  width: 100%;
+  height: 80px;
+  border: 1px solid $gray;
+}

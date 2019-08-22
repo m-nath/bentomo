@@ -15,13 +15,12 @@
 <!-- fivedays_card (finish) -->
 
 
-
-<% @kitchen.plans.each do |plan| %>
+<!-- <% @kitchen.plans.each do |plan| %> -->
   <!-- plan details -->
-  <h4>Plan: <%= plan.name  %></h4>
-  <%= humanized_money_with_symbol(plan.price)  %>
+<!--   <h4>Plan: <%= plan.name  %></h4>
+  <%= humanized_money_with_symbol(plan.price)  %> -->
   <!-- dishes details -->
-  <h4>Dishes of the plan: </h4>
+<!--   <h4>Dishes of the plan: </h4>
   <ol>
     <% plan.dishes.each do |dish| %>
       <li>
@@ -30,20 +29,25 @@
       <%= cl_image_tag dish.photo, width: 200, height: 100, crop: :fill %>
     <% end %>
   </ol>
-<% end %>
+<% end %> -->
+
+
+
 <!-- this is for map (st)-->
-<h4>Pick up location:</h4>
-<%= @kitchen.konbini.name %>
-<div class="container my-3 d-flex justify-content-between">
-  <div
-    id="map"
-    style="width: 1110px;
-    height: 250px;"
-    data-markers="<%= @marker.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-  ></div>
+<div class="container mt-3">
+  <h4>Pick up location:</h4>
+  <%= @kitchen.konbini.name %>
+  <div class="container my-3 d-flex justify-content-between">
+    <div
+      id="map"
+      style="width: 1110px;
+      height: 250px;"
+      data-markers="<%= @marker.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+    ></div>
+  </div>
+  <!-- this is for map (fin)-->
+  <br>
+  <%= link_to "other kitchens", kitchens_path, class: "btn-secondery" %>
+  <%= link_to "New Plan", new_kitchen_plan_path(@kitchen), class: "btn btn-flat" %>
 </div>
-<!-- this is for map (fin)-->
-<br>
-<%= link_to "other kitchens", kitchens_path, class: "btn-secondery" %>
-<%= link_to "New Plan", new_kitchen_plan_path(@kitchen), class: "btn btn-flat" %>
