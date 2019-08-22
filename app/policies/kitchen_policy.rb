@@ -14,7 +14,7 @@ class KitchenPolicy < ApplicationPolicy
   end
 
   def create?
-    new?
+    true
   end
 
   def edit?
@@ -28,5 +28,4 @@ class KitchenPolicy < ApplicationPolicy
   def destroy?
     edit?
   end
-
 end

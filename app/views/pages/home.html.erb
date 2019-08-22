@@ -40,14 +40,22 @@
               <div class="card-trip-infos">
                 <div>
                   <h4 class="tab-text-content"><%= link_to kitchen.name, kitchen_path(kitchen) %></h4>
-                  <p><%= kitchen.description %></p>
+
                 </div>
-                <%= image_tag "hw4.jpg", class:"card-trip-user avatar-bordered" %>
+                <%= cl_image_tag kitchen.user.photo, class:"card-trip-user-big avatar-bordered" %>
               </div>
               <div class="mx-3">
-                <a class="btn btn-short" href=#>Full-protein</a>
-                <a class="btn btn-short" href=#>Detoxing</a>
+                <% kitchen.plans.each do |plan|
+                  plan.tag_list.each do |tag| %>
+                    <%= link_to '#'+tag, plans_tagged_path(tag: tag), class: "tab-text-tag" %>
+                  <% end %>
+                <% end %>
               </div>
+              <!-- <div class="mx-3">
+                <% kitchen.plans.each do |plan| %>
+                  <%= link_to plan.name,  plan_path(plan), class: "btn btn-short"%>
+                <% end %>
+              </div> -->
             </div>
           </div>
         <% end %>
@@ -60,28 +68,7 @@
     <!-- plan content -->
     <div class="tab-pane" id="plan" role="tabpanel" aria-labelledby="plan-tab">
 
-      <div class="row mt-3">
-        <% @plans.each do |plan|%>
-          <div class="col-md-4 col-sm-6 col-sm-12">
-            <div class="card-trip-home">
-              <%= cl_image_tag plan.photo %>
-              <div class="card-trip-infos">
-                <div>
-                  <h4><%= link_to plan.name, plan_path(plan) %></h4>
-                  <h6><%= plan.price%></h6>
-                  <p><%= plan.description%></p>
-                </div>
-                <%= image_tag "hw4.jpg", class:"card-trip-user avatar-bordered" %>
-              </div>
-              <div class="mx-3">
-                <% plan.tag_list.each do |tag| %>
-                  <%= link_to tag, plans_tagged_path(tag: tag) %>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      </div>
+      <%= render 'shared/plancard_index' %>
 
       <div class="d-flex justify-content-center">
         <p class="btn btn-secondery mx-auto my-3"><%= link_to "more plans", plans_path %></p>

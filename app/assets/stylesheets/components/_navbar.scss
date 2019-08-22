@@ -1,7 +1,21 @@
 .navbar-lewagon {
   justify-content: space-between;
+  z-index: 1;
   background: $white;
-  opacity: 0.8;
+  opacity: 0.9;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.navbar-lewagon:hover {
+  justify-content: space-between;
+  z-index: 1;
+  background: $white;
+  opacity: 1;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 .navbar-lewagon .navbar-collapse {

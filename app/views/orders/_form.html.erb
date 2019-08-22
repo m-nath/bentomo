@@ -14,7 +14,7 @@
           <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
           <div class="form-inputs">
             <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
-            <%= f.text_field :konbini, value: @plan.kitchen.konbini, readonly: true %>
+            <%= f.text_field :konbini, value: @plan.kitchen.konbini.name, readonly: true %>
             <%= f.text_field :amount, value: @plan.price, readonly: true %>
             <%= f.input :request %>
           </div>

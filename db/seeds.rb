@@ -31,8 +31,8 @@ areas.each do |area|
     features_hash[:mapbox_id] = feature["id"]
     features_hash[:name] = feature["text"]
     features_hash[:address] = feature["place_name"]
-    features_hash[:latitude] = feature["center"][0]
-    features_hash[:longitude] = feature["center"][1]
+    features_hash[:latitude] = feature["center"][1]
+    features_hash[:longitude] = feature["center"][0]
     Konbini.create(features_hash)
   end
 end
@@ -108,15 +108,15 @@ demo_hw = User.create!(
   last_name: 'Mama',
   password: "123123",
   remote_photo_url: 'https://res.cloudinary.com/dxouryvao/image/upload/v1566268732/hw5_l5gr7w.jpg'
-  )
+)
 
 demo_kitchen = Kitchen.create!(
-    name: 'Tomo Mama`s kitchen',
-    description: 'Healthy homemade food full of nutrition',
-    remote_photo_url: "https://source.unsplash.com/400x300/?healthy-food",
-    user: demo_hw,
-    konbini_id: Konbini.first.id,
-  )
+  name: 'Tomo Mama`s kitchen',
+  description: 'Healthy homemade food full of nutrition',
+  remote_photo_url: "https://source.unsplash.com/400x300/?healthy-food",
+  user: demo_hw,
+  konbini_id: Konbini.first.id,
+)
 
 3.times do #change to more times later
   User.create!(email: Faker::Internet.email, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, password: "123123", remote_photo_url: avatar.sample)
@@ -164,7 +164,7 @@ puts "added #{Location.count} locations."
 Kitchen.all.each do |kitchen|
   rand(1..2).times do
     Plan.create!(
-      name: Faker::Restaurant.type,
+      name: Faker::Restaurant.type + 'plan',
       price: [2000, 3000, 4000, 5000, 2500, 3500, 4500, 2300, 2800, 3800, 3200, 4200, 4800].sample,
       kitchen: kitchen,
       remote_photo_url: "https://source.unsplash.com/400x300/?healthy-food" || "https://source.unsplash.com/400x300/?dinner",
@@ -192,21 +192,19 @@ Plan.all.each do |plan|
 end
 
 User.all.each do |user|
-    # create order for future
-    kitchen = Kitchen.where.not(user: user).sample
-    plan = kitchen.plans.sample
-    Order.create!(
-      amount: plan.price,
-      user: user,
-      plan: plan,
-      date: Faker::Time.between_dates(from: Date.today, to: Date.today + 7, period: :morning, format: :short)
-    )
+  # create order for future
+  kitchen = Kitchen.where.not(user: user).sample
+  plan = kitchen.plans.sample
+  Order.create!(
+    user: user,
+    plan: plan,
+    date: Faker::Time.between_dates(from: Date.today, to: Date.today + 7, period: :morning, format: :short)
+  )
   # create order for past
   rand(2..4).times do
     kitchen = Kitchen.where.not(user: user).sample
     plan = kitchen.plans.sample
     Order.create!(
-      amount: plan.price,
       user: user,
       plan: plan,
       date: Faker::Time.between_dates(from: Date.today - 60, to: Date.today - 7, period: :morning, format: :short)

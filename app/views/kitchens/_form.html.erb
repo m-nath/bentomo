@@ -1,0 +1,26 @@
+<div class="container">
+  <%= simple_form_for (@kitchen) do |f| %>
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    <div class="form-inputs">
+      <%= f.input :name, placeholder: 'Your kitchen name' %>
+      <%= f.input :description, placeholder: 'Something to describe your kitchen' %>
+      <%= f.association :konbini %>
+      <div class="container my-3 d-flex justify-content-between">
+        <div
+          id="map"
+          style="width: 1110px;
+          height: 250px;"
+          data-markers="<%= @markers.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+        ></div>
+      </div>
+      <%= f.input :photo %>
+      <%= f.input :photo_cache, as: :hidden %>
+    </div>
+    <div class="form-actions d-flex justify-content-between">
+      <%= f.button :submit, class: "btn-flat" %>
+      <%= link_to 'Back', root_path, class: "back-button"%>
+    </div>
+  <% end %>
+</div>

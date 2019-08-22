@@ -11,24 +11,31 @@
 <% @kitchen.plans.each do |plan| %>
   <!-- plan details -->
   <h4>Plan: <%= plan.name  %></h4>
-  <%= plan.price  %>
-
+  <%= humanized_money_with_symbol(plan.price)  %>
   <!-- dishes details -->
   <h4>Dishes of the plan: </h4>
   <ol>
-      <% plan.dishes.each do |dish| %>
-      <li><h5><%= dish.name %></h5></li>
+    <% plan.dishes.each do |dish| %>
+      <li>
+        <h5><%= dish.name %></h5>
+      </li>
       <%= cl_image_tag dish.photo, width: 200, height: 100, crop: :fill %>
     <% end %>
   </ol>
-
 <% end %>
-
-
 <!-- this is for map (st)-->
 <h4>Pick up location:</h4>
-<%= @kitchen.konbini %>
+<%= @kitchen.konbini.name %>
+<div class="container my-3 d-flex justify-content-between">
+  <div
+    id="map"
+    style="width: 1110px;
+    height: 250px;"
+    data-markers="<%= @marker.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  ></div>
+</div>
 <!-- this is for map (fin)-->
-
 <br>
 <%= link_to "other kitchens", kitchens_path, class: "btn-secondery" %>
+<%= link_to "New Plan", new_kitchen_plan_path(@kitchen), class: "btn btn-flat" %>

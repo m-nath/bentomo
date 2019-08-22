@@ -4,7 +4,8 @@ class Plan < ApplicationRecord
   has_many :dishes, through: :dish_plans
 
   validates :name, presence: true
-  validates :price, presence: true
+  monetize :price_cents
+  # validates :price, presence: true
   mount_uploader :photo, PhotoUploader
 
   acts_as_taggable_on :tags
