@@ -2,19 +2,19 @@ class KitchensController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    if params[:search]
-      query = params[:search][:query]
-      konbini = params[:search][:konbini_id]
-
-      if query.present? && konbini.any?
-        @kitchens = policy_scope(Kitchen).global_search(query).tagged_with(tags)
-      elsif query.present?
-        @kitchens = policy_scope(Kitchen).global_search(query)
-      elsif tags.any?
-        @kitchens = policy_scope(Kitchen).tagged_with(tags)
-      end
+    if params[:search].present?
+      @kitchens = policy_scope(Kitchen).global_search(params[:search][:query])
     else
-      @kitchens = policy_scope(Kitchen)
+      @kitchens = policy_scope(Kitchen).order(name: :desc)
+    end
+
+    @konbinis = Konbini.all
+    @markers = @konbinis.map do |konbini|
+      {
+        lat: konbini.latitude,
+        lng: konbini.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { konbini: konbini }),
+      image_url: helpers.asset_url('konbini.jpg')}
     end
   end
 

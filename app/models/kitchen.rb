@@ -8,7 +8,7 @@ class Kitchen < ApplicationRecord
   pg_search_scope :global_search,
     against: [ :name, :description ],
   associated_against: {
-    konbini: [:address]
+    konbini: [ :name, :address ]
   },
   using: {
     tsearch: { prefix: true }
