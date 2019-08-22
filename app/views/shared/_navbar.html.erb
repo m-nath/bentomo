@@ -37,6 +37,7 @@
             <%= image_tag "doug.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
 
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <p class="m-3 ml-1">Hi, <%= @current_user.first_name %></p>
               <%= link_to "Setting", edit_user_registration_path, class: "dropdown-item navbar-text" %>
               <%= link_to "Create a kitchen", new_kitchen_path, class: "dropdown-item navbar-text" %>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item navbar-text" %>
