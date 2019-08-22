@@ -8,14 +8,15 @@ class KitchensController < ApplicationController
       @kitchens = policy_scope(Kitchen).order(name: :desc)
     end
 
-    @konbinis = Konbini.all
-    @markers = @konbinis.map do |konbini|
+    # @konbinis = Konbini.all
+    konbinis = @kitchens.map do |kitchen|
       {
-        lat: konbini.latitude,
-        lng: konbini.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { konbini: konbini }),
+        lat: kitchen.konbini.latitude,
+        lng: kitchen.konbini.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { konbini: kitchen.konbini }),
       image_url: helpers.asset_url('konbini.jpg')}
     end
+    @markers = konbinis.uniq
   end
 
 

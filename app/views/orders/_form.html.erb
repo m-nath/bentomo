@@ -1,7 +1,7 @@
 <button type="button" class="btn btn-main d-flex align-items-end" data-toggle="modal" data-target="#order_form" data-whatever="@getbootstrap">
-  <h4 class="price-text"><%= humanized_money_with_symbol(@plan.price) %></h4> Make an order
+  <h4 class="price-text"><%= humanized_money_with_symbol(@plan.price) %></h4>
+  Make an order
 </button>
-
 <div class="modal fade" id="order_form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -20,22 +20,16 @@
             <%= f.text_field :konbini, value: @plan.kitchen.konbini.name, readonly: true %>
             <%= f.text_field :amount, value: @plan.price, readonly: true %>
             <%= f.input :request %>
-
           </div>
           <div class="modal-footer">
-
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <!-- <div class="form-actions d-flex justify-content-between"> -->
-              <%#= f.button :submit, class: "btn-flat" %>
+            <%#= f.button :submit, class: "btn-flat" %>
             <!-- </div> -->
-
             <%= form_tag orders_path do %>
               <%= hidden_field_tag 'plan_id', @plan.id %>
               <%= submit_tag 'Purchase', class: 'btn btn-main' %>
             <% end %>
-
-
-
           <% end %>
         </div>
       </div>

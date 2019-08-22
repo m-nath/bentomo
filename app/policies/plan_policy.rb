@@ -14,7 +14,7 @@ class PlanPolicy < ApplicationPolicy
   end
 
   def new?
-    user == record.kitchen.user
+    record.kitchen.user == user
   end
 
   def create?
