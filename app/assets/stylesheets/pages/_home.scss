@@ -28,6 +28,11 @@ p {
   font-weight: 400;
 }
 
+.white {
+  color: $white;
+  font-weight: bold;
+}
+
 .Site {
   display: flex;
   min-height: 100vh;
