@@ -2,6 +2,7 @@
   height: 100%;
   width: 250px;
   object-fit: cover;
+  padding-bottom: 20px;
 }
 
 .card {
@@ -18,12 +19,12 @@
 
 .card-category {
   position: relative;
+  margin-bottom: 20px;
 }
 
 .plan-info {
   position: absolute;
-  top: 100px;
+  top: 150px;
   width: 100%;
-  height: 80px;
   border: 1px solid $gray;
 }
