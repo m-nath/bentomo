@@ -7,10 +7,6 @@
   <div class="container">
     <%= simple_form_for :search, url: kitchens_path, method: "GET" do |f| %>
       <%= f.input :query, input_html: {class: 'form-control', value: (params[:search][:query] if params[:search])}, placeholder: "Find your kitchen" %>
-      <%  ActsAsTaggableOn::Tag.most_used(10).map do |tag|%>
-        <%= check_box_tag 'search[tags][]', tag.name, (params[:search] ? params[:search][:tags].include?(tag.name) : false) %>
-        <%= tag.name %> &nbsp;&nbsp;
-      <% end %>
       <br>
       <div class="my-3">
         <%= f.submit "Search", class: "btn btn-main" %>
@@ -18,6 +14,17 @@
       </div>
     <% end %>
   </div>
+  <!-- insert map -->
+  <div class="container my-3 d-flex justify-content-between">
+    <div
+    id="map"
+    style="width: 1200px;
+    height: 250px;"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  ></div>
+  </div>
+  <!-- insert map -->
   <!-- search bar & filter end-->
   <%= render 'shared/kitchencard_index' %>
   <div class="d-flex justify-content-center">
