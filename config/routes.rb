@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   end
 
   resources :orders, only: [:index, :show, :edit, :update] do
-    resources :payment, only: [:new, :create]
+    resources :payments, only: [:new, :create]
   end
 
   get 'my_account', to: 'users#edit'

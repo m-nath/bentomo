@@ -5,7 +5,9 @@
     <li>Plan: <%= order.plan.name %></li>
     <li>Kitchen: <%= order.plan.kitchen.name %></li>
     <li>Pickup Date: <%= order.date %></li>
-    <li>Amount: <%= order.amount %></li>
+    <li>Amount: <%= humanized_money_with_symbol(order.amount) %></li>
+    <li>Status: <%= order.state %></li>
+
   </ul>
 <% end %>
 <h2>Order History</h2>

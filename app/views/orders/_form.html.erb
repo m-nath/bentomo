@@ -20,12 +20,22 @@
             <%= f.text_field :konbini, value: @plan.kitchen.konbini.name, readonly: true %>
             <%= f.text_field :amount, value: @plan.price, readonly: true %>
             <%= f.input :request %>
+
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondery" data-dismiss="modal">Close</button>
-            <div class="form-actions d-flex justify-content-between">
-              <%= f.button :submit, class: "btn-main" %>
-            </div>
+
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <!-- <div class="form-actions d-flex justify-content-between"> -->
+              <%#= f.button :submit, class: "btn-flat" %>
+            <!-- </div> -->
+
+            <%= form_tag orders_path do %>
+              <%= hidden_field_tag 'plan_id', @plan.id %>
+              <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+            <% end %>
+
+
+            
           <% end %>
         </div>
       </div>

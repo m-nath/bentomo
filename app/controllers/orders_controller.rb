@@ -7,7 +7,9 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = policy_scope(Order).find(params[:id])
+    # @order = policy_scope(Order).find(params[:id])
+    @order = current_user.orders.where(state: 'paid').find(params[:id])
+    authorize @order
   end
 
   def create
@@ -15,10 +17,12 @@ class OrdersController < ApplicationController
     @plan = Plan.find(params[:plan_id])
     @order.user = current_user
     @order.plan = @plan
+    @order.state = 'pending'
     authorize @order
     if @order.save
-      redirect_to plan_path(@plan)
+      redirect_to new_order_payment_path(@order)
     end
+
   end
 
   def edit
