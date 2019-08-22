@@ -1,28 +1,55 @@
-<h1>Plans</h1>
-<!-- this is search bar start-->
-<%= form_tag plans_path, method: :get do %>
-  <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Find a meal plan"
-    %>
-  <%= submit_tag "Search", class: "btn btn-secondery" %>
-<% end %>
-<!-- this is search bar end-->
-<p>normal search</p>
 <div class="container">
-  <% @plans.each do |plan|%>
-    <ul>
-      <li><%= plan.name %></li>
-      <%= cl_image_tag plan.photo, width: 200, height: 100, crop: :fill %>
-      <li><%= plan.description %></li>
-      <li><% plan.tag_list.each do |tag| %>
-          <%= link_to tag, plans_tagged_path(tag: tag) %>
-        <% end %></li>
-      <li><%= plan.price %></li>
-      <li><%= link_to "Details", plan_path(plan) %></li>
-    </ul>
-  <% end %>
+
+  <div class="d-flex my-4">
+    <h3><i class="fas fa-utensils"></i></h3><h2 class="mx-3">Plans</h2>
+  </div>
+
+  <!-- search bar & filter start-->
+  <div class="container">
+    <%= simple_form_for :search, url: plans_path, method: "GET" do |f| %>
+      <%= f.input :query, input_html: {class: 'form-control', value: (params[:search][:query] if params[:search])}, placeholder: "Find your meal plan" %>
+
+          <%  ActsAsTaggableOn::Tag.most_used(10).map do |tag|%>
+            <%= check_box_tag 'search[tags][]', tag.name, (params[:search] ? params[:search][:tags].include?(tag.name) : false) %>
+            <%= tag.name %> &nbsp;&nbsp;
+          <% end %>
+          <br>
+          <div class="my-3">
+            <%= f.submit "Search", class: "btn btn-main" %>
+            <%= link_to "Reset", plans_path, class: "btn btn-secondery" %>
+          </div>
+    <% end %>
+  </div>
+  <!-- search bar & filter end-->
+
+      <div class="row mt-5">
+        <% @plans.each do |plan|%>
+          <div class="col-md-4 col-sm-6 col-sm-12">
+            <div class="card-trip-home">
+              <%= cl_image_tag plan.photo %>
+              <div class="card-trip-infos">
+                <div>
+                  <h4 class="tab-text-content"><%= link_to plan.name, plan_path(plan) %></h4>
+
+                  <p><%= plan.description%></p>
+                </div>
+                <%= image_tag "hw4.jpg", class:"card-trip-user avatar-bordered" %>
+              </div>
+              <div class="mx-3 d-flex justify-content-between">
+                <div>
+                  <% plan.tag_list.each do |tag| %>
+                    <%= link_to '#'+tag, plans_tagged_path(tag: tag), class: "tab-text-tag" %>
+                  <% end %>
+                </div>
+                <h5>¥<%= plan.price%></h5>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <p class="btn btn-secondery mx-auto my-3"><%= link_to "check the kitchens", root_path %></p>
+      </div>
+
 </div>
-<%= link_to "check the kitchen", kitchens_path, class: "btn btn-flat" %>
-<%= link_to "Home", root_path, class: "btn btn-flat" %>
