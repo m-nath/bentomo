@@ -1,11 +1,19 @@
-<!-- banner in kitchen showpage (start)-->
+<!-- banner in kitchen (start)-->
 <div class="banner mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @kitchen.photo %>');">
   <div class="d-flex align-items-end justify-content-center" style="height: 60vh;">
     <h2 class="white"><%= @kitchen.name %></h2>
     <%= cl_image_tag @kitchen.user.photo, class: "avatar-extra-large" %>
   </div>
 </div>
-<!-- banner in kitchen showpage (finish)-->
+<!-- banner in kitchen (finish)-->
+
+
+<!-- fivedays_card (start) -->
+<div class="flex">
+  <%= render 'shared/fivedays_card' %>
+</div>
+<!-- fivedays_card (finish) -->
+
 
 
 <% @kitchen.plans.each do |plan| %>

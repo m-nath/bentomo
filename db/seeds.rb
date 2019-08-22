@@ -33,7 +33,9 @@ areas.each do |area|
     features_hash[:address] = feature["place_name"]
     features_hash[:latitude] = feature["center"][1]
     features_hash[:longitude] = feature["center"][0]
-    Konbini.create(features_hash)
+    puts feature["center"][1]
+    new_konbini = Konbini.create(features_hash)
+    puts new_konbini.latitude
   end
 end
 

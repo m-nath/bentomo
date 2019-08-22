@@ -1,4 +1,7 @@
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#order_form" data-whatever="@getbootstrap">Make an order</button>
+<button type="button" class="btn btn-main d-flex align-items-end" data-toggle="modal" data-target="#order_form" data-whatever="@getbootstrap">
+  <h4 class="price-text"><%= humanized_money_with_symbol(@plan.price) %></h4> Make an order
+</button>
+
 <div class="modal fade" id="order_form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -20,6 +23,7 @@
 
           </div>
           <div class="modal-footer">
+
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <!-- <div class="form-actions d-flex justify-content-between"> -->
               <%#= f.button :submit, class: "btn-flat" %>
@@ -30,6 +34,8 @@
               <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
             <% end %>
 
+
+            
           <% end %>
         </div>
       </div>

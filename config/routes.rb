@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :kitchens, only: [:show, :new, :create, :edit, :update, :destroy] do
+  resources :kitchens, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     resources :plans, only: [:new, :create]
     resources :dishes, only: [:new, :create]
   end
