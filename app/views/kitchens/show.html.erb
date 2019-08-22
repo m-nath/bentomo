@@ -3,7 +3,7 @@
 <% @kitchen.plans.each do |plan| %>
   <!-- plan details -->
   <h4>Plan: <%= plan.name  %></h4>
-  <%= plan.price  %>
+  <%= humanized_money_with_symbol(plan.price)  %>
   <!-- dishes details -->
   <h4>Dishes of the plan: </h4>
   <ol>
