@@ -13,7 +13,7 @@
         <div class="mx-3 d-flex justify-content-between">
           <div>
             <% plan.tag_list.each do |tag| %>
-              <%= link_to '#'+tag, plans_tagged_path(tag: tag), class: "tab-text-tag" %>
+              <%= link_to '#'+tag, plans_path(tag: tag), class: "tab-text-tag" %>
             <% end %>
           </div>
           <h5><%=humanized_money_with_symbol(plan.price)%></h5>

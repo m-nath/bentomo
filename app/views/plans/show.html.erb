@@ -20,10 +20,20 @@
       <%= cl_image_tag dish.photo %>
       <div class="card-product-infos">
         <h2><%= dish.name %></h2>
-        <p>This plan is good for <strong>getting mascular</strong></p>
+        <p>This dish is good for <strong>getting mascular</strong></p>
         <p>Nutrition details</p>
       </div>
     </div>
   <% end %>
   <div class="m-5"><%= render 'orders/form' %></div>
 </div>
+
+<!-- other related plans start -->
+<div class="container">
+  <h4>Other related plans:</h4>
+  <div class="row mt-3">
+    <% @plans = @related_plans%>
+    <%= render 'shared/plancard_index' %>
+  </div>
+</div>
+<!-- other related plans end.  -->
