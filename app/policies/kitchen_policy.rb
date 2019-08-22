@@ -10,7 +10,7 @@ class KitchenPolicy < ApplicationPolicy
   end
 
   def new?
-    user.kitchen.valid?
+    user.kitchen.nil?
   end
 
   def create?
