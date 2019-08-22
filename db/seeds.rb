@@ -156,6 +156,7 @@ User.all.each do |user|
 end
 
 Kitchen.last(3).map(&:destroy)
+Kitchen.find_by_user(user: christee).destroy
 
 puts "added #{Kitchen.count} kitchens."
 puts "added #{Location.count} locations."
@@ -164,7 +165,7 @@ puts "added #{Location.count} locations."
 Kitchen.all.each do |kitchen|
   rand(1..2).times do
     Plan.create!(
-      name: Faker::Restaurant.type + 'plan',
+      name: Faker::Restaurant.type + ' plan',
       price: [2000, 3000, 4000, 5000, 2500, 3500, 4500, 2300, 2800, 3800, 3200, 4200, 4800].sample,
       kitchen: kitchen,
       remote_photo_url: "https://source.unsplash.com/400x300/?healthy-food" || "https://source.unsplash.com/400x300/?dinner",
@@ -198,7 +199,9 @@ User.all.each do |user|
   Order.create!(
     user: user,
     plan: plan,
-    date: Faker::Time.between_dates(from: Date.today, to: Date.today + 7, period: :morning, format: :short)
+    date: Faker::Time.between_dates(from: Date.today, to: Date.today + 7, period: :morning, format: :short),
+    amount: plan.price
+
   )
   # create order for past
   rand(2..4).times do
@@ -207,7 +210,8 @@ User.all.each do |user|
     Order.create!(
       user: user,
       plan: plan,
-      date: Faker::Time.between_dates(from: Date.today - 60, to: Date.today - 7, period: :morning, format: :short)
+      date: Faker::Time.between_dates(from: Date.today - 60, to: Date.today - 7, period: :morning, format: :short),
+      amount: plan.price
     )
   end
 end
