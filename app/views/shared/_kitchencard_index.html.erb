@@ -1,0 +1,16 @@
+<div class="row mt-5">
+  <% @kitchens.each do |kitchen|%>
+    <div class="col-md-4 col-sm-6 col-sm-12">
+      <div class="card-trip-home">
+        <%= cl_image_tag kitchen.photo %>
+        <div class="card-trip-infos">
+          <div>
+            <h4 class="tab-text-content"><%= link_to kitchen.name, kitchen_path(kitchen) %></h4>
+            <p><%= kitchen.description%></p>
+          </div>
+          <%= cl_image_tag kitchen.user.photo, class:"card-trip-user-big avatar-bordered" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,5 +1,23 @@
 class KitchensController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show]
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
+  def index
+    if params[:search]
+      query = params[:search][:query]
+      tags = params[:search][:tags].reject(&:blank?)
+
+      if query.present? && tags.any?
+        @kitchens = policy_scope(Kitchen).global_search(query).tagged_with(tags)
+      elsif query.present?
+        @kitchens = policy_scope(Kitchen).global_search(query)
+      elsif tags.any?
+        @kitchens = policy_scope(Kitchen).tagged_with(tags)
+      end
+    else
+      @kitchens = policy_scope(Kitchen)
+    end
+  end
+
 
   def show
     @kitchen = policy_scope(Kitchen).find(params[:id])
