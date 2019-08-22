@@ -76,21 +76,27 @@
   <div class="d-flex flex-row bd-highlight">
     <div class="p-2 bd-highlight">Description about this meal plan...</div>
   </div>
-  <div class="d-flex flex-row justify-content-around">
+<!--   <div class="d-flex flex-row justify-content-around">
     <div class="p-2 bd-highlight">Mon</div>
     <div class="p-2 bd-highlight">Tue</div>
     <div class="p-2 bd-highlight">Wed</div>
     <div class="p-2 bd-highlight">Thu</div>
     <div class="p-2 bd-highlight">Fri</div>
-  </div>
-  <div class="d-flex flex-row justify-content-around">
+  </div> -->
+<!--   <div class="d-flex flex-row justify-content-around">
     <div class="p-2 bd-highlight"><%= image_tag "plan1.jpg", class:"plan-image" %></div>
     <div class="p-2 bd-highlight"><%= image_tag "plan2.jpg", class:"plan-image" %></div>
     <div class="p-2 bd-highlight"><%= image_tag "plan3.jpg", class:"plan-image" %></div>
     <div class="p-2 bd-highlight"><%= image_tag "plan4.jpg", class:"plan-image" %></div>
     <div class="p-2 bd-highlight"><%= image_tag "plan5.jpg", class:"plan-image" %></div>
+  </div> -->
+  <div class="d-flex flex-row justify-content-around">
+      <%= render 'shared/plancard' %>
+    </div>
   </div>
 </div>
+
+
 <!-- 5 days plan card (finish)-->
 
 
