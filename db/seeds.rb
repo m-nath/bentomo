@@ -164,7 +164,7 @@ puts "added #{Location.count} locations."
 Kitchen.all.each do |kitchen|
   rand(1..2).times do
     Plan.create!(
-      name: Faker::Restaurant.type,
+      name: Faker::Restaurant.type + 'plan',
       price: [2000, 3000, 4000, 5000, 2500, 3500, 4500, 2300, 2800, 3800, 3200, 4200, 4800].sample,
       kitchen: kitchen,
       remote_photo_url: "https://source.unsplash.com/400x300/?healthy-food" || "https://source.unsplash.com/400x300/?dinner",
