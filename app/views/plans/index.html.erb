@@ -1,30 +1,21 @@
 
 <h1>Plans</h1>
 
-<!-- search bar start-->
-  <% form_tag plans_path, method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Find a meal plan"
-    %>
-    <%= submit_tag "Search", class: "btn btn-secondery" %>
+<!-- search bar & filter start-->
+<div class="container">
+  <%= simple_form_for :search, url: plans_path, method: "GET" do |f| %>
+    <%= f.input :query, input_html: {class: 'form-control', value: (params[:search][:query] if params[:search])}, placeholder: "Find your meal plan" %>
+
+        <%  ActsAsTaggableOn::Tag.most_used(10).map do |tag|%>
+          <%= check_box_tag 'search[tags][]', tag.name, (params[:search] ? params[:search][:tags].include?(tag.name) : false) %>
+          <%= tag.name %> &nbsp;&nbsp;
+        <% end %>
+        <br>
+      <%= f.submit "Search", class: "btn btn-main" %>
+      <%= link_to "Reset", plans_path, class: "btn btn-secondery" %>
   <% end %>
-<!-- search bar end-->
-
-<!-- filter start-->
-<%= simple_form_for :search, url: plans_path, method: "GET" do |f| %>
-  <%= f.input :query, input_html: {class: 'form-control', value: (params[:search][:query] if params[:search])} %>
-
-      <%  ActsAsTaggableOn::Tag.most_used(10).map do |tag|%>
-        <%= check_box_tag 'search[tags][]', tag.name, (params[:search] ? params[:search][:tags].include?(tag.name) : false) %>
-        <%= tag.name %>
-      <% end %>
-      <br>
-    <%= f.submit "Search", class: "btn btn-secondery" %>
-    <%= link_to "Reset", plans_path %>
-<% end %>
-<!-- filter end-->
+</div>
+<!-- search bar & filter end-->
 
 
 <div class="container">
