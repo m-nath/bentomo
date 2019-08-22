@@ -5,9 +5,10 @@ class Kitchen < ApplicationRecord
   belongs_to :konbini
 
   validates :name, presence: true
-  validates :konbini, presence: true
+  validates :konbini_id, presence: true
   validates :description, presence: true
   mount_uploader :photo, PhotoUploader
 
   acts_as_taggable_on :tags
+
 end
