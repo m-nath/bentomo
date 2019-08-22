@@ -10,11 +10,11 @@ class KitchenPolicy < ApplicationPolicy
   end
 
   def new?
-    user.kitchen.valid?
+    user.kitchen.nil?
   end
 
   def create?
-    new?
+    true
   end
 
   def edit?
@@ -28,5 +28,4 @@ class KitchenPolicy < ApplicationPolicy
   def destroy?
     edit?
   end
-
 end
