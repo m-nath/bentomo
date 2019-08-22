@@ -16,12 +16,28 @@
 
 .tab-text-content {
   text-decoration: none;
+  color: $black;
 }
 
 .tab-text-content a {
   text-decoration: none;
+  color: $black;
 }
 
 .tab-text-content:hover {
   text-decoration: none;
+  color: $red;
+  font-weight: 400;
+}
+
+.tab-text-tag {
+  color: $gray;
+}
+
+.tab-text-tag a {
+  color: $gray;
+}
+
+.tab-text-tag:hover {
+  color: $red;
 }
