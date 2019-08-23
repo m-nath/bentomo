@@ -2,6 +2,7 @@
 <div class="banner mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @kitchen.photo %>');">
   <div class="d-flex align-items-end justify-content-center" style="height: 60vh;">
     <h2 class="white"><%= @kitchen.name %></h2>
+    <p><%= @kitchen.description %></p>
     <%= cl_image_tag @kitchen.user.photo, class: "avatar-extra-large" %>
   </div>
 </div>
@@ -13,7 +14,11 @@
 <div class="container">
   <!-- fivedays_card (start) -->
   <div class="mb-3">
+    <h4>Plans</h4>
+    <% @kitchen.plans.each do |plan| %>
+    <% @plan=plan %>
     <%= render 'shared/fivedays_card' %>
+    <% end %>
   </div>
   <!-- fivedays_card (finish) -->
   <!-- <% @kitchen.plans.each do |plan| %> -->
@@ -32,8 +37,9 @@
     </ol>
   <% end %> -->
   <!-- this is for map (st)-->
-  <h4>Pick up location:</h4>
-  <%= @kitchen.konbini.name %>
+  <br>
+  <h4>Pick up location</h4>
+  <%= '  ----'+@kitchen.konbini.name %>
   <div class="container my-3 d-flex justify-content-between">
     <div
         id="map"
