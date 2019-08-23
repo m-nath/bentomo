@@ -140,7 +140,7 @@ tags_array =[
 
 User.all.each do |user|
   e = Kitchen.create!(
-    name: Faker::Restaurant.name,
+    name: Faker::Restaurant.name + 'Kitchen',
     description: Faker::Restaurant.description[0..100],
     remote_photo_url: "https://source.unsplash.com/400x300/?lunch",
     user: user,
@@ -198,9 +198,9 @@ american_plan = Plan.create!(
 bikini_plan = Plan.create!(
       name: 'Summer Bikini Plan',
       price: 8000,
-      kitchen: doug_K,
+      kitchen: sylvain_k,
       remote_photo_url: "https://scontent-nrt1-1.xx.fbcdn.net/v/t1.0-9/48406957_10161288919900300_887751778529968128_o.jpg?_nc_cat=101&_nc_oc=AQk945oA-48c8gw6ONPS8wIM4f0wM4p_kAcCWxxSDRNPKwgVvWn94-yNFzrPdjZPAw8&_nc_ht=scontent-nrt1-1.xx&oh=9ec03ecf17ddbac6fba8e87ff67c0960&oe=5E07DFE0",
-      description: 'A lot of curry, healthy diet pizzas for dirty diet',
+      description: 'Healthy nutritious weekly plan, help you make your summer body ready. Sometimes French sometimes Vietnanese.',
       tag_list: ['low carb', 'keto', 'French'],
     )
 
@@ -216,7 +216,7 @@ Kitchen.all.each do |kitchen|
     )
   end
 
-  rand(15).times do
+  rand(10..15).times do
     Dish.create!(
       name: Faker::Food.dish,
       kitchen: kitchen,
@@ -229,7 +229,7 @@ Plan.all.each do |plan|
   plan.kitchen.dishes.take(5).each do |dish|
     DishPlan.create!(
       dish: dish,
-      plan: plan
+      plan: plan,
     )
   end
 end
@@ -243,7 +243,6 @@ User.all.each do |user|
     plan: plan,
     date: Faker::Time.between_dates(from: Date.today, to: Date.today + 7, period: :morning, format: :short),
     amount: plan.price,
-
   )
   # create order for past
   rand(2..4).times do
