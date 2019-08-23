@@ -1,0 +1,252 @@
+@charset "euc-jp";
+
+/*---- common ----*/
+body,input,textarea{
+font-family:sans-serif !important;
+}
+
+
+/*---- entryList01 ----*/
+ul.entryList01 li dl dt{
+width:180px;
+}
+
+ul.entryList01 li dl dd{
+width:484px;
+}
+
+
+/*---- editList01 ----*/
+.LEGACY_UI2016_editList01 ul.editContents li dl dd.passwordList dl.inputList01 dt input{
+width:109px;
+}
+
+.LEGACY_UI2016_editList01 ul.editContents li dl dd.mailaddressList dl.inputList01 dd input{
+width:159px;
+}
+
+.LEGACY_UI2016_editList01 ul.editContents li dl dd ul.checkList02 li input{
+width:109px;
+}
+
+.LEGACY_UI2016_editList01 ul.editContents li dl dd.hobbyList ul.checkList02 li input{
+width:auto;
+}
+
+
+/*---- footerArea ----*/
+.FRAME2016_footerArea div.footerMain{
+padding-bottom:16px
+}
+
+.FRAME2016_footerArea ul.footerNavigation01 li,
+.FRAME2016_footerArea ul.footerNavigation02 li{
+font-size:11px;
+}
+
+.FRAME2016_footerArea .LEGACY_UI2016_copyright{
+font-size:12px;
+}
+
+
+/*---- pageNavigation01 ----*/
+div.pageNavigation01{
+font-size:12px;
+}
+
+
+/*---- HOME/new系 ----*/
+
+.FRAME2016_bodyContents02 dl.contentsFeedList01 dt{
+width:70px;
+}
+
+.FRAME2016_bodyContents02 dl.contentsFeedList01 dd{
+width:332px;
+}
+
+#personalInfo dl dt{
+width:70px;
+}
+
+#personalInfo dl dd{
+width:296px;
+}
+
+div.section01 dl.contentsFeedList01 dt{
+width:70px;
+}
+
+div.section01 dl.contentsFeedList01 dd{
+width:308px;
+}
+
+.newList ul.entryList01 li dl dt{
+width:105px;
+}
+
+.newList ul.entryList01 li dl dt{
+width:125px;
+}
+
+.FRAME2016_bodyMainAreaMain ul.entryList01 li dl dd{
+width:365px;
+}
+
+.newList dl.feedList01 dt{
+width:125px;
+}
+
+.newList dl.feedList01 dd{
+width:365px;
+}
+
+
+/*---- HOME:通知枠 ----*/
+.FRAME2016_bodySide02 #myArea div.noticeIcon ul.noticeList li a span.count{
+font-size:11px;
+}
+
+
+/*---- school:同級生 ----*/
+#schoolProfile ul.sideInfoList01 li.member dl dd, 
+#schoolProfile ul.sideInfoList01 li.address dl dd{ 
+width:122px; 
+} 
+
+#schoolProfile ul.sideInfoList01 li.campus dl dd{ 
+width:107px; 
+}
+
+/*---- schedule ----*/
+div.calendarArea ul.unfixedList01 li p.title{
+width:778px;
+}
+
+div.calendarArea ul.unfixedList01 li p.date{
+width:150px;
+}
+
+div.scheduleParticipantArea ul li div.iconState01,
+div.scheduleParticipantArea ul li div.iconState02,
+div.scheduleParticipantArea ul li div.iconState03{
+min-height:143px;
+}
+
+.listScheduleTitle dt{
+width:530px;
+}
+
+.listScheduleTitle dd{
+width:160px;
+}
+
+
+/*---- NEWS:ニュース ----*/
+div#pickupTop td.newsTitle,
+div#pickupCat td.newsTitle,
+div.newsListArea .newsTable,
+div.diaryContents div.heading a,
+div.communityContents div.heading a,
+div.categoryNewsList table.rankingTable td.newsTitle,
+div.photoNewsList table.rankingTable td.newsTitle,
+div.newsList td.newsTitle,
+div.categoryNewsList table.newsTable td.newsTitle,
+div.newsBlock div.heading p.title,
+div.relationNewsDescription p.newsTitle{
+font-size:14px;
+}
+
+div.newsList td.newsTitle,
+div.categoryNewsList table.newsTable td.newsTitle {
+text-indent:-1.3em;
+}
+
+div.newsList td.newsTitle p,
+div.categoryNewsList table.newsTable td.newsTitle p {
+padding-left:27px;
+}
+
+
+/*---- reactionCountBalloon:news ----*/
+div.contents span.reactionCountBalloon{
+font-family:Arial;
+letter-spacing:0;
+}
+
+
+/*---- for mixiApp payment ----*/
+div.salesRecord02 table col.colDealingID{
+width:188px;
+}
+
+
+/*---- photo:フォト ----*/
+.FRAME2016_bodyMainAreaMain div.simpleUploadPhotoList01 ul.thumbnailList3col li p.photoName,
+.FRAME2016_bodyMainArea div.simpleUploadPhotoList01 ul.thumbnailList4col li p.photoName{
+width:156px;
+height:39px;
+letter-spacing:0;
+}
+
+.FRAME2016_bodyMainAreaMain div.simpleUploadPhotoList01 ul.thumbnailList3col li p.date,
+.FRAME2016_bodyMainAreaMain div.simpleUploadPhotoList01 ul.thumbnailList3col li ul.reactions,
+.FRAME2016_bodyMainAreaMain div.albumList01 ul.thumbnailList3col li p.date,
+.FRAME2016_bodyMainAreaMain div.albumList01 ul.thumbnailList3col li ul.reactions,
+div.bodyMainAreaSection01 ul.thumbnailList4col li p.date,
+div.bodyMainAreaSection01 ul.thumbnailList4col li ul.reactions{
+width:155px;
+overflow:visible;
+white-space:nowrap;
+}
+
+.FRAME2016_bodyMainAreaMain div.photoCommentList01 ul.entryList01 li dl dt{
+width:170px;
+}
+
+.FRAME2016_bodyMainAreaMain div.photoCommentList01 ul.entryList01 li dl dd{
+width:334px;
+}
+
+ul.deleteIconList li dl dd p.name{
+width:224px;
+}
+
+ul.deleteIconList li dl dd p.delete{
+width:260px;
+}
+
+div.showPhotoArea div.iine{
+width:80px;
+background:url(/img/basic/photo/bg_iine_top002.gif) no-repeat left top;
+}
+
+div.showPhotoArea div.iine p{
+background:url(/img/basic/photo/bg_iine_bottom002.gif) no-repeat left bottom;
+}
+
+
+/*---- search_appli:アプリ ----*/
+.search_appli .category{
+font-size:10px;
+letter-spacing:0.02em;
+}
+
+
+/*---- search_game:ゲーム ----*/
+.searchGame{
+font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+}
+
+
+/*---- home:ソートメニュー ----*/
+div.contentsTab .categoryList ul{
+width:auto;
+}
+
+
+/*---- home:左サイドメニューのボタン ----*/
+.FRAME2016_bodySide02 .btnBase01.iconInterest span,
+.FRAME2016_bodySide02 .btnBase01.iconEvent span{
+letter-spacing:-0.1em;
+}
