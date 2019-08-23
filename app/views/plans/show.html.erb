@@ -5,19 +5,25 @@
       <h2 class="white"><%= @plan.name %></h2>
       <p class="plan-description"><%= @plan.description %></p>
       <div class="plan-price"><%= render 'orders/form' %></div>
-      <%= link_to 'check the kitchen',  kitchen_path(@plan.kitchen), class: 'btn btn-secondary'%>
     </div>
 
-      <%= link_to (cl_image_tag @plan.kitchen.user.photo, class: "avatar-extra-large"), kitchen_path(@plan.kitchen) %>
+    <%= link_to (cl_image_tag @plan.kitchen.user.photo, class: "avatar-extra-large"), kitchen_path(@plan.kitchen) %>
+    <%= link_to 'check the kitchen',  kitchen_path(@plan.kitchen), class: 'btn btn-secondery avatar-xl-btn'%>
 
   </div>
 </div>
 <!-- banner in kitchen showpage (finish)-->
 
 <div class="container">
-  <% @plan.dishes.each do |dish| %>
+  <h2 class="mx-3">Weekly <%= @plan.name %> details</h2>
+
+  <% @plan.dishes.each_with_index do |dish, i| %>
     <div class="card-product">
-      <%= cl_image_tag dish.photo %>
+        <div class="plancard_long_weekday text-center">
+          <%= %w(Mon Tue Wed Thu Fri Sat Sun)[i] %>
+        </div>
+        <%= cl_image_tag dish.photo %>
+
       <div class="card-product-infos">
         <h2><%= dish.name %></h2>
         <p>This dish is good for <strong>getting mascular</strong></p>
@@ -25,7 +31,10 @@
       </div>
     </div>
   <% end %>
-  <div class="m-5"><%= render 'orders/form' %></div>
+
+  <div class="m-5 d-flex">
+    <div><%= render 'orders/form' %></div>
+  </div>
 </div>
 
 <!-- other related plans start -->
