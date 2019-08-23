@@ -115,6 +115,7 @@ demo_kitchen = Kitchen.create!(
   description: 'Healthy homemade food full of nutrition',
   remote_photo_url: "https://source.unsplash.com/400x300/?healthy-food",
   user: demo_hw,
+  tag_list: ['keto', 'low carb'，'japanese', 'healthy', 'nutritious']
   konbini_id: Konbini.first.id,
 )
 
@@ -201,7 +202,7 @@ User.all.each do |user|
     user: user,
     plan: plan,
     date: Faker::Time.between_dates(from: Date.today, to: Date.today + 7, period: :morning, format: :short),
-    amount: plan.price
+    amount: plan.price,
 
   )
   # create order for past
@@ -212,7 +213,7 @@ User.all.each do |user|
       user: user,
       plan: plan,
       date: Faker::Time.between_dates(from: Date.today - 60, to: Date.today - 7, period: :morning, format: :short),
-      amount: plan.price
+      amount: plan.price,
     )
   end
 end
