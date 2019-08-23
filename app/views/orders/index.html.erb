@@ -1,21 +1,60 @@
-<h1>My Orders</h1>
-<h2>Upcoming Orders</h2>
-<% @current_orders.each do |order| %>
-  <ul>
-    <li>Plan: <%= order.plan.name %></li>
-    <li>Kitchen: <%= order.plan.kitchen.name %></li>
-    <li>Pickup Date: <%= order.date %></li>
-    <li>Amount: <%= humanized_money_with_symbol(order.amount) %></li>
-    <li>Status: <%= order.state %></li>
+<div class="container">
 
-  </ul>
-<% end %>
-<h2>Order History</h2>
-<% @past_orders.each do |order| %>
-  <ul>
-    <li>Plan: <%= order.plan.name %></li>
-    <li>Kitchen: <%= order.plan.kitchen.name %></li>
-    <li>Pickup Date:<%= order.date %></li>
-    <li>Amount: <%= humanized_money_with_symbol(order.amount) %></li>
-  </ul>
-<% end %>
+  <h1>My Orders</h1>
+  <h2>Upcoming Orders</h2>
+
+
+  <% @current_orders.each do |order| %>
+    <div class="card-order">
+      <%= cl_image_tag order.plan.photo, class:"card-order-image" %>
+      <div class="card-product-infos">
+        <div class="d-flex justify-content-between">
+          <h4 class="tab-text-content mx-3"><%= link_to order.plan.name, plan_path(order.plan) %></h4>
+          <h5><%=humanized_money_with_symbol(order.plan.price)%></h5>
+        </div>
+
+        <div class="d-flex">
+          <div class="mx-3">
+            <%= link_to (cl_image_tag order.plan.kitchen.user.photo, class:"card-trip-user-big avatar-bordered-order"), kitchen_path(order.plan.kitchen) %>
+          </div>
+
+          <h5>Kitchen:</h5>
+          <h5 class="tab-text-content"><%= link_to order.plan.kitchen.name, kitchen_path(order.plan.kitchen) %></h5>
+        </div>
+        <div class="mt-3">
+          <p class="mx-3">Pickup Date: <%= order.date %></p>
+          <p class="mx-3">Status: <%= order.state %></p>
+        </div>
+
+      </div>
+    </div>
+  <% end %>
+
+  <h2>Order History</h2>
+
+  <% @past_orders.each do |order| %>
+    <div class="card-order">
+      <%= cl_image_tag order.plan.photo, class:"card-order-image" %>
+      <div class="card-product-infos">
+        <div class="d-flex justify-content-between">
+          <h4 class="tab-text-content mx-3"><%= link_to order.plan.name, plan_path(order.plan) %></h4>
+          <h5><%=humanized_money_with_symbol(order.plan.price)%></h5>
+        </div>
+
+        <div class="d-flex">
+          <div class="mx-3">
+            <%= link_to (cl_image_tag order.plan.kitchen.user.photo, class:"card-trip-user-big avatar-bordered-order"), kitchen_path(order.plan.kitchen) %>
+          </div>
+
+          <h5>Kitchen:</h5>
+          <h5 class="tab-text-content"><%= link_to order.plan.kitchen.name, kitchen_path(order.plan.kitchen) %></h5>
+        </div>
+        <div class="mt-3">
+          <p class="mx-3">Pickup Date: <%= order.date %></p>
+        </div>
+
+      </div>
+    </div>
+  <% end %>
+
+</div>
