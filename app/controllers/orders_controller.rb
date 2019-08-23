@@ -21,6 +21,8 @@ class OrdersController < ApplicationController
     authorize @order
     if @order.save
       redirect_to new_order_payment_path(@order)
+    else
+      render :_form, order: @order.plan
     end
 
   end
@@ -39,6 +41,6 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:user_id, :plan_id, :amount, :date)
+    params.require(:order).permit(:user_id, :plan_id, :amount, :date, :request)
   end
 end

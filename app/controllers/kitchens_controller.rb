@@ -23,7 +23,8 @@ class KitchensController < ApplicationController
   def show
     @kitchen = policy_scope(Kitchen).find(params[:id])
     authorize @kitchen
-    p    @konbini = @kitchen.konbini
+    @plan = @kitchen.plans
+    @konbini = @kitchen.konbini
 
     # don't touch this -----
     @marker = [{
