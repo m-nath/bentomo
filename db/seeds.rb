@@ -115,8 +115,8 @@ demo_kitchen = Kitchen.create!(
   description: 'Healthy homemade food full of nutrition',
   remote_photo_url: "https://source.unsplash.com/400x300/?healthy-food",
   user: demo_hw,
-  tag_list: ['keto', 'low carb', 'japanese', 'healthy', 'nutritious']
-  konbini_id: Konbini.first.id,
+  tag_list: ['keto', 'low carb', 'japanese', 'healthy', 'nutritious'],
+  konbini_id: Konbini.first.id
 )
 
 3.times do #change to more times later

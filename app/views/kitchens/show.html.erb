@@ -6,28 +6,21 @@
   </div>
 </div>
 <!-- banner in kitchen (finish)-->
-
-
 <div class="row">
   <div class="col">
-
   </div>
 </div>
-
-
 <div class="container">
   <!-- fivedays_card (start) -->
   <div class="mb-3">
     <%= render 'shared/fivedays_card' %>
   </div>
   <!-- fivedays_card (finish) -->
-
-
   <!-- <% @kitchen.plans.each do |plan| %> -->
-    <!-- plan details -->
+  <!-- plan details -->
   <!--   <h4>Plan: <%= plan.name  %></h4>
     <%= humanized_money_with_symbol(plan.price)  %> -->
-    <!-- dishes details -->
+  <!-- dishes details -->
   <!--   <h4>Dishes of the plan: </h4>
     <ol>
       <% plan.dishes.each do |dish| %>
@@ -38,25 +31,20 @@
       <% end %>
     </ol>
   <% end %> -->
-
-
-
   <!-- this is for map (st)-->
-    <h4>Pick up location:</h4>
-    <%= @kitchen.konbini.name %>
-    <div class="container my-3 d-flex justify-content-between">
-      <div
+  <h4>Pick up location:</h4>
+  <%= @kitchen.konbini.name %>
+  <div class="container my-3 d-flex justify-content-between">
+    <div
         id="map"
         style="width: 1110px;
         height: 250px;"
         data-markers="<%= @marker.to_json %>"
         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
       ></div>
-    </div>
-    <!-- this is for map (fin)-->
-
-
-    <br>
-    <%= link_to "other kitchens", kitchens_path, class: "btn-secondery" %>
-    <%= link_to "New Plan", new_kitchen_plan_path(@kitchen), class: "btn btn-flat" %>
+  </div>
+  <!-- this is for map (fin)-->
+  <br>
+  <%= link_to "other kitchens", kitchens_path, class: "btn-secondery" %>
+  <%= link_to "New Plan", new_kitchen_plan_path(@kitchen), class: "btn btn-flat" %>
 </div>
