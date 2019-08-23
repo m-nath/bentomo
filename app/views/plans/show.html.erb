@@ -6,24 +6,19 @@
       <p class="plan-description"><%= @plan.description %></p>
       <div class="plan-price"><%= render 'orders/form' %></div>
     </div>
-
     <%= link_to (cl_image_tag @plan.kitchen.user.photo, class: "avatar-extra-large"), kitchen_path(@plan.kitchen) %>
     <%= link_to 'check the kitchen',  kitchen_path(@plan.kitchen), class: 'btn btn-secondery avatar-xl-btn'%>
-
   </div>
 </div>
 <!-- banner in kitchen showpage (finish)-->
-
 <div class="container">
   <h2 class="mx-3">Weekly <%= @plan.name %> details</h2>
-
   <% @plan.dishes.each_with_index do |dish, i| %>
     <div class="card-product">
-        <div class="plancard_long_weekday text-center">
-          <%= %w(Mon Tue Wed Thu Fri Sat Sun)[i] %>
-        </div>
-        <%= cl_image_tag dish.photo %>
-
+      <div class="plancard_long_weekday text-center">
+        <%= %w(Mon Tue Wed Thu Fri Sat Sun)[i] %>
+      </div>
+      <%= cl_image_tag dish.photo %>
       <div class="card-product-infos">
         <h2><%= dish.name %></h2>
         <p>This dish is good for <strong>getting mascular</strong></p>
@@ -31,12 +26,24 @@
       </div>
     </div>
   <% end %>
-
   <div class="m-5 d-flex">
     <div><%= render 'orders/form' %></div>
   </div>
 </div>
-
+<div class="container">
+  <h4>Pick up location:</h4>
+  <%= @plan.kitchen.konbini.name %>
+  <div class="container my-3 d-flex justify-content-between">
+    <div
+        id="map"
+        style="width: 1110px;
+        height: 250px;"
+        data-markers="<%= @marker.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+      ></div>
+  </div>
+</div>
+<br>
 <!-- other related plans start -->
 <div class="container">
   <h4>Other related plans:</h4>

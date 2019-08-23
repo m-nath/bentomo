@@ -20,8 +20,7 @@
             <%#= f.text_field :konbini, value: @plan.kitchen.konbini.name, readonly: true %>
             <%= f.input :konbini, as: :string, required: false, input_html: { value:@plan.kitchen.konbini.name}, label:'Pickup konbini', disabled: true %>
             <%= f.input :amount, as: :integer, required: false, input_html: { value:@plan.price}, label:'Price', disabled: true %>
-            <%= f.input :preference, as: :text, required: false, input_html: { value:current_user.preference}, label:'Your preference', disabled: true %>
-
+            <%= f.input :preference, as: :text, required: false, input_html: { value: current_user.preference}, label:'Your preference', disabled: true %>
             <%#= f.text_field :preference, value: current_user.preference, readonly: true, label: 'Your reference'%>
             <%= f.input :request, placeholder:'input your other request' %>
           </div>
