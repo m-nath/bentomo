@@ -115,7 +115,7 @@ demo_kitchen = Kitchen.create!(
   description: 'Healthy homemade food full of nutrition',
   remote_photo_url: "https://source.unsplash.com/400x300/?healthy-food",
   user: demo_hw,
-  tag_list: ['keto', 'low carb'，'japanese', 'healthy', 'nutritious']
+  tag_list: ['keto', 'low carb', 'japanese', 'healthy', 'nutritious']
   konbini_id: Konbini.first.id,
 )
 
@@ -133,7 +133,7 @@ tags_array =[
   ['muscle'],
   ['keto', 'low carb'],
   ['japanese', 'low carb', 'low calorie'],
-  ['chinese', 'low carb'],
+  ['chinese', 'low carb']
 ]
 
 User.all.each do |user|
