@@ -25,8 +25,19 @@
 
 .avatar-extra-large {
   position: absolute;
-  right: 100px;
-  top: 250px;
+  right: 80px;
+  top: 230px;
+}
+
+.avatar-xl-btn {
+  // left: 330px;
+  // top: 400px;
+  // color: $white;
+  font-weight: 400;
+  background-color: rgba(242, 242, 242, 0.6);
+  position: absolute;
+  right: 98px;
+  top: 400px;
 }
 
 .white {
