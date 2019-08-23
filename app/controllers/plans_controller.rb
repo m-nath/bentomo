@@ -34,6 +34,14 @@ class PlansController < ApplicationController
     @plan = policy_scope(Plan).find(params[:id])
     @order = Order.new
     @related_plans = @plan.find_related_tags
+    @konbini = @plan.kitchen.konbini
+
+    @marker = [{
+                 lat: @konbini.latitude,
+                 lng: @konbini.longitude,
+                 infoWindow: render_to_string(partial: "info_window", locals: { konbini: @konbini }),
+                 image_url: helpers.asset_url('konbini.jpg')
+    }]
   end
 
   def new
