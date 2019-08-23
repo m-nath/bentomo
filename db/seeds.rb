@@ -21,7 +21,7 @@ require 'uri'
 
 puts 'creating konbini'
 
-areas = ["139.7038,35.6620", "139.749460,35.686960"]
+areas = ["139.7038,35.6620", "139.749460,35.686960", "139.6981,35.6415", "139.694763,35.640278"]
 areas.each do |area|
   uri = URI.parse("https://api.mapbox.com/geocoding/v5/mapbox.places/convenience%20store.json?types=poi&proximity=#{area}&access_token=#{ENV['MAPBOX_API_KEY']}")
   response = Net::HTTP.get_response(uri)
