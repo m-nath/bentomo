@@ -33,7 +33,7 @@ areas.each do |area|
     results_hash[:address] = result["formatted_address"]
     results_hash[:latitude] = result["geometry"]["location"]["lat"]
     results_hash[:longitude] = result["geometry"]["location"]["lng"]
-    Konbini.create(results_hash)
+    Konbini.create!(results_hash)
   end
 end
 
