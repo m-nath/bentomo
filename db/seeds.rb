@@ -155,9 +155,9 @@ User.all.each do |user|
   end
 end
 
-puts 'Destroying 4kitchens'
-Kitchen.last(3).map(&:destroy)
-Kitchen.find_by(user: christee).destroy!
+puts 'Destroying 1kitchen-christee`s'
+
+Kitchen.find_by(user_id:User.second.id).destroy!
 
 puts "added #{Kitchen.count} kitchens."
 puts "added #{Location.count} locations."
