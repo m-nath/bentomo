@@ -21,19 +21,19 @@ require 'uri'
 
 puts 'creating konbini'
 
-areas = ["139.7038,35.6620", "139.749460,35.686960", "139.6981,35.6415", "139.694763,35.640278"]
+areas = ["Meguro"]
 areas.each do |area|
-  uri = URI.parse("https://api.mapbox.com/geocoding/v5/mapbox.places/convenience%20store.json?types=poi&proximity=#{area}&access_token=#{ENV['MAPBOX_API_KEY']}")
+  uri = URI.parse("https://maps.googleapis.com/maps/api/place/textsearch/json?query=convenience+stores+in+#{area}&key=#{ENV['GOOGLEMAP_API_KEY']}")
   response = Net::HTTP.get_response(uri)
   list = JSON.parse(response.body)
-  list["features"].each do |feature|
-    features_hash = {}
-    features_hash[:mapbox_id] = feature["id"]
-    features_hash[:name] = feature["text"]
-    features_hash[:address] = feature["place_name"]
-    features_hash[:latitude] = feature["center"][1]
-    features_hash[:longitude] = feature["center"][0]
-    Konbini.create(features_hash)
+  list["results"].each do |result|
+    results_hash = {}
+    results_hash[:mapbox_id] = result["id"]
+    results_hash[:name] = result["name"]
+    results_hash[:address] = result["formatted_address"]
+    results_hash[:latitude] = result["geometry"]["location"]["lat"]
+    results_hash[:longitude] = result["geometry"]["location"]["lng"]
+    Konbini.create(results_hash)
   end
 end
 
