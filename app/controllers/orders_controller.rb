@@ -17,6 +17,7 @@ class OrdersController < ApplicationController
     @plan = Plan.find(params[:plan_id])
     @order.user = current_user
     @order.plan = @plan
+    @order.amount = @plan.price
     @order.state = 'pending'
     authorize @order
     if @order.save
@@ -39,6 +40,6 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:user_id, :plan_id, :amount, :date)
+    params.require(:order).permit(:user_id, :plan_id, :amount, :date, :request)
   end
 end
