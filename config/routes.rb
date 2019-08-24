@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'uikit', to: 'pages#uikit'
   get 'uikit_kid', to: 'pages#uikit_kid'
   get 'plans/tagged', to: "plans#tagged", as: :plans_tagged
+  get 'kitchens/tagged', to: "kitchens#tagged", as: :kitchens_tagged
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
