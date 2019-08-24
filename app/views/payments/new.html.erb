@@ -1,30 +1,24 @@
 <h2 class="container">Order<i class="fas fa-cart-plus"></i></h2>
-
 <div class="container text-center align-content-center py-3" style="
     border: 1px solid gray;">
-    <h2 class="text-center">Purchase of plan : <%= @order.plan.name %></h2>
-    <h2 class="text-center">Start date : <%= @order.date %></h2>
-    <h2 class="text-center">location : <%= @order.plan.kitchen.konbini.name %></h2>
-    <h2 class="text-center">request : <%= @order.request %></h2>
-    <%= form_tag order_payments_path(@order) do %>
-      <article>
-        <label>
-          <h2 class="mb-3">Total price : <%= humanized_money_with_symbol(@order.amount) %></h2>
-        </label>
-      </article>
-
-
-      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+  <h2 class="text-center">Purchase of plan : <%= @order.plan.name %></h2>
+  <h2 class="text-center">Start date : <%= @order.date %></h2>
+  <h2 class="text-center">location : <%= @order.plan.kitchen.konbini.name %></h2>
+  <h2 class="text-center">request : <%= @order.request %></h2>
+  <%= form_tag order_payments_path(@order) do %>
+    <article>
+      <label>
+        <h2 class="mb-3">Total price : <%= humanized_money_with_symbol(@order.amount) %></h2>
+      </label>
+    </article>
+    <%= render 'shared/map' %>
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
         data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
         data-name="My Plan"
         data-email="<%= current_user.email %>"
         data-description="Plan <%= @order.plan.name %>"
         data-amount="<%= @order.amount_cents %>"
-        data-currency="<%= @order.amount.currency %>">
-      </script>
-
-      <button type="submit" class="btn-main">Purchase</button>
-
-    <% end %>
-
+        data-currency="<%= @order.amount.currency %>"></script>
+    <button type="submit" class="btn-main">Purchase</button>
+  <% end %>
 </div>
