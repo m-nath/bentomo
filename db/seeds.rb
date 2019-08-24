@@ -151,8 +151,8 @@ User.all.each do |user|
 
   rand(1..2).times do
     Location.create!(
-      label: ["home", "work"].sample,
-      address: ["Lawson Shibuya", "Family-mart Shinjuku", "Seven-eleven Meguro"].sample,
+      label: ["Home", "Work"].sample,
+      address: ["1-3-21, Meguro, Meguro-ku, Tokyo", "3-13-6, Meguro, Meguro-ku, Tokyo", "1-21-20, Higashiyama, Meguro-ku, Tokyo"].sample,
       user: user  #real office addres e.g. Google, Amazon, Rakuten, Impacthub
     )
   end
@@ -165,44 +165,44 @@ Kitchen.find_by(user_id:User.fourth.id).destroy!
 Kitchen.find_by(user_id:User.fifth.id).destroy!
 
 doug_K = Kitchen.create!(
-    name: 'Dougs Kitchen',
-    description: 'Good American food here!',
-    remote_photo_url: "https://scontent-nrt1-1.xx.fbcdn.net/v/t1.0-9/49206011_10161288945565300_3488969622948937728_o.jpg?_nc_cat=110&_nc_oc=AQnCYIzOQR9tLF4KmeXAVpJMLQ1y8ZiGTsr3Ie187N68Qd61Fre80TBGpH2XFtCE6rs&_nc_ht=scontent-nrt1-1.xx&oh=58d0f2fe68f652a4c6901acab59aae0c&oe=5DDE5A42",
-    user: doug,
-    # tag_list: ['low carb', 'keto', 'american'],
-    konbini_id: Konbini.second.id,
-  )
+  name: 'Dougs Kitchen',
+  description: 'Good American food here!',
+  remote_photo_url: "https://scontent-nrt1-1.xx.fbcdn.net/v/t1.0-9/49206011_10161288945565300_3488969622948937728_o.jpg?_nc_cat=110&_nc_oc=AQnCYIzOQR9tLF4KmeXAVpJMLQ1y8ZiGTsr3Ie187N68Qd61Fre80TBGpH2XFtCE6rs&_nc_ht=scontent-nrt1-1.xx&oh=58d0f2fe68f652a4c6901acab59aae0c&oe=5DDE5A42",
+  user: doug,
+  # tag_list: ['low carb', 'keto', 'american'],
+  konbini_id: Konbini.second.id,
+)
 
 sylvain_k = Kitchen.create!(
-    name: 'Sylvains Kitchen',
-    description: 'Awesome and tasty French food, sometimes Vietnanese food',
-    remote_photo_url: "https://scontent-nrt1-1.xx.fbcdn.net/v/t1.0-9/48406957_10161288919900300_887751778529968128_o.jpg?_nc_cat=101&_nc_oc=AQk945oA-48c8gw6ONPS8wIM4f0wM4p_kAcCWxxSDRNPKwgVvWn94-yNFzrPdjZPAw8&_nc_ht=scontent-nrt1-1.xx&oh=9ec03ecf17ddbac6fba8e87ff67c0960&oe=5E07DFE0",
-    user: sylvain,
-    # tag_list: ['low carb', 'keto', 'French'],
-    konbini_id: Konbini.third.id,
-  )
+  name: 'Sylvains Kitchen',
+  description: 'Awesome and tasty French food, sometimes Vietnanese food',
+  remote_photo_url: "https://scontent-nrt1-1.xx.fbcdn.net/v/t1.0-9/48406957_10161288919900300_887751778529968128_o.jpg?_nc_cat=101&_nc_oc=AQk945oA-48c8gw6ONPS8wIM4f0wM4p_kAcCWxxSDRNPKwgVvWn94-yNFzrPdjZPAw8&_nc_ht=scontent-nrt1-1.xx&oh=9ec03ecf17ddbac6fba8e87ff67c0960&oe=5E07DFE0",
+  user: sylvain,
+  # tag_list: ['low carb', 'keto', 'French'],
+  konbini_id: Konbini.third.id,
+)
 
 puts "added #{Kitchen.count} kitchens."
 puts "added #{Location.count} locations."
 
 
 american_plan = Plan.create!(
-      name: 'American plan',
-      price: 8000,
-      kitchen: doug_K,
-      remote_photo_url: "https://source.unsplash.com/400x300/?healthy-food" || "https://source.unsplash.com/400x300/?dinner",
-      description: 'A lot of curry, healthy diet pizzas for dirty diet',
-      tag_list: ['low carb', 'keto', 'american'],
-    )
+  name: 'American plan',
+  price: 8000,
+  kitchen: doug_K,
+  remote_photo_url: "https://source.unsplash.com/400x300/?healthy-food" || "https://source.unsplash.com/400x300/?dinner",
+  description: 'A lot of curry, healthy diet pizzas for dirty diet',
+  tag_list: ['low carb', 'keto', 'american'],
+)
 
 bikini_plan = Plan.create!(
-      name: 'Summer Bikini Plan',
-      price: 8000,
-      kitchen: sylvain_k,
-      remote_photo_url: "https://scontent-nrt1-1.xx.fbcdn.net/v/t1.0-9/48406957_10161288919900300_887751778529968128_o.jpg?_nc_cat=101&_nc_oc=AQk945oA-48c8gw6ONPS8wIM4f0wM4p_kAcCWxxSDRNPKwgVvWn94-yNFzrPdjZPAw8&_nc_ht=scontent-nrt1-1.xx&oh=9ec03ecf17ddbac6fba8e87ff67c0960&oe=5E07DFE0",
-      description: 'Healthy nutritious weekly plan, help you make your summer body ready. Sometimes French sometimes Vietnanese.',
-      tag_list: ['low carb', 'keto', 'French'],
-    )
+  name: 'Summer Bikini Plan',
+  price: 8000,
+  kitchen: sylvain_k,
+  remote_photo_url: "https://scontent-nrt1-1.xx.fbcdn.net/v/t1.0-9/48406957_10161288919900300_887751778529968128_o.jpg?_nc_cat=101&_nc_oc=AQk945oA-48c8gw6ONPS8wIM4f0wM4p_kAcCWxxSDRNPKwgVvWn94-yNFzrPdjZPAw8&_nc_ht=scontent-nrt1-1.xx&oh=9ec03ecf17ddbac6fba8e87ff67c0960&oe=5E07DFE0",
+  description: 'Healthy nutritious weekly plan, help you make your summer body ready. Sometimes French sometimes Vietnanese.',
+  tag_list: ['low carb', 'keto', 'French'],
+)
 
 Kitchen.all.each do |kitchen|
   rand(1..2).times do
