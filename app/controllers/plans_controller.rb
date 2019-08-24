@@ -50,7 +50,7 @@ class PlansController < ApplicationController
   end
 
   def create
-    @plan = Plan.new(plans_params)
+    @plan = Plan.new(plan_params)
     @plan.user = current_user
     authorize @plan
     if @plan.save
