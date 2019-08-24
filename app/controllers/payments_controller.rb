@@ -3,6 +3,7 @@ class PaymentsController < ApplicationController
   before_action :set_order
 
   def new
+
   end
 
   def create
