@@ -5,17 +5,15 @@
       <h2><%= @plan.name %></h2>
       <p><%= @plan.description %></p>
     </div>
-    <div class="p-2 bd-highlight flex-grow-1"></div>
-    <div class="p-2 bd-highlight">
+    <!-- <div class="p-2 bd-highlight flex-grow-1"></div> -->
+    <div class="mt-2 ">
       <%= render 'orders/form' %>
     </div>
+    <div class="d-flex flex-row justify-content-around mb-3">
+      <%= render 'shared/plancard' %>
+      <br>
+    </div>
   </div>
-  <div class="d-flex flex-row bd-highlight">
-    <div class="p-2 bd-highlight"><% @plan.description %></div>
-  </div>
-  <div class="d-flex flex-row justify-content-around mb-3">
-    <%= render 'shared/plancard' %>
-    <br>
-  </div>
+
 </div>
 <!-- 5 days plan card (finish)-->
