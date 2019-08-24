@@ -17,6 +17,16 @@ class PlansController < ApplicationController
     else
       @plans = policy_scope(Plan)
     end
+
+    konbinis = @plans.map do |plan|
+      {
+        lat: plan.kitchen.konbini.latitude,
+        lng: plan.kitchen.konbini.longitude,
+        infoWindow: render_to_string(partial: "shared/info_window", locals: { konbini: plan.kitchen.konbini }),
+        image_url: helpers.asset_url('konbini.jpg')
+    }
+    end
+    @markers = konbinis.uniq
   end
 
   def tagged
