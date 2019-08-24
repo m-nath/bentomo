@@ -15,7 +15,7 @@
             <%= link_to '#'+tag, plans_path(tag: tag), class: "tab-text-tag" %>
           <% end %>
         </div>
-        <h5><%=humanized_money_with_symbol(plan.price)%></h5>
+        <h5><%=humanized_money_with_symbol(plan.price)%>/day</h5>
       </div>
     </div>
   </div>

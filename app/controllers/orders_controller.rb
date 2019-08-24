@@ -25,7 +25,8 @@ class OrdersController < ApplicationController
     @plan = Plan.find(params[:plan_id])
     @order.user = current_user
     @order.plan = @plan
-    @order.amount = @plan.price
+    days = @order.date.split(', ').size
+    @order.amount = @plan.price * days
     @order.state = 'pending'
     authorize @order
     if @order.save

@@ -1,16 +1,18 @@
-<div class="row mt-5">
+<div class="row mt-3">
   <% @kitchens.each do |kitchen|%>
     <div class="col-md-4 col-sm-6 col-sm-12">
       <div class="card-trip-home">
-        <%= cl_image_tag kitchen.photo %>
+        <%= cl_image_tag(kitchen.photo) %>
         <div class="card-trip-infos">
           <div>
-            <h4 class="tab-text-content"><%= link_to kitchen.name, kitchen_path(kitchen), { :class=>"stretched-link" } %></h4>
-            <p><%= kitchen.description%></p>
-            <br>
-            <p><%= kitchen.konbini.name %></p>
+            <h4 class="tab-text-content"><%= link_to kitchen.name, kitchen_path(kitchen), { :class=>"stretched-link" }  %></h4>
           </div>
-          <%= cl_image_tag kitchen.user.photo, class:"card-trip-user-big avatar-bordered" %>
+          <%= link_to (cl_image_tag kitchen.user.photo, class:"card-trip-user-big avatar-bordered"), kitchen_path(kitchen) %>
+        </div>
+        <div class="mx-3">
+          <% kitchen.tag_list.each do |tag| %>
+            <%= link_to '#'+tag, kitchens_tagged_path(tag: tag), class: "tab-text-tag" %>
+          <% end %>
         </div>
       </div>
     </div>

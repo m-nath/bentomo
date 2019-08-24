@@ -1,5 +1,5 @@
 <button type="button" class="btn btn-main d-flex align-items-end" data-toggle="modal" data-target="#order_form" data-whatever="@getbootstrap">
-  <h4 class="price-text"><%= humanized_money_with_symbol(@plan.price) %></h4>
+  <h4 class="price-text"><%= humanized_money_with_symbol(@plan.price) %>/day</h4>
   Make an order
 </button>
 <div class="modal fade" id="order_form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
