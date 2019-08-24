@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 
   #----------usually useless above----------
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
   root to: 'pages#home'
   get 'uikit', to: 'pages#uikit'
   get 'uikit_kid', to: 'pages#uikit_kid'

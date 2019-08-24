@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
     if @order.save
       redirect_to new_order_payment_path(@order)
     else
-      render :_form, order: @order.plan
+      render plan_path(@plan)
     end
 
   end
