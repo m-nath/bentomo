@@ -11,7 +11,9 @@
     <label for="request" class="col-form-label">Request: <%= @order.request %></label>
   </div>
   <div class="form-group">
-    <label for="amount" class="col-form-label">Amount: <%= humanized_money_with_symbol(@order.amount) %></label>
+    Amount: <%= humanized_money_with_symbol(@order.amount), label: {for: 'Amount', class:'col-form-label'} %>
+
+  <!-- <label for="amount" class="col-form-label"></label> -->
   </div>
   <%= link_to "Edit", edit_order_path(@order) %>
 </div>

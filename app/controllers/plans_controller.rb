@@ -1,7 +1,6 @@
 class PlansController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   def index
-
     if params[:search]
       query = params[:search][:query]
       @tags = params[:search][:tags].reject(&:blank?) if params[:search][:tags].present?
@@ -18,7 +17,6 @@ class PlansController < ApplicationController
     else
       @plans = policy_scope(Plan)
     end
-
   end
 
   def tagged
@@ -27,7 +25,6 @@ class PlansController < ApplicationController
     else
       @plans = policy_scope(Plan)
     end
-
   end
 
   def show

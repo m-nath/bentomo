@@ -22,7 +22,7 @@
             <%= f.input :amount, as: :integer, required: false, input_html: { value:@plan.price}, label:'Price', disabled: true %>
             <%= f.input :preference, as: :text, required: false, input_html: { value: current_user.preference}, label:'Your preference', disabled: true %>
             <%#= f.text_field :preference, value: current_user.preference, readonly: true, label: 'Your reference'%>
-            <%= f.input :request, placeholder:'input your other request' %>
+            <%= f.input :request, as: :text, placeholder:'input your other request' %>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondery" data-dismiss="modal">Close</button>
