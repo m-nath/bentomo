@@ -29,8 +29,8 @@ class KitchensController < ApplicationController
       {
         lat: kitchen.konbini.latitude,
         lng: kitchen.konbini.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { konbini: kitchen.konbini }),
-      image_url: helpers.asset_url('konbini.jpg')
+        infoWindow: render_to_string(partial: "shared/info_window", locals: { konbini: kitchen.konbini }),
+        image_url: helpers.asset_url('konbini.jpg')
     }
     end
     @markers = konbinis.uniq
@@ -54,7 +54,7 @@ class KitchensController < ApplicationController
     @marker = [{
                  lat: @konbini.latitude,
                  lng: @konbini.longitude,
-                 infoWindow: render_to_string(partial: "info_window", locals: { konbini: @konbini }),
+                 infoWindow: render_to_string(partial: "shared/info_window", locals: { konbini: @konbini }),
                  image_url: helpers.asset_url('konbini.jpg')
     }]
   end
@@ -69,7 +69,7 @@ class KitchensController < ApplicationController
       {
         lat: konbini.latitude,
         lng: konbini.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { konbini: konbini }),
+        infoWindow: render_to_string(partial: "shared/info_window", locals: { konbini: konbini }),
       image_url: helpers.asset_url('konbini.jpg')}
     end
   end

@@ -8,7 +8,7 @@ class PaymentsController < ApplicationController
     @marker = [{
                  lat: @konbini.latitude,
                  lng: @konbini.longitude,
-                 infoWindow: render_to_string(partial: "info_window", locals: { konbini: @konbini }),
+                 infoWindow: render_to_string(partial: "shared/info_window", locals: { konbini: @konbini }),
                  image_url: helpers.asset_url('konbini.jpg')
     }]
   end
