@@ -15,7 +15,7 @@ class OrdersController < ApplicationController
     @marker = [{
                  lat: @konbini.latitude,
                  lng: @konbini.longitude,
-                 infoWindow: render_to_string(partial: "info_window", locals: { konbini: @konbini }),
+                 infoWindow: render_to_string(partial: "shared/info_window", locals: { konbini: @konbini }),
                  image_url: helpers.asset_url('konbini.jpg')
     }]
   end
@@ -25,7 +25,8 @@ class OrdersController < ApplicationController
     @plan = Plan.find(params[:plan_id])
     @order.user = current_user
     @order.plan = @plan
-    @order.amount = @plan.price
+    days = @order.date.split(', ').size
+    @order.amount = @plan.price * days
     @order.state = 'pending'
     authorize @order
     if @order.save
