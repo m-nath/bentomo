@@ -5,8 +5,10 @@
         <%= cl_image_tag kitchen.photo %>
         <div class="card-trip-infos">
           <div>
-            <h4 class="tab-text-content"><%= link_to kitchen.name, kitchen_path(kitchen) %></h4>
+            <h4 class="tab-text-content"><%= link_to kitchen.name, kitchen_path(kitchen), { :class=>"stretched-link" } %></h4>
             <p><%= kitchen.description%></p>
+            <br>
+            <p><%= kitchen.konbini.name %></p>
           </div>
           <%= cl_image_tag kitchen.user.photo, class:"card-trip-user-big avatar-bordered" %>
         </div>
