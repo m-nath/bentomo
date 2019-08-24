@@ -10,6 +10,14 @@ class OrdersController < ApplicationController
     # @order = policy_scope(Order).find(params[:id])
     @order = current_user.orders.where(state: 'paid').find(params[:id])
     authorize @order
+    @konbini = @order.plan.kitchen.konbini
+
+    @marker = [{
+                 lat: @konbini.longitude,
+                 lng: @konbini.latitude,
+                 infoWindow: render_to_string(partial: "info_window", locals: { konbini: @konbini }),
+                 image_url: helpers.asset_url('konbini.jpg')
+    }]
   end
 
   def create
