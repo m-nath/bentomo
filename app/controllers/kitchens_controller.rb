@@ -25,6 +25,7 @@ class KitchensController < ApplicationController
     end
 
     # @konbinis = Konbini.all
+<<<<<<< Updated upstream
     konbinis = @kitchens.map do |kitchen|
       {
         lat: kitchen.konbini.latitude,
@@ -32,8 +33,29 @@ class KitchensController < ApplicationController
         infoWindow: render_to_string(partial: "info_window", locals: { konbini: kitchen.konbini }),
       image_url: helpers.asset_url('konbini.jpg')
     }
+=======
+    # konbinis = @kitchens.map do |kitchen|
+    #   {
+    #     lat: kitchen.konbini.latitude,
+    #     lng: kitchen.konbini.longitude,
+    #     infoWindow: render_to_string(partial: "shared/info_window", locals: { konbini: kitchen.konbini }),
+    #     image_url: helpers.asset_url('konbini.jpg')
+    # }
+    # end
+    # @markers = konbinis.uniq
+    if user_signed_in?
+      @user = current_user
+      @locations = @user.locations.geocoded
+      search_locations = Konbini.near(@locations, 1)
+      raise
+      @markers = search_locations.each do |location|
+        {
+          lat: location.latitude,
+          lng: location.longitude
+        }
+      end
+>>>>>>> Stashed changes
     end
-    @markers = konbinis.uniq
   end
 
   def tagged
@@ -80,6 +102,8 @@ class KitchensController < ApplicationController
     authorize @kitchen
     if @kitchen.save
       redirect_to kitchen_path(@kitchen)
+    else
+      render :new
     end
   end
 
