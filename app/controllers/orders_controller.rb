@@ -13,8 +13,8 @@ class OrdersController < ApplicationController
     @konbini = @order.plan.kitchen.konbini
 
     @marker = [{
-                 lat: @konbini.longitude,
-                 lng: @konbini.latitude,
+                 lat: @konbini.latitude,
+                 lng: @konbini.longitude,
                  infoWindow: render_to_string(partial: "info_window", locals: { konbini: @konbini }),
                  image_url: helpers.asset_url('konbini.jpg')
     }]
@@ -31,7 +31,7 @@ class OrdersController < ApplicationController
     if @order.save
       redirect_to new_order_payment_path(@order)
     else
-      render plan_path(@plan)
+      render :_form
     end
 
   end
