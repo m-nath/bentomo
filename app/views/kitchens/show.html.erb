@@ -17,7 +17,6 @@
     <h4>Plans</h4>
     <% @kitchen.plans.each do |plan| %>
       <% @plan=plan %>
-      <%= render 'orders/form' %>
       <br>
       <%= render 'shared/fivedays_card' %>
     <% end %>
