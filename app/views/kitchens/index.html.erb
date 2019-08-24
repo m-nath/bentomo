@@ -1,28 +1,39 @@
 <div class="container">
   <div class="d-flex my-4">
     <h3><i class="fas fa-utensils"></i></h3>
-    <h2 class="mx-3">All Kitchens</h2>
+    <h2 class="mx-3">Find a Kitchen</h2>
   </div>
-  <!-- search bar & filter start-->
-  <div class="container">
-    <%= simple_form_for :search, url: kitchens_path, method: "GET" do |f| %>
-      <%= f.input :query, input_html: {class: 'form-control', value: (params[:search][:query] if params[:search])}, placeholder: "Find your kitchen", label: 'Search' %>
-      <br>
-      <div class="my-3">
-        <%= f.submit "Search", class: "btn btn-main" %>
-        <%= link_to "Reset", kitchens_path, class: "btn btn-secondery" %>
-      </div>
-    <% end %>
-  </div>
-  <!-- insert map -->
-  <div class="container my-3 d-flex justify-content-between">
-    <div
-    id="map"
-    style="width: 1200px;
-    height: 250px;"
-    data-markers="<%= @markers.to_json %>"
-    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-  ></div>
+    <!-- search bar & filter start-->
+  <div class="row mb-5">
+    <div class="col">
+      <%= simple_form_for :search, url: kitchens_path, method: "GET" do |f| %>
+        <%= f.input :query, label: 'Search', input_html: {class: 'form-control', value: (params[:search][:query] if params[:search])}, placeholder: "Find a kitchen" %>
+        <%  ActsAsTaggableOn::Tag.most_used(10).map do |tag|%>
+          <% if @tags.nil? %>
+            <%= check_box_tag 'search[tags][]', tag.name, false %>
+          <% else %>
+            <%= check_box_tag 'search[tags][]', tag.name, (params[:search] ? params[:search][:tags].include?(tag.name) : false) %>
+          <% end %>
+          <%= tag.name %> &nbsp;&nbsp;
+        <% end %>
+        <br>
+        <div class="my-3">
+          <%= f.submit "Search", class: "btn btn-main" %>
+          <%= link_to "Reset", kitchens_path, class: "btn btn-secondery" %>
+        </div>
+      <% end %>
+    </div>
+    <!-- search bar & filter end-->
+
+    <!-- insert map -->
+    <div class="col">
+      <div
+      id="map"
+      style="height: 200px;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+      ></div>
+    </div>
   </div>
   <!-- insert map -->
   <!-- search bar & filter end-->
