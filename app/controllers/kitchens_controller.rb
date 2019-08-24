@@ -42,8 +42,8 @@ class KitchensController < ApplicationController
 
     @markers = @konbinis.map do |konbini|
       {
-        lat: konbini.longitude,
-        lng: konbini.latitude,
+        lat: konbini.latitude,
+        lng: konbini.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { konbini: konbini }),
       image_url: helpers.asset_url('konbini.jpg')}
     end
