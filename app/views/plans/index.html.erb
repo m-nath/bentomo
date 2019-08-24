@@ -6,7 +6,7 @@
   <!-- search bar & filter start-->
   <div class="container">
     <%= simple_form_for :search, url: plans_path, method: "GET" do |f| %>
-      <%= f.input :query, input_html: {class: 'form-control', value: (params[:search][:query] if params[:search])}, placeholder: "Find your meal plan" %>
+      <%= f.input :query, label: 'Search', input_html: {class: 'form-control', value: (params[:search][:query] if params[:search])}, placeholder: "Find your meal plan" %>
       <%  ActsAsTaggableOn::Tag.most_used(10).map do |tag|%>
         <% if @tags.nil? %>
           <%= check_box_tag 'search[tags][]', tag.name, false %>

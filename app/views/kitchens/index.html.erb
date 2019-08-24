@@ -6,7 +6,7 @@
   <!-- search bar & filter start-->
   <div class="container">
     <%= simple_form_for :search, url: kitchens_path, method: "GET" do |f| %>
-      <%= f.input :query, input_html: {class: 'form-control', value: (params[:search][:query] if params[:search])}, placeholder: "Find your kitchen" %>
+      <%= f.input :query, input_html: {class: 'form-control', value: (params[:search][:query] if params[:search])}, placeholder: "Find your kitchen", label: 'Search' %>
       <br>
       <div class="my-3">
         <%= f.submit "Search", class: "btn btn-main" %>
