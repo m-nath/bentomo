@@ -7,14 +7,11 @@
   </div>
 </div>
 <!-- banner in kitchen (finish)-->
-<div class="row">
-  <div class="col">
-  </div>
-</div>
+
 <div class="container">
   <!-- fivedays_card (start) -->
   <div class="mb-3">
-    <h4>Plans</h4>
+    <h2>Plans</h2>
     <% @kitchen.plans.each do |plan| %>
       <% @plan=plan %>
       <br>
@@ -23,7 +20,7 @@
   </div>
 
   <br>
-  <h4>Pick up location</h4>
+  <h2>Pick up location</h2>
   <%= '  ----'+@kitchen.konbini.name %>
   <div class="container my-3 d-flex justify-content-between">
     <div
