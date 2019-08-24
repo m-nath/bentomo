@@ -18,6 +18,7 @@
     <% @kitchen.plans.each do |plan| %>
       <% @plan=plan %>
       <%= render 'orders/form' %>
+      <br>
       <%= render 'shared/fivedays_card' %>
     <% end %>
   </div>
