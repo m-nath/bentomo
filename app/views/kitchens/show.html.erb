@@ -16,8 +16,10 @@
   <div class="mb-3">
     <h4>Plans</h4>
     <% @kitchen.plans.each do |plan| %>
-    <% @plan=plan %>
-    <%= render 'shared/fivedays_card' %>
+      <% @plan=plan %>
+      <%= render 'orders/form' %>
+      <br>
+      <%= render 'shared/fivedays_card' %>
     <% end %>
   </div>
   <!-- fivedays_card (finish) -->
@@ -36,8 +38,6 @@
       <% end %>
     </ol>
   <% end %> -->
-
-
   <!-- this is for map (st)-->
   <br>
   <h4>Pick up location</h4>
