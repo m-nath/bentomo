@@ -1,22 +1,26 @@
 
 <h2 class="container">Order Confirmation<i class="fas fa-cart-plus"></i></h2>
 
-<div class="container text-left align-content-py-3 p-5" style="
+<div class="container text-left align-content-py-3 p-4" style="
     border: 1px solid gray;">
-    <h4><b>Purchase of plan :</b> <%= @order.plan.name %></h4>
-    <h4><b>From :</b> <%= @order.plan.kitchen.name %></h4>
-    <h4><b>Dates :</b> <%= @order.date %> (<%= @order.date.split(', ').length %> days)</h4>
-    <h4><b>Pickup location :</b> <%= @order.plan.kitchen.konbini.name %></h4>
-    <h4><b>Preference :</b> <%= @order.user.preference %></h4>
-    <h4><b>Request :</b> <%= @order.request %></h4>
+    <h5><b>Purchase of plan :</b> <%= @order.plan.name %></h5>
+    <h5><b>From :</b> <%= @order.plan.kitchen.name %></h5>
+    <h5><b>Dates :</b> <%= @order.date %> (<%= @order.date.split(', ').length %> days)</h5>
+    <h5><b>Preference :</b> <%= @order.user.preference %></h5>
+    <h5><b>Request :</b> <%= @order.request %></h5>
     <%= form_tag order_payments_path(@order) do %>
-      <article>
-        <label>
-          <h4 class="mb-3"><b>Total price :</b> <%= humanized_money_with_symbol(@order.amount) %></h4>
-        </label>
-      </article>
-
-    <%= render 'shared/map' %>
+    <h5><b>Unit price :</b> <%= humanized_money_with_symbol(@order.plan.price) %>/day</h5>
+    <h5><b>Total amount : <%= humanized_money_with_symbol(@order.amount) %></b></h5>
+    <h5><b>Pickup location :</b> <%= @order.plan.kitchen.konbini.name %></h5>
+    <div class="container my-3 d-flex justify-content-between">
+      <div
+          id="map"
+          style="width: 1110px;
+          height: 250px;"
+          data-markers="<%= @marker.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+        ></div>
+    </div>
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
 
         data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
