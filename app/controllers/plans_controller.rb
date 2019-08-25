@@ -72,6 +72,18 @@ class PlansController < ApplicationController
     end
   end
 
+  def edit
+
+  end
+
+  def update
+
+  end
+
+  def destroy
+
+  end
+
   def plan_params
     params.require(:plan).permit(:name, :description, :photo, :tag_list, :price)
   end
