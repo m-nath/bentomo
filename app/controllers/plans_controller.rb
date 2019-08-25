@@ -52,13 +52,18 @@ class PlansController < ApplicationController
   end
 
   def new
-    @plan = Plan.new
+    @kitchen = Kitchen.find(params[:kitchen_id])
+    @plan = Plan.new(
+      kitchen: @kitchen
+      )
     authorize @plan
   end
 
   def create
     @plan = Plan.new(plan_params)
-    @plan.user = current_user
+    @kitchen = Kitchen.find(params[:kitchen_id])
+    @plan.kitchen = @kitchen
+    @plan.kitchen.user = current_user
     authorize @plan
     if @plan.save
       redirect_to plan_path(@plan)
@@ -68,6 +73,6 @@ class PlansController < ApplicationController
   end
 
   def plan_params
-    params.require(:plan).permit(:name, :description, :photo, :tag_list)
+    params.require(:plan).permit(:name, :description, :photo, :tag_list, :price)
   end
 end
