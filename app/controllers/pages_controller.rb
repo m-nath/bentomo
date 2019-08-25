@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :uikit, :uikit_kid]
-  SAMPLE_NUM = 6
+  SAMPLE_NUM = 8
 
   def home
     @kitchens = policy_scope(Kitchen).sample(SAMPLE_NUM)
