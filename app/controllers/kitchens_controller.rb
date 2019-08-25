@@ -24,27 +24,40 @@ class KitchensController < ApplicationController
       @kitchens = policy_scope(Kitchen)
     end
 
+    # if user_signed_in?
+    #   @user = current_user
+    #   locations = @user.locations
+    #   search_locations = []
+    #   locations.map do |location|
+    #     search = Konbini.near(location, 2)
+    #     search_locations << search
+    #   end
+    #    konbinis = search_locations.map do |search_location|
+    #    search_location.map do |search|
+    #     {
+    #       lat: search.latitude,
+    #       lng: search.longitude,
+    #       infoWindow: render_to_string(partial: "info_window", locals: { kitchen: search_location }),
+    #       image_url: helpers.asset_url('konbini.jpg')
+    #     }
+    #     end
+    #   end
+    #   konbinim = konbinis.flatten
+    #   @markers = konbinim.uniq
+
     if user_signed_in?
       @user = current_user
-      locations = @user.locations
-      search_locations = []
-      locations.map do |location|
-        search = Konbini.near(location, 2)
-        search_locations << search
+      location = @user.locations.first
+      search = Konbini.near(location, 2)
+      konbinis = search.map do |search_location|
+        {
+          lat: search_location.latitude,
+          lng: search_location.longitude,
+          infoWindow: render_to_string(partial: "info_window", locals: { kitchen: search_location }),
+          image_url: helpers.asset_url('konbini.jpg')
+        }
       end
-
-      konbinis = search_locations.map do |search_location|
-        search_location.map do |search|
-          {
-            lat: search.latitude,
-            lng: search.longitude,
-            infoWindow: render_to_string(partial: "info_window", locals: { kitchen: search_location }),
-            image_url: helpers.asset_url('konbini.jpg')
-          }
-        end
-      end
-      konbinim = konbinis.flatten
-      @markers = konbinim.uniq
+      @markers = konbinis.uniq
     else
       konbinis = @kitchens.map do |kitchen|
         {
