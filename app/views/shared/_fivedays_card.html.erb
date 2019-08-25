@@ -5,6 +5,14 @@
       <h2><%= @plan.name %></h2>
       <p><%= @plan.description %></p>
     </div>
+
+    <div class="p-2 bd-highlight flex-grow-1"></div>
+    <div class="p-2 bd-highlight button-plan" id="button-position" style="
+    width: 316px;">
+      <button type="button" class="btn btn-main d-flex align-items-end" data-toggle="modal" data-target="#order_form" data-whatever="@getbootstrap" id="button-plan">
+        <h4 class="price-text"><%= humanized_money_with_symbol(@plan.price) %></h4>
+         Make an order
+      </button>
     <!-- <div class="p-2 bd-highlight flex-grow-1"></div> -->
     <div class="mt-2 ">
       <%= render 'orders/form' %>
