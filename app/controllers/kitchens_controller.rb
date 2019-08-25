@@ -24,82 +24,95 @@ class KitchensController < ApplicationController
       @kitchens = policy_scope(Kitchen)
     end
 
-    # @konbinis = Konbini.all
-    # konbinis = @kitchens.map do |kitchen|
-    #   {
-    #     lat: kitchen.konbini.latitude,
-    #     lng: kitchen.konbini.longitude,
-    #     infoWindow: render_to_string(partial: "shared/info_window", locals: { konbini: kitchen.konbini }),
-    #     image_url: helpers.asset_url('konbini.jpg')
-    # }
-    # end
-    # @markers = konbinis.uniq
     if user_signed_in?
       @user = current_user
-      locations = @user.locations.geocoded
-      search_locations = Konbini.near(@locations, 1)
-      raise
-      @markers = search_locations.each do |location|
+      locations = @user.locations
+      # @locations = @user.locations.geocoded.pluck(:address)
+      # @locations.pluck(:address) do |location|
+      search_locations = []
+      locations.map do |location|
+        search = Konbini.near(location, 1)
+        search_locations << search
+      end
+
+      #   @locations.each do |location|
+      #     searches = Konbini.near(location, 1)
+      #     search_locations << searches
+      #   end
+      @markers = search_locations.map do |search_location|
         {
-          lat: location.latitude,
-          lng: location.longitude
+          lat: search_location.latitude,
+          lng: search_location.longitude,
+          infoWindow: render_to_string(partial: "shared/info_window", locals: { konbini: search_location }),
+          image_url: helpers.asset_url('konbini.jpg')
         }
       end
+      # else
+      #   konbinis = @kitchens.map do |kitchen|
+      #     {
+      #       lat: kitchen.konbini.latitude,
+      #       lng: kitchen.konbini.longitude,
+      #       infoWindow: render_to_string(partial: "shared/info_window", locals: { konbini: kitchen.konbini }),
+      #       image_url: helpers.asset_url('konbini.jpg')
+      #     }
+      #   end
+      #   @markers = konbinis.uniq
+      # end
     end
-  end
 
-  def tagged
-    if params[:tag].present?
-      @kitchens = policy_scope(Kitchen).tagged_with(params[:tag])
-    else
-      @kitchens = policy_scope(Kitchen)
+    def tagged
+      if params[:tag].present?
+        @kitchens = policy_scope(Kitchen).tagged_with(params[:tag])
+      else
+        @kitchens = policy_scope(Kitchen)
+      end
     end
-  end
 
-  def show
-    @kitchen = policy_scope(Kitchen).find(params[:id])
-    authorize @kitchen
-    @plan = @kitchen.plans
-    @konbini = @kitchen.konbini
+    def show
+      @kitchen = policy_scope(Kitchen).find(params[:id])
+      authorize @kitchen
+      @plan = @kitchen.plans
+      @konbini = @kitchen.konbini
 
-    # don't touch this -----
-    @marker = [{
-                 lat: @konbini.latitude,
-                 lng: @konbini.longitude,
-                 infoWindow: render_to_string(partial: "shared/info_window", locals: { konbini: @konbini }),
-                 image_url: helpers.asset_url('konbini.jpg')
-    }]
-  end
-
-
-  def new
-    @kitchen = Kitchen.new
-    authorize @kitchen
-    @konbinis = Konbini.all
-
-    @markers = @konbinis.map do |konbini|
-      {
-        lat: konbini.latitude,
-        lng: konbini.longitude,
-        infoWindow: render_to_string(partial: "shared/info_window", locals: { konbini: konbini }),
-      image_url: helpers.asset_url('konbini.jpg')}
+      # don't touch this -----
+      @marker = [{
+                   lat: @konbini.latitude,
+                   lng: @konbini.longitude,
+                   infoWindow: render_to_string(partial: "shared/info_window", locals: { konbini: @konbini }),
+                   image_url: helpers.asset_url('konbini.jpg')
+      }]
     end
-  end
 
-  def create
-    @kitchen = Kitchen.new(kitchen_params)
-    @kitchen.user = current_user
-    authorize @kitchen
-    if @kitchen.save
-      redirect_to kitchen_path(@kitchen)
-    else
-      render :new
+
+    def new
+      @kitchen = Kitchen.new
+      authorize @kitchen
+      @konbinis = Konbini.all
+
+      @markers = @konbinis.map do |konbini|
+        {
+          lat: konbini.latitude,
+          lng: konbini.longitude,
+          infoWindow: render_to_string(partial: "shared/info_window", locals: { konbini: konbini }),
+        image_url: helpers.asset_url('konbini.jpg')}
+      end
     end
-  end
 
-  private
+    def create
+      @kitchen = Kitchen.new(kitchen_params)
+      @kitchen.user = current_user
+      authorize @kitchen
+      if @kitchen.save
+        redirect_to kitchen_path(@kitchen)
+      else
+        render :new
+      end
+    end
 
-  def kitchen_params
-    params.require(:kitchen).permit(:name, :description, :konbini_id, :photo, :tag_list)
+    private
+
+    def kitchen_params
+      params.require(:kitchen).permit(:name, :description, :konbini_id, :photo, :tag_list)
+    end
   end
 end
