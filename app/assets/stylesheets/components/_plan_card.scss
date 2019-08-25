@@ -4,8 +4,21 @@
   padding-bottom: 25px;
 }
 
+#button-position {
+  position: relative;
+  display: flex;
+}
+
+#button-plan {
+  position: absolute;
+  top: 30px;
+  right: 10px;
+}
+
 .plan-image {
   width: 150px;
   height: 150px;
   object-fit: cover;
 }
+
+
