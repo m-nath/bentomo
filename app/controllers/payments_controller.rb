@@ -3,6 +3,14 @@ class PaymentsController < ApplicationController
   before_action :set_order
 
   def new
+    @konbini = @order.plan.kitchen.konbini
+
+    @marker = [{
+                 lat: @konbini.latitude,
+                 lng: @konbini.longitude,
+                 infoWindow: render_to_string(partial: "shared/info_window", locals: { konbini: @konbini }),
+                 image_url: helpers.asset_url('konbini.jpg')
+    }]
   end
 
   def create
@@ -26,10 +34,10 @@ class PaymentsController < ApplicationController
     redirect_to new_order_payment_path(@order)
   end
 
-private
+  private
 
   def set_order
-    @order = current_user.orders.where(state: 'pending').find(params[:order_id])
+    @order = current_user.orders.find(params[:order_id])
     authorize @order
   end
 end
