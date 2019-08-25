@@ -1,2 +1,5 @@
-<h6><%= konbini.name %></h6>
-<p>Address: <%= konbini.address %></p>
+<div class="container">
+  <% @kitchens.each do |kitchen| %>
+    <h6><%= link_to kitchen.name, kitchen_path(kitchen) %></h6>
+  <% end %>
+</div>

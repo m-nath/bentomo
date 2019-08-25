@@ -149,10 +149,10 @@ User.all.each do |user|
   )
   puts "created #{e.name}"
 
-  rand(1..2).times do
+  rand(1..3).times do
     Location.create!(
       label: ["Home", "Work"].sample,
-      address: ["1-3-21, Meguro, Meguro-ku, Tokyo", "3-13-6, Meguro, Meguro-ku, Tokyo", "1-21-20, Higashiyama, Meguro-ku, Tokyo"].sample,
+      address: ["1-3-21, Meguro, Meguro-ku, Tokyo", "3-13-6, Meguro, Meguro-ku, Tokyo", "1-21-20, Higashiyama, Meguro-ku, Tokyo", "‎2 Shimomeguro, Meguro-ku, Tokyo", "1-24-9, Meguro, Meguro-ku, Tokyo"].sample,
       user: user  #real office addres e.g. Google, Amazon, Rakuten, Impacthub
     )
   end
