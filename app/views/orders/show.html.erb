@@ -1,4 +1,6 @@
-<h1>Order Confirmation</h1>
+# whats this for?? delete if no use
+
+<h1>Order</h1>
 <div class="container">
   <div class="form-group">
     <label for="start-date" class="col-form-label">Start Date:</label>
@@ -11,7 +13,8 @@
     <label for="request" class="col-form-label">Request: <%= @order.request %></label>
   </div>
   <div class="form-group">
-    <label for="amount" class="col-form-label">Amount: <%= humanized_money_with_symbol(@order.amount) %></label>
+    Amount: <%= humanized_money_with_symbol(@order.amount), label: {for: 'Amount', class:'col-form-label'} %>
+    <!-- <label for="amount" class="col-form-label"></label> -->
   </div>
   <%= link_to "Edit", edit_order_path(@order) %>
 </div>

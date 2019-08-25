@@ -17,7 +17,9 @@
 <div class="container">
   <!-- TAB SECTION START -->
   <!-- TAB -->
-  <ul class="nav nav-tabs" id="myTab" role="tablist">
+  <ul class="nav nav-tabs" id="myTab" role="tablist" style="
+    font-size: large;
+    font-weight: bold;">
     <li class="nav-item">
       <a class="tab-text nav-link active" id="kitchen-tab" data-toggle="tab" href="#kitchen" role="tab" aria-controls="kitchen" aria-selected="true">Kitchens</a>
     </li>
@@ -29,46 +31,21 @@
   <div class="tab-content" id="myTabContent">
     <!-- kitchen content -->
     <div class="tab-pane show active" id="kitchen" role="tabpanel" aria-labelledby="kitchen-tab">
+
+      <%= render 'shared/kitchencard_index' %>
+      <div class="d-flex justify-content-center">
+        <p class="btn btn-secondery mx-auto my-3"><%= link_to "more kitchens", kitchens_path %></p>
+      </div>
+    </div>
+    <!-- plan content -->
+    <div class="tab-pane" id="plan" role="tabpanel" aria-labelledby="plan-tab">
       <div class="row mt-3">
-        <% @kitchens.each do |kitchen|%>
-          <div class="col-md-4 col-sm-6 col-sm-12">
-            <div class="card-trip-home">
-              <%= cl_image_tag(kitchen.photo) %>
-              <div class="card-trip-infos">
-                <div>
-                  <h4 class="tab-text-content"><%= link_to kitchen.name, kitchen_path(kitchen) %></h4>
-                </div>
-                <%= link_to (cl_image_tag kitchen.user.photo, class:"card-trip-user-big avatar-bordered"), kitchen_path(kitchen) %>
-              </div>
-              <div class="mx-3">
-                <% kitchen.plans.each do |plan|
-                  plan.tag_list.each do |tag| %>
-                  <%= link_to '#'+tag, plans_tagged_path(tag: tag), class: "tab-text-tag" %>
-                <% end %>
-              <% end %>
-            </div>
-            <!-- <div class="mx-3">
-                <% kitchen.plans.each do |plan| %>
-                  <%= link_to plan.name,  plan_path(plan), class: "btn btn-short"%>
-                <% end %>
-              </div> -->
-          </div>
-        </div>
-      <% end %>
+        <%= render 'shared/plancard_index' %>
+      </div>
+      <div class="d-flex justify-content-center">
+        <p class="btn btn-secondery mx-auto my-3"><%= link_to "more plans", plans_path %></p>
+      </div>
     </div>
-    <div class="d-flex justify-content-center">
-      <p class="btn btn-secondery mx-auto my-3"><%= link_to "more kitchens", kitchens_path %></p>
-    </div>
+    <!-- TAB SECTION END -->
   </div>
-  <!-- plan content -->
-  <div class="tab-pane" id="plan" role="tabpanel" aria-labelledby="plan-tab">
-    <div class="row mt-3">
-      <%= render 'shared/plancard_index' %>
-    </div>
-    <div class="d-flex justify-content-center">
-      <p class="btn btn-secondery mx-auto my-3"><%= link_to "more plans", plans_path %></p>
-    </div>
-  </div>
-  <!-- TAB SECTION END -->
-</div>
-<%= javascript_pack_tag "typed" %>
+  <%= javascript_pack_tag "typed" %>

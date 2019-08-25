@@ -1,24 +1,24 @@
-
-  <% @plans.each do |plan|%>
-    <div class="col-md-4 col-sm-6 col-sm-12">
-      <div class="card-trip-home">
-        <%= cl_image_tag plan.photo %>
-        <div class="card-trip-infos">
-          <div>
-            <h4 class="tab-text-content"><%= link_to plan.name, plan_path(plan) %></h4>
-            <p><%= plan.description%></p>
-          </div>
-          <%= link_to (cl_image_tag plan.kitchen.user.photo, class:"card-trip-user-big avatar-bordered"), kitchen_path(plan.kitchen) %>
+<% @plans.each do |plan|%>
+  <div class="col-lg-3 col-md-4 col-md-6 col-sm-12">
+    <div class="card-trip-home">
+      <%= cl_image_tag plan.photo %>
+      <div class="card-trip-infos">
+        <div>
+          <h4 class="tab-text-content"><%= link_to plan.name, plan_path(plan), { :class=>"stretched-link" }  %></h4>
+          <!-- <p><%= plan.description.truncate_words(10)%></p> -->
         </div>
-        <div class="mx-3 d-flex justify-content-between">
-          <div>
-            <% plan.tag_list.each do |tag| %>
-              <%= link_to '#'+tag, plans_path(tag: tag), class: "tab-text-tag" %>
-            <% end %>
-          </div>
-          <h5><%=humanized_money_with_symbol(plan.price)%></h5>
+        <%= link_to (cl_image_tag plan.kitchen.user.photo, class:"card-trip-user-big avatar-bordered"), kitchen_path(plan.kitchen) %>
+      </div>
+      <div class="mx-3 pl-3">
+        <div class='row'>
+          <% plan.tag_list.each do |tag| %>
+            <%= link_to '#'+tag, plans_path(tag: tag), class: "tab-text-tag" %>
+          <% end %>
+        </div>
+        <div class='row d-flex align-items-end flex-column bd-highlight mb-3'>
+          <h5 class='pr-3'><%=humanized_money_with_symbol(plan.price)%>/day</h5>
         </div>
       </div>
     </div>
-  <% end %>
-
+  </div>
+<% end %>
