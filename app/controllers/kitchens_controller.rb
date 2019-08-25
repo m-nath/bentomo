@@ -2,10 +2,26 @@ class KitchensController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    if params[:search].present?
-      @kitchens = policy_scope(Kitchen).global_search(params[:search][:query])
+    # if params[:search].present?
+    #   @kitchens = policy_scope(Kitchen).global_search(params[:search][:query])
+    # else
+    #   @kitchens = policy_scope(Kitchen).order(name: :desc)
+    # end
+    if params[:search]
+      query = params[:search][:query]
+      @tags = params[:search][:tags].reject(&:blank?) if params[:search][:tags].present?
+
+      if query.present? && @tags != nil
+        @kitchens = policy_scope(Kitchen).global_search(query).tagged_with(@tags)
+      elsif query.present?
+        @kitchens = policy_scope(Kitchen).global_search(query)
+      elsif @tags.any?
+        @kitchens = policy_scope(Kitchen).tagged_with(@tags)
+      end
+    elsif params[:tag].present?
+      @kitchens = policy_scope(Kitchen).tagged_with(params[:tag])
     else
-      @kitchens = policy_scope(Kitchen).order(name: :desc)
+      @kitchens = policy_scope(Kitchen)
     end
 
     # @konbinis = Konbini.all
@@ -13,26 +29,36 @@ class KitchensController < ApplicationController
       {
         lat: kitchen.konbini.latitude,
         lng: kitchen.konbini.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { konbini: kitchen.konbini }),
-      image_url: helpers.asset_url('konbini.jpg')}
+        infoWindow: render_to_string(partial: "shared/info_window", locals: { konbini: kitchen.konbini }),
+        image_url: helpers.asset_url('konbini.jpg')
+    }
     end
     @markers = konbinis.uniq
   end
 
+  def tagged
+    if params[:tag].present?
+      @kitchens = policy_scope(Kitchen).tagged_with(params[:tag])
+    else
+      @kitchens = policy_scope(Kitchen)
+    end
+  end
 
   def show
     @kitchen = policy_scope(Kitchen).find(params[:id])
     authorize @kitchen
-    p    @konbini = @kitchen.konbini
+    @plan = @kitchen.plans
+    @konbini = @kitchen.konbini
 
     # don't touch this -----
     @marker = [{
                  lat: @konbini.latitude,
                  lng: @konbini.longitude,
-                 infoWindow: render_to_string(partial: "info_window", locals: { konbini: @konbini }),
+                 infoWindow: render_to_string(partial: "shared/info_window", locals: { konbini: @konbini }),
                  image_url: helpers.asset_url('konbini.jpg')
     }]
   end
+
 
   def new
     @kitchen = Kitchen.new
@@ -41,9 +67,9 @@ class KitchensController < ApplicationController
 
     @markers = @konbinis.map do |konbini|
       {
-        lat: konbini.longitude,
-        lng: konbini.latitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { konbini: konbini }),
+        lat: konbini.latitude,
+        lng: konbini.longitude,
+        infoWindow: render_to_string(partial: "shared/info_window", locals: { konbini: konbini }),
       image_url: helpers.asset_url('konbini.jpg')}
     end
   end

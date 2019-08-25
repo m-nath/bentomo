@@ -10,6 +10,14 @@ class OrdersController < ApplicationController
     # @order = policy_scope(Order).find(params[:id])
     @order = current_user.orders.where(state: 'paid').find(params[:id])
     authorize @order
+    @konbini = @order.plan.kitchen.konbini
+
+    @marker = [{
+                 lat: @konbini.latitude,
+                 lng: @konbini.longitude,
+                 infoWindow: render_to_string(partial: "shared/info_window", locals: { konbini: @konbini }),
+                 image_url: helpers.asset_url('konbini.jpg')
+    }]
   end
 
   def create
@@ -17,10 +25,14 @@ class OrdersController < ApplicationController
     @plan = Plan.find(params[:plan_id])
     @order.user = current_user
     @order.plan = @plan
+    days = @order.date.split(', ').size
+    @order.amount = @plan.price * days
     @order.state = 'pending'
     authorize @order
     if @order.save
       redirect_to new_order_payment_path(@order)
+    else
+      render :_form
     end
 
   end
@@ -39,6 +51,6 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:user_id, :plan_id, :amount, :date)
+    params.require(:order).permit(:user_id, :plan_id, :amount, :date, :request)
   end
 end
