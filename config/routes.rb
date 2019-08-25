@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  get 'dishes/new'
   #----------usually useless above----------
   devise_for :users, controllers: { registrations: 'users/registrations' }
   root to: 'pages#home'

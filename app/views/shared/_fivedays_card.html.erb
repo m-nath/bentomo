@@ -3,6 +3,11 @@
   <div class="d-flex flex-row">
     <div class="p-2 bd-highlight">
       <h2><%= @plan.name %></h2>
+        <!-- link to edit plan -->
+      <% if @plan.kitchen.user == current_user %>
+        <%= render 'plans/edit_form' %>
+      <% end %>
+      <!-- link to edit plan -->
       <p><%= @plan.description %></p>
     </div>
 
