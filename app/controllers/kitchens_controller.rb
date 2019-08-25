@@ -24,58 +24,39 @@ class KitchensController < ApplicationController
       @kitchens = policy_scope(Kitchen)
     end
 
-    @user = current_user
-    locations = @user.locations
-    # @locations = @user.locations.geocoded.pluck(:address)
-    # @locations.pluck(:address) do |location|
-    search_locations = []
-    locations.map do |location|
-      search = Konbini.near(location, 3)
-      search_locations << search
-    end
+    if user_signed_in?
+      @user = current_user
+      locations = @user.locations
+      search_locations = []
+      locations.map do |location|
+        search = Konbini.near(location, 2)
+        search_locations << search
+      end
 
-    konbinis = search_locations.map do |search_location|
-      search_location.map do |search|
+      konbinis = search_locations.map do |search_location|
+        search_location.map do |search|
+          {
+            lat: search.latitude,
+            lng: search.longitude,
+            infoWindow: render_to_string(partial: "info_window", locals: { kitchen: search_location }),
+            image_url: helpers.asset_url('konbini.jpg')
+          }
+        end
+      end
+      konbinim = konbinis.flatten
+      @markers = konbinim.uniq
+    else
+      konbinis = @kitchens.map do |kitchen|
         {
-          lat: search.latitude,
-          lng: search.longitude
-          # infoWindow: render_to_string(partial: "info_window", locals: { konbini: search_location }),
-          # image_url: helpers.asset_url('konbini.jpg')
+          lat: kitchen.konbini.latitude,
+          lng: kitchen.konbini.longitude,
+          infoWindow: render_to_string(partial: "info_window", locals: { kitchen: kitchen.konbini }),
+          image_url: helpers.asset_url('konbini.jpg')
         }
       end
+      @markers = konbinis.uniq
     end
-    @markers = konbinis.uniq
   end
-  #   @search_locations.map do
-
-  #   end
-  #   konbinis = @search_locations.map do |search_location|
-  #     {
-  #       lat: search_location.latitude,
-  #       lng: search_location.longitude,
-  #       infoWindow: render_to_string(partial: "shared/info_window", locals: { konbini: search_location }),
-  #       image_url: helpers.asset_url('konbini.jpg')
-  #     }
-  #   end
-  #   @markers = konbinis.uniq
-  # end
-  #
-  #   @locations.each do |location|
-  #     searches = Konbini.near(location, 1)
-  #     search_locations << searches
-  #   end
-
-  # else
-  #   konbinis = @kitchens.map do |kitchen|
-  #     {
-  #       lat: kitchen.konbini.latitude,
-  #       lng: kitchen.konbini.longitude,
-  #       infoWindow: render_to_string(partial: "shared/info_window", locals: { konbini: kitchen.konbini }),
-  #       image_url: helpers.asset_url('konbini.jpg')
-  #     }
-  #   end
-  #   @markers = konbinis.uniq
-  # end
 
   def tagged
     if params[:tag].present?
