@@ -117,7 +117,7 @@ plan_1 = Plan.create!(
   price: 600,
   kitchen: kitchen_1,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566797616/09d90a044e3723351bcb1177813730bd7070814c_curxdw.jpg",
-  tag_list: ['low carb', 'keto', 'high protein'],
+  tag_list: ['low carb', 'keto', 'high protein']
 )
 
 Dish.create!(
@@ -151,7 +151,7 @@ Dish.create!(
 kitchen_1.dishes.take(5).each do |dish|
     DishPlan.create!(
       dish: dish,
-      plan: plan_1,
+      plan: plan_1
     )
   end
 
@@ -183,7 +183,7 @@ plan_2 = Plan.create!(
   price: 700,
   kitchen: kitchen_2,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566803219/media_ddu2xi.jpg",
-  tag_list: ['japanese', 'healthy', 'nutritious'],
+  tag_list: ['japanese', 'healthy', 'nutritious']
 )
 
 Dish.create!(
@@ -217,7 +217,7 @@ Dish.create!(
 kitchen_2.dishes.take(5).each do |dish|
     DishPlan.create!(
       dish: dish,
-      plan: plan_2,
+      plan: plan_2
     )
   end
 
@@ -249,7 +249,7 @@ plan_3 = Plan.create!(
   price: 800,
   kitchen: kitchen_3,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566799939/capg70tq2vvv2itcrl4v.jpg",
-  tag_list: ['japanese', 'high protein', 'nutritious'],
+  tag_list: ['japanese', 'high protein', 'nutritious']
 )
 
 Dish.create!(
@@ -283,7 +283,7 @@ Dish.create!(
 kitchen_3.dishes.take(5).each do |dish|
     DishPlan.create!(
       dish: dish,
-      plan: plan_3,
+      plan: plan_3
     )
   end
 
@@ -313,7 +313,7 @@ plan_4 = Plan.create!(
   price: 800,
   kitchen: kitchen_4,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566799058/aa8fdf9deed8ec996bddbe7ebe7afb0519ede164_hhnlrt.jpg",
-  tag_list: ['japanese', 'high protein', 'nutritious'],
+  tag_list: ['japanese', 'high protein', 'nutritious']
 )
 
 Dish.create!(
@@ -347,7 +347,7 @@ Dish.create!(
 kitchen_4.dishes.take(5).each do |dish|
     DishPlan.create!(
       dish: dish,
-      plan: plan_4,
+      plan: plan_4
     )
   end
 
@@ -378,7 +378,7 @@ plan_5 = Plan.create!(
   price: 800,
   kitchen: kitchen_5,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566806459/0f49b057_diutoo.jpg",
-  tag_list: ['kids', 'nutritious'],
+  tag_list: ['kids', 'nutritious']
 )
 
 Dish.create!(
@@ -412,14 +412,207 @@ Dish.create!(
 kitchen_5.dishes.take(5).each do |dish|
     DishPlan.create!(
       dish: dish,
-      plan: plan_5,
+      plan: plan_5
     )
   end
 
 # -------------------
 
+# -------------------
+puts 'Creating housewife no.6 and its kitchen, plan, dishes'
 
+hw_6= User.create!(
+  email:'hw6@gmail.com',
+  first_name: 'Sakura',
+  last_name: 'Saotome',
+  password: "123123",
+  remote_photo_url: 'https://res.cloudinary.com/dxouryvao/image/upload/v1566813779/58613dbd2494c07b790a8e2998879c0b_dmr7nq.jpg'
+)
 
+kitchen_6 = Kitchen.create!(
+  name: 'Character bento',
+  description: 'Everytime you open the bento, you will be suprised. These will lead you to small fantasy.',
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566813779/58613dbd2494c07b790a8e2998879c0b_dmr7nq.jpg",
+  user: hw_6,
+  tag_list: ['kids', 'nutritious'],
+  konbini_id: Konbini.all.ids.sample
+)
+
+plan_6 = Plan.create!(
+  name: 'Character bento plan',
+  description: '5 Days character bento plan',
+  price: 1000,
+  kitchen: kitchen_6,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566814113/bento-box-eve1001520.jpg.1200x800_q85_crop_hxgzhw.jpg",
+  tag_list: ['kids', 'nutritious']
+)
+
+Dish.create!(
+      name: 'Mario bento',
+      kitchen: kitchen_6,
+      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566813659/0000001162_1_tw0v5g.jpg"
+    )
+Dish.create!(
+      name: 'Pikachu bento',
+      kitchen: kitchen_6,
+      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566814362/830c0df582fd42b52e0887d96364d5665ae7c0c1_cfggun.jpg"
+    )
+
+Dish.create!(
+      name: 'Kitty bento',
+      kitchen: kitchen_6,
+      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566814523/mm461_wtgf9n.jpg"
+    )
+
+Dish.create!(
+      name: 'Anpanman bento',
+      kitchen: kitchen_6,
+      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566814597/124075282737416413348_20090427_01x_anwwug.jpg"
+    )
+Dish.create!(
+      name: 'Snoopy bento',
+      kitchen: kitchen_6,
+      remote_photo_url: "https://s3-ap-northeast-1.amazonaws.com/images.hintos.jp/wp-content/uploads/2017/08/09195007/obentopark_20170816_03-e1502243543135.jpg"
+    )
+
+kitchen_6.dishes.take(5).each do |dish|
+    DishPlan.create!(
+      dish: dish,
+      plan: plan_6
+    )
+  end
+
+# -------------------
+# -------------------
+puts 'Creating housewife no.7 and its kitchen, plan, dishes'
+
+hw_7= User.create!(
+  email:'hw7@gmail.com',
+  first_name: 'Mika',
+  last_name: 'Komori',
+  password: "123123",
+  remote_photo_url: 'https://res.cloudinary.com/dxouryvao/image/upload/v1566814914/knb2001_detail031_z8bs8z.jpg'
+)
+
+kitchen_7 = Kitchen.create!(
+  name: 'Wa bento',
+  description: 'This is the authentic Japanese style of Bento',
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566813779/58613dbd2494c07b790a8e2998879c0b_dmr7nq.jpg",
+  user: hw_7,
+  tag_list: ['japanese','nutritious'],
+  konbini_id: Konbini.all.ids.sample
+)
+
+plan_7 = Plan.create!(
+  name: 'Character bento plan',
+  description: '5 Days Wa bento plan',
+  price: 1000,
+  kitchen: kitchen_7,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566815469/pei-wei-bento-promo_v7b3kz.gif",
+  tag_list: ['japanese','nutritious']
+)
+
+Dish.create!(
+      name: 'Baked salmon bento',
+      kitchen: kitchen_7,
+      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566815050/new_xl_1488162889_4009_xjjrnh.jpg"
+    )
+Dish.create!(
+      name: 'Osechi bento',
+      kitchen: kitchen_7,
+      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566815587/598d5ce228726_amrbzv.jpg"
+    )
+
+Dish.create!(
+      name: 'Mixed bento',
+      kitchen: kitchen_7,
+      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566815717/bento180411_rmcsxz.jpg"
+    )
+
+Dish.create!(
+      name: 'Teriyaki bento',
+      kitchen: kitchen_7,
+      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566826503/japanese-bento-box_myesfv.jpg"
+    )
+Dish.create!(
+      name: 'Takikomi bento',
+      kitchen: kitchen_7,
+      remote_photo_url: "https://s3-ap-northeast-1.amazonaws.com/testmorimalv2/img/Recipe-Image1-3141e99fb30e95d92cc3238cd125081385abea29b58a0710bb25ce6b74ae10d4f65.jpg"
+    )
+
+kitchen_7.dishes.take(5).each do |dish|
+    DishPlan.create!(
+      dish: dish,
+      plan: plan_7
+    )
+  end
+
+# -------------------
+# -------------------
+puts 'Creating housewife no.8 and its kitchen, plan, dishes'
+
+hw_8= User.create!(
+  email:'hw8@gmail.com',
+  first_name: 'Kaori',
+  last_name: 'Midoriyama',
+  password: "123123",
+  remote_photo_url: 'https://res.cloudinary.com/dxouryvao/image/upload/v1566827067/11412970_0_g2dhzz.jpg'
+)
+
+kitchen_8 = Kitchen.create!(
+  name: 'Organic bento',
+  description: 'This is especially for those who wants food with fresh organic ingredients and richer in certain nutrients',
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566813779/58613dbd2494c07b790a8e2998879c0b_dmr7nq.jpg",
+  user: hw_8,
+  tag_list: ['organic','healthy','nutritious'],
+  konbini_id: Konbini.all.ids.sample
+)
+
+plan_8 = Plan.create!(
+  name: 'Character bento plan',
+  description: '5 Days organic challenge plan',
+  price: 1100,
+  kitchen: kitchen_8,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566815469/pei-wei-bento-promo_v7b3kz.gif",
+  tag_list: ['organic','healthy','nutritious']
+)
+
+Dish.create!(
+      name: 'blessings of nature',
+      kitchen: kitchen_8,
+      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566829323/7287e7c3ee269234ead26299873ce4be_hyn6il.jpg"
+    )
+Dish.create!(
+      name: 'organic Wa bento',
+      kitchen: kitchen_8,
+      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566829533/51F316E2-750E-4B8C-8476-45B13D2205B4_txqd7i.jpg"
+    )
+
+Dish.create!(
+      name: 'low-carb organic bento',
+      kitchen: kitchen_8,
+      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566829781/image_ckleii.jpg"
+    )
+
+Dish.create!(
+      name: 'organic sand',
+      kitchen: kitchen_8,
+      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566830017/58bdb7fcbc8ebd22008b4769-750-563_c8yj6r.jpg"
+    )
+Dish.create!(
+      name: 'salad bowl',
+      kitchen: kitchen_8,
+      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566830099/healthy-food-inspiration-instagram-e1432362958184_rbzjcw.jpg"
+    )
+
+kitchen_8.dishes.take(5).each do |dish|
+    DishPlan.create!(
+      dish: dish,
+      plan: plan_8
+    )
+  end
+
+# -------------------
 
 # puts "added #{User.count} users."
 
