@@ -11,7 +11,6 @@ puts 'destroy previous seeds'
 Order.destroy_all if Rails.env.development?
 DishPlan.destroy_all if Rails.env.development?
 Kitchen.destroy_all if Rails.env.development?
-Konbini.destroy_all if Rails.env.development?
 Plan.destroy_all if Rails.env.development?
 Location.destroy_all if Rails.env.development?
 User.destroy_all if Rails.env.development?

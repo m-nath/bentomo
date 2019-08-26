@@ -1,8 +1,8 @@
 <% if user_signed_in? %>
-  <button type="button" class="btn btn-main d-flex align-items-end" data-toggle="modal" data-target="#order_form" data-whatever="@getbootstrap" id="button-position">
+  <button type="button" class="btn btn-main d-flex align-items-end plan-button" data-toggle="modal" data-target="#order_form" data-whatever="@getbootstrap" id="order-button-width">
     <div class="price-text h5 text-center"><%= humanized_money_with_symbol(@plan.price) %>/day
-    <b>ORDER</b></div>
-
+      <b>ORDER</b>
+    </div>
   </button>
   <div class="modal fade" id="order_form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -35,15 +35,15 @@
                 <%= hidden_field_tag 'plan_id', @plan.id %>
                 <%= submit_tag 'Purchase', class: 'btn btn-main' %>
               <% end %>
-            <% end %>
             </div>
-          </div>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
+  </div>
 <% else %>
   <div class="d-flex align-items-end">
-  <%= link_to humanized_money_with_symbol(@plan.price)+'/day ORDER', new_user_session_path, class:'btn btn-main' %>
+    <%= link_to humanized_money_with_symbol(@plan.price)+'/day ORDER', new_user_session_path, class:'btn btn-main' %>
   </div>
 <% end %>
