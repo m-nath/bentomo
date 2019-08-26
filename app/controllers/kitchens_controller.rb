@@ -54,7 +54,7 @@ class KitchensController < ApplicationController
         {
           lat: search_location.latitude,
           lng: search_location.longitude,
-          infoWindow: render_to_string(partial: "info_window", locals: { kitchen: search_location }),
+          infoWindow: render_to_string(partial: "info_window", locals: { kitchen: search_location.kitchens }),
           image_url: helpers.asset_url('konbini.jpg')
         }
       end
