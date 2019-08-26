@@ -47,13 +47,14 @@ class KitchensController < ApplicationController
 
     if user_signed_in?
       @user = current_user
-      location = @user.locations.first
-      search = Konbini.near(location, 1)
-      konbinis = search.map do |search_location|
+      location = Location.find(@user.default_location)
+      radius = @user.radius || 5
+      @nearby_konbini = Konbini.near([location.latitude, location.longitude], radius)
+      konbinis = @nearby_konbini.map do |search_location|
         {
           lat: search_location.latitude,
           lng: search_location.longitude,
-          infoWindow: render_to_string(partial: "info_window", locals: { kitchen: search_location }),
+          infoWindow: render_to_string(partial: "info_window", locals: { kitchen: search_location.kitchens }),
           image_url: helpers.asset_url('konbini.jpg')
         }
       end
@@ -63,10 +64,11 @@ class KitchensController < ApplicationController
         {
           lat: kitchen.konbini.latitude,
           lng: kitchen.konbini.longitude,
-          infoWindow: render_to_string(partial: "info_window", locals: { kitchen: kitchen.konbini }),
+          infoWindow: render_to_string(partial: "info_window", locals: { kitchen: konbini.kitchens }),
           image_url: helpers.asset_url('konbini.jpg')
         }
       end
+      raise
       @markers = konbinis.uniq
     end
   end
@@ -100,11 +102,12 @@ class KitchensController < ApplicationController
     authorize @kitchen
     @konbinis = Konbini.all
 
-    if current_user.locations.exists?
+    if current_user.default_location.present?
       @user = current_user
-      location = @user.locations.first
-      search = Konbini.near(location, 1)
-      konbinis = search.map do |search_location|
+      radius = @user.radius || 5
+      location = Location.find(@user.default_location)
+      @nearby_konbini = Konbini.near([location.latitude, location.longitude], radius)
+      konbinis = @nearby_konbini.map do |search_location|
         {
           lat: search_location.latitude,
           lng: search_location.longitude,
