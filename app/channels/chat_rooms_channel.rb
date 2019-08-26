@@ -3,7 +3,7 @@ class ChatRoomsChannel < ApplicationCable::Channel
     stream_from "chat_room_#{params[:chat_room_id]}"
   end
 
-  def unsubscribed
-    # Any cleanup needed when channel is unsubscribed
-  end
+  # def unsubscribed
+  #   # Any cleanup needed when channel is unsubscribed
+  # end
 end

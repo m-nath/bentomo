@@ -16,6 +16,7 @@
       <%= yield %>
       <%= javascript_include_tag 'application' %>
       <%= javascript_pack_tag 'application' %>
+      <%= yield :after_js %>
     </main>
     <%= render 'shared/footer' %>
     <%#= javascript_pack_tag "application" %>    <!-- from app/javascript/packs/application.js -->
