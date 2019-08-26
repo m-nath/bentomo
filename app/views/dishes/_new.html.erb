@@ -19,7 +19,6 @@
             <%= f.input :name, as: :string, required: true, placeholder:'enter the dish name' %>
             <%= f.input :photo %>
             <%= f.input :photo_cache, as: :hidden, required: true%>
-
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondery" data-dismiss="modal">Close</button>
@@ -27,9 +26,8 @@
               <%= hidden_field_tag 'kitchen_id', @kitchen.id %>
               <%= submit_tag 'Create', class: 'btn btn-main' %>
             <% end %>
-          <% end %>
           </div>
-        </div>
+        <% end %>
       </div>
     </div>
   </div>
