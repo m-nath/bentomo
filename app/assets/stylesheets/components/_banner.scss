@@ -11,6 +11,11 @@
   font-weight: bold;
 }
 
+#banner-typed-text {
+  color: #ffffff;
+  text-shadow: 1px 1px 1px $gray;
+}
+
 .banner p {
   font-size: 20px;
   color: white;
@@ -40,7 +45,7 @@
 .white {
   position: absolute;
   left: 50px;
-  top: 250px;
+  top: 150px;
 }
 
 .plan-description {
@@ -69,7 +74,7 @@
 .banner-search{
   position: absolute;
   left: 50px;
-  top: 300px;
+  top: 200px;
 }
 
 .banner-p {
