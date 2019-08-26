@@ -3,7 +3,7 @@
     <div class="d-flex align-items-end justify-content-center" style="height: 60vh;">
       <h2 class="white"><%= @kitchen.name %></h2>
       <!-- link to edit kitchen -->
-      <%= render 'edit_form' %>
+      <%= render 'shared/edit_form' %>
       <!-- link to edit kitchen -->
       <p class="banner-p text-break"><%= @kitchen.description %> </p>
 
@@ -27,12 +27,20 @@
 
 <!-- this is for meals|owner view only (start)-->
   <div class="container">
-    <h2>Dishes</h2>
+    <h2 class="mt-5">Dishes</h2>
     <%= render 'dishes/new' %>
-    <% @kitchen.dishes.each do |dish|%>
-      <%= dish.name %>
-      <%= cl_image_tag dish.photo,width: 200, height: 200, crop: :fill %>
-    <% end %>
+      <div class="row m-5">
+        <% @kitchen.dishes.each do |dish|%>
+          <div class="col-lg-3 col-md-4 col-md-6 col-sm-12">
+            <div class="card-trip-dish">
+              <%= cl_image_tag dish.photo,width: 200, height: 200, crop: :fill %>
+              <%= dish.name %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+
   </div>
 <!-- this is for meals|owner view only (start)-->
 
