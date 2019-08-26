@@ -2,6 +2,7 @@ class Plan < ApplicationRecord
   belongs_to :kitchen
   has_many :dish_plans, dependent: :destroy
   has_many :dishes, through: :dish_plans
+  has_many :orders
 
   validates :name, presence: true
   monetize :price_cents
