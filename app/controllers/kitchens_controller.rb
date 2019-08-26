@@ -45,7 +45,7 @@ class KitchensController < ApplicationController
     #   konbinim = konbinis.flatten
     #   @markers = konbinim.uniq
 
-    if user_signed_in?
+    if user_signed_in? && current_user.default_location.present?
       @user = current_user
       location = Location.find(@user.default_location)
       radius = @user.radius || 5
@@ -64,7 +64,7 @@ class KitchensController < ApplicationController
         {
           lat: kitchen.konbini.latitude,
           lng: kitchen.konbini.longitude,
-          infoWindow: render_to_string(partial: "info_window", locals: { kitchen: konbini.kitchens }),
+          infoWindow: render_to_string(partial: "info_window", locals: { kitchen: @konbini.kitchens }),
           image_url: helpers.asset_url('konbini.jpg')
         }
       end
