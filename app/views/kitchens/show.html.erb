@@ -1,5 +1,5 @@
 <% if current_user == @kitchen.user %>
-<%= render 'show_housewife' %>
+  <%= render 'show_housewife' %>
 <% else %>
 <!-- overall condition: current user is not kitchen owner-->
 
@@ -12,8 +12,8 @@
     </div>
   </div>
   <!-- banner in kitchen (finish)-->
-  <div class="container">
 
+  <div class="container">
     <!-- fivedays_card (start) -->
     <div class="mb-3">
       <h2>Plans</h2>
@@ -40,8 +40,10 @@
     </div>
     <!-- this is for map (fin)-->
     <br>
-    <%= link_to "other kitchens", kitchens_path, class: "btn-secondery" %>
-    <%= link_to "New Plan", new_kitchen_plan_path(@kitchen), class: "btn btn-flat" %>
+    <div class="container">
+      <%= link_to "other kitchens", kitchens_path, class: "btn-secondery" %>
+      <%= link_to "New Plan", new_kitchen_plan_path(@kitchen), class: "btn-secondery" %>
+    </div>
 
 <!-- overall condition -->
 <% end %>
