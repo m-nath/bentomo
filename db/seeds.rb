@@ -104,7 +104,7 @@ konbini_1 = Konbini.find_by(mapbox_id: "e7b032ed39c419052f22a37fd9b17f647e146f37
 
 kitchen_1 = Kitchen.create!(
   name: 'Tomo Mama`s kitchen',
-  description: 'Healthy homemade food full of nutrition',
+  description: 'Healthy homemade food full of nutrition. Especially recommended for people who are trying to limit carbohydrates intake',
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566802345/Screen_Shot_2019-08-26_at_15.51.21_rngzbg.png",
   user: hw_1,
   tag_list: ['keto', 'low carb', 'japanese', 'healthy', 'nutritious'],
@@ -113,8 +113,7 @@ kitchen_1 = Kitchen.create!(
 
 plan_1 = Plan.create!(
   name: 'Healthy bento plan',
-  description: '5 Days healthy lunch bento plan: each meal has high protein content and low carbohydrates.'+'\n'+
-  'Recommended for people who are trying to limit carbohydrates intake',
+  description: '5 Days healthy lunch bento plan: each meal has high protein content and low carbohydrates.',
   price: 600,
   kitchen: kitchen_1,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566797616/09d90a044e3723351bcb1177813730bd7070814c_curxdw.jpg",
@@ -360,7 +359,7 @@ hw_5= User.create!(
   email:'hw5@gmail.com',
   first_name: 'Eri',
   last_name: 'Shimada',
-  password: "123123",
+  password: "123123", #do not need to change
   remote_photo_url: 'https://res.cloudinary.com/dxouryvao/image/upload/v1566806362/Screen_Shot_2019-08-26_at_16.58.56_udc4go.png'
 )
 
@@ -370,7 +369,7 @@ kitchen_5 = Kitchen.create!(
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566806332/tfEfVe3jp6BUfqALkJWE74jqdIvIRDigFTcz4xNEFqjsNWnoiIGqAnqaRHYRxvRn_gt1pkm.jpg",
   user: hw_5,
   tag_list: ['kids', 'nutritious'],
-  konbini_id: Konbini.all.ids.sample
+  konbini_id: Konbini.all.ids.sample #do not need to change
 )
 
 plan_5 = Plan.create!(
@@ -435,7 +434,7 @@ kitchen_5.dishes.take(5).each do |dish|
 # ]
 
 User.all.each do |user|
-  rand(1..3).times do
+  rand(1..2).times do
     Location.create!(
       label: ["Home", "Work"].sample,
       address: ["1-3-21, Meguro, Meguro-ku, Tokyo", "3-13-6, Meguro, Meguro-ku, Tokyo", "1-21-20, Higashiyama, Meguro-ku, Tokyo", "‎2 Shimomeguro, Meguro-ku, Tokyo", "1-24-9, Meguro, Meguro-ku, Tokyo", "2 Chome-20-8 Shimomeguro, Meguro City, Tokyo", "2-19-15 Kamimeguro, Meguro-ku, Tokyo", "1-8-1 Shimomeguro, Meguro-ku, Tokyo", "4-1-1 Shimomeguro, Meguro-ku, Tokyo", "2-4-36 Meguro, Meguro-ku, Tokyo"].sample,
