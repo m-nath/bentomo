@@ -29,6 +29,8 @@
         data-description="Plan <%= @order.plan.name %>"
         data-amount="<%= @order.amount_cents %>"
         data-currency="<%= @order.amount.currency %>"></script>
-    <button type="submit" class="btn-main">Purchase</button>
+    <div class="d-flex justify-content-center">
+      <button type="submit" class="btn-main">Purchase</button>
+    </div>
   <% end %>
 </div>
