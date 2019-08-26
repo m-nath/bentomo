@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :kitchens, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     resources :plans, only: [:new, :create]
     resources :dishes, only: [:new, :create]
+    resources :reviews, only: [:create]
   end
 
   resources :plans, only: [:index, :show, :edit, :update, :destroy] do

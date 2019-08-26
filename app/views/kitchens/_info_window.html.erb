@@ -1,5 +1,3 @@
-<div class="container">
-  <% @kitchens.each do |kitchen| %>
-    <h6><%= link_to kitchen.name, kitchen_path(kitchen) %></h6>
-  <% end %>
-</div>
+<% kitchens.each do |kitchen| %>
+  <h6><%= link_to kitchen.name, kitchen_path(kitchen) %></h6>
+<% end %>
