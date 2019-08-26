@@ -24,6 +24,10 @@ class Kitchen < ApplicationRecord
 
   def average_rating
     ratings = reviews.pluck(:rating)
-    ratings.sum / ratings.length
+    if ratings.empty?
+      return 0
+    else
+      ratings.sum / ratings.length
+    end
   end
 end
