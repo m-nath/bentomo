@@ -47,10 +47,10 @@ class KitchensController < ApplicationController
 
     if user_signed_in?
       @user = current_user
-      location = @user.default_location
-      radius = @user.radius
-      search = Konbini.near(location, radius)
-      konbinis = search.map do |search_location|
+      location = Location.find(@user.default_location)
+      radius = @user.radius || 5
+      @nearby_konbini = Konbini.near([location.latitude, location.longitude], radius)
+      konbinis = @nearby_konbini.map do |search_location|
         {
           lat: search_location.latitude,
           lng: search_location.longitude,
@@ -102,11 +102,12 @@ class KitchensController < ApplicationController
     authorize @kitchen
     @konbinis = Konbini.all
 
-    if current_user.locations.exists?
+    if current_user.default_location.present?
       @user = current_user
-      location = @user.locations.first
-      search = Konbini.near(location, 1)
-      konbinis = search.map do |search_location|
+      radius = @user.radius || 5
+      location = Location.find(@user.default_location)
+      @nearby_konbini = Konbini.near([location.latitude, location.longitude], radius)
+      konbinis = @nearby_konbini.map do |search_location|
         {
           lat: search_location.latitude,
           lng: search_location.longitude,

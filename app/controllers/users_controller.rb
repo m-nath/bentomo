@@ -11,7 +11,6 @@ class UsersController < ApplicationController
     @user.update(user_params)
     @user.locations.build
     authorize @user
-    raise
     redirect_to root_path
   end
 
