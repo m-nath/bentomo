@@ -38,20 +38,39 @@
   width: 250px;
 }
 
+.dropdown-text {
+  color: $gray;
+  font-weight: 600;
+  text-decoration: none !important;
+}
 
-// .plan-button {
-//   position: absolute;
-//   left: 1px;
-//   top: 0px;
-//   width: 250px;
-// }
+.dropdown-text:focus {
+  color: $gray;
+  font-weight: 600;
+  text-decoration: none !important;
+}
 
+.dropdown-text a {
+  color: $gray;
+  font-weight: 600;
+  text-decoration: none !important;
+}
 
+.dropdown-text:hover {
+  color: $red;
+  font-weight: 600;
+  text-decoration: none !important;
+}
 
+.plan-button {
+  height: fit-content;
+}
 
-
-
-
+.dropdown-card-header {
+  border-style: none;
+  align-items: baseline;
+  box-shadow: 1px 2px 4px 1px $light-gray;
+}
 
 
 
