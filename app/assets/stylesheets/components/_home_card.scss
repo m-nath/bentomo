@@ -86,13 +86,13 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 6px rgba(0,0,0,0.2);
-  height: 22rem;
+  height: 12rem;
   margin-bottom: 16px;
 }
 
 
 .card-trip-dish > img {
-  height: 200px;
+  height: 140px;
   width: 100%;
   object-fit: cover;
 }
@@ -100,7 +100,8 @@
 .card-trip-dish h2 {
   font-size: 16px;
   font-weight: bold;
-  margin: 0;
+  margin-top: 8px;
+  text-align: center;
 }
 
 .card-trip-dish p {
