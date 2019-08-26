@@ -117,43 +117,43 @@ plan_1 = Plan.create!(
   price: 600,
   kitchen: kitchen_1,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566797616/09d90a044e3723351bcb1177813730bd7070814c_curxdw.jpg",
-  tag_list: ['low carb', 'keto', 'high protein'],
+  tag_list: ['low carb', 'keto', 'high protein']
 )
 
 Dish.create!(
-      name: 'Salmon bento with cauliflower rice',
-      kitchen: kitchen_1,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566797877/eb9fe25a56fa5bd32e6ea839e16763123aa9659c_k0zpd6.jpg"
-    )
+  name: 'Salmon bento with cauliflower rice',
+  kitchen: kitchen_1,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566797877/eb9fe25a56fa5bd32e6ea839e16763123aa9659c_k0zpd6.jpg"
+)
 Dish.create!(
-      name: '3 colour bento',
-      kitchen: kitchen_1,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566799087/348d2f8f6f8ca22173be85bac1ad209ce9bdde64_y7iqns.jpg"
-    )
+  name: '3 colour bento',
+  kitchen: kitchen_1,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566799087/348d2f8f6f8ca22173be85bac1ad209ce9bdde64_y7iqns.jpg"
+)
 
 Dish.create!(
-      name: 'Oden bento',
-      kitchen: kitchen_1,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566798597/649b65f93bc49abd9b27d5621c68e001ec61deb4_ficikm.jpg"
-    )
+  name: 'Oden bento',
+  kitchen: kitchen_1,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566798597/649b65f93bc49abd9b27d5621c68e001ec61deb4_ficikm.jpg"
+)
 
 Dish.create!(
-      name: 'Juicy chicken bento',
-      kitchen: kitchen_1,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566797740/b497627bb27affe0e4bf43703808ee727010a993_s7y0bv.jpg"
-    )
+  name: 'Juicy chicken bento',
+  kitchen: kitchen_1,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566797740/b497627bb27affe0e4bf43703808ee727010a993_s7y0bv.jpg"
+)
 Dish.create!(
-      name: 'Tara white fish bento',
-      kitchen: kitchen_1,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566797840/8e8c2686f374e20f756282d20e7d3487c728c163_uytllu.jpg"
-    )
+  name: 'Tara white fish bento',
+  kitchen: kitchen_1,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566797840/8e8c2686f374e20f756282d20e7d3487c728c163_uytllu.jpg"
+)
 
 kitchen_1.dishes.take(5).each do |dish|
-    DishPlan.create!(
-      dish: dish,
-      plan: plan_1,
-    )
-  end
+  DishPlan.create!(
+    dish: dish,
+    plan: plan_1
+  )
+end
 
 # -------------------
 # -------------------------------------------------------------------------
@@ -183,43 +183,43 @@ plan_2 = Plan.create!(
   price: 700,
   kitchen: kitchen_2,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566803219/media_ddu2xi.jpg",
-  tag_list: ['japanese', 'healthy', 'nutritious'],
+  tag_list: ['japanese', 'healthy', 'nutritious']
 )
 
 Dish.create!(
-      name: 'Maguro bento',
-      kitchen: kitchen_2,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566802230/cg4novwi51skxog6ojno.jpg"
-    )
+  name: 'Maguro bento',
+  kitchen: kitchen_2,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566802230/cg4novwi51skxog6ojno.jpg"
+)
 Dish.create!(
-      name: 'Tofu bento',
-      kitchen: kitchen_2,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566802168/urswr8pop0gn6zbtnfnw.jpg"
-    )
+  name: 'Tofu bento',
+  kitchen: kitchen_2,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566802168/urswr8pop0gn6zbtnfnw.jpg"
+)
 
 Dish.create!(
-      name: 'Prawn curry',
-      kitchen: kitchen_2,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566802117/odu3qomow649q4x4xbad.jpg"
-    )
+  name: 'Prawn curry',
+  kitchen: kitchen_2,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566802117/odu3qomow649q4x4xbad.jpg"
+)
 
 Dish.create!(
-      name: 'Seafood soup',
-      kitchen: kitchen_2,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566802114/nr7tcbxuiz6ytupmuiyi.jpg"
-    )
+  name: 'Seafood soup',
+  kitchen: kitchen_2,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566802114/nr7tcbxuiz6ytupmuiyi.jpg"
+)
 Dish.create!(
-      name: 'Chesse pasta',
-      kitchen: kitchen_2,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566802095/ynuqrlvz5jzyjsxt8ks6.jpg"
-    )
+  name: 'Chesse pasta',
+  kitchen: kitchen_2,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566802095/ynuqrlvz5jzyjsxt8ks6.jpg"
+)
 
 kitchen_2.dishes.take(5).each do |dish|
-    DishPlan.create!(
-      dish: dish,
-      plan: plan_2,
-    )
-  end
+  DishPlan.create!(
+    dish: dish,
+    plan: plan_2
+  )
+end
 
 # -------------------
 # only hw, kitchen, plan, changes, -------------------------------------------------------------------------
@@ -249,43 +249,43 @@ plan_3 = Plan.create!(
   price: 800,
   kitchen: kitchen_3,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566799939/capg70tq2vvv2itcrl4v.jpg",
-  tag_list: ['japanese', 'high protein', 'nutritious'],
+  tag_list: ['japanese', 'high protein', 'nutritious']
 )
 
 Dish.create!(
-      name: 'Maguro bento',
-      kitchen: kitchen_3,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566802230/cg4novwi51skxog6ojno.jpg"
-    )
+  name: 'Maguro bento',
+  kitchen: kitchen_3,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566802230/cg4novwi51skxog6ojno.jpg"
+)
 Dish.create!(
-      name: 'Tofu bento',
-      kitchen: kitchen_3,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566802168/urswr8pop0gn6zbtnfnw.jpg"
-    )
+  name: 'Tofu bento',
+  kitchen: kitchen_3,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566802168/urswr8pop0gn6zbtnfnw.jpg"
+)
 
 Dish.create!(
-      name: 'Prawn curry',
-      kitchen: kitchen_3,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566802117/odu3qomow649q4x4xbad.jpg"
-    )
+  name: 'Prawn curry',
+  kitchen: kitchen_3,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566802117/odu3qomow649q4x4xbad.jpg"
+)
 
 Dish.create!(
-      name: 'Seafood soup',
-      kitchen: kitchen_3,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566802114/nr7tcbxuiz6ytupmuiyi.jpg"
-    )
+  name: 'Seafood soup',
+  kitchen: kitchen_3,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566802114/nr7tcbxuiz6ytupmuiyi.jpg"
+)
 Dish.create!(
-      name: 'Chesse pasta',
-      kitchen: kitchen_3,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566802095/ynuqrlvz5jzyjsxt8ks6.jpg"
-    )
+  name: 'Chesse pasta',
+  kitchen: kitchen_3,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566802095/ynuqrlvz5jzyjsxt8ks6.jpg"
+)
 
 kitchen_3.dishes.take(5).each do |dish|
-    DishPlan.create!(
-      dish: dish,
-      plan: plan_3,
-    )
-  end
+  DishPlan.create!(
+    dish: dish,
+    plan: plan_3
+  )
+end
 
 # -------------------
 puts 'Creating housewife no.4 and its kitchen, plan, dishes'
@@ -313,43 +313,43 @@ plan_4 = Plan.create!(
   price: 800,
   kitchen: kitchen_4,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566799058/aa8fdf9deed8ec996bddbe7ebe7afb0519ede164_hhnlrt.jpg",
-  tag_list: ['japanese', 'high protein', 'nutritious'],
+  tag_list: ['japanese', 'high protein', 'nutritious']
 )
 
 Dish.create!(
-      name: 'Maguro bento',
-      kitchen: kitchen_4,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566802230/cg4novwi51skxog6ojno.jpg"
-    )
+  name: 'Maguro bento',
+  kitchen: kitchen_4,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566802230/cg4novwi51skxog6ojno.jpg"
+)
 Dish.create!(
-      name: 'Tofu bento',
-      kitchen: kitchen_4,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566802168/urswr8pop0gn6zbtnfnw.jpg"
-    )
+  name: 'Tofu bento',
+  kitchen: kitchen_4,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566802168/urswr8pop0gn6zbtnfnw.jpg"
+)
 
 Dish.create!(
-      name: 'Prawn curry',
-      kitchen: kitchen_4,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566802117/odu3qomow649q4x4xbad.jpg"
-    )
+  name: 'Prawn curry',
+  kitchen: kitchen_4,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566802117/odu3qomow649q4x4xbad.jpg"
+)
 
 Dish.create!(
-      name: 'Seafood soup',
-      kitchen: kitchen_4,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566802114/nr7tcbxuiz6ytupmuiyi.jpg"
-    )
+  name: 'Seafood soup',
+  kitchen: kitchen_4,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566802114/nr7tcbxuiz6ytupmuiyi.jpg"
+)
 Dish.create!(
-      name: 'Chesse pasta',
-      kitchen: kitchen_4,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566802095/ynuqrlvz5jzyjsxt8ks6.jpg"
-    )
+  name: 'Chesse pasta',
+  kitchen: kitchen_4,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566802095/ynuqrlvz5jzyjsxt8ks6.jpg"
+)
 
 kitchen_4.dishes.take(5).each do |dish|
-    DishPlan.create!(
-      dish: dish,
-      plan: plan_4,
-    )
-  end
+  DishPlan.create!(
+    dish: dish,
+    plan: plan_4
+  )
+end
 
 # -------------------
 # -------------------
@@ -378,43 +378,43 @@ plan_5 = Plan.create!(
   price: 800,
   kitchen: kitchen_5,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566806459/0f49b057_diutoo.jpg",
-  tag_list: ['kids', 'nutritious'],
+  tag_list: ['kids', 'nutritious']
 )
 
 Dish.create!(
-      name: 'Maguro bento',
-      kitchen: kitchen_5,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566806645/924954pb01_44113N_ay8eal.jpg"
-    )
+  name: 'Maguro bento',
+  kitchen: kitchen_5,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566806645/924954pb01_44113N_ay8eal.jpg"
+)
 Dish.create!(
-      name: 'Tofu bento',
-      kitchen: kitchen_5,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566806752/0_tivkoi.jpg"
-    )
+  name: 'Tofu bento',
+  kitchen: kitchen_5,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566806752/0_tivkoi.jpg"
+)
 
 Dish.create!(
-      name: 'Prawn curry',
-      kitchen: kitchen_5,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566806770/3_vrvtnc.jpg"
-    )
+  name: 'Prawn curry',
+  kitchen: kitchen_5,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566806770/3_vrvtnc.jpg"
+)
 
 Dish.create!(
-      name: 'Seafood soup',
-      kitchen: kitchen_5,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566806459/0f49b057_diutoo.jpg"
-    )
+  name: 'Seafood soup',
+  kitchen: kitchen_5,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566806459/0f49b057_diutoo.jpg"
+)
 Dish.create!(
-      name: 'Chesse pasta',
-      kitchen: kitchen_5,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566807039/Qt8GuENs8RMsW2bD_l_gxjkfb.jpg"
-    )
+  name: 'Chesse pasta',
+  kitchen: kitchen_5,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566807039/Qt8GuENs8RMsW2bD_l_gxjkfb.jpg"
+)
 
 kitchen_5.dishes.take(5).each do |dish|
-    DishPlan.create!(
-      dish: dish,
-      plan: plan_5,
-    )
-  end
+  DishPlan.create!(
+    dish: dish,
+    plan: plan_5
+  )
+end
 
 # -------------------
 
