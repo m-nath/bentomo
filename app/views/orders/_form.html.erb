@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
-  <button type="button" class="btn btn-main d-flex align-items-end" data-toggle="modal" data-target="#order_form" data-whatever="@getbootstrap">
-    <div class="price-text h5"><%= humanized_money_with_symbol(@plan.price) %>/day
+  <button type="button" class="btn btn-main d-flex align-items-end" data-toggle="modal" data-target="#order_form" data-whatever="@getbootstrap" id="button-position">
+    <div class="price-text h5 text-center"><%= humanized_money_with_symbol(@plan.price) %>/day
     <b>ORDER</b></div>
 
   </button>
