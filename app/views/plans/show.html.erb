@@ -49,7 +49,55 @@
   <h4>Other related plans:</h4>
   <div class="row mt-3">
     <% @plans = @related_plans%>
-    <%= render 'shared/plancard_index' %>
+    <%= render 'shared/plancard_index', plans: @related_pans %>
   </div>
 </div>
-<!-- other related plans end.  -->
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <% @related_plans.each.with_index(0) do |plan, index| %>
+      <li data-target="#carouselExampleIndicators" data-slide-to="<%= plan.photo %>" class="<%= index.zero? ? 'active' : '' %>"></li>
+    <% end %>
+  </ol>
+  <div class="carousel-inner">
+    <% @related_plans.each.with_index(0) do |plan, index| %>
+      <div class=" col-lg-3 col-md-4 col-sm-12  carousel-item <%= index.zero? ? 'active' : '' %>">
+        <div class=" card-trip-home">
+          <%= cl_image_tag plan.photo %>
+          <div class="card-trip-infos">
+            <div>
+              <h4 class="tab-text-content"><%= link_to plan.name, plan_path(plan), { :class=>"stretched-link" }  %></h4>
+              <!-- <p><%= plan.description.truncate_words(10)%></p> -->
+            </div>
+            <%= link_to (cl_image_tag plan.kitchen.user.photo, class:"card-trip-user-big avatar-bordered"), kitchen_path(plan.kitchen) %>
+          </div>
+          <div class="mx-3 pl-3">
+            <div class='row'>
+              <% plan.tag_list.each do |tag| %>
+                <%= link_to '#'+tag, plans_path(tag: tag), class: "tab-text-tag" %>
+              <% end %>
+            </div>
+            <div class='row d-flex align-items-end flex-column bd-highlight mb-3'>
+              <h5 class='pr-3'><%=humanized_money_with_symbol(plan.price)%>/day</h5>
+            </div>
+          </div>
+        </div>
+        <%#= image_tag(post.photo.large, class: 'd-block w-100 img-fluid') %>
+      </div>
+    <% end %>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<script type="text/javascript">
+  $(document).on('turbolinks:load', function(){
+     $('.carousel').carousel({
+        interval: 20000
+     });
+  });
+</script>
