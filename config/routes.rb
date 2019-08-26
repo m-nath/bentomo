@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   #----------usually useless above----------
-  devise_for :users, controllers: { registrations: 'users/registrations' }
+  devise_for :users
   root to: 'pages#home'
   get 'uikit', to: 'pages#uikit'
   get 'uikit_kid', to: 'pages#uikit_kid'
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   end
 
   get 'my_account', to: 'users#edit'
-  resources :users, only: [:update]
+  resources :users, only: [:edit, :update]
   resources :dish_plans, only: [:destroy]
   resources :locations, except:[:index, :show]
 

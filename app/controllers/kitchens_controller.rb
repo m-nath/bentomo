@@ -47,8 +47,9 @@ class KitchensController < ApplicationController
 
     if user_signed_in?
       @user = current_user
-      location = @user.locations.first
-      search = Konbini.near(location, 1)
+      location = @user.default_location
+      radius = @user.radius
+      search = Konbini.near(location, radius)
       konbinis = search.map do |search_location|
         {
           lat: search_location.latitude,
@@ -63,10 +64,11 @@ class KitchensController < ApplicationController
         {
           lat: kitchen.konbini.latitude,
           lng: kitchen.konbini.longitude,
-          infoWindow: render_to_string(partial: "info_window", locals: { kitchen: kitchen.konbini }),
+          infoWindow: render_to_string(partial: "info_window", locals: { kitchen: konbini.kitchens }),
           image_url: helpers.asset_url('konbini.jpg')
         }
       end
+      raise
       @markers = konbinis.uniq
     end
   end
