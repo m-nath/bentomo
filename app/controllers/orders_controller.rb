@@ -4,6 +4,23 @@ class OrdersController < ApplicationController
     @orders = policy_scope(Order)
     @current_orders = current_user.orders.where("date > ?", Time.now).order(date: :desc)
     @past_orders = current_user.orders.where("date < ?", Time.now).order(date: :desc)
+    received_orders = []
+    current_user.kitchen.plans.each do |plan|
+      plan.orders.each do |order|
+      received_orders << order if order.date >Time.now
+      end
+    end
+    @received_orders = received_orders
+
+
+    # #if no chat history
+    # if ChatRoom.all.select{|chat_room| chat_room.users.include?(current_user) && chat_room.users.include?(order.kitchen.user)}.nil?
+    #   @chat_room = ChatRoom.create
+    # #if chated before
+    # else
+    #   @chat_room = ChatRoom.all.select{|chat_room| chat_room.users.include?(current_user) && chat_room.users.include?(order.kitchen.user)}.first
+    # end
+
   end
 
   def show
