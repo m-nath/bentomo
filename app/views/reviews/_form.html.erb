@@ -1,0 +1,11 @@
+<%= simple_form_for([@kitchen, @review], html: { class: "review_form" }) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <div class="form-inputs">
+    <%= f.input :content, label: "Your Message" %>
+    <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience" %>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, class: "btn-flat" %>
+  </div>
+<% end %>
