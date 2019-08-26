@@ -1,8 +1,7 @@
 <% if current_user == @kitchen.user %>
   <%= render 'show_housewife' %>
 <% else %>
-<!-- overall condition: current user is not kitchen owner-->
-
+  <!-- overall condition: current user is not kitchen owner-->
   <!-- banner in kitchen (start)-->
   <div class="banner mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @kitchen.photo %>');">
 
@@ -13,39 +12,54 @@
     </div>
   </div>
   <!-- banner in kitchen (finish)-->
-
-  <div class="container">
-    <!-- fivedays_card (start) -->
-    <div class="mb-3">
-      <h2>Plans</h2>
-      <% @kitchen.plans.each do |plan| %>
-        <% @plan=plan %>
-        <br>
-        <%= render 'shared/fivedays_card' %>
-      <% end %>
-    </div>
-
-    <br>
+  <!-- fivedays_card (start) -->
+  <!-- !!!!!!!!!! -->
+  <% @kitchen.plans.each_with_index do |plan, index| %>
+    <% @plan=plan %>
     <div class="container">
-      <h2>Pick up location</h2>
-      <%= '  ----'+@kitchen.konbini.name %>
+      <div class="accordion" id="accordionExample">
+        <div class="dropdown-card-header card-header d-flex justify-content-between" id="headingOne">
+          <button class="btn" type="button" data-toggle="collapse" data-target="#plan<%= index %>" aria-expanded="true" aria-controls="collapseOne">
+            <div class="d-flex align-self-end">
+              <h2 class="mr-3 dropdown-text"><%= @plan.name %></h2>
+              <%= render 'orders/form' , class: "mt-5" %>
+            </div>
+          </button>
+          <div id="plan<%= index %>" class="collapse  <%= index==0 ? "show": "" %>" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="weekly-plan-card">
+              <div class="p-2 bd-highlight">
+                <!-- link to edit plan -->
+                <p class="ml-3 mt-3"><%= @plan.description %></p>
+              </div>
+              <div class="p-2 bd-highlight flex-grow-1 mx-3">
+                <%= render 'shared/plancard' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="container my-3 d-flex justify-content-between">
-      <div
+  <% end %>
+  <!-- !!!!!!!!!! -->
+  <br>
+  <div class="container mt-3">
+    <h2>Pick up location</h2>
+    <%= '  ----'+@kitchen.konbini.name %>
+  </div>
+  <div class="container my-3 d-flex justify-content-between">
+    <div
           id="map"
           style="width: 1110px;
           height: 250px;"
           data-markers="<%= @marker.to_json %>"
           data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
         ></div>
-    </div>
-    <!-- this is for map (fin)-->
-    <br>
-    <div class="container">
-      <%= link_to "other kitchens", kitchens_path, class: "btn-secondery" %>
-      <%= link_to "New Plan", new_kitchen_plan_path(@kitchen), class: "btn-secondery" %>
-    </div>
-
-<!-- overall condition -->
-<% end %>
   </div>
+  <!-- this is for map (fin)-->
+  <br>
+  <div class="container d-flex justify-content-center">
+    <%= link_to "check other kitchens", kitchens_path, class: "btn btn-secondery mx-2" %>
+    <%= link_to "check other plans", plans_path, class: "btn btn-secondery mx-2" %>
+  </div>
+  <!-- overall condition -->
+<% end %>
