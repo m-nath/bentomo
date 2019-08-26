@@ -2,11 +2,13 @@
 <div class="container weekly-plan-card mb-4">
   <div class="d-flex flex-row">
     <div class="p-2 bd-highlight">
-      <h2><%= @plan.name %></h2>
-        <!-- link to edit plan -->
-      <% if @plan.kitchen.user == current_user %>
-        <%= render 'plans/edit_form' %>
-      <% end %>
+      <div class="d-flex align-items-center">
+        <h2 class="mr-3"><%= @plan.name %></h2>
+          <!-- link to edit plan -->
+        <% if @plan.kitchen.user == current_user %>
+          <%= render 'plans/edit_form' %>
+        <% end %>
+      </div>
       <!-- link to edit plan -->
       <p><%= @plan.description %></p>
     </div>
