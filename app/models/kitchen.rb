@@ -3,7 +3,7 @@ class Kitchen < ApplicationRecord
   has_many :dishes, dependent: :destroy
   has_many :plans, dependent: :destroy
   belongs_to :konbini
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
 
   include PgSearch
   pg_search_scope :global_search,
@@ -24,6 +24,10 @@ class Kitchen < ApplicationRecord
 
   def average_rating
     ratings = reviews.pluck(:rating)
-    ratings.sum / ratings.length
+    if ratings.empty?
+      return 0
+    else
+      ratings.sum / ratings.length
+    end
   end
 end
