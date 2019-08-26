@@ -118,7 +118,7 @@ plan_1 = Plan.create!(
   price: 600,
   kitchen: kitchen_1,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566797616/09d90a044e3723351bcb1177813730bd7070814c_curxdw.jpg",
-  tag_list: ['low carb', 'keto', 'high protein'],
+  tag_list: ['low carb', 'keto', 'high protein']
 )
 
 Dish.create!(
@@ -152,7 +152,7 @@ Dish.create!(
 kitchen_1.dishes.take(5).each do |dish|
     DishPlan.create!(
       dish: dish,
-      plan: plan_1,
+      plan: plan_1
     )
   end
 
@@ -184,7 +184,7 @@ plan_2 = Plan.create!(
   price: 700,
   kitchen: kitchen_2,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566803219/media_ddu2xi.jpg",
-  tag_list: ['japanese', 'healthy', 'nutritious'],
+  tag_list: ['japanese', 'healthy', 'nutritious']
 )
 
 Dish.create!(
@@ -218,7 +218,7 @@ Dish.create!(
 kitchen_2.dishes.take(5).each do |dish|
     DishPlan.create!(
       dish: dish,
-      plan: plan_2,
+      plan: plan_2
     )
   end
 
@@ -250,7 +250,7 @@ plan_3 = Plan.create!(
   price: 800,
   kitchen: kitchen_3,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566799939/capg70tq2vvv2itcrl4v.jpg",
-  tag_list: ['japanese', 'high protein', 'nutritious'],
+  tag_list: ['japanese', 'high protein', 'nutritious']
 )
 
 Dish.create!(
@@ -284,7 +284,7 @@ Dish.create!(
 kitchen_3.dishes.take(5).each do |dish|
     DishPlan.create!(
       dish: dish,
-      plan: plan_3,
+      plan: plan_3
     )
   end
 
@@ -314,7 +314,7 @@ plan_4 = Plan.create!(
   price: 800,
   kitchen: kitchen_4,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566799058/aa8fdf9deed8ec996bddbe7ebe7afb0519ede164_hhnlrt.jpg",
-  tag_list: ['japanese', 'high protein', 'nutritious'],
+  tag_list: ['japanese', 'high protein', 'nutritious']
 )
 
 Dish.create!(
@@ -348,7 +348,7 @@ Dish.create!(
 kitchen_4.dishes.take(5).each do |dish|
     DishPlan.create!(
       dish: dish,
-      plan: plan_4,
+      plan: plan_4
     )
   end
 
@@ -379,7 +379,7 @@ plan_5 = Plan.create!(
   price: 800,
   kitchen: kitchen_5,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566806459/0f49b057_diutoo.jpg",
-  tag_list: ['kids', 'nutritious'],
+  tag_list: ['kids', 'nutritious']
 )
 
 Dish.create!(
@@ -413,7 +413,7 @@ Dish.create!(
 kitchen_5.dishes.take(5).each do |dish|
     DishPlan.create!(
       dish: dish,
-      plan: plan_5,
+      plan: plan_5
     )
   end
 
@@ -445,7 +445,7 @@ plan_6 = Plan.create!(
   price: 1000,
   kitchen: kitchen_6,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566814113/bento-box-eve1001520.jpg.1200x800_q85_crop_hxgzhw.jpg",
-  tag_list: ['kids', 'nutritious'],
+  tag_list: ['kids', 'nutritious']
 )
 
 Dish.create!(
@@ -479,7 +479,7 @@ Dish.create!(
 kitchen_6.dishes.take(5).each do |dish|
     DishPlan.create!(
       dish: dish,
-      plan: plan_6,
+      plan: plan_6
     )
   end
 
@@ -510,7 +510,7 @@ plan_7 = Plan.create!(
   price: 1000,
   kitchen: kitchen_7,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566815469/pei-wei-bento-promo_v7b3kz.gif",
-  tag_list: ['japanese','nutritious'],
+  tag_list: ['japanese','nutritious']
 )
 
 Dish.create!(
@@ -544,7 +544,7 @@ Dish.create!(
 kitchen_7.dishes.take(5).each do |dish|
     DishPlan.create!(
       dish: dish,
-      plan: plan_7,
+      plan: plan_7
     )
   end
 
@@ -575,7 +575,7 @@ plan_8 = Plan.create!(
   price: 1100,
   kitchen: kitchen_8,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566815469/pei-wei-bento-promo_v7b3kz.gif",
-  tag_list: ['organic','healthy','nutritious'],
+  tag_list: ['organic','healthy','nutritious']
 )
 
 Dish.create!(
@@ -609,7 +609,7 @@ Dish.create!(
 kitchen_8.dishes.take(5).each do |dish|
     DishPlan.create!(
       dish: dish,
-      plan: plan_8,
+      plan: plan_8
     )
   end
 
