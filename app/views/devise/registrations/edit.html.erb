@@ -24,7 +24,12 @@
                       hint: "we need your current password to confirm your changes",
                       required: true,
                       input_html: { autocomplete: "current-password" } %>
-          <%= f.input :location_ids, label: "Address" %>
+          Select Address
+          <br>
+          <%= f.collection_check_boxes :location_ids, Location.where(user_id: current_user), :label, :address %>
+          <%= f.simple_fields_for :locations do |p| %>
+            <%= p.input :name, label: "New Address"  %>
+          <% end %>
           <%= f.input :photo %>
           <%= f.input :photo_cache, as: :hidden %>
           <%= f.input :preference,

@@ -15,14 +15,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+  end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    @user = current_user
+    @user.update(user_params)
+    authorize @user
+    redirect_to root_path
+  end
 
   # DELETE /resource
   # def destroy
@@ -37,6 +39,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:email, :first_name, :last_name, :photo, :password, :location)
+  end
 
   # protected
 
