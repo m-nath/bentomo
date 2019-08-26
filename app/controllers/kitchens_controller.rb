@@ -50,11 +50,11 @@ class KitchensController < ApplicationController
       location = Location.find(@user.default_location)
       radius = @user.radius || 5
       @nearby_konbini = Konbini.near([location.latitude, location.longitude], radius)
-      konbinis = @nearby_konbini.map do |search_location|
+      konbinis = @nearby_konbini.joins(:kitchens).map do |search_location|
         {
           lat: search_location.latitude,
           lng: search_location.longitude,
-          infoWindow: render_to_string(partial: "info_window", locals: { kitchen: search_location.kitchens }),
+          infoWindow: render_to_string(partial: "info_window", locals: { kitchens: search_location.kitchens }),
           image_url: helpers.asset_url('konbini.jpg')
         }
       end
@@ -64,11 +64,10 @@ class KitchensController < ApplicationController
         {
           lat: kitchen.konbini.latitude,
           lng: kitchen.konbini.longitude,
-          infoWindow: render_to_string(partial: "info_window", locals: { kitchen: @konbini.kitchens }),
+          infoWindow: render_to_string(partial: "info_window", locals: { kitchens: [kitchen] }),
           image_url: helpers.asset_url('konbini.jpg')
         }
       end
-      raise
       @markers = konbinis.uniq
     end
   end
@@ -83,6 +82,7 @@ class KitchensController < ApplicationController
 
   def show
     @kitchen = policy_scope(Kitchen).find(params[:id])
+    @review = Review.new
     authorize @kitchen
     @plan = @kitchen.plans
     @konbini = @kitchen.konbini
