@@ -21,21 +21,19 @@ require 'uri'
 
 puts 'creating konbini'
 
-areas = ["139.7038,35.6620", "139.749460,35.686960"]
+areas = ["Meguro"]
 areas.each do |area|
-  uri = URI.parse("https://api.mapbox.com/geocoding/v5/mapbox.places/convenience%20store.json?types=poi&proximity=#{area}&access_token=#{ENV['MAPBOX_API_KEY']}")
+  uri = URI.parse("https://maps.googleapis.com/maps/api/place/textsearch/json?query=convenience+stores+in+#{area}&key=#{ENV['GOOGLEMAP_API_KEY']}")
   response = Net::HTTP.get_response(uri)
   list = JSON.parse(response.body)
-  list["features"].each do |feature|
-    features_hash = {}
-    features_hash[:mapbox_id] = feature["id"]
-    features_hash[:name] = feature["text"]
-    features_hash[:address] = feature["place_name"]
-    features_hash[:latitude] = feature["center"][1]
-    features_hash[:longitude] = feature["center"][0]
-    puts feature["center"][1]
-    new_konbini = Konbini.create(features_hash)
-    puts new_konbini.latitude
+  list["results"].each do |result|
+    results_hash = {}
+    results_hash[:mapbox_id] = result["id"]
+    results_hash[:name] = result["name"]
+    results_hash[:address] = result["formatted_address"]
+    results_hash[:latitude] = result["geometry"]["location"]["lat"]
+    results_hash[:longitude] = result["geometry"]["location"]["lng"]
+    Konbini.create!(results_hash)
   end
 end
 
@@ -48,7 +46,8 @@ nath = User.create!(
   first_name: "Nath",
   last_name: "M",
   admin: false,
-  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566268733/nath_q0kaa1.png"
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566268733/nath_q0kaa1.png",
+  preference: 'no raw tomato, no raw onion'
 )
 
 christee = User.create!(
@@ -57,7 +56,8 @@ christee = User.create!(
   first_name: "Christee",
   last_name: "Song",
   admin: false,
-  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566268919/51040522_mxitwx.jpg"
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566268919/51040522_mxitwx.jpg",
+  preference: '(1) Strict low carb diet; (2) No raw onion; '
 )
 
 shohei = User.create!(
@@ -66,14 +66,6 @@ shohei = User.create!(
   first_name: "Shohei",
   last_name: "Okubo",
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566268732/shohei_rttagy.jpg"
-)
-
-huishu = User.create!(
-  email: "huishu@gmail.com",
-  password: "123123",
-  first_name: "Huishu",
-  last_name: "Jia",
-  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566268731/huishu_fdebjg.jpg"
 )
 
 doug = User.create!(
@@ -90,6 +82,14 @@ sylvain = User.create!(
   first_name: "Sylvain",
   last_name: "Pierre",
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566268732/sylvain_q1ry1x.png"
+)
+
+huishu = User.create!(
+  email: "huishu@gmail.com",
+  password: "123123",
+  first_name: "Huishu",
+  last_name: "Jia",
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566268731/huishu_fdebjg.jpg"
 )
 
 avatar =
@@ -117,7 +117,8 @@ demo_kitchen = Kitchen.create!(
   description: 'Healthy homemade food full of nutrition',
   remote_photo_url: "https://source.unsplash.com/400x300/?healthy-food",
   user: demo_hw,
-  konbini_id: Konbini.first.id,
+  tag_list: ['keto', 'low carb', 'japanese', 'healthy', 'nutritious'],
+  konbini_id: Konbini.first.id
 )
 
 3.times do #change to more times later
@@ -134,12 +135,12 @@ tags_array =[
   ['muscle'],
   ['keto', 'low carb'],
   ['japanese', 'low carb', 'low calorie'],
-  ['chinese', 'low carb'],
+  ['chinese', 'low carb']
 ]
 
 User.all.each do |user|
   e = Kitchen.create!(
-    name: Faker::Restaurant.name,
+    name: Faker::Restaurant.name + 'Kitchen',
     description: Faker::Restaurant.description[0..100],
     remote_photo_url: "https://source.unsplash.com/400x300/?lunch",
     user: user,
@@ -148,26 +149,66 @@ User.all.each do |user|
   )
   puts "created #{e.name}"
 
-  rand(1..2).times do
+  rand(1..3).times do
     Location.create!(
-      label: ["home", "work"].sample,
-      address: ["Lawson Shibuya", "Family-mart Shinjuku", "Seven-eleven Meguro"].sample,
+      label: ["Home", "Work"].sample,
+      address: ["1-3-21, Meguro, Meguro-ku, Tokyo", "3-13-6, Meguro, Meguro-ku, Tokyo", "1-21-20, Higashiyama, Meguro-ku, Tokyo", "‎2 Shimomeguro, Meguro-ku, Tokyo", "1-24-9, Meguro, Meguro-ku, Tokyo", "2 Chome-20-8 Shimomeguro, Meguro City, Tokyo", "2-19-15 Kamimeguro, Meguro-ku, Tokyo", "1-8-1 Shimomeguro, Meguro-ku, Tokyo", "4-1-1 Shimomeguro, Meguro-ku, Tokyo", "2-4-36 Meguro, Meguro-ku, Tokyo"].sample,
       user: user  #real office addres e.g. Google, Amazon, Rakuten, Impacthub
     )
   end
 end
 
-Kitchen.last(3).map(&:destroy)
+puts 'Destroying 1kitchen-christee`s'
+
+Kitchen.find_by(user_id:User.second.id).destroy! #christee
+Kitchen.find_by(user_id:User.fourth.id).destroy!
+Kitchen.find_by(user_id:User.fifth.id).destroy!
+
+doug_K = Kitchen.create!(
+  name: 'Dougs Kitchen',
+  description: 'Good American food here!',
+  remote_photo_url: "https://scontent-nrt1-1.xx.fbcdn.net/v/t1.0-9/49206011_10161288945565300_3488969622948937728_o.jpg?_nc_cat=110&_nc_oc=AQnCYIzOQR9tLF4KmeXAVpJMLQ1y8ZiGTsr3Ie187N68Qd61Fre80TBGpH2XFtCE6rs&_nc_ht=scontent-nrt1-1.xx&oh=58d0f2fe68f652a4c6901acab59aae0c&oe=5DDE5A42",
+  user: doug,
+  # tag_list: ['low carb', 'keto', 'american'],
+  konbini_id: Konbini.second.id,
+)
+
+sylvain_k = Kitchen.create!(
+  name: 'Sylvains Kitchen',
+  description: 'Awesome and tasty French food, sometimes Vietnanese food',
+  remote_photo_url: "https://scontent-nrt1-1.xx.fbcdn.net/v/t1.0-9/48406957_10161288919900300_887751778529968128_o.jpg?_nc_cat=101&_nc_oc=AQk945oA-48c8gw6ONPS8wIM4f0wM4p_kAcCWxxSDRNPKwgVvWn94-yNFzrPdjZPAw8&_nc_ht=scontent-nrt1-1.xx&oh=9ec03ecf17ddbac6fba8e87ff67c0960&oe=5E07DFE0",
+  user: sylvain,
+  # tag_list: ['low carb', 'keto', 'French'],
+  konbini_id: Konbini.third.id,
+)
 
 puts "added #{Kitchen.count} kitchens."
 puts "added #{Location.count} locations."
 
 
+american_plan = Plan.create!(
+  name: 'American plan',
+  price: 8000,
+  kitchen: doug_K,
+  remote_photo_url: "https://source.unsplash.com/400x300/?healthy-food" || "https://source.unsplash.com/400x300/?dinner",
+  description: 'A lot of curry, healthy diet pizzas for dirty diet',
+  tag_list: ['low carb', 'keto', 'american'],
+)
+
+bikini_plan = Plan.create!(
+  name: 'Summer Bikini Plan',
+  price: 8000,
+  kitchen: sylvain_k,
+  remote_photo_url: "https://scontent-nrt1-1.xx.fbcdn.net/v/t1.0-9/48406957_10161288919900300_887751778529968128_o.jpg?_nc_cat=101&_nc_oc=AQk945oA-48c8gw6ONPS8wIM4f0wM4p_kAcCWxxSDRNPKwgVvWn94-yNFzrPdjZPAw8&_nc_ht=scontent-nrt1-1.xx&oh=9ec03ecf17ddbac6fba8e87ff67c0960&oe=5E07DFE0",
+  description: 'Healthy nutritious weekly plan, help you make your summer body ready. Sometimes French sometimes Vietnanese.',
+  tag_list: ['low carb', 'keto', 'French'],
+)
+
 Kitchen.all.each do |kitchen|
   rand(1..2).times do
     Plan.create!(
-      name: Faker::Restaurant.type + 'plan',
-      price: [2000, 3000, 4000, 5000, 2500, 3500, 4500, 2300, 2800, 3800, 3200, 4200, 4800].sample,
+      name: Faker::Restaurant.type + ' plan',
+      price: [500,600, 700, 800, 900, 1000, 1100, 1200, 1300].sample,
       kitchen: kitchen,
       remote_photo_url: "https://source.unsplash.com/400x300/?healthy-food" || "https://source.unsplash.com/400x300/?dinner",
       description: Faker::Restaurant.description[0..100],
@@ -175,7 +216,7 @@ Kitchen.all.each do |kitchen|
     )
   end
 
-  rand(2..7).times do
+  rand(10..15).times do
     Dish.create!(
       name: Faker::Food.dish,
       kitchen: kitchen,
@@ -188,7 +229,7 @@ Plan.all.each do |plan|
   plan.kitchen.dishes.take(5).each do |dish|
     DishPlan.create!(
       dish: dish,
-      plan: plan
+      plan: plan,
     )
   end
 end
@@ -200,7 +241,8 @@ User.all.each do |user|
   Order.create!(
     user: user,
     plan: plan,
-    date: Faker::Time.between_dates(from: Date.today, to: Date.today + 7, period: :morning, format: :short)
+    date: Faker::Time.between_dates(from: Date.today, to: Date.today + 7, period: :morning, format: :short),
+    amount: plan.price,
   )
   # create order for past
   rand(2..4).times do
@@ -209,14 +251,28 @@ User.all.each do |user|
     Order.create!(
       user: user,
       plan: plan,
-      date: Faker::Time.between_dates(from: Date.today - 60, to: Date.today - 7, period: :morning, format: :short)
+      date: Faker::Time.between_dates(from: Date.today - 60, to: Date.today - 7, period: :morning, format: :short),
+      amount: plan.price,
     )
   end
 end
 
 puts "added #{Plan.count} Plans."
-
 puts "added #{Dish.count} dishes."
+
+puts 'destroy Christees order'
+User.second.orders.destroy
+puts 'create christee`s order'
+rand(2..4).times do
+  kitchen = Kitchen.where.not(user: christee).sample
+  plan = kitchen.plans.sample
+  Order.create!(
+    user: christee,
+    plan: plan,
+    date: Faker::Time.between_dates(from: Date.today - 60, to: Date.today - 7, period: :morning, format: :short),
+    amount: plan.price,
+  )
+end
 
 
 

@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
 
-
   #----------usually useless above----------
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
   root to: 'pages#home'
   get 'uikit', to: 'pages#uikit'
   get 'uikit_kid', to: 'pages#uikit_kid'
   get 'plans/tagged', to: "plans#tagged", as: :plans_tagged
+  get 'kitchens/tagged', to: "kitchens#tagged", as: :kitchens_tagged
 
+  resources :chat_rooms, only: [:show] do
+    resources :messages, only: [:create]
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :kitchens, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
@@ -21,7 +24,7 @@ Rails.application.routes.draw do
   end
 
   resources :orders, only: [:index, :show, :edit, :update] do
-    resources :payment, only: [:new, :create]
+    resources :payments, only: [:new, :create]
   end
 
   get 'my_account', to: 'users#edit'

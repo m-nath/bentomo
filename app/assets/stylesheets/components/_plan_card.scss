@@ -1,5 +1,19 @@
 .weekly-plan-card {
-  background-color: $light-gray;
+  background-color: #e2e2e2;
+  height: auto;
+  padding-bottom: 25px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+#button-position {
+  position: relative;
+  display: flex;
+}
+
+#button-plan {
+  position: absolute;
+  top: 30px;
+  right: 10px;
 }
 
 .plan-image {
@@ -7,3 +21,8 @@
   height: 150px;
   object-fit: cover;
 }
+
+.bd-highlight h2 {
+  font-weight: bold;
+}
+

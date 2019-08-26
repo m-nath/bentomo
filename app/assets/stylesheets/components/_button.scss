@@ -6,6 +6,11 @@
   transition: background 0.3s ease;
 }
 
+button.stripe-button-el {
+  visibility: hidden;
+  display: none;
+}
+
 .btn-main:hover {
   color: $white;
   padding: 6px 24px;

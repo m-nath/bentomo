@@ -31,3 +31,32 @@
 .card-product .card-product-infos {
   padding: 16px;
 }
+
+.plancard_long_weekday {
+  width: 4rem;
+}
+
+.card-order {
+  overflow: hidden;
+  height: 200px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  margin: 30px;
+}
+
+.card-order-image {
+  height: 100%;
+  width: 200px;
+  object-fit: cover;
+}
+
+.card-product-infos h2 {
+  font-weight: 900;
+}
+
+.card-order .card-product-infos {
+  padding: 16px;
+  width: 3rem;
+}

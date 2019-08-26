@@ -1,0 +1,58 @@
+<!-- banner in kitchen (start)-->
+  <div class="banner mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @kitchen.photo %>');">
+    <div class="d-flex align-items-end justify-content-center" style="height: 60vh;">
+      <h2 class="white"><%= @kitchen.name %></h2>
+      <!-- link to edit kitchen -->
+      <%= render 'edit_form' %>
+      <!-- link to edit kitchen -->
+      <p class="banner-p text-break"><%= @kitchen.description %> </p>
+
+      <%= cl_image_tag @kitchen.user.photo, class: "avatar-extra-large" %>
+    </div>
+  </div>
+  <!-- banner in kitchen (finish)-->
+
+  <div class="container">
+    <!-- fivedays_card (start) -->
+    <div class="mb-3">
+      <h2>Plans</h2>
+      <%= render 'plans/new' %>
+      <% @kitchen.plans.each do |plan| %>
+        <% @plan=plan %>
+        <br>
+        <%= render 'shared/fivedays_card' %>
+      <% end %>
+    </div>
+  </div>
+
+<!-- this is for meals|owner view only (start)-->
+  <div class="container">
+    <h2>Dishes</h2>
+    <%= render 'dishes/new' %>
+    <% @kitchen.dishes.each do |dish|%>
+      <%= dish.name %>
+      <%= cl_image_tag dish.photo,width: 200, height: 200, crop: :fill %>
+    <% end %>
+  </div>
+<!-- this is for meals|owner view only (start)-->
+
+    <!-- this is for map (start)-->
+  <div class="container">
+    <br>
+    <h2>Pick up location</h2>
+    <%= '  ----'+@kitchen.konbini.name %>
+    <div class="container my-3 d-flex justify-content-between">
+      <div
+          id="map"
+          style="width: 1110px;
+          height: 250px;"
+          data-markers="<%= @marker.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+        ></div>
+    </div>
+  </div>
+    <!-- this is for map (fin)-->
+    <br>
+    <%= link_to "other kitchens", kitchens_path, class: "btn-secondery" %>
+
+  </div>

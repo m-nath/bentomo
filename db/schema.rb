@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_22_051814) do
+ActiveRecord::Schema.define(version: 2019_08_25_130259) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "chat_rooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "dish_plans", force: :cascade do |t|
     t.bigint "dish_id"
@@ -48,8 +54,8 @@ ActiveRecord::Schema.define(version: 2019_08_22_051814) do
   create_table "konbinis", force: :cascade do |t|
     t.string "name"
     t.text "address"
-    t.float "latitude"
     t.float "longitude"
+    t.float "latitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "mapbox_id"
@@ -66,13 +72,27 @@ ActiveRecord::Schema.define(version: 2019_08_22_051814) do
     t.index ["user_id"], name: "index_locations_on_user_id"
   end
 
-  create_table "orders", force: :cascade do |t|
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
     t.bigint "user_id"
-    t.bigint "plan_id"
+    t.bigint "chat_room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "request"
-    t.datetime "date"
+    t.index ["chat_room_id"], name: "index_messages_on_chat_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "amount_cents", default: 0, null: false
+    t.jsonb "payment"
+    t.bigint "user_id"
+    t.bigint "plan_id"
+    t.string "plan_sku"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "state", default: "pending"
+    t.text "request", default: "no request"
+    t.string "date"
     t.index ["plan_id"], name: "index_orders_on_plan_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -124,7 +144,8 @@ ActiveRecord::Schema.define(version: 2019_08_22_051814) do
     t.string "first_name"
     t.string "last_name"
     t.boolean "admin"
-    t.string "photo"
+    t.text "preference", default: "no preference"
+    t.string "photo", default: "https://res.cloudinary.com/dxouryvao/image/upload/v1566699442/bento_ylouzo.png"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -135,6 +156,8 @@ ActiveRecord::Schema.define(version: 2019_08_22_051814) do
   add_foreign_key "kitchens", "konbinis"
   add_foreign_key "kitchens", "users"
   add_foreign_key "locations", "users"
+  add_foreign_key "messages", "chat_rooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "orders", "plans"
   add_foreign_key "orders", "users"
   add_foreign_key "plans", "kitchens"

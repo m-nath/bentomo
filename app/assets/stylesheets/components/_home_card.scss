@@ -28,6 +28,7 @@
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
+
 }
 
 .card-trip-infos .card-trip-user {
@@ -42,7 +43,7 @@
   overflow: hidden;
   background: white;
   box-shadow: 0 0 6px rgba(0,0,0,0.2);
-  height: 55vh;
+  height: 22rem;
   margin-bottom: 16px;
 }
 
@@ -61,6 +62,7 @@
 
 .card-trip-home p {
   font-size: 12px;
+  font-weight: bold;
   opacity: .7;
   margin: 0;
 }

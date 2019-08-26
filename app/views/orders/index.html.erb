@@ -1,19 +1,50 @@
-<h1>My Orders</h1>
-<h2>Upcoming Orders</h2>
-<% @current_orders.each do |order| %>
-  <ul>
-    <li>Plan: <%= order.plan.name %></li>
-    <li>Kitchen: <%= order.plan.kitchen.name %></li>
-    <li>Pickup Date: <%= order.date %></li>
-    <li>Amount: <%= order.amount %></li>
-  </ul>
-<% end %>
-<h2>Order History</h2>
-<% @past_orders.each do |order| %>
-  <ul>
-    <li>Plan: <%= order.plan.name %></li>
-    <li>Kitchen: <%= order.plan.kitchen.name %></li>
-    <li>Pickup Date:<%= order.date %></li>
-    <li>Amount: <%= order.amount %></li>
-  </ul>
-<% end %>
+<div class="container">
+
+  <h2>My Orders</h2>
+  <br>
+  <div>
+    <h4>Upcoming Orders</h4>
+    <% @current_orders.each do |order| %>
+      <div class="card-order d-flex">
+        <%= cl_image_tag order.plan.photo, class:"card-order-image" %>
+        <div class="de-flex justify-content-between">
+          <div class='row'>
+            <h5> <%= link_to order.plan.name, plan_path(order.plan) %></h5>
+            <h5><%=humanized_money_with_symbol(order.plan.price)%>/day</h5>
+          </div>
+          <p>Status: <%= order.state %>
+            <% if order.state =='pending' %>
+            | <%= link_to 'Pay Now', new_order_payment_path(order) %></p>
+            <% end %>
+          <p><%= link_to 'Kitchen: '+order.plan.kitchen.name, kitchen_path(order.plan.kitchen) %></p>
+          <p>Dates: <%= order.date %></p>
+          <p>Total Amount: <%= humanized_money_with_symbol(order.amount) %></p>
+        </div>
+        <div class="mx-3">
+          <%= link_to (cl_image_tag order.plan.kitchen.user.photo, class:"card-trip-user-big avatar-bordered-order"), kitchen_path(order.plan.kitchen) %>
+        </div>
+      </div>
+    <% end %>
+
+    <br>
+    <h4>Order History</h4>
+
+    <% @past_orders.each do |order| %>
+      <div class="card-order d-flex">
+        <%= cl_image_tag order.plan.photo, class:"card-order-image" %>
+        <div class="de-flex justify-content-between">
+          <h5> <%= link_to order.plan.name, plan_path(order.plan) %></h5>
+          <h5><%=humanized_money_with_symbol(order.plan.price)%>/day</h5>
+          <p><%= link_to 'Kitchen: '+order.plan.kitchen.name, kitchen_path(order.plan.kitchen) %></p>
+          <p>Dates: <%= order.date %></p>
+          <p>Total Amount: <%= humanized_money_with_symbol(order.amount) %></p>
+        </div>
+        <div class="mx-3">
+          <%= link_to (cl_image_tag order.plan.kitchen.user.photo, class:"card-trip-user-big avatar-bordered-order"), kitchen_path(order.plan.kitchen) %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div>
+

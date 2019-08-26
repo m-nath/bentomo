@@ -1,31 +1,25 @@
 <!-- 5 days plan card (start)-->
-<div class="container weekly-plan-card">
-  <div class="d-flex flex-row ">
-    <div class="p-2 bd-highlight"><h2>5 days full plan</h2></div>
-    <div class="p-2 bd-highlight flex-grow-1"><i class="far fa-edit"></i></div>
-    <div class="p-2 bd-highlight">price</div>
+<div class="container weekly-plan-card mb-4">
+  <div class="d-flex flex-row">
+    <div class="p-2 bd-highlight">
+      <h2><%= @plan.name %></h2>
+        <!-- link to edit plan -->
+      <% if @plan.kitchen.user == current_user %>
+        <%= render 'plans/edit_form' %>
+      <% end %>
+      <!-- link to edit plan -->
+      <p><%= @plan.description %></p>
+    </div>
+
+    <div class="p-2 bd-highlight flex-grow-1"></div>
+    <!-- <div class="p-2 bd-highlight flex-grow-1"></div> -->
+    <div class="mt-2 ">
+      <%= render 'orders/form' %>
+    </div>
+    <%= render 'shared/plancard' %>
   </div>
-  <div class="d-flex flex-row bd-highlight">
-    <div class="p-2 bd-highlight">Description about this meal plan...</div>
-  </div>
-  <div class="d-flex flex-row justify-content-around">
-      <%= render 'shared/plancard' %>
+
+
   </div>
 </div>
-
-
 <!-- 5 days plan card (finish)-->
-<!--   <div class="d-flex flex-row justify-content-around">
-    <div class="p-2 bd-highlight">Mon</div>
-    <div class="p-2 bd-highlight">Tue</div>
-    <div class="p-2 bd-highlight">Wed</div>
-    <div class="p-2 bd-highlight">Thu</div>
-    <div class="p-2 bd-highlight">Fri</div>
-  </div> -->
-<!--   <div class="d-flex flex-row justify-content-around">
-    <div class="p-2 bd-highlight"><%= image_tag "plan1.jpg", class:"plan-image" %></div>
-    <div class="p-2 bd-highlight"><%= image_tag "plan2.jpg", class:"plan-image" %></div>
-    <div class="p-2 bd-highlight"><%= image_tag "plan3.jpg", class:"plan-image" %></div>
-    <div class="p-2 bd-highlight"><%= image_tag "plan4.jpg", class:"plan-image" %></div>
-    <div class="p-2 bd-highlight"><%= image_tag "plan5.jpg", class:"plan-image" %></div>
-  </div> -->
