@@ -101,3 +101,39 @@
      });
   });
 </script>
+<div class="container">
+  <div class="row">
+    <div class="owl-carousel owl-theme">
+      <% @related_plans.each do |plan| %>
+        <div class="card">
+          <%= cl_image_tag plan.photo %>
+          <div class="card-body">
+            <h5 class="card-title"><%= plan.name %></h5>
+            <p class="card-text"><%= plan.description %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<%= content_for(:after_js) do %>
+  <script type="text/javascript">
+    $(function() {
+       $('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:10,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:5
+        }
+    }
+    })
+    });
+  </script>
+<% end %>
