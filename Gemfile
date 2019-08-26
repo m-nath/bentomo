@@ -28,6 +28,7 @@ gem 'cloudinary', '~> 1.9.1'
 gem 'carrierwave', '~> 1.2'
 gem 'flatpickr_rails'
 gem 'geocoder'
+gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

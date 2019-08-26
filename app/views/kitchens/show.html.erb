@@ -11,23 +11,42 @@
     </div>
   </div>
   <!-- banner in kitchen (finish)-->
-  <div class="container">
-    <!-- fivedays_card (start) -->
-    <div class="mb-3">
-      <h2>Plans</h2>
-      <% @kitchen.plans.each do |plan| %>
-        <% @plan=plan %>
-        <br>
-        <%= render 'shared/fivedays_card' %>
-      <% end %>
-    </div>
-    <br>
+  <!-- fivedays_card (start) -->
+  <!-- !!!!!!!!!! -->
+  <% @kitchen.plans.each_with_index do |plan, index| %>
+    <% @plan=plan %>
     <div class="container">
-      <h2>Pick up location</h2>
-      <%= '  ----'+@kitchen.konbini.name %>
+      <div class="accordion" id="accordionExample">
+        <div class="dropdown-card-header card-header d-flex justify-content-between" id="headingOne">
+          <button class="btn" type="button" data-toggle="collapse" data-target="#plan<%= index %>" aria-expanded="true" aria-controls="collapseOne">
+            <div class="d-flex align-self-end">
+              <h2 class="mr-3 dropdown-text"><%= @plan.name %></h2>
+              <%= render 'orders/form' , class: "mt-5" %>
+            </div>
+          </button>
+          <div id="plan<%= index %>" class="collapse  <%= index==0 ? "show": "" %>" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="weekly-plan-card">
+              <div class="p-2 bd-highlight">
+                <!-- link to edit plan -->
+                <p class="ml-3 mt-3"><%= @plan.description %></p>
+              </div>
+              <div class="p-2 bd-highlight flex-grow-1 mx-3">
+                <%= render 'shared/plancard' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="container my-3 d-flex justify-content-between">
-      <div
+  <% end %>
+  <!-- !!!!!!!!!! -->
+  <br>
+  <div class="container mt-3">
+    <h2>Pick up location</h2>
+    <%= '  ----'+@kitchen.konbini.name %>
+  </div>
+  <div class="container my-3 d-flex justify-content-between">
+    <div
           id="map"
           style="width: 1110px;
           height: 250px;"
