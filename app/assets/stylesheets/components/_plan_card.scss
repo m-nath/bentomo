@@ -2,7 +2,7 @@
   background-color: #e2e2e2;
   height: auto;
   padding-bottom: 25px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 }
 
 #button-position {
@@ -25,4 +25,30 @@
 .bd-highlight h2 {
   font-weight: bold;
 }
+
+.mt-2 {
+  position: relative;
+}
+
+#button-position {
+  position: absolute;
+  right: 5px;
+  top: 20px;
+  width: 250px;
+}
+
+#text {
+  font-size: large;
+}
+
+
+
+
+
+
+
+
+
+
+
 
