@@ -76,4 +76,17 @@
   position: absolute;
   left: 50px;
   top: 300px;
+  width: 50vw;
+}
+
+.banner-btn {
+  background-color: transparent;
+  border-color: transparent;
+  position: absolute;
+  left: 50px;
+  top: 400px;
+}
+
+.banner-btn:active {
+  border-color: transparent;
 }

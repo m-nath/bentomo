@@ -81,3 +81,47 @@
   top: -20px;
   width: 40px;
 }
+
+.card-trip-dish {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 6px rgba(0,0,0,0.2);
+  height: 12rem;
+  margin-bottom: 16px;
+}
+
+
+.card-trip-dish > img {
+  height: 140px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-trip-dish h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.card-trip-dish p {
+  font-size: 12px;
+  font-weight: bold;
+  opacity: .7;
+  margin: 0;
+}
+
+.card-trip-dish .card-trip-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+.card-trip-infos .card-trip-user {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
+}
