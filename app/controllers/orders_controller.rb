@@ -47,6 +47,7 @@ class OrdersController < ApplicationController
     days = @order.date.split(', ').size
     @order.amount = @plan.price * days
     @order.state = 'pending'
+    @order.chat_room = ChatRoom.create(order: @order)
     authorize @order
     if @order.save
       redirect_to new_order_payment_path(@order)
