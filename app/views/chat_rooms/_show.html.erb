@@ -1,54 +1,53 @@
-<button type="button" class="" data-toggle="modal" data-target="#chat" data-whatever="@getbootstrap" id="order-button-width">
-    <p>chat</p>
-    </div>
-  </button>
-  <div class="modal fade" id="chat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title" id="exampleModalLabel">Chat</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-       <!--    <div class="container"> -->
-            <div class="row">
-              <div class="col-sm-12">
-                <!-- <div class="chat-header"><h4>#<%= chat_room.name %></h4></div> -->
-                <div class="messages">
-                  <% chat_room.messages.each do |message| %>
-                    <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
-                  <% end %>
+<button type="button" class="btn btn-secondary-chat" data-toggle="modal" data-target="#chat" data-whatever="@getbootstrap" >
+  <p class="btn-secondary-text">chat</p>
+</div>
+</button>
+<div class="modal fade" id="chat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog chatbox" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">Chat</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!--    <div class="container"> -->
+        <div class="row">
+          <div class="col-sm-12">
 
-                </div>
-                <div id="create-message">
-                  <%= simple_form_for [ chat_room, Message.new ], remote: true, html: {autocomplete: "off" } do |f| %>
-                    <%= f.input :content, label: false %>
-                    <%= f.submit "send", class: "btn btn-main m-2", data: {send: "message"} %>
-                  <% end %>
-                </div>
-              </div>
+            <div class="messages">
+              <% if chat_room.messages.present? %>
+                <% chat_room.messages.each do |message| %>
+                  <%= render "messages/message", message: message, user_is_messages_author: message.user == current_user %>
+                <% end %>
+              <% end %>
             </div>
-          <!-- </div> -->
+            <div id="create-message">
+              <%= simple_form_for [ chat_room, Message.new ], remote: true, html: {autocomplete: "off" } do |f| %>
+                <%= f.input :content, label: false %>
+                <%= f.submit "send", class: "btn btn-main m-2", data: {send: "message"} %>
+              <% end %>
+            </div>
 
-          <% content_for :after_js do %>
-            <script>
-              scrollLastMessageIntoView();
-              App['chat_room_<%= chat_room.id %>'] = App.cable.subscriptions.create({ channel: 'ChatRoomsChannel', chat_room_id: <%= chat_room.id %> }, {
-                received: (data) => {
-                  if (data.current_user_id !== <%= current_user.id %>) {
-                    const messagesContainer = document.querySelector('.messages');
-                    messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
-                    scrollLastMessageIntoView();
-                  }
-                }
-              })
-            </script>
-          <% end %>
+          </div>
         </div>
+        <!-- </div> -->
+        <% content_for :after_js do %>
+          <script>
+            scrollLastMessageIntoView();
+            App['chat_room_<%= chat_room.id %>'] = App.cable.subscriptions.create({ channel: 'ChatRoomsChannel', chat_room_id: <%= chat_room.id %> }, {
+              received: (data) => {
+                if (data.current_user_id !== <%= current_user.id %>) {
+                  const messagesContainer = document.querySelector('.messages');
+                  messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
+                  scrollLastMessageIntoView();
+                }
+              }
+            })
+          </script>
+        <% end %>
       </div>
     </div>
   </div>
-
-
+</div>
