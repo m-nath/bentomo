@@ -27,14 +27,6 @@
         <%#= f.input :request, as: :text, required: false, label:'Other request',placeholder:'input your other request' %>
         <%= f.button :submit, label: "Make Order", class: "btn btn-main d-flex align-items-start plan-button" %>
       </div>
-      <!--       <div>
-        <h3>Order Details Confirmation</h3>
-        <p>Plan Name: <%#= @plan.name %></p>
-        <p>Pickup Location: <%#= @plan.kitchen.konbini.name %></p>
-        <%#= render 'shared/map' %>
-        <p>Price per Day: <%= humanized_money_with_symbol(@plan.price) %></p>
-        <p>Preference: <%= current_user.preference %></p>
-      </div> -->
     </div>
   <% end %>
 </div>
