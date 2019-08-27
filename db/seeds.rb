@@ -562,7 +562,7 @@ hw_8= User.create!(
 kitchen_8 = Kitchen.create!(
   name: 'Organic bento',
   description: 'This is especially for those who wants food with fresh organic ingredients and richer in certain nutrients',
-  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566813779/58613dbd2494c07b790a8e2998879c0b_dmr7nq.jpg",
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566870862/pic11_n5vrqs.jpg",
   user: hw_8,
   tag_list: ['organic','healthy','nutritious'],
   konbini_id: Konbini.all.ids.sample
