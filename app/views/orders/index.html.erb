@@ -3,20 +3,22 @@
   <br>
   <div>
     <!-- ------------------ -->
-    <h4>Revieved Orders of My Kitchen</h4>
-    <% @received_orders.each do |order| %>
-      <ul>
-        <li>For <%= order.user.first_name %></li>
-        <li>Dates: <%= order.date %></li>
-        <li>Preference:<%= order.user.preference %></li>
-        <li>Request: <%= order.request %></li>
-        <% if ChatRoom.all.select{|chat_room| chat_room.users.include?(current_user) && chat_room.users.include?(order.user)}.empty? %>
-          <% @chat_room = ChatRoom.create %>
-        <% else %>
-          <% @chat_room = ChatRoom.all.select{|chat_room| chat_room.users.include?(current_user) && chat_room.users.include?(order.user)}.first %>
-        <% end %>
-        <%= render 'chat_rooms/show', chat_room: @chat_room %>
-      </ul>
+    <% if current_user.kitchen.present? %>
+      <h4>Revieved Orders of My Kitchen</h4>
+      <% @received_orders.each do |order| %>
+        <ul>
+          <li>For <%= order.user.first_name %></li>
+          <li>Dates: <%= order.date %></li>
+          <li>Preference:<%= order.user.preference %></li>
+          <li>Request: <%= order.request %></li>
+          <% if ChatRoom.all.select{|chat_room| chat_room.users.include?(current_user) && chat_room.users.include?(order.user)}.empty? %>
+            <% @chat_room = ChatRoom.create %>
+          <% else %>
+            <% @chat_room = ChatRoom.all.select{|chat_room| chat_room.users.include?(current_user) && chat_room.users.include?(order.user)}.first %>
+          <% end %>
+          <%= render 'chat_rooms/show', chat_room: @chat_room %>
+        </ul>
+      <% end %>
     <% end %>
 
 
