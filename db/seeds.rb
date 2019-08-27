@@ -8,14 +8,25 @@
 puts "seed starts"
 puts 'destroy previous seeds'
 
-Order.destroy_all if Rails.env.development?
-DishPlan.destroy_all if Rails.env.development?
-Kitchen.destroy_all if Rails.env.development?
-Konbini.destroy_all if Rails.env.development?
-Plan.destroy_all if Rails.env.development?
-Location.destroy_all if Rails.env.development?
-User.destroy_all if Rails.env.development?
-Dish.destroy_all if Rails.env.development?
+# Order.destroy_all if Rails.env.development?
+# DishPlan.destroy_all if Rails.env.development?
+# Kitchen.destroy_all if Rails.env.development?
+# Konbini.destroy_all if Rails.env.development?
+# Plan.destroy_all if Rails.env.development?
+# Location.destroy_all if Rails.env.development?
+# User.destroy_all if Rails.env.development?
+# Dish.destroy_all if Rails.env.development?
+
+Message.destroy_all
+ChatRoom.destroy_all
+Order.destroy_all
+DishPlan.destroy_all
+Kitchen.destroy_all
+Konbini.destroy_all
+Plan.destroy_all
+Location.destroy_all
+User.destroy_all
+Dish.destroy_all
 
 require 'net/http'
 require 'uri'
@@ -248,7 +259,7 @@ plan_3 = Plan.create!(
   description: '5 Days balance lunch bento plan with varieties',
   price: 800,
   kitchen: kitchen_3,
-  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566799939/capg70tq2vvv2itcrl4v.jpg",
+  # remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566799939/capg70tq2vvv2itcrl4v.jpg",
   tag_list: ['japanese', 'high protein', 'nutritious']
 )
 
@@ -448,39 +459,39 @@ plan_6 = Plan.create!(
 )
 
 Dish.create!(
-      name: 'Mario bento',
-      kitchen: kitchen_6,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566813659/0000001162_1_tw0v5g.jpg"
-    )
+  name: 'Mario bento',
+  kitchen: kitchen_6,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566813659/0000001162_1_tw0v5g.jpg"
+)
 Dish.create!(
-      name: 'Pikachu bento',
-      kitchen: kitchen_6,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566814362/830c0df582fd42b52e0887d96364d5665ae7c0c1_cfggun.jpg"
-    )
+  name: 'Pikachu bento',
+  kitchen: kitchen_6,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566814362/830c0df582fd42b52e0887d96364d5665ae7c0c1_cfggun.jpg"
+)
 
 Dish.create!(
-      name: 'Kitty bento',
-      kitchen: kitchen_6,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566814523/mm461_wtgf9n.jpg"
-    )
+  name: 'Kitty bento',
+  kitchen: kitchen_6,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566814523/mm461_wtgf9n.jpg"
+)
 
 Dish.create!(
-      name: 'Anpanman bento',
-      kitchen: kitchen_6,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566814597/124075282737416413348_20090427_01x_anwwug.jpg"
-    )
+  name: 'Anpanman bento',
+  kitchen: kitchen_6,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566814597/124075282737416413348_20090427_01x_anwwug.jpg"
+)
 Dish.create!(
-      name: 'Snoopy bento',
-      kitchen: kitchen_6,
-      remote_photo_url: "https://s3-ap-northeast-1.amazonaws.com/images.hintos.jp/wp-content/uploads/2017/08/09195007/obentopark_20170816_03-e1502243543135.jpg"
-    )
+  name: 'Snoopy bento',
+  kitchen: kitchen_6,
+  remote_photo_url: "https://s3-ap-northeast-1.amazonaws.com/images.hintos.jp/wp-content/uploads/2017/08/09195007/obentopark_20170816_03-e1502243543135.jpg"
+)
 
 kitchen_6.dishes.take(5).each do |dish|
-    DishPlan.create!(
-      dish: dish,
-      plan: plan_6
-    )
-  end
+  DishPlan.create!(
+    dish: dish,
+    plan: plan_6
+  )
+end
 
 # -------------------
 # -------------------
@@ -513,39 +524,39 @@ plan_7 = Plan.create!(
 )
 
 Dish.create!(
-      name: 'Baked salmon bento',
-      kitchen: kitchen_7,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566815050/new_xl_1488162889_4009_xjjrnh.jpg"
-    )
+  name: 'Baked salmon bento',
+  kitchen: kitchen_7,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566815050/new_xl_1488162889_4009_xjjrnh.jpg"
+)
 Dish.create!(
-      name: 'Osechi bento',
-      kitchen: kitchen_7,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566815587/598d5ce228726_amrbzv.jpg"
-    )
+  name: 'Osechi bento',
+  kitchen: kitchen_7,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566815587/598d5ce228726_amrbzv.jpg"
+)
 
 Dish.create!(
-      name: 'Mixed bento',
-      kitchen: kitchen_7,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566815717/bento180411_rmcsxz.jpg"
-    )
+  name: 'Mixed bento',
+  kitchen: kitchen_7,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566815717/bento180411_rmcsxz.jpg"
+)
 
 Dish.create!(
-      name: 'Teriyaki bento',
-      kitchen: kitchen_7,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566826503/japanese-bento-box_myesfv.jpg"
-    )
+  name: 'Teriyaki bento',
+  kitchen: kitchen_7,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566826503/japanese-bento-box_myesfv.jpg"
+)
 Dish.create!(
-      name: 'Takikomi bento',
-      kitchen: kitchen_7,
-      remote_photo_url: "https://s3-ap-northeast-1.amazonaws.com/testmorimalv2/img/Recipe-Image1-3141e99fb30e95d92cc3238cd125081385abea29b58a0710bb25ce6b74ae10d4f65.jpg"
-    )
+  name: 'Takikomi bento',
+  kitchen: kitchen_7,
+  remote_photo_url: "https://s3-ap-northeast-1.amazonaws.com/testmorimalv2/img/Recipe-Image1-3141e99fb30e95d92cc3238cd125081385abea29b58a0710bb25ce6b74ae10d4f65.jpg"
+)
 
 kitchen_7.dishes.take(5).each do |dish|
-    DishPlan.create!(
-      dish: dish,
-      plan: plan_7
-    )
-  end
+  DishPlan.create!(
+    dish: dish,
+    plan: plan_7
+  )
+end
 
 # -------------------
 # -------------------
@@ -578,39 +589,39 @@ plan_8 = Plan.create!(
 )
 
 Dish.create!(
-      name: 'blessings of nature',
-      kitchen: kitchen_8,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566829323/7287e7c3ee269234ead26299873ce4be_hyn6il.jpg"
-    )
+  name: 'blessings of nature',
+  kitchen: kitchen_8,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566829323/7287e7c3ee269234ead26299873ce4be_hyn6il.jpg"
+)
 Dish.create!(
-      name: 'organic Wa bento',
-      kitchen: kitchen_8,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566829533/51F316E2-750E-4B8C-8476-45B13D2205B4_txqd7i.jpg"
-    )
+  name: 'organic Wa bento',
+  kitchen: kitchen_8,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566829533/51F316E2-750E-4B8C-8476-45B13D2205B4_txqd7i.jpg"
+)
 
 Dish.create!(
-      name: 'low-carb organic bento',
-      kitchen: kitchen_8,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566829781/image_ckleii.jpg"
-    )
+  name: 'low-carb organic bento',
+  kitchen: kitchen_8,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566829781/image_ckleii.jpg"
+)
 
 Dish.create!(
-      name: 'organic sand',
-      kitchen: kitchen_8,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566830017/58bdb7fcbc8ebd22008b4769-750-563_c8yj6r.jpg"
-    )
+  name: 'organic sand',
+  kitchen: kitchen_8,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566830017/58bdb7fcbc8ebd22008b4769-750-563_c8yj6r.jpg"
+)
 Dish.create!(
-      name: 'salad bowl',
-      kitchen: kitchen_8,
-      remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566830099/healthy-food-inspiration-instagram-e1432362958184_rbzjcw.jpg"
-    )
+  name: 'salad bowl',
+  kitchen: kitchen_8,
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566830099/healthy-food-inspiration-instagram-e1432362958184_rbzjcw.jpg"
+)
 
 kitchen_8.dishes.take(5).each do |dish|
-    DishPlan.create!(
-      dish: dish,
-      plan: plan_8
-    )
-  end
+  DishPlan.create!(
+    dish: dish,
+    plan: plan_8
+  )
+end
 
 # -------------------
 
@@ -694,23 +705,7 @@ end
 
 # end
 # ---------------------------
-chat_room = ChatRoom.create!(name: "general")
 
-message_1 = Message.create!(
-  content: "Hello",
-  chat_room: chat_room,
-  user: christee
-)
-message_2 = Message.create!(
-  content: "Hey",
-  chat_room: chat_room,
-  user: nath
-)
-message_3 = Message.create!(
-  content: "Yo",
-  chat_room: chat_room,
-  user: christee
-)
 
 
 puts "Seed is done!"

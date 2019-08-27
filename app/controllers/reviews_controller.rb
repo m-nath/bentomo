@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
       redirect_to kitchen_path(@kitchen)
     else
       flash[:alert] = "Something went wrong."
-      render :new
+      render "kitchens/show"
     end
   end
 

@@ -18,13 +18,23 @@
             <%= f.error_notification %>
             <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
             <div class="form-inputs">
+              <h2>Choose starting date:</h2>
               <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"}, label:'Dates', placeholder:'Choose from the calendar' %>
               <%#= f.text_field :konbini, value: @plan.kitchen.konbini.name, readonly: true %>
-              <%= f.input :konbini, as: :string, required: false, input_html: { value:@plan.kitchen.konbini.name}, label:'Pickup konbini', disabled: true %>
-              <%= f.input :amount, as: :integer, required: false, input_html: { value:@plan.price}, label:'Price', disabled: true %>
-              <%= f.input :preference, as: :text, required: false, input_html: { value: current_user.preference}, label:'Your preference', disabled: true %>
+              <%#= f.input :konbini, as: :string, required: false, input_html: { value:@plan.kitchen.konbini.name}, label:'Pickup konbini', disabled: true %>
+              <%#= f.input :amount, as: :integer, required: false, input_html: { value:@plan.price}, label:'Price', disabled: true %>
+              <%#= f.input :preference, as: :text, required: false, input_html: { value: current_user.preference}, label:'Your preference', disabled: true %>
               <%#= f.text_field :preference, value: current_user.preference, readonly: true, label: 'Your reference'%>
               <%= f.input :request, as: :text, required: false, label:'Other request',placeholder:'input your other request' %>
+            </div>
+            <div>
+              <h3>Order Details Confirmation</h2>
+              <p>Pickup Location:</p>
+              <p><%= @plan.kitchen.konbini.name %></p>
+              <p>Price per Day:</p>
+              <p><%= humanized_money_with_symbol(@plan.price) %></p>
+              <p>Preference:</p>
+              <p><%= current_user.preference %></p>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondery" data-dismiss="modal">Close</button>
