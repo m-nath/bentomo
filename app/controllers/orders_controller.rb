@@ -4,13 +4,15 @@ class OrdersController < ApplicationController
     @orders = policy_scope(Order)
     @current_orders = current_user.orders.where("date > ?", Time.now).order(date: :desc)
     @past_orders = current_user.orders.where("date < ?", Time.now).order(date: :desc)
-    received_orders = []
-    current_user.kitchen.plans.each do |plan|
-      plan.orders.each do |order|
-      received_orders << order if order.date >Time.now
+    if current_user.kitchen.present?
+      received_orders = []
+      current_user.kitchen.plans.each do |plan|
+        plan.orders.each do |order|
+        received_orders << order if order.date > Time.now && order.state =='paid'
+        end
       end
+      return @received_orders = received_orders
     end
-    @received_orders = received_orders
 
 
     # #if no chat history
