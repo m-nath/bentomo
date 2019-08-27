@@ -3,7 +3,7 @@
 </div>
 </button>
 <div class="modal fade" id="chat" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog chatbox" role="document">
+  <div class="modal-dialog chatbox chat-position" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title" id="exampleModalLabel">Chat</h4>
@@ -15,7 +15,6 @@
         <!--    <div class="container"> -->
         <div class="row">
           <div class="col-sm-12">
-
             <div class="messages">
               <% if chat_room.messages.present? %>
                 <% chat_room.messages.each do |message| %>
@@ -29,7 +28,6 @@
                 <%= f.submit "send", class: "btn btn-main m-2", data: {send: "message"} %>
               <% end %>
             </div>
-
           </div>
         </div>
         <!-- </div> -->
