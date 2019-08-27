@@ -1,6 +1,6 @@
 .messages {
   font-size: 14px;
-  color: #868686;
+  color: $gray;
   background-color: #ffffff;
   padding: 20px;
   border: 1px solid #ececec;
@@ -16,7 +16,7 @@
   &.right {
     flex-direction: row-reverse;
     .message-content {
-      background-color: #F2F9FC;
+      background-color: rgba(245, 180, 167, 0.3);
     }
   }
 }
@@ -26,7 +26,7 @@
   margin: 0 10px;
   padding: 11px 10px 8px 10px;
 }
-.avatar {
+.avatar-chat {
   width: 42px;
   height: 42px;
   border-radius: 50%;
@@ -60,4 +60,12 @@ input.form-control {
   h4 {
     margin: 0;
   }
+}
+
+.chat-position {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 50vw;
+  margin: 0px;
 }

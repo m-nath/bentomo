@@ -1,7 +1,7 @@
 <div class="cards my-3">
   <% @plan.dishes.each_with_index do |dish, i| %>
     <div class="plancard d-flex flex-column text-center">
-      <%= %w(Mon Tue Wed Thu Fri Sat Sun)[i] %>
+      <div class="plancard-text"><%= %w(Mon Tue Wed Thu Fri Sat Sun)[i] %></div>
       <div class="overlay-image">
         <div class="card-category plancard-each" id="text" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path dish.photo %>')">
           <div class="overlay">
