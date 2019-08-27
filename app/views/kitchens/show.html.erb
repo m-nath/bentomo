@@ -53,37 +53,37 @@
           data-markers="<%= @marker.to_json %>"
           data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
         ></div>
-    </div>
-    <!-- this is for adding review -->
-    <div class="container">
-      <%= render 'reviews/form' %>
-    </div>
-    <!-- this is for showing review -->
-    <div class="">
-      <% @kitchen.reviews.each do |review| %>
-        <div class="d-flex justify-content-between align-self-start">
-          <% if review.user.photo.present? %>
-            <%= cl_image_tag review.user.photo, class: "avatar" %>
-          <% else %>
-            <%= image_tag "konbini.jpg", class: "avatar" %>
-          <% end %>
-          <div>
-            <h6 class="m-2 pt-2"><%= review.user.first_name %> <%= review.user.last_name %></h6>
-            <p class="m-2"><%= review.content %></p>
-            <p class="m-2"><% review.rating.to_i.times do  %>
-                <span class ="glyphicon glyphicon-star bento-star"></span>
-              <% end %>
-            </p>
-          </div>
+  </div>
+  <!-- this is for adding review -->
+  <div class="container">
+    <%= render 'reviews/form' %>
+  </div>
+  <!-- this is for showing review -->
+  <div class="">
+    <% @kitchen.reviews.each do |review| %>
+      <div class="d-flex justify-content-between align-self-start">
+        <% if review.user.photo.present? %>
+          <%= cl_image_tag review.user.photo, class: "avatar" %>
+        <% else %>
+          <%= image_tag "konbini.jpg", class: "avatar" %>
+        <% end %>
+        <div>
+          <h6 class="m-2 pt-2"><%= review.user.first_name %> <%= review.user.last_name %></h6>
+          <p class="m-2"><%= review.content %></p>
+          <p class="m-2"><% review.rating.to_i.times do  %>
+              <i class="fas fa-star bento-star"></i>
+            <% end %>
+          </p>
         </div>
-      <% end %>
-    </div>
-    <!-- this is for map (fin)-->
-    <br>
-    <div class="container">
-      <%= link_to "other kitchens", kitchens_path, class: "btn-secondery" %>
-      <%= link_to "New Plan", new_kitchen_plan_path(@kitchen), class: "btn-secondery" %>
-    </div>
-    <!-- overall condition -->
-  <% end %>
+      </div>
+    <% end %>
+  </div>
+  <!-- this is for map (fin)-->
+  <br>
+  <div class="container">
+    <%= link_to "other kitchens", kitchens_path, class: "btn-secondery" %>
+    <%= link_to "New Plan", new_kitchen_plan_path(@kitchen), class: "btn-secondery" %>
+  </div>
+  <!-- overall condition -->
+<% end %>
 </div>

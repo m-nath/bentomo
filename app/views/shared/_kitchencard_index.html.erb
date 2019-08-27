@@ -6,7 +6,7 @@
         <div class="card-trip-infos">
           <div>
             <p class="m-2"><% kitchen.average_rating.to_i.times do  %>
-                <span class ="glyphicon glyphicon-star bento-star"></span>
+                <i class="fas fa-star bento-star"></i>
               <% end %>
               <h4 class="tab-text-content"><%= link_to kitchen.name, kitchen_path(kitchen), { :class=>"stretched-link" }  %></h4>
             </div>
