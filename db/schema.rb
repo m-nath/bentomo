@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_26_101344) do
+ActiveRecord::Schema.define(version: 2019_08_27_035858) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 2019_08_26_101344) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "order_id"
+    t.index ["order_id"], name: "index_chat_rooms_on_order_id"
   end
 
   create_table "dish_plans", force: :cascade do |t|
@@ -163,6 +165,7 @@ ActiveRecord::Schema.define(version: 2019_08_26_101344) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "chat_rooms", "orders"
   add_foreign_key "dish_plans", "dishes"
   add_foreign_key "dish_plans", "plans"
   add_foreign_key "dishes", "kitchens"
