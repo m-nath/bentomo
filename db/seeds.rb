@@ -8,14 +8,23 @@
 puts "seed starts"
 puts 'destroy previous seeds'
 
-Order.destroy_all if Rails.env.development?
-DishPlan.destroy_all if Rails.env.development?
-Kitchen.destroy_all if Rails.env.development?
-Konbini.destroy_all if Rails.env.development?
-Plan.destroy_all if Rails.env.development?
-Location.destroy_all if Rails.env.development?
-User.destroy_all if Rails.env.development?
-Dish.destroy_all if Rails.env.development?
+# Order.destroy_all if Rails.env.development?
+# DishPlan.destroy_all if Rails.env.development?
+# Kitchen.destroy_all if Rails.env.development?
+# Konbini.destroy_all if Rails.env.development?
+# Plan.destroy_all if Rails.env.development?
+# Location.destroy_all if Rails.env.development?
+# User.destroy_all if Rails.env.development?
+# Dish.destroy_all if Rails.env.development?
+
+Order.destroy_all
+DishPlan.destroy_all
+Kitchen.destroy_all
+Konbini.destroy_all
+Plan.destroy_all
+Location.destroy_all
+User.destroy_all
+Dish.destroy_all
 
 require 'net/http'
 require 'uri'
