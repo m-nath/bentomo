@@ -3,12 +3,18 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta property="og:title" content="Bentomo - warmhearted bento" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bentomo.club" />
+    <meta property="og:image" content="<%= image_path "meta-image.png" %>" />
+    <meta property="og:description" content="Bentomo is a platform that brings delicious home-cooked meals to your favorite convenience store. With taste and health in mind as a focus, every meal is created with care to ensure that every meal is as fresh as can be. Single orders and subscription plans are available that cater to your tastebuds’ needs." />
     <title>Bentomo - warmhearted bento</title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= stylesheet_pack_tag 'application', media: 'all' %>
-    <link rel="shortcut icon" type="image/png" href=<%= image_url "Bentomo-logo.png" %>/>
+    <link href="/assets/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
     <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body class="Site">

@@ -17,6 +17,8 @@ puts 'destroy previous seeds'
 # User.destroy_all if Rails.env.development?
 # Dish.destroy_all if Rails.env.development?
 
+Message.destroy_all
+ChatRoom.destroy_all
 Order.destroy_all
 DishPlan.destroy_all
 Kitchen.destroy_all
@@ -697,29 +699,25 @@ User.all.each do |user|
   end
 end
 
+Kitchen.all.each do |kitchen|
+  rand(3..4).times do
+    Review.create!(
+      content: ['Very tasty bento', 'Taste like home', 'Very healthy yummy bento'].sample,
+      rating: [2,3,4,5].sample,
+      kitchen: kitchen,
+      user: User.all.sample
+    )
+  end
+end
+
+
 # puts "added #{Plan.count} Plans."
 # puts "added #{Dish.count} dishes."
 
 
 # end
 # ---------------------------
-chat_room = ChatRoom.create!(name: "general")
 
-message_1 = Message.create!(
-  content: "Hello",
-  chat_room: chat_room,
-  user: christee
-)
-message_2 = Message.create!(
-  content: "Hey",
-  chat_room: chat_room,
-  user: nath
-)
-message_3 = Message.create!(
-  content: "Yo",
-  chat_room: chat_room,
-  user: christee
-)
 
 
 puts "Seed is done!"
