@@ -57,26 +57,27 @@
   <!-- this is for adding review -->
   <div class="container">
     <%= render 'reviews/form' %>
-  </div>
-  <!-- this is for showing review -->
-  <div class="">
-    <% @kitchen.reviews.each do |review| %>
-      <div class="d-flex justify-content-between align-self-start">
-        <% if review.user.photo.present? %>
-          <%= cl_image_tag review.user.photo, class: "avatar" %>
-        <% else %>
-          <%= image_tag "konbini.jpg", class: "avatar" %>
-        <% end %>
-        <div>
-          <h6 class="m-2 pt-2"><%= review.user.first_name %> <%= review.user.last_name %></h6>
-          <p class="m-2"><%= review.content %></p>
-          <p class="m-2"><% review.rating.to_i.times do  %>
-              <i class="fas fa-star bento-star"></i>
-            <% end %>
-          </p>
+    <!-- this is for showing review -->
+    <div class="mx-3 mt-5">
+      <% @kitchen.reviews.each do |review| %>
+        <div class="d-flex align-self-start">
+          <% if review.user.photo.present? %>
+            <%= cl_image_tag review.user.photo, class: "avatar" %>
+          <% else %>
+            <%= image_tag "konbini.jpg", class: "avatar" %>
+          <% end %>
+          <div>
+            <h6 class="m-2 pt-2"><%= review.user.first_name %> <%= review.user.last_name %></h6>
+            <p class="m-2"><%= review.content %></p>
+            <p class="m-2">
+              <% review.rating.to_i.times do  %>
+                <i class="fas fa-star bento-star"></i>
+              <% end %>
+            </p>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
   <!-- this is for map (fin)-->
   <br>
