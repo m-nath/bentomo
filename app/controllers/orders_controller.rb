@@ -14,15 +14,6 @@ class OrdersController < ApplicationController
       return @received_orders = received_orders
     end
 
-
-    # #if no chat history
-    # if ChatRoom.all.select{|chat_room| chat_room.users.include?(current_user) && chat_room.users.include?(order.kitchen.user)}.nil?
-    #   @chat_room = ChatRoom.create
-    # #if chated before
-    # else
-    #   @chat_room = ChatRoom.all.select{|chat_room| chat_room.users.include?(current_user) && chat_room.users.include?(order.kitchen.user)}.first
-    # end
-
   end
 
   def show
@@ -47,9 +38,9 @@ class OrdersController < ApplicationController
     days = @order.date.split(', ').size
     @order.amount = @plan.price * days
     @order.state = 'pending'
-    @order.chat_room = ChatRoom.create(order: @order)
     authorize @order
     if @order.save
+      ChatRoom.create(order_id: @order.id)
       redirect_to new_order_payment_path(@order)
     else
       render :_form
