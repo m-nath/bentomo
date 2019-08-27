@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'plans/tagged', to: "plans#tagged", as: :plans_tagged
   get 'kitchens/tagged', to: "kitchens#tagged", as: :kitchens_tagged
 
+  mount ActionCable.server => "/cable"
+
   resources :chat_rooms, only: [:show] do
     resources :messages, only: [:create]
   end
