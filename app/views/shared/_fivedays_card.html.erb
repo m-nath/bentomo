@@ -1,24 +1,28 @@
-<!-- 5 days plan card (start)-->
-<div class="container weekly-plan-card mb-4">
-  <div class="d-flex flex-row">
-    <div class="p-2 bd-highlight">
-      <div class="d-flex align-items-center">
-        <h2 class="mr-3"><%= @plan.name %></h2>
-          <!-- link to edit plan -->
-        <% if @plan.kitchen.user == current_user %>
-          <%= render 'plans/edit_form' %>
-        <% end %>
-      </div>
-      <!-- link to edit plan -->
-      <p><%= @plan.description %></p>
-    </div>
-
-    <div class="p-2 bd-highlight flex-grow-1"></div>
-    <!-- <div class="p-2 bd-highlight flex-grow-1"></div> -->
-    <div class="mt-2 ">
-      <%= render 'orders/form' %>
-    </div>
-    <%= render 'shared/plancard' %>
-  </div>
-</div>
 <!-- 5 days plan card (finish)-->
+<% @kitchen.plans.each_with_index do |plan, index| %>
+  <% @plan=plan %>
+  <div class="accordion" id="accordionExample">
+    <div class="dropdown-card-header card-header d-flex justify-content-between" id="headingOne">
+      <button class="btn" type="button" data-toggle="collapse" data-target="#plan<%= index %>" aria-expanded="true" aria-controls="collapseOne">
+        <div class="d-flex align-self-end">
+          <h2 class="mr-3 dropdown-text"><%= @plan.name %></h2>
+          <% if @plan.kitchen.user == current_user %>
+            <%= render 'plans/edit_form' %>
+          <% end %>
+          <%= render 'orders/form' , class: "mt-5" %>
+        </div>
+      </button>
+      <div id="plan<%= index %>" class="collapse  <%= index==0 ? "show": "" %>" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="weekly-plan-card">
+          <div class="p-2 bd-highlight">
+            <!-- link to edit plan -->
+            <p class="ml-3 mt-3"><%= @plan.description %></p>
+          </div>
+          <div class="p-2 bd-highlight flex-grow-1 mx-3">
+            <%= render 'shared/plancard' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
