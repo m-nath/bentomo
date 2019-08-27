@@ -22,12 +22,7 @@
                 </div>
                 <div class="d-flex flex-column">
                   <p>For <%= order.user.first_name %></p>
-                  <% if ChatRoom.all.select{|chat_room| chat_room.users.include?(current_user) && chat_room.users.include?(order.user)}.empty? %>
-                    <% @chat_room = ChatRoom.create %>
-                  <% else %>
-                    <% @chat_room = ChatRoom.all.select{|chat_room| chat_room.users.include?(current_user) && chat_room.users.include?(order.user)}.first %>
-                  <% end %>
-                  <%= render 'chat_rooms/show', chat_room: @chat_room %>
+                  <%= render 'chat_rooms/show', chat_room: order.chat_room %>
                 </div>
               </div>
               <div class="mt-3">
@@ -65,12 +60,8 @@
               <div class="d-flex flex-column">
                 <p class="order-kitchen"><%= link_to 'Kitchen: '+order.plan.kitchen.name, kitchen_path(order.plan.kitchen) %></p>
                 <!-- chatroom -->
-                <% if ChatRoom.all.select{|chat_room| chat_room.users.include?(current_user) && chat_room.users.include?(order.plan.kitchen.user)}.empty? %>
-                  <% @chat_room = ChatRoom.create %>
-                <% else %>
-                  <% @chat_room = ChatRoom.all.select{|chat_room| chat_room.users.include?(current_user) && chat_room.users.include?(order.plan.kitchen.user)}.first %>
-                <% end %>
-                <%= render 'chat_rooms/show', chat_room: @chat_room %>
+
+                <%= render 'chat_rooms/show', chat_room: order.chat_room %>
                 <!-- chatroom -->
               </div>
               <!-- kitchen name and avatar and chat-->
