@@ -4,7 +4,7 @@
     <div class="d-flex flex-column">
       <h2 class="white"><%= @plan.name %></h2>
       <p class="plan-description"><%= @plan.description %></p>
-      <div class="plan-price"><%= render 'orders/form' %></div>
+      <!-- <div class="plan-price"><%#= render 'orders/form' %></div> -->
     </div>
     <%= link_to (cl_image_tag @plan.kitchen.user.photo, class: "avatar-extra-large"), kitchen_path(@plan.kitchen) %>
     <%= link_to 'check the kitchen',  kitchen_path(@plan.kitchen), class: 'btn btn-secondery avatar-xl-btn'%>
@@ -12,6 +12,9 @@
 </div>
 <!-- banner in kitchen showpage (finish)-->
 <div class="container">
+  <div class="m-5 d-flex">
+    <div><%= render 'orders/form' %></div>
+  </div>
   <h2 class="mx-3">Weekly <%= @plan.name %> details</h2>
   <% @plan.dishes.each_with_index do |dish, i| %>
     <div class="card-product">
@@ -26,13 +29,10 @@
       </div>
     </div>
   <% end %>
-  <div class="m-5 d-flex">
-    <div><%= render 'orders/form' %></div>
-  </div>
 </div>
 <div class="container">
   <h4>Pick up location:</h4>
-  <%= @plan.kitchen.konbini.name %>
+  <i class="fa fa-map-marker-alt"></i> <%= @plan.kitchen.konbini.name %>
   <div class="container my-3 d-flex justify-content-between">
     <div
         id="map"

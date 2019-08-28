@@ -68,7 +68,7 @@ christee = User.create!(
   last_name: "Song",
   admin: false,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566268919/51040522_mxitwx.jpg",
-  preference: '(1) Strict low carb diet; (2) No raw onion; '
+  preference: '(1) No sugar; (2) Milk allergy; '
 )
 
 shohei = User.create!(
@@ -223,7 +223,7 @@ Dish.create!(
 Dish.create!(
   name: 'Chesse pasta',
   kitchen: kitchen_2,
-  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566802095/ynuqrlvz5jzyjsxt8ks6.jpg"
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566971057/cux6tsq6kzvufcngn1ww.jpg"
 )
 
 kitchen_2.dishes.take(5).each do |dish|
@@ -639,22 +639,31 @@ end
 # ]
 
 User.all.each do |user|
-  2.times do
-    Location.create!(
-      label: ["Home", "Work"].sample,
-      address: ["1-3-21, Meguro, Meguro-ku, Tokyo", "3-13-6, Meguro, Meguro-ku, Tokyo", "1-21-20, Higashiyama, Meguro-ku, Tokyo", "‎2 Shimomeguro, Meguro-ku, Tokyo", "1-24-9, Meguro, Meguro-ku, Tokyo", "2 Chome-20-8 Shimomeguro, Meguro City, Tokyo", "2-19-15 Kamimeguro, Meguro-ku, Tokyo", "1-8-1 Shimomeguro, Meguro-ku, Tokyo", "4-1-1 Shimomeguro, Meguro-ku, Tokyo", "2-4-36 Meguro, Meguro-ku, Tokyo"].sample,
-      user: user  #real office addres e.g. Google, Amazon, Rakuten, Impacthub
-    )
-  end
+  # 2.times do
+  Location.create!(
+    label: ["Home", "Work"].sample,
+    address: ["1-3-21, Meguro, Meguro-ku, Tokyo", "3-13-6, Meguro, Meguro-ku, Tokyo", "1-21-20, Higashiyama, Meguro-ku, Tokyo", "‎2 Shimomeguro, Meguro-ku, Tokyo", "1-24-9, Meguro, Meguro-ku, Tokyo", "2 Chome-20-8 Shimomeguro, Meguro City, Tokyo", "2-19-15 Kamimeguro, Meguro-ku, Tokyo", "1-8-1 Shimomeguro, Meguro-ku, Tokyo", "4-1-1 Shimomeguro, Meguro-ku, Tokyo", "2-4-36 Meguro, Meguro-ku, Tokyo"].sample,
+    user: user  #real office addres e.g. Google, Amazon, Rakuten, Impacthub
+  )
+  # end
 end
 
-christee.locations.destroy
+christee.locations.each do |location|
+  location.destroy
+end
 
 Location.create!(
-      label: "Work",
-      address: "2-11-3, Meguro, Meguro-ku, Tokyo",
-      user: christee  #real office addres e.g. Google, Amazon, Rakuten, Impacthub
-    )
+  label: "Work",
+  address: "2-11-3, Meguro, Meguro-ku, Tokyo",
+  user: christee  #real office addres e.g. Google, Amazon, Rakuten, Impacthub
+)
+
+Location.create!(
+  label: "Home",
+  address: "5-1-1 Meijijingumae, Shibuya-ku, Tokyo",
+  user: christee  #real office addres e.g. Google, Amazon, Rakuten, Impacthub
+)
+
 puts 'christee location made'
 
 
@@ -705,7 +714,7 @@ User.all.each do |user|
       user: user,
       plan: plan,
       date: "2019-08-12, 2019-08-12, 2019-08-13, 2019-08-14",
-      amount: plan.price
+      amount: plan.price*4
     )
   end
 end
@@ -714,7 +723,7 @@ Order.create!(
   user: christee,
   plan: plan_4,
   date: "2019-08-19, 2019-08-20, 2019-08-21, 2019-08-22, 2019-08-23",
-  amount: plan.price
+  amount: plan_4.price*5
 )
 
 Kitchen.all.each do |kitchen|
