@@ -11,14 +11,14 @@
   </button>
   <!-- button for responsive (finish)-->
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <div class="d-flex">
+    <div class="d-flex align-items-center">
       <!-- search button start -->
-      <%= simple_form_for :search, url: kitchens_path, method: "GET" do |f| %>
-        <div class="input-group-prepend"><i class="fa fa-search"></i>
-        </div>
-        <%= f.input :query, label: false, input_html: {class: 'form-control', value: (params[:search][:query] if params[:search])}, placeholder: "Find a kitchen" %>
-        <!-- <button type="submit"></i></button> -->
-      <% end %>
+      <div class="input-group-prepend d-flex align-items-center"><i class="fa fa-search"></i>
+        <%= simple_form_for :search, url: kitchens_path, method: "GET" do |f| %>
+          <%= f.input :query, label: false, input_html: {class: 'form-control d-flex align-items-center', value: (params[:search][:query] if params[:search])}, placeholder: "Find a kitchen" %>
+          <!-- <button type="submit"></i></button> -->
+        <% end %>
+      </div>
       <!-- search button end -->
       <!-- location button start -->
       <% if user_signed_in? %>

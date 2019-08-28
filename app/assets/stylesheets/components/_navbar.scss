@@ -31,6 +31,7 @@
 .navbar-text {
   color: $gray;
   font-weight: 300;
+  margin-right: 20px;
 }
 
 .navbar-text:hover {
@@ -38,9 +39,38 @@
   font-weight: 300;
 }
 
-.nav-search {
-}
-
 .dropdown-toggle.no-arrow::after {
   display: none;
+}
+
+.dropdown-menu {
+  position: absolute;
+  left: -200px;
+}
+
+.dropdown {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.edit_user:active {
+  color: $gray;
+}
+
+.dropdown-item:active {
+  background: white;
+}
+
+.dropdown-item:active {
+  color: black;
+}
+
+.search_query {
+  margin-bottom: 0px;
+  margin-right: 20px;
+  margin-left: 5px;
+}
+
+.fa {
+  color: $gray;
 }
