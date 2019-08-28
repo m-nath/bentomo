@@ -6,7 +6,7 @@
         <%= f.error_notification %>
         <div class="form-inputs">
           <%= f.input :default_location, collection: @locations, as: :radio_buttons, label_method: :full_label %>
-          <%= f.input :radius, input_html: { value: 5 }, collection: 0..100, label: "Distance from your default location (km)" %>
+          <%= f.input :radius, input_html: { value: 1 }, collection: 0..5, label: "Distance from your default location (km)" %>
           <%= f.input :preference,
                       hint: "we will let the kitchens know your preferences",
                       required: false %>
