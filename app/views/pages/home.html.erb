@@ -4,9 +4,8 @@
     margin-top: 100px;">
       <span id="banner-typed-text"></span>
     </div>
-  </div>
     <div class="p-2 d-flex justify-content-center">
-      <form novalidate="novalidate" class="simple_form search  banner-search" action="/" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+      <form novalidate="novalidate" class="simple_form search  banner-search" action="<%= kitchens_path %>" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
         <div class="search-form-control form-group mb-4" style="width: 55vw;">
           <input class="form-control string required" type="text" name="search[query]" id="search_query" placeholder="search homemade bento near you"/>
           <button name="button" type="submit" class="btn btn-search">
@@ -38,7 +37,6 @@
   <div class="tab-content" id="myTabContent">
     <!-- kitchen content -->
     <div class="tab-pane show active" id="kitchen" role="tabpanel" aria-labelledby="kitchen-tab">
-
       <%= render 'shared/kitchencard_index' %>
       <div class="d-flex justify-content-center">
         <p class="btn btn-secondery mx-auto my-3"><%= link_to "more kitchens", kitchens_path %></p>

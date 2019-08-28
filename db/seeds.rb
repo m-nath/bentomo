@@ -703,7 +703,7 @@ Kitchen.all.each do |kitchen|
   rand(3..4).times do
     Review.create!(
       content: ['Very tasty bento', 'Taste like home', 'Very healthy yummy bento'].sample,
-      rating: [2,3,4,5].sample,
+      rating: [4,5].sample,
       kitchen: kitchen,
       user: User.all.sample
     )
