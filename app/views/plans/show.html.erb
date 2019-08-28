@@ -2,7 +2,7 @@
 <div class="banner mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @plan.photo %>');">
   <div class="d-flex align-items-end justify-content-center" style="height: 60vh;">
     <div class="d-flex flex-column">
-      <h2 class="white"><%= @plan.name %></h2>
+      <h2 class="white banner-name"><%= @plan.name %></h2>
       <p class="plan-description"><%= @plan.description %></p>
       <!-- <div class="plan-price"><%#= render 'orders/form' %></div> -->
     </div>
@@ -12,10 +12,10 @@
 </div>
 <!-- banner in kitchen showpage (finish)-->
 <div class="container">
-  <div class="m-5 d-flex">
-    <div><%= render 'orders/form' %></div>
+  <div class="mt-5 d-flex justify-content-between align-items-end">
+    <h2 class="mx-3 pb-3">Weekly <%= @plan.name %> details</h2>
+    <%= render 'orders/form'%>
   </div>
-  <h2 class="mx-3">Weekly <%= @plan.name %> details</h2>
   <% @plan.dishes.each_with_index do |dish, i| %>
     <div class="card-product">
       <div class="plancard_long_weekday text-center">
@@ -52,90 +52,3 @@
     <%= render 'shared/plancard_index', plans: @related_pans %>
   </div>
 </div>
-
-
-<!-- <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <% @related_plans.each.with_index(0) do |plan, index| %>
-      <li data-target="#carouselExampleIndicators" data-slide-to="<%= plan.photo %>" class="<%= index.zero? ? 'active' : '' %>"></li>
-    <% end %>
-  </ol>
-  <div class="carousel-inner">
-    <% @related_plans.each.with_index(0) do |plan, index| %>
-      <div class=" col-lg-3 col-md-4 col-sm-12  carousel-item <%= index.zero? ? 'active' : '' %>">
-        <div class=" card-trip-home">
-          <%= cl_image_tag plan.photo %>
-          <div class="card-trip-infos">
-            <div>
-              <h4 class="tab-text-content"><%= link_to plan.name, plan_path(plan), { :class=>"stretched-link" }  %></h4> -->
-              <!-- <p><%= plan.description.truncate_words(10)%></p> -->
-            <!-- </div>
-            <%= link_to (cl_image_tag plan.kitchen.user.photo, class:"card-trip-user-big avatar-bordered"), kitchen_path(plan.kitchen) %>
-          </div>
-          <div class="mx-3 pl-3">
-            <div class='row'>
-              <% plan.tag_list.each do |tag| %>
-                <%= link_to '#'+tag, plans_path(tag: tag), class: "tab-text-tag" %>
-              <% end %>
-            </div>
-            <div class='row d-flex align-items-end flex-column bd-highlight mb-3'>
-              <h5 class='pr-3'><%=humanized_money_with_symbol(plan.price)%>/day</h5>
-            </div>
-          </div>
-        </div>
-        <%#= image_tag(post.photo.large, class: 'd-block w-100 img-fluid') %>
-      </div>
-    <% end %>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-<script type="text/javascript">
-  $(document).on('turbolinks:load', function(){
-     $('.carousel').carousel({
-        interval: 20000
-     });
-  });
-</script>
-<div class="container">
-  <div class="row">
-    <div class="owl-carousel owl-theme">
-      <% @related_plans.each do |plan| %>
-        <div class="card">
-          <%= cl_image_tag plan.photo %>
-          <div class="card-body">
-            <h5 class="card-title"><%= plan.name %></h5>
-            <p class="card-text"><%= plan.description %></p>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  </div>
-</div>
-<%= content_for(:after_js) do %>
-  <script type="text/javascript">
-    $(function() {
-       $('.owl-carousel').owlCarousel({
-    loop:true,
-    margin:10,
-    responsive:{
-        0:{
-            items:1
-        },
-        600:{
-            items:3
-        },
-        1000:{
-            items:5
-        }
-    }
-    })
-    });
-  </script>
-<% end %> -->

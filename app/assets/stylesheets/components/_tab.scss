@@ -27,13 +27,16 @@
 
 .tab-text-content:hover {
   text-decoration: none;
-  color: $red;
-  font-weight: 400;
+  font-weight: bold;
+  a:hover {
+    color: $red;
+  }
 }
 
 .tab-text-tag {
   // height: 20rem;
   color: $gray;
+  background-color: rgba(210, 210, 210, 0.5);
 }
 
 .tab-text-tag a {
