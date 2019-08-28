@@ -53,44 +53,56 @@
   <% end %>
   <!-- !!!!!!!!!! -->
   <br>
-  <div class="container mt-3">
-    <h2>Pick up location</h2>
-    <%= '  ----'+@kitchen.konbini.name %>
-  </div>
-  <div class="container my-3 d-flex justify-content-between">
-    <div
-          id="map"
-          style="width: 1110px;
-          height: 250px;"
-          data-markers="<%= @marker.to_json %>"
-          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-        ></div>
-  </div>
-  <!-- this is for adding review -->
-  <div class="container">
-    <%= render 'reviews/form' %>
-    <!-- this is for showing review -->
-    <div class="mx-3 mt-5">
-      <% @kitchen.reviews.each do |review| %>
-        <div class="d-flex align-self-start">
-          <% if review.user.photo.present? %>
-            <%= cl_image_tag review.user.photo, class: "avatar" %>
-          <% else %>
-            <%= image_tag "konbini.jpg", class: "avatar" %>
-          <% end %>
-          <div>
-            <h6 class="m-2 pt-2"><%= review.user.first_name %> <%= review.user.last_name %></h6>
-            <p class="m-2"><%= review.content %></p>
-            <p class="m-2">
-              <% review.rating.to_i.times do  %>
-                <i class="fas fa-star bento-star"></i>
+
+<div class="container">
+  <div class="row no-gutters mt-4">
+    <div class="col-12 col-sm-12 col-md-6">
+      <div class="container">
+        <h2>Pick up location</h2>
+        <%= '  ----'+@kitchen.konbini.name %>
+      </div>
+      <div class="container my-3 d-flex justify-content-between">
+        <div
+              id="map"
+              style="width: 500px;
+              height: 250px;"
+              data-markers="<%= @marker.to_json %>"
+              data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+            ></div>
+      </div>
+    </div>
+    <div class="col-12 col-sm-12 col-md-6">
+      <div class="container">
+        <h2>Review</h2>
+        <%= render 'reviews/form' %>
+        <!-- this is for showing review -->
+        <div class="mx-3 mt-5">
+          <% @kitchen.reviews.each do |review| %>
+            <div class="d-flex align-self-start">
+              <% if review.user.photo.present? %>
+                <%= cl_image_tag review.user.photo, class: "avatar" %>
+              <% else %>
+                <%= image_tag "konbini.jpg", class: "avatar" %>
               <% end %>
-            </p>
-          </div>
+              <div>
+                <h6 class="m-2 pt-2"><%= review.user.first_name %> <%= review.user.last_name %></h6>
+                <p class="m-2"><%= review.content %></p>
+                <p class="m-2">
+                  <% review.rating.to_i.times do  %>
+                    <i class="fas fa-star bento-star"></i>
+                  <% end %>
+                </p>
+              </div>
+            </div>
+          <% end %>
         </div>
-      <% end %>
+      </div>
     </div>
   </div>
+</div>
+
+
+  <!-- this is for adding review -->
   <!-- this is for map (fin)-->
   <br>
   <div class="container">
@@ -98,3 +110,4 @@
   </div>
   <!-- overall condition -->
 <% end %>
+

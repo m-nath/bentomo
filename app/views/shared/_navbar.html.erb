@@ -13,14 +13,35 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <div class="d-flex">
       <!-- search button start -->
-      <button name="button" type="submit" class="btn navbar-text">
-        <i class="fas fa-search"></i>
-      </button>
+      <%= simple_form_for :search, url: kitchens_path, method: "GET" do |f| %>
+        <div class="input-group-prepend"><i class="fa fa-search"></i>
+        </div>
+        <%= f.input :query, label: false, input_html: {class: 'form-control', value: (params[:search][:query] if params[:search])}, placeholder: "Find a kitchen" %>
+        <!-- <button type="submit"></i></button> -->
+      <% end %>
       <!-- search button end -->
       <!-- location button start -->
-      <button name="button" type="submit" class="btn nav-search navbar-text">
-        <i class="fas fa-map-marker-alt"></i>
-      </button>
+      <% if user_signed_in? %>
+        <div class="dropdown">
+          <a class="dropdown-toggle no-arrow" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-map-marker-alt"></i>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <%= simple_form_for(current_user) do |f| %>
+              <div class="form-inputs dropdown-item">
+                <%= f.input :default_location, collection: current_user.locations, as: :radio_buttons, label_method: :full_label %>
+                <%= f.button :submit, "Update", class: "btn btn-long" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% else %>
+        <div class="dropdown">
+          <a href="<%= new_user_session_path %>" %>
+            <i class="fa fa-map-marker-alt"></i>
+          </a>
+        </div>
+      <% end %>
       <!-- location button start -->
       <!-- my order start -->
       <div><%= link_to "My orders", orders_path, class: "nav-link navbar-text" %></div>

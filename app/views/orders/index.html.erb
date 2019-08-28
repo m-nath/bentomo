@@ -16,8 +16,8 @@
             </div>
             <!-- plan name and order date - END -->
             <div class="d-flex flex-column">
-              <div class="d-flex align-items-center">
-                <div class="mr-3 my-2">
+              <div class="d-flex align-items-end">
+                <div class="my-2">
                   <%= cl_image_tag order.user.photo, class: "card-trip-user-big avatar-bordered-order" %>
                 </div>
                 <div class="d-flex flex-column">
@@ -46,19 +46,21 @@
         <!-- plan name and price -->
         <div class="mx-3 order-card">
           <div class="d-flex justify-content-between order-info">
-            <h5 class="order-text"><%= link_to order.plan.name, plan_path(order.plan) %></h5>
+            <h5 class="order-text">
+              <b><%= link_to order.plan.name, plan_path(order.plan) %></b>  by <b><%= link_to order.plan.kitchen.name, kitchen_path(order.plan.kitchen) %></b>
+            </h5>
             <h5><%=humanized_money_with_symbol(order.plan.price)%>/day</h5>
           </div>
           <!-- plan name and price -->
           <!-- plan name and price -->
           <!-- kitchen name and avatar and chat-->
           <div class="d-flex flex-column">
-            <div class="d-flex align-items-center">
-              <div class="mr-3 my-2">
+            <div class="d-flex align-items-end">
+              <div class="my-2">
                 <%= link_to (cl_image_tag order.plan.kitchen.user.photo, class: "card-trip-user-big avatar-bordered-order"), kitchen_path(order.plan.kitchen) %>
               </div>
               <div class="d-flex flex-column">
-                <p class="order-kitchen"><%= link_to 'Kitchen: '+order.plan.kitchen.name, kitchen_path(order.plan.kitchen) %></p>
+                <!-- <p class="order-kitchen"><%#= link_to 'Kitchen: '+order.plan.kitchen.name, kitchen_path(order.plan.kitchen) %></p> -->
                 <!-- chatroom -->
 
                 <%= render 'chat_rooms/show', chat_room: order.chat_room %>
@@ -93,15 +95,15 @@
       <%= cl_image_tag order.plan.photo, class:"card-order-image" %>
       <div class="mx-3 order-card">
         <div class="d-flex justify-content-between order-info">
-          <h5 class="order-text"><%= link_to order.plan.name, plan_path(order.plan) %></h5>
+          <h5 class="order-text"><b><%= link_to order.plan.name, plan_path(order.plan) %></b>  by <b><%= link_to order.plan.kitchen.name, kitchen_path(order.plan.kitchen) %></b></h5>
           <h5><%=humanized_money_with_symbol(order.plan.price)%>/day</h5>
         </div>
         <!-- plan name and price -->
-        <div class="d-flex align-items-center">
+        <div class="d-flex align-items-end">
           <div class="mr-3 my-2">
             <%= link_to (cl_image_tag order.plan.kitchen.user.photo, class:"card-trip-user-big avatar-bordered-order"), kitchen_path(order.plan.kitchen) %>
           </div>
-          <p class="order-kitchen"><%= link_to 'Kitchen: '+order.plan.kitchen.name, kitchen_path(order.plan.kitchen) %></p>
+         <!--  <p class="order-kitchen"><%#= link_to 'Kitchen: '+order.plan.kitchen.name, kitchen_path(order.plan.kitchen) %></p> -->
         </div>
         <div class="d-flex justify-content-between">
           <p>Dates: <%= order.date %></p>
