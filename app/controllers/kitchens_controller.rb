@@ -101,7 +101,6 @@ class KitchensController < ApplicationController
     }]
   end
 
-
   def new
     @kitchen = Kitchen.new
     authorize @kitchen
