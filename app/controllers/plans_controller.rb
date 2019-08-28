@@ -24,7 +24,7 @@ class PlansController < ApplicationController
         lng: plan.kitchen.konbini.longitude,
         infoWindow: render_to_string(partial: "shared/info_window", locals: { konbini: plan.kitchen.konbini }),
         image_url: helpers.asset_url('konbini.jpg')
-    }
+      }
     end
     @markers = konbinis.uniq
   end
@@ -49,13 +49,18 @@ class PlansController < ApplicationController
                  infoWindow: render_to_string(partial: "shared/info_window", locals: { konbini: @konbini }),
                  image_url: helpers.asset_url('konbini.jpg')
     }]
+
+    @user_location = [{
+                        lat: current_user.locations[0].latitude,
+                        lng: current_user.locations[0].longitude
+    }]
   end
 
   def new
     @kitchen = Kitchen.find(params[:kitchen_id])
     @plan = Plan.new(
       kitchen: @kitchen
-      )
+    )
     authorize @plan
   end
 

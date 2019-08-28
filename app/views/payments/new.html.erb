@@ -1,5 +1,4 @@
 <h2 class="container d-flex justify-content-center mt-5">Order Confirmation<i class="fas fa-cart-plus"></i></h2>
-
 <div class="container" style="border: 1px solid gray;">
   <div class="row no-gutters mt-5">
     <div class="col-12 col-sm-12 col-md-6 my-3" style="
@@ -13,7 +12,6 @@
       <h5><b>Total Amount : <%= humanized_money_with_symbol(@order.amount) %></b></h5>
       <h5><b>Pickup Location :</b> <%= @order.plan.kitchen.konbini.name %></h5>
     </div>
-
     <div class="col-12 col-sm-12 col-md-6" style="
     padding-left: 70px; padding-right: 50px;">
       <div class="container my-3 d-flex justify-content-between">
@@ -23,20 +21,20 @@
             height: 250px;"
             data-markers="<%= @marker.to_json %>"
             data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+            data-location="<%= @user_location.to_json %> "
           ></div>
       </div>
     </div>
     <div class="container d-flex justify-content-center mb-2">
       <div class="d-flex justify-content-center">
         <%= form_tag order_payments_path(@order) do %>
-        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
             data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
             data-name="My Plan"
             data-email="<%= current_user.email %>"
             data-description="Plan <%= @order.plan.name %>"
             data-amount="<%= @order.amount_cents %>"
-            data-currency="<%= @order.amount.currency %>">
-        </script>
+            data-currency="<%= @order.amount.currency %>"></script>
           <button type="submit" class="btn-main">Purchase</button>
         <% end %>
       </div>

@@ -40,6 +40,7 @@
         height: 250px;"
         data-markers="<%= @marker.to_json %>"
         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+        data-location="<%= @user_location.to_json %> "
       ></div>
   </div>
 </div>
@@ -52,8 +53,6 @@
     <%= render 'shared/plancard_index', plans: @related_pans %>
   </div>
 </div>
-
-
 <!-- <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <% @related_plans.each.with_index(0) do |plan, index| %>
@@ -68,8 +67,8 @@
           <div class="card-trip-infos">
             <div>
               <h4 class="tab-text-content"><%= link_to plan.name, plan_path(plan), { :class=>"stretched-link" }  %></h4> -->
-              <!-- <p><%= plan.description.truncate_words(10)%></p> -->
-            <!-- </div>
+<!-- <p><%= plan.description.truncate_words(10)%></p> -->
+<!-- </div>
             <%= link_to (cl_image_tag plan.kitchen.user.photo, class:"card-trip-user-big avatar-bordered"), kitchen_path(plan.kitchen) %>
           </div>
           <div class="mx-3 pl-3">
