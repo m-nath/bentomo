@@ -25,7 +25,6 @@
   <!-- fivedays_card (start) -->
   <!-- !!!!!!!!!! -->
   <% @kitchen.plans.each_with_index do |plan, index| %>
-    <% @plan=plan %>
     <div class="container">
       <div class="accordion" id="accordionExample">
         <!-- drop down head (start) -->
@@ -33,40 +32,40 @@
           <button class="btn dropdown-long" type="button" data-toggle="collapse" data-target="#plan<%= index %>" aria-expanded="true" aria-controls="collapseOne">
             <!-- plan name and price (start) -->
             <div class="d-flex align-self-end justify-content-between">
-              <h2 class="mr-3 dropdown-text"><%= @plan.name %></h2>
-              <h3 class="dropdown-price">¥ <%= @plan.price %> /day</h3>
+              <h2 class="mr-3 dropdown-text"><%= plan.name %></h2>
+              <h3 class="dropdown-price">¥ <%= plan.price %> /day</h3>
             </div>
             <!-- plan name and price (end) -->
           </button>
         </div>
-        <!-- drop down head (end) -->
-        <!-- drop down body (start) -->
-        <div id="plan<%= index %>" class="collapse  <%= index==0 ? "show": "" %>" aria-labelledby="headingOne" data-parent="#accordionExample">
-          <div class="weekly-plan-card">
-            <div class="p-2 bd-highlight">
-              <div class="d-flex justify-content-between">
-                <div class="d-flex align-items-center">
-                  <p class="ml-3 mt-4 font-weight-bold">Plan description:</p>
-                  <p class="ml-1 mt-4"><%= @plan.description %></p>
-                </div>
-                <%= render 'orders/form' , class: "mt-5" %>
+      </div>
+      <!-- drop down head (end) -->
+      <!-- drop down body (start) -->
+      <div id="plan<%= index %>" class="collapse  <%= index==0 ? "show": "" %>" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="weekly-plan-card">
+          <div class="p-2 bd-highlight">
+            <div class="d-flex justify-content-between">
+              <div class="d-flex align-items-center">
+                <p class="ml-3 mt-4 font-weight-bold">Plan description:</p>
+                <p class="ml-1 mt-4"><%= plan.description %></p>
               </div>
-              <h3 class="plancard-text ml-3">Bento Schedule :</h3>
+              <%= render 'orders/form' , class: "mt-5" %>
             </div>
-            <div class="p-2 bd-highlight flex-grow-1 mx-3">
-              <%= render 'shared/plancard' %>
-            </div>
+            <h3 class="plancard-text ml-3">Bento Schedule :</h3>
+          </div>
+          <div class="p-2 bd-highlight flex-grow-1 mx-3">
+            <%= render 'shared/plancard' %>
           </div>
         </div>
-        <!-- drop down body (end) -->
       </div>
+      <!-- drop down body (end) -->
     </div>
   <% end %>
   <!-- !!!!!!!!!! -->
   <br>
   <div class="container">
     <div class="row no-gutters mt-4">
-      <div class="col-12 col-sm-12 col-md-6">
+      <div class="col-12 col-sm-12 col-md-6 px-2">
         <div class="container">
           <h2>Pick up location</h2>
           <i class="fa fa-map-marker-alt"></i> <%= @kitchen.konbini.name %>

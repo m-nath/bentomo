@@ -1,3 +1,7 @@
+.btn:focus {
+  box-shadow: none;
+}
+
 .btn-main {
   color: $white;
   padding: 6px 24px;
@@ -75,6 +79,7 @@ button.stripe-button-el {
 .btn-long {
   color: $white;
   width: 100%;
+  padding: 6px 240px;
   border-radius: 100px;
   background: $red;
   transition: background 0.3s ease;
