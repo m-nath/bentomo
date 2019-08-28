@@ -52,7 +52,9 @@
     <%= render 'shared/plancard_index', plans: @related_pans %>
   </div>
 </div>
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
+
+<!-- <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <% @related_plans.each.with_index(0) do |plan, index| %>
       <li data-target="#carouselExampleIndicators" data-slide-to="<%= plan.photo %>" class="<%= index.zero? ? 'active' : '' %>"></li>
@@ -65,9 +67,9 @@
           <%= cl_image_tag plan.photo %>
           <div class="card-trip-infos">
             <div>
-              <h4 class="tab-text-content"><%= link_to plan.name, plan_path(plan), { :class=>"stretched-link" }  %></h4>
+              <h4 class="tab-text-content"><%= link_to plan.name, plan_path(plan), { :class=>"stretched-link" }  %></h4> -->
               <!-- <p><%= plan.description.truncate_words(10)%></p> -->
-            </div>
+            <!-- </div>
             <%= link_to (cl_image_tag plan.kitchen.user.photo, class:"card-trip-user-big avatar-bordered"), kitchen_path(plan.kitchen) %>
           </div>
           <div class="mx-3 pl-3">
@@ -136,4 +138,4 @@
     })
     });
   </script>
-<% end %>
+<% end %> -->
