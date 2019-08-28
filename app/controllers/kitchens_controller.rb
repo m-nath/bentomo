@@ -97,18 +97,20 @@ class KitchensController < ApplicationController
     authorize @kitchen
     @plan = @kitchen.plans.first
     @konbini = @kitchen.konbini
-    @user_location = [{
-                        lat: current_user.locations[0].latitude,
-                        lng: current_user.locations[0].longitude,
-                        infoWindow: render_to_string(partial: "shared/your_location_info_window", locals: { user: @user })
-    }]
-    # don't touch this -----
     @marker = [{
                  lat: @konbini.latitude,
                  lng: @konbini.longitude,
                  infoWindow: render_to_string(partial: "shared/info_window", locals: { konbini: @konbini }),
                  image_url: helpers.asset_url('konbini.jpg')
     }]
+
+    if user_signed_in? && current_user.default_location.present?
+      @user_location = [{
+                          lat: current_user.locations[0].latitude,
+                          lng: current_user.locations[0].longitude,
+                          infoWindow: render_to_string(partial: "shared/your_location_info_window", locals: { user: @user })
+      }]
+    end
   end
 
   def new
