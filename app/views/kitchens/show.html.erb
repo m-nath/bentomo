@@ -3,7 +3,6 @@
 <% else %>
   <!-- overall condition: current user is not kitchen owner-->
   <!-- banner in kitchen (start)-->
-
   <div class="banner mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @kitchen.photo %>');">
     <div class="d-flex align-items-end justify-content-center" style="height: 60vh;">
       <h2 class="white"><%= @kitchen.name %></h2>
@@ -59,7 +58,7 @@
       <div class="col-12 col-sm-12 col-md-6">
         <div class="container">
           <h2>Pick up location</h2>
-          <%= '  ----'+@kitchen.konbini.name %>
+          <i class="fa fa-map-marker-alt"></i> <%= @kitchen.konbini.name %>
         </div>
         <div class="container my-3 d-flex justify-content-between">
           <div
