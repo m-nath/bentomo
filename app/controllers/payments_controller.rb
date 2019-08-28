@@ -11,6 +11,10 @@ class PaymentsController < ApplicationController
                  infoWindow: render_to_string(partial: "shared/info_window", locals: { konbini: @konbini }),
                  image_url: helpers.asset_url('konbini.jpg')
     }]
+    @user_location = [{
+                        lat: current_user.locations[0].latitude,
+                        lng: current_user.locations[0].longitude
+    }]
   end
 
   def create
