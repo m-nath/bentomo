@@ -1,5 +1,5 @@
 <div class="banner mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url('<%= image_path "banner4.jpg" %>');">
-    <div class="d-flex flex-column mb-3">
+   <div class="d-flex flex-column mb-3">
       <div class="p-2 d-flex justify-content-center" style="
       margin-top: 100px;">
         <span id="banner-typed-text"></span>
@@ -26,30 +26,32 @@
   <ul class="nav nav-tabs" id="myTab" role="tablist" style="
     font-size: large;
     font-weight: bold;">
-    <li class="nav-item">
-      <a class="tab-text nav-link active" id="kitchen-tab" data-toggle="tab" href="#kitchen" role="tab" aria-controls="kitchen" aria-selected="true">Kitchens</a>
-    </li>
-    <li class="nav-item">
-      <a class="tab-text nav-link" id="plan-tab" data-toggle="tab" href="#plan" role="tab" aria-controls="plan" aria-selected="false">Meal Plans</a>
-    </li>
-  </ul>
-  <!-- CONTENT -->
-  <div class="tab-content" id="myTabContent">
-    <!-- kitchen content -->
-    <div class="tab-pane show active" id="kitchen" role="tabpanel" aria-labelledby="kitchen-tab">
-      <%= render 'shared/kitchencard_index' %>
-      <div class="d-flex justify-content-center">
-        <p class="btn btn-secondery mx-auto my-3"><%= link_to "more kitchens", kitchens_path %></p>
+      <li class="nav-item">
+        <a class="tab-text nav-link active" id="kitchen-tab" data-toggle="tab" href="#kitchen" role="tab" aria-controls="kitchen" aria-selected="true">Kitchens</a>
+      </li>
+      <li class="nav-item">
+        <a class="tab-text nav-link" id="plan-tab" data-toggle="tab" href="#plan" role="tab" aria-controls="plan" aria-selected="false">Meal Plans</a>
+      </li>
+    </ul>
+    <!-- CONTENT -->
+    <div class="tab-content" id="myTabContent">
+      <!-- kitchen content -->
+      <div class="tab-pane show active" id="kitchen" role="tabpanel" aria-labelledby="kitchen-tab">
+        <%= render 'shared/kitchencard_index' %>
+        <div class="d-flex justify-content-center">
+          <p class="btn btn-secondery mx-auto my-3"><%= link_to "more kitchens", kitchens_path %></p>
+        </div>
       </div>
-    </div>
-    <!-- plan content -->
-    <div class="tab-pane" id="plan" role="tabpanel" aria-labelledby="plan-tab">
-      <div class="row mt-3">
-        <%= render 'shared/plancard_index' %>
+      <!-- plan content -->
+      <div class="tab-pane" id="plan" role="tabpanel" aria-labelledby="plan-tab">
+        <div class="row mt-3">
+          <%= render 'shared/plancard_index' %>
+        </div>
+        <div class="d-flex justify-content-center">
+          <p class="btn btn-secondery mx-auto my-3"><%= link_to "more plans", plans_path %></p>
+        </div>
       </div>
-      <div class="d-flex justify-content-center">
-        <p class="btn btn-secondery mx-auto my-3"><%= link_to "more plans", plans_path %></p>
-      </div>
+      <!-- TAB SECTION END -->
     </div>
     <!-- TAB SECTION END -->
   </div>

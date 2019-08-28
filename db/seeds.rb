@@ -105,20 +105,20 @@ puts 'Creating housewife no.1 and its kitchen, plan, dishes'
 
 hw_1= User.create!(
   email:'hw1@gmail.com',
-  first_name: 'Tomo',
+  first_name: 'Grandma',
   last_name: 'Mama',
   password: "123123",
-  remote_photo_url: 'https://res.cloudinary.com/dxouryvao/image/upload/v1566801957/Screen_Shot_2019-08-26_at_15.40.15_td9zra.png'
+  remote_photo_url: 'https://res.cloudinary.com/dxouryvao/image/upload/v1566956558/Screen_Shot_2019-08-28_at_10.41.46_bhvycz.png'
 )
 
 konbini_1 = Konbini.find_by(mapbox_id: "e7b032ed39c419052f22a37fd9b17f647e146f37")
 
 kitchen_1 = Kitchen.create!(
-  name: 'Tomo Mama`s kitchen',
+  name: 'Grandma kitchen',
   description: 'Healthy homemade food full of nutrition. Especially recommended for people who are trying to limit carbohydrates intake',
-  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566802345/Screen_Shot_2019-08-26_at_15.51.21_rngzbg.png",
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566956430/category_1_oth4xb.jpg",
   user: hw_1,
-  tag_list: ['keto', 'low carb', 'japanese', 'healthy', 'nutritious'],
+  tag_list: ['low carb', 'japanese', 'healthy', 'nutritious'],
   konbini_id: konbini_1.id
 )
 
@@ -176,25 +176,26 @@ hw_2= User.create!(
   first_name: 'Yuko',
   last_name: 'Tanaka',
   password: "123123",
-  remote_photo_url: 'https://res.cloudinary.com/dxouryvao/image/upload/v1566803594/Screen_Shot_2019-08-26_at_16.12.42_ldzwz0.png'
+  remote_photo_url: 'https://res.cloudinary.com/dxouryvao/image/upload/v1566959416/Screen_Shot_2019-08-28_at_11.29.48_pgatn7.png'
 )
 
 kitchen_2 = Kitchen.create!(
   name: 'Yuko`s kitchen',
   description: 'Healthy homemade food full of nutrition',
-  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566803551/hw10_dcitx0.jpg",
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566797775/5e603c62ea570fb2852d52e034bc85a539ef12ce_lvl4tx.jpg",
   user: hw_2,
-  tag_list: ['japanese', 'healthy', 'nutritious'],
-  konbini_id: Konbini.all.ids.sample
+  tag_list: ['japanese', 'healthy', 'nutritious','diet'],
+  konbini_id: Konbini.all.ids.sample,
+  video: 'https://youtu.be/6RuShc7NSV4?t=20'
 )
 
 plan_2 = Plan.create!(
-  name: 'Weekly balance plan',
+  name: 'Nutrition protein plan',
   description: '5 Days balance lunch bento plan with varieties',
   price: 700,
   kitchen: kitchen_2,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566803219/media_ddu2xi.jpg",
-  tag_list: ['japanese', 'healthy', 'nutritious']
+  tag_list: ['japanese', 'healthy', 'nutritious','diet']
 )
 
 Dish.create!(
@@ -248,14 +249,14 @@ hw_3= User.create!(
 kitchen_3 = Kitchen.create!(
   name: 'Aya kitchen',
   description: 'Healthy homemade food full of nutrition',
-  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566797775/5e603c62ea570fb2852d52e034bc85a539ef12ce_lvl4tx.jpg",
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566959244/160086_main_otgavs.jpg",
   user: hw_3,
   tag_list: ['japanese', 'high protein', 'nutritious'],
   konbini_id: Konbini.all.ids.sample
 )
 
 plan_3 = Plan.create!(
-  name: 'Weekly balance plan',
+  name: 'Weekday nutrition plan',
   description: '5 Days balance lunch bento plan with varieties',
   price: 800,
   kitchen: kitchen_3,
@@ -377,7 +378,7 @@ hw_5= User.create!(
 kitchen_5 = Kitchen.create!(
   name: 'Kids Happiness',
   description: 'Specialized in Kids bento',
-  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566806332/tfEfVe3jp6BUfqALkJWE74jqdIvIRDigFTcz4xNEFqjsNWnoiIGqAnqaRHYRxvRn_gt1pkm.jpg",
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566956349/7787-00033-1_ktm0fj.jpg",
   user: hw_5,
   tag_list: ['kids', 'nutritious'],
   konbini_id: Konbini.all.ids.sample #do not need to change
@@ -434,23 +435,23 @@ puts 'Creating housewife no.6 and its kitchen, plan, dishes'
 
 hw_6= User.create!(
   email:'hw6@gmail.com',
-  first_name: 'Sakura',
+  first_name: 'Grandma',
   last_name: 'Saotome',
   password: "123123",
-  remote_photo_url: 'https://res.cloudinary.com/dxouryvao/image/upload/v1566813779/58613dbd2494c07b790a8e2998879c0b_dmr7nq.jpg'
+  remote_photo_url: 'https://res.cloudinary.com/dxouryvao/image/upload/v1566956113/Screen_Shot_2019-08-28_at_10.34.44_vg7l2f.png'
 )
 
 kitchen_6 = Kitchen.create!(
-  name: 'Character bento',
-  description: 'Everytime you open the bento, you will be suprised. These will lead you to small fantasy.',
-  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566813779/58613dbd2494c07b790a8e2998879c0b_dmr7nq.jpg",
+  name: 'Care bento',
+  description: 'Everytime you open the bento, you will be suprised. These will remind you home.',
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566955026/CR_ANJ0453-700x466_rudmir.jpg",
   user: hw_6,
   tag_list: ['kids', 'nutritious'],
   konbini_id: Konbini.all.ids.sample
 )
 
 plan_6 = Plan.create!(
-  name: 'Character bento plan',
+  name: 'Care bento plan',
   description: '5 Days character bento plan',
   price: 1000,
   kitchen: kitchen_6,
@@ -508,14 +509,14 @@ hw_7= User.create!(
 kitchen_7 = Kitchen.create!(
   name: 'Wa bento',
   description: 'This is the authentic Japanese style of Bento',
-  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566813779/58613dbd2494c07b790a8e2998879c0b_dmr7nq.jpg",
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566806332/tfEfVe3jp6BUfqALkJWE74jqdIvIRDigFTcz4xNEFqjsNWnoiIGqAnqaRHYRxvRn_gt1pkm.jpg",
   user: hw_7,
   tag_list: ['japanese','nutritious'],
   konbini_id: Konbini.all.ids.sample
 )
 
 plan_7 = Plan.create!(
-  name: 'Character bento plan',
+  name: 'Osaka bento plan',
   description: '5 Days Wa bento plan',
   price: 1000,
   kitchen: kitchen_7,
@@ -638,7 +639,7 @@ end
 # ]
 
 User.all.each do |user|
-  rand(1..2).times do
+  2.times do
     Location.create!(
       label: ["Home", "Work"].sample,
       address: ["1-3-21, Meguro, Meguro-ku, Tokyo", "3-13-6, Meguro, Meguro-ku, Tokyo", "1-21-20, Higashiyama, Meguro-ku, Tokyo", "‎2 Shimomeguro, Meguro-ku, Tokyo", "1-24-9, Meguro, Meguro-ku, Tokyo", "2 Chome-20-8 Shimomeguro, Meguro City, Tokyo", "2-19-15 Kamimeguro, Meguro-ku, Tokyo", "1-8-1 Shimomeguro, Meguro-ku, Tokyo", "4-1-1 Shimomeguro, Meguro-ku, Tokyo", "2-4-36 Meguro, Meguro-ku, Tokyo"].sample,
@@ -646,6 +647,16 @@ User.all.each do |user|
     )
   end
 end
+
+christee.locations.destroy
+
+Location.create!(
+      label: "Work",
+      address: "2-11-3, Meguro, Meguro-ku, Tokyo",
+      user: christee  #real office addres e.g. Google, Amazon, Rakuten, Impacthub
+    )
+puts 'christee location made'
+
 
 # puts 'Destroying 1kitchen-christee`s'
 
@@ -687,22 +698,29 @@ User.all.each do |user|
   kitchen = Kitchen.where.not(user: user).sample
   plan = kitchen.plans.sample
   # create order for past
-  rand(2..4).times do
+  rand(1..2).times do
     kitchen = Kitchen.where.not(user: user).sample
     plan = kitchen.plans.sample
     Order.create!(
       user: user,
       plan: plan,
-      date: "2019-08-15 to 2019-08-20",
+      date: "2019-08-12, 2019-08-12, 2019-08-13, 2019-08-14",
       amount: plan.price
     )
   end
 end
 
+Order.create!(
+  user: christee,
+  plan: plan_4,
+  date: "2019-08-19, 2019-08-20, 2019-08-21, 2019-08-22, 2019-08-23",
+  amount: plan.price
+)
+
 Kitchen.all.each do |kitchen|
   rand(3..4).times do
     Review.create!(
-      content: ['Very tasty bento', 'Taste like home', 'Very healthy yummy bento'].sample,
+      content: ['Very tasty bento, loved it!', 'I really like this kitchen, it tastes like home', 'Very healthy yummy bento. I have been subscribe for a while! I will continue', 'I like this kitchen, recommend it!'].sample,
       rating: [4,5].sample,
       kitchen: kitchen,
       user: User.all.sample

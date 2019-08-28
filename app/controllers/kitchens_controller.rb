@@ -13,15 +13,20 @@ class KitchensController < ApplicationController
 
       if query.present? && @tags != nil
         @kitchens = policy_scope(Kitchen).global_search(query).tagged_with(@tags)
+        @plans = policy_scope(Plan).global_search(query).tagged_with(@tags)
       elsif query.present?
         @kitchens = policy_scope(Kitchen).global_search(query)
+        @plans = policy_scope(Plan).global_search(query)
       elsif @tags.any?
         @kitchens = policy_scope(Kitchen).tagged_with(@tags)
+        @plans = policy_scope(Plan).tagged_with(@tags)
       end
     elsif params[:tag].present?
       @kitchens = policy_scope(Kitchen).tagged_with(params[:tag])
+      @plans = policy_scope(Plan).tagged_with(params[:tag])
     else
       @kitchens = policy_scope(Kitchen)
+      @plans = policy_scope(Plan)
     end
 
     # if user_signed_in?
