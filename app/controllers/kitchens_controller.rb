@@ -94,7 +94,7 @@ class KitchensController < ApplicationController
     @kitchen = policy_scope(Kitchen).find(params[:id])
     @review = Review.new
     authorize @kitchen
-    @plan = @kitchen.plans
+    @plan = @kitchen.plans.first
     @konbini = @kitchen.konbini
     @user_location = [{
                         lat: current_user.locations[0].latitude,
