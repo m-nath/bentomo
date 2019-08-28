@@ -704,8 +704,8 @@ User.all.each do |user|
     Order.create!(
       user: user,
       plan: plan,
-      date: "2019-08-12, 2019-08-12, 2019-08-13, 2019-08-14"
-      # amount: plan.price
+      date: "2019-08-12, 2019-08-12, 2019-08-13, 2019-08-14",
+      amount: plan.price
     )
   end
 end
