@@ -1,0 +1,28 @@
+<div class="cards">
+  <% (0..4).each do |i| %>
+    <% if @plan.dishes[i] %>
+      <div class="plancard d-flex flex-column text-center">
+        <div class="plancard-text"><%= %w(Mon Tue Wed Thu Fri)[i] %></div>
+        <div class="overlay-image">
+          <div class="card-category plancard-each" id="text" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('<%= cl_image_path @plan.dishes[i].photo %>')">
+            <div class="overlay">
+              <div class="overlaytext text-left">
+                <p>Calories - 510</p>
+                <p>Fat - 26g</p>
+                <p>Protein - 21g</p>
+              </div>
+            </div>
+            <div class="plan-info align-items-center"><%= @plan.dishes[i].name %></div>
+          </div>
+        </div>
+      </div>
+    <% else %>
+      <div class="plancard d-flex flex-column text-center">
+        <div class="plancard-text"><%= %w(Mon Tue Wed Thu Fri)[i] %></div>
+        <div class="plancard-empty d-flex justify-content-center align-items-center">
+          <h2 class="add-meal"><i class="fas fa-plus-circle"></i></h2>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
