@@ -57,8 +57,20 @@
   color: $gray;
 }
 
+.dropdown-menu {
+  background: #ffffff;
+}
+
+#search_query {
+  border-color: $gray;
+}
+
+#search_query:active {
+  border-color: $pink;
+}
+
 .dropdown-item:active {
-  background: white;
+  background: #ffffff;
 }
 
 .dropdown-item:active {
