@@ -3,7 +3,7 @@
 <% else %>
   <!-- overall condition: current user is not kitchen owner-->
   <!-- banner in kitchen (start)-->
-
+<% if @kitchen.video.nil? %>
   <div class="banner mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @kitchen.photo %>');">
     <div class="d-flex align-items-end justify-content-center" style="height: 60vh;">
       <h2 class="white"><%= @kitchen.name %></h2>
@@ -11,6 +11,16 @@
       <%= cl_image_tag @kitchen.user.photo, class: "avatar-extra-large" %>
     </div>
   </div>
+<% else %>
+  <!-- <iframe class="header-bg-video" frameborder="0" allowfullscreen="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" title="YouTube video player" width="640" height="260" src="https://youtu.be/6RuShc7NSV4?t=20" id="widget2"></iframe> -->
+  <div class="banner mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= @kitchen.video%>');">
+    <div class="d-flex align-items-end justify-content-center" style="height: 60vh;">
+      <h2 class="white"><%= @kitchen.name %></h2>
+      <p class="banner-p text-break"><%= @kitchen.description %></p>
+      <%= cl_image_tag @kitchen.user.photo, class: "avatar-extra-large" %>
+    </div>
+  </div>
+<% end %>
   <!-- banner in kitchen (finish)-->
   <!-- fivedays_card (start) -->
   <!-- !!!!!!!!!! -->
