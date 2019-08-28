@@ -30,7 +30,7 @@
             <%= simple_form_for(current_user) do |f| %>
               <div class="form-inputs dropdown-item">
                 <%= f.input :default_location, collection: current_user.locations, as: :radio_buttons, label_method: :full_label %>
-                <%= f.button :submit, "Update", class: "btn btn-long" %>
+                <%= f.button :submit, "Update", class: "btn btn-long-2" %>
               </div>
             <% end %>
           </div>
