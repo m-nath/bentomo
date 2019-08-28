@@ -1,7 +1,7 @@
 .weekly-plan-card {
   background-color: #e2e2e2;
   height: auto;
-  padding-bottom: 25px;
+  padding-bottom: 38px;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 }
 
@@ -72,5 +72,11 @@
   box-shadow: 1px 2px 4px 1px $light-gray;
 }
 
+.dropdown-price {
+  align-self: flex-end;
+}
 
 
+.dropdown-long {
+  width:100%;
+}

@@ -3,24 +3,26 @@
   <% @plan=plan %>
   <div class="accordion" id="accordionExample">
     <div class="dropdown-card-header card-header d-flex justify-content-between" id="headingOne">
-      <button class="btn" type="button" data-toggle="collapse" data-target="#plan<%= index %>" aria-expanded="true" aria-controls="collapseOne">
-        <div class="d-flex align-self-end">
+      <button class="btn dropdown-long" type="button" data-toggle="collapse" data-target="#plan<%= index %>" aria-expanded="true" aria-controls="collapseOne">
+        <div class="d-flex align-self-end justify-content-between">
           <h2 class="mr-3 dropdown-text"><%= @plan.name %></h2>
-          <% if @plan.kitchen.user == current_user %>
-            <%= render 'plans/edit_form' %>
-          <% end %>
-          <%= render 'orders/form' , class: "mt-5" %>
+          <h3 class="dropdown-price">¥ <%= @plan.price %> /day</h3>
         </div>
       </button>
-      <div id="plan<%= index %>" class="collapse  <%= index==0 ? "show": "" %>" aria-labelledby="headingOne" data-parent="#accordionExample">
-        <div class="weekly-plan-card">
-          <div class="p-2 bd-highlight">
-            <!-- link to edit plan -->
-            <p class="ml-3 mt-3"><%= @plan.description %></p>
+    </div>
+    <div id="plan<%= index %>" class="collapse  <%= index==0 ? "show": "" %>" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="weekly-plan-card">
+        <div class="p-2 bd-highlight d-flex justify-content-between align-items-center mr-3">
+          <!-- link to edit plan -->
+          <div class="d-flex align-items-center">
+            <p class="ml-3 mt-4 font-weight-bold">Plan description:</p>
+            <p class="ml-1 mt-4"><%= @plan.description %></p>
           </div>
-          <div class="p-2 bd-highlight flex-grow-1 mx-3">
-            <%= render 'shared/plancard' %>
-          </div>
+          <%= render 'plans/edit_form' %>
+        </div>
+        <h3 class="plancard-text ml-4">Bento Schedule :</h3>
+        <div class="p-2 bd-highlight flex-grow-1 mx-3">
+          <%= render 'shared/plancard' %>
         </div>
       </div>
     </div>
