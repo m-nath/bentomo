@@ -67,7 +67,8 @@ class KitchensController < ApplicationController
       @markers = konbinis.uniq
       @user_location = [{
                           lat: current_user.locations[0].latitude,
-                          lng: current_user.locations[0].longitude
+                          lng: current_user.locations[0].longitude,
+                          infoWindow: render_to_string(partial: "shared/your_location_info_window", locals: { user: @user })
       }]
     else
       konbinis = @kitchens.map do |kitchen|
@@ -94,11 +95,12 @@ class KitchensController < ApplicationController
     @kitchen = policy_scope(Kitchen).find(params[:id])
     @review = Review.new
     authorize @kitchen
-    @plan = @kitchen.plans
+    @plan = @kitchen.plans.first
     @konbini = @kitchen.konbini
     @user_location = [{
                         lat: current_user.locations[0].latitude,
-                        lng: current_user.locations[0].longitude
+                        lng: current_user.locations[0].longitude,
+                        infoWindow: render_to_string(partial: "shared/your_location_info_window", locals: { user: @user })
     }]
     # don't touch this -----
     @marker = [{
@@ -138,6 +140,11 @@ class KitchensController < ApplicationController
         }
       end
       @markers = konbinis.uniq
+      @user_location = [{
+                          lat: current_user.locations[0].latitude,
+                          lng: current_user.locations[0].longitude,
+                          infoWindow: render_to_string(partial: "shared/your_location_info_window", locals: { user: @user })
+      }]
       # @markers = @konbinis.map do |konbini|
       #   {
       #     lat: konbini.latitude,
