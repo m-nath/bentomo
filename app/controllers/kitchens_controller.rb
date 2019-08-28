@@ -67,7 +67,8 @@ class KitchensController < ApplicationController
       @markers = konbinis.uniq
       @user_location = [{
                           lat: current_user.locations[0].latitude,
-                          lng: current_user.locations[0].longitude
+                          lng: current_user.locations[0].longitude,
+                          infoWindow: render_to_string(partial: "shared/your_location_info_window", locals: { user: @user })
       }]
     else
       konbinis = @kitchens.map do |kitchen|
@@ -98,7 +99,8 @@ class KitchensController < ApplicationController
     @konbini = @kitchen.konbini
     @user_location = [{
                         lat: current_user.locations[0].latitude,
-                        lng: current_user.locations[0].longitude
+                        lng: current_user.locations[0].longitude,
+                        infoWindow: render_to_string(partial: "shared/your_location_info_window", locals: { user: @user })
     }]
     # don't touch this -----
     @marker = [{
