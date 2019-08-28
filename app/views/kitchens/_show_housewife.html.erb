@@ -42,16 +42,6 @@
 <!-- this is for map (start)-->
 <div class="container">
   <h2>Pick up location</h2>
-  <%= '  ----'+@kitchen.konbini.name %>
-  <div class="my-3 d-flex justify-content-between">
-    <div
-          id="map"
-          style="width: 1110px;
-          height: 250px;"
-          data-markers="<%= @marker.to_json %>"
-          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-        >
-    </div>
-  </div>
+  <i class="fa fa-map-marker-alt"></i> <%= @kitchen.konbini.name %>
 </div>
 <!-- this is for map (fin)-->
