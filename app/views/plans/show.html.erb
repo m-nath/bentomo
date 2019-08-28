@@ -40,6 +40,7 @@
         height: 250px;"
         data-markers="<%= @marker.to_json %>"
         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+        data-location="<%= @user_location.to_json %> "
       ></div>
   </div>
 </div>
@@ -52,3 +53,4 @@
     <%= render 'shared/plancard_index', plans: @related_pans %>
   </div>
 </div>
+

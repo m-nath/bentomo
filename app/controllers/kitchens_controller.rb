@@ -53,7 +53,8 @@ class KitchensController < ApplicationController
     if user_signed_in? && current_user.default_location.present?
       @user = current_user
       location = Location.find(@user.default_location)
-      radius = @user.radius || 5
+
+      radius = @user.radius || 10
       @nearby_konbini = Konbini.near([location.latitude, location.longitude], radius)
       konbinis = @nearby_konbini.joins(:kitchens).map do |search_location|
         {
@@ -64,6 +65,10 @@ class KitchensController < ApplicationController
         }
       end
       @markers = konbinis.uniq
+      @user_location = [{
+                          lat: current_user.locations[0].latitude,
+                          lng: current_user.locations[0].longitude
+      }]
     else
       konbinis = @kitchens.map do |kitchen|
         {
@@ -91,7 +96,10 @@ class KitchensController < ApplicationController
     authorize @kitchen
     @plan = @kitchen.plans
     @konbini = @kitchen.konbini
-
+    @user_location = [{
+                        lat: current_user.locations[0].latitude,
+                        lng: current_user.locations[0].longitude
+    }]
     # don't touch this -----
     @marker = [{
                  lat: @konbini.latitude,
