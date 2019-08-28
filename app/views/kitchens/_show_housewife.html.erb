@@ -15,11 +15,7 @@
   <div class="mb-3">
     <h2>Plans</h2>
     <%= render 'plans/new' %>
-    <% @kitchen.plans.each do |plan| %>
-      <% @plan=plan %>
-      <br>
-      <%= render 'shared/fivedays_card' %>
-    <% end %>
+    <%= render 'shared/fivedays_card' %>
   </div>
   <!-- fivedays_card (end) -->
 </div>
