@@ -1,0 +1,28 @@
+<button type="button" class="btn btn-main" data-toggle="modal" data-target="#add_dish_form" data-whatever="@getbootstrap">
+  <p class="kill-margin">Add a dish</p>
+</button>
+<div class="modal fade" id="add_dish_form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">Add a dish</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for ([@plan, DishPlan.new]) do |f| %>
+          <%= f.error_notification %>
+          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+          <div class="form-inputs">
+            <%= f.association :dish, collection: Dish.where(kitchen: current_user.kitchen), required: true %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondery" data-dismiss="modal">Close</button>
+            <%= f.button :submit, "Update", class: "btn btn-long" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
