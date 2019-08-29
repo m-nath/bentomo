@@ -2,13 +2,12 @@
   <div class="row">
     <div class="col-6 offset-3">
       <h2 class="d-flex justify-content-center">Setting</h2>
-      <%= simple_form_for(@user) do |f| %>
+      <%= simple_form_for([@user, @locations]) do |f| %>
         <%= f.error_notification %>
         <div class="form-inputs">
           <%= f.input :default_location, collection: @locations, as: :radio_buttons, label_method: :full_label %>
           <%= f.simple_fields_for :locations do |p| %>
             <%= p.input :address %>
-            <%= p.button :submit, "Add Address", class: "btn btn" %>
           <% end %>
           <%= f.input :radius, input_html: { value: 1 }, collection: 0..5, label: "Distance from your default location (km)" %>
           <%= f.input :preference,

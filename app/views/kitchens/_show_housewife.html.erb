@@ -41,3 +41,10 @@
   <i class="fa fa-map-marker-alt"></i> <%= @kitchen.konbini.name %>
 </div>
 <!-- this is for map (fin)-->
+<div
+          id="map"
+          style="width: 1110px;
+          height: 250px;"
+          data-markers="<%= @marker.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+        ></div>
