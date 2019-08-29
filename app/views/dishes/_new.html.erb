@@ -15,15 +15,17 @@
           <%= simple_form_for :dish, url: fetch_ingredients_path, remote: true do |f| %>
             <div class="form-inputs">
               <%= f.input :name, as: :string, required: true, placeholder:'enter the dish name' %>
-              <%= f.input :ingr, as: :text, placeholder:'enter the ingr' %>
+              <%= f.input :ingr, as: :text, placeholder:'write the ingredients so we will calculate nutrition details for you' %>
               <%= hidden_field_tag 'kitchen_id', @kitchen.id %>
               <%= f.submit "fetch ingredients" %>
             </div>
           <% end %>
         </div>
-        <div id='ingr'>
-        </div>
-        <div id="dish-form">
+        <div class='row no-gutters'>
+          <div id="dish-form" class='col-12 col-sm-6 col-md-6'>
+          </div>
+          <div id='ingr' class='col-12 col-sm-6 col-md-6'>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondery" data-dismiss="modal">Close</button>

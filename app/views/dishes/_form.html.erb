@@ -1,5 +1,6 @@
-  <%= name %>
-<%= ingr %>
+<h4>Dish name: <%= name %></h4>
+<h4>Ingredients: </h4>
+<p> <%= ingr %></p>
 <%= simple_form_for([kitchen, dish]) do |f| %>
   <%= f.input :photo %>
   <%= f.input :photo_cache, as: :hidden, required: true%>
