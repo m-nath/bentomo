@@ -4,7 +4,6 @@
     <div class="d-flex flex-column">
       <h2 class="white banner-name"><%= @plan.name %></h2>
       <p class="plan-description"><%= @plan.description %></p>
-      <!-- <div class="plan-price"><%#= render 'orders/form' %></div> -->
     </div>
     <%= link_to (cl_image_tag @plan.kitchen.user.photo, class: "avatar-extra-large"), kitchen_path(@plan.kitchen) %>
     <%= link_to 'check the kitchen',  kitchen_path(@plan.kitchen), class: 'btn btn-secondery avatar-xl-btn'%>
@@ -14,7 +13,7 @@
 <div class="container">
   <div class="mt-5 d-flex justify-content-between align-items-end">
     <h2 class="mx-3 pb-3">Weekly <%= @plan.name %> details</h2>
-    <%= render 'orders/form'%>
+    <%= render 'orders/form', plan: @plan %>
   </div>
   <% @plan.dishes.each_with_index do |dish, i| %>
     <div class="card-product">
@@ -50,7 +49,6 @@
   <h4>Other related plans:</h4>
   <div class="row mt-3">
     <% @plans = @related_plans%>
-    <%= render 'shared/plancard_index', plans: @related_pans %>
+    <%= render 'shared/plancard_index', plans: @related_plans %>
   </div>
 </div>
-

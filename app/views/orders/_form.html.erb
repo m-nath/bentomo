@@ -1,6 +1,6 @@
 <% if user_signed_in? %>
   <div class="form-group mt-3">
-    <%= simple_form_for ([@plan, Order.new]) do |f| %>
+    <%= simple_form_for([plan, Order.new]) do |f| %>
       <%= f.error_notification %>
       <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
       <div class="d-flex">
@@ -15,6 +15,6 @@
   </div>
 <% else %>
   <div class="d-flex align-items-end">
-    <%= link_to humanized_money_with_symbol(@plan.price)+'/day ORDER', new_user_session_path, class:'btn btn-main' %>
+    <%= link_to humanized_money_with_symbol(plan.price)+'/day ORDER', new_user_session_path, class:'btn btn-main' %>
   </div>
 <% end %>
