@@ -201,7 +201,7 @@ plan_2 = Plan.create!(
 Dish.create!(
   name: 'Maguro bento',
   kitchen: kitchen_2,
-  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566969797/oluvdg7envc9u33fjjok.jpg"
+  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566995150/pabsmyql8fph2vzetzt8.jpg"
 )
 Dish.create!(
   name: 'Tofu bento',
