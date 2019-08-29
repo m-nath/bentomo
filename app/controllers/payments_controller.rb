@@ -4,6 +4,8 @@ class PaymentsController < ApplicationController
 
   def new
     @konbini = @order.plan.kitchen.konbini
+    @user = current_user
+    location = Location.find(@user.default_location)
 
     @marker = [{
                  lat: @konbini.latitude,
@@ -12,8 +14,8 @@ class PaymentsController < ApplicationController
                  image_url: helpers.asset_url('konbini.jpg')
     }]
     @user_location = [{
-                        lat: current_user.locations[0].latitude,
-                        lng: current_user.locations[0].longitude,
+                        lat: location.latitude,
+                        lng: location.longitude,
                         infoWindow: render_to_string(partial: "shared/your_location_info_window", locals: { user: @user })
     }]
   end
