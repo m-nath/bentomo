@@ -35,7 +35,12 @@ class DishesController < ApplicationController
     }
     response = RestClient.post url, payload.to_json, {content_type: :json, accept: :json}
     @info = JSON.parse(response.body)
-    @calories =  @info["calories"]
+    @calories = @info["calories"]
+    @labels = @info["healthLabels"]
+    @fat = @info["totalNutrients"]["FAT"]["quantity"].truncate(2)
+    @carbs = @info["totalNutrients"]["CHOCDF"]["quantity"].truncate(2)
+    # @sugar = @info["totalNutrients"]["SUGAR"]["quantity"].truncate(2)
+    @protein = @info["totalNutrients"]["PROCNT"]["quantity"].truncate(2)
 
     respond_to do |format|
       format.js
