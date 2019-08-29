@@ -86,7 +86,8 @@
           <h2>Review</h2>
           <%= render 'reviews/form' %>
           <!-- this is for showing review -->
-          <div class="mx-3 mt-5">
+          <p class="review-comment mt-4">Review comment</p>
+          <div class="scroll">
             <% @kitchen.reviews.each do |review| %>
               <div class="d-flex align-self-start">
                 <% if review.user.photo.present? %>
