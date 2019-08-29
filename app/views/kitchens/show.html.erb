@@ -48,9 +48,9 @@
         <div class="weekly-plan-card">
           <div class="p-2 bd-highlight">
             <div class="d-flex justify-content-between">
-              <div class="d-flex align-items-center">
-                <p class="ml-3 mt-4 font-weight-bold">Description:</p>
-                <p class="ml-1 mt-4 description"><%= plan.description %></p>
+              <div class="d-flex flex-column">
+                <h3 class="ml-3 mt-4 font-weight-bold plancard-text">Description :</h3>
+                <h3 class="ml-3 mb-3"><%= plan.description %></h3>
               </div>
               <%= render 'orders/form' , class: "mt-5", plan: plan %>
             </div>
@@ -58,6 +58,12 @@
           </div>
           <div class="p-2 bd-highlight flex-grow-1 mx-3">
             <%= render 'shared/plancard', plan: plan %>
+          </div>
+          <div class="mt-5 mx-4">
+            <h3 class="font-weight-bold plancard-text">Weekly Nutrition Details:</h3>
+            <h4>Calories - 510</h4>
+            <h4>Fat - 26g</h4>
+            <h4>Protein - 21g</h4>
           </div>
         </div>
       </div>
