@@ -105,6 +105,9 @@
                     <% review.rating.to_i.times do  %>
                       <i class="fas fa-star bento-star"></i>
                     <% end %>
+                    <% (5 - review.rating).to_i.times do  %>
+                      <i class="fas fa-star bento-star-gray"></i>
+                    <% end %>
                   </p>
                 </div>
               </div>
