@@ -135,3 +135,20 @@ text-decoration: none;
   font-weight: 600;
   font-size: 20px;
 }
+
+.full-height {
+  height: 100%;
+}
+
+.price-position-bottom {
+  position: absolute;
+  bottom: 0;
+}
+
+.date-card {
+  width: 72px;
+  height: auto;
+  color: $black;
+  background-color: rgb(229, 229, 229);
+  border-radius: 5px;
+}
