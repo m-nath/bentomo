@@ -66,6 +66,10 @@
   margin-left: 20px;
 }
 
+.dropdown .fa:hover {
+  color: $pink;
+}
+
 .edit_user:active {
   color: $gray;
 }
@@ -99,3 +103,8 @@
 .fa {
   color: $gray;
 }
+
+
+// .fa:hover {
+//   color: $pink;
+// }
