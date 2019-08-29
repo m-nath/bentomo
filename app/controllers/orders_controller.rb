@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
       received_orders = []
       current_user.kitchen.plans.each do |plan|
         plan.orders.each do |order|
-        received_orders << order if order.date > Time.now && order.state =='paid'
+          received_orders << order if order.date > Time.now && order.state =='paid'
         end
       end
       return @received_orders = received_orders
@@ -42,8 +42,8 @@ class OrdersController < ApplicationController
     if @order.save
       ChatRoom.create(order_id: @order.id)
       redirect_to new_order_payment_path(@order)
-    else
-      render :_form
+      # else
+      #   render :_form
     end
 
   end

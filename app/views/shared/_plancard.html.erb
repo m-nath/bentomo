@@ -1,5 +1,5 @@
 <div class="cards">
-  <% @plan.dishes.each_with_index do |dish, i| %>
+  <% plan.dishes.each_with_index do |dish, i| %>
     <div class="plancard d-flex flex-column text-center">
       <div class="plancard-text"><%= %w(Mon Tue Wed Thu Fri Sat Sun)[i] %></div>
       <div class="overlay-image">
