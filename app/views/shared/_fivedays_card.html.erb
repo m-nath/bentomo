@@ -18,7 +18,7 @@
             <p class="ml-3 mt-4 font-weight-bold">Description:</p>
             <p class="ml-1 mt-4 description"><%= @plan.description %></p>
           </div>
-          <%= render 'plans/edit_form' %>
+          <%= render 'plans/edit_form', plan: plan %>
         </div>
         <h3 class="plancard-text ml-4">Bento Schedule :</h3>
         <div class="p-2 bd-highlight flex-grow-1 mx-3">
