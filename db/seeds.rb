@@ -116,7 +116,7 @@ konbini_1 = Konbini.find_by(mapbox_id: "e7b032ed39c419052f22a37fd9b17f647e146f37
 kitchen_1 = Kitchen.create!(
   name: 'Grandma kitchen',
   description: 'Healthy homemade food full of nutrition. Especially recommended for people who are trying to limit carbohydrates intake',
-  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566956430/category_1_oth4xb.jpg",
+  remote_photo_url: "https://res.cloudinary.com/duj5vczom/image/upload/v1567075981/462835_tarelki_ovoshhi_pomidory_krasnyj_1680x1050_www.Gde-Fon.com_mw4gxl.jpg",
   user: hw_1,
   tag_list: ['low carb', 'japanese', 'healthy', 'nutritious'],
   konbini_id: konbini_1.id
