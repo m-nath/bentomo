@@ -59,6 +59,8 @@
 .dropdown-menu {
   position: absolute;
   left: -200px;
+  border-radius: 5px;
+  margin-top: 10px;
 }
 
 .dropdown {
@@ -79,7 +81,7 @@
 }
 
 #search_query {
-  border-color: $gray;
+  border-color: $light-gray;
 }
 
 #search_query:active {

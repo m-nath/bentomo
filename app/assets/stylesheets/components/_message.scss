@@ -41,6 +41,7 @@
 .message_content {
   margin-bottom: 0;
 }
+
 input.form-control {
   border: 1px solid $light-gray;
   box-shadow: none;
@@ -48,10 +49,11 @@ input.form-control {
   color: #868686;
   &:focus {
     outline: none;
-    border: 1px solid blue;
+    border: 1px solid $pink;
     box-shadow: none;
   }
 }
+
 .chat-header {
   background-color: $red;
   color: white;
