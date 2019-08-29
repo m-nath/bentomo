@@ -642,7 +642,7 @@ User.all.each do |user|
   # 2.times do
   Location.create!(
     label: ["Home", "Work"].sample,
-    address: ["1-3-21, Meguro, Meguro-ku, Tokyo", "3-13-6, Meguro, Meguro-ku, Tokyo", "1-21-20, Higashiyama, Meguro-ku, Tokyo", "‎2 Shimomeguro, Meguro-ku, Tokyo", "1-24-9, Meguro, Meguro-ku, Tokyo", "2 Chome-20-8 Shimomeguro, Meguro City, Tokyo", "2-19-15 Kamimeguro, Meguro-ku, Tokyo", "1-8-1 Shimomeguro, Meguro-ku, Tokyo", "4-1-1 Shimomeguro, Meguro-ku, Tokyo", "2-4-36 Meguro, Meguro-ku, Tokyo"].sample,
+    address: ["2-20-19, Shimomeguro, Meguro-ku, Tokyo", "1-3-3, Meguro, Meguro-ku, Tokyo", "1-21-20, Higashiyama, Meguro-ku, Tokyo", "‎2 Shimomeguro, Meguro-ku, Tokyo", "1-2-19, Shimomeguro, Meguro-ku, Tokyo", "2 Chome-20-8 Shimomeguro, Meguro City, Tokyo", "2-19-15 Kamimeguro, Meguro-ku, Tokyo", "1-8-1 Shimomeguro, Meguro-ku, Tokyo", "4-1-1 Shimomeguro, Meguro-ku, Tokyo", "2-4-36 Meguro, Meguro-ku, Tokyo"].sample,
     user: user  #real office addres e.g. Google, Amazon, Rakuten, Impacthub
   )
   # end
@@ -654,7 +654,7 @@ end
 
 Location.create!(
   label: "Work",
-  address: "2-11-3, Meguro, Meguro-ku, Tokyo",
+  address: "1-2-19, Shimomeguro, Meguro-ku, Tokyo",
   user: christee  #real office addres e.g. Google, Amazon, Rakuten, Impacthub
 )
 
