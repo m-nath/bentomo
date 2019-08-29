@@ -20,7 +20,7 @@
       <div class="plancard d-flex flex-column text-center">
         <div class="plancard-text"><%= %w(Mon Tue Wed Thu Fri)[i] %></div>
         <div class="plancard-empty d-flex justify-content-center align-items-center">
-          <h2 class="add-meal"><i class="fas fa-plus-circle"></i></h2>
+          <%= render 'kitchens/add_dishplan' %>
         </div>
       </div>
     <% end %>

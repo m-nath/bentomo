@@ -1,5 +1,5 @@
 <button type="button" class="btn btn-main" data-toggle="modal" data-target="#add_dish_form" data-whatever="@getbootstrap">
-  <p class="kill-margin">Add a dish</p>
+  <h2 class="add-meal"><i class="fas fa-plus-circle"></i></h2>
 </button>
 <div class="modal fade" id="add_dish_form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -19,7 +19,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondery" data-dismiss="modal">Close</button>
-            <%= f.button :submit, "Update", class: "btn btn-long" %>
+            <%= f.button :submit, "Add Dish", class: "btn btn" %>
           </div>
         <% end %>
       </div>
