@@ -188,9 +188,11 @@ button.stripe-button-el {
 }
 
 .order-again-form {
-  width: 200px;
-  position: absolute;
-  top: -50px;
+  width: 350px;
+  position: absolute !important;
+  top: -25px !important;
+  left: 15px !important;
+  padding-left: 10px;
 }
 
 .price-text {
