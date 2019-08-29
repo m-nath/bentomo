@@ -96,6 +96,8 @@ class KitchensController < ApplicationController
     @review = Review.new
     authorize @kitchen
     @plan = @kitchen.plans.first
+    @user = current_user
+    location = Location.find(@user.default_location)
     @konbini = @kitchen.konbini
     @marker = [{
                  lat: @konbini.latitude,
@@ -143,8 +145,8 @@ class KitchensController < ApplicationController
       end
       @markers = konbinis.uniq
       @user_location = [{
-                          lat: location.latitude,
-                          lng: location.longitude,
+                          lat: current_user.locations[0].latitude,
+                          lng: current_user.locations[0].longitude,
                           infoWindow: render_to_string(partial: "shared/your_location_info_window", locals: { user: @user })
       }]
       # @markers = @konbinis.map do |konbini|
@@ -171,21 +173,6 @@ class KitchensController < ApplicationController
   def edit
     @kitchen = Kitchen.find(params[:id])
     authorize @kitchen
-    @konbini = @kitchen.konbini
-    @marker = [{
-                 lat: @konbini.latitude,
-                 lng: @konbini.longitude,
-                 infoWindow: render_to_string(partial: "shared/info_window", locals: { konbini: @konbini }),
-                 image_url: helpers.asset_url('konbini.jpg')
-    }]
-
-    if user_signed_in? && current_user.default_location.present?
-      @user_location = [{
-                          lat: location.latitude,
-                          lng: location.longitude,
-                          infoWindow: render_to_string(partial: "shared/your_location_info_window", locals: { user: @user })
-      }]
-    end
   end
 
   def update
