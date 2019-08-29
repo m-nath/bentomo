@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.6.3'
 
+gem 'rest-client'
 gem 'sprockets', '>= 3.0.0'
 gem 'sprockets-es6'
 gem 'stripe'

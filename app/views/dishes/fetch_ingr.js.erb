@@ -1,0 +1,11 @@
+
+let  info = "<%= @calories%>";
+
+console.log(info);
+let result = document.getElementById('ingr')
+result.innerHTML = info
+let dishForm = document.getElementById('dish-form')
+dishForm.innerHTML = "<%= j render 'dishes/form', kitchen: @kitchen, name: @name, ingr: @ingredients, dish: @dish  %>"
+
+let ingrForm = document.getElementById('ingr_form')
+ingrForm.innerHTML = ''
