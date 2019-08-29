@@ -24,10 +24,10 @@ class PlansController < ApplicationController
 
       radius = @user.radius || 10
       @nearby_konbini = Konbini.near([location.latitude, location.longitude], radius)
-      konbinis = @nearby_konbini.joins(:plan).map do |search_location|
+      konbinis = @nearby_konbini.joins(:kitchen).map do |search_location|
         {
           lat: search_location.latitude,
-          lng: psearch_location.longitude,
+          lng: search_location.longitude,
           infoWindow: render_to_string(partial: "shared/info_window", locals: { konbini: plan.kitchen.konbini }),
           image_url: helpers.asset_url('konbini.jpg')
         }
