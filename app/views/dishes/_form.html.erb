@@ -1,0 +1,10 @@
+  <%= name %>
+<%= ingr %>
+<%= simple_form_for([kitchen, dish]) do |f| %>
+  <%= f.input :photo %>
+  <%= f.input :photo_cache, as: :hidden, required: true%>
+  <%= f.input :name, input_html: { value: name }, as: :hidden  %>
+  <%= f.input :ingr, input_html: { value: ingr }, as: :hidden  %>
+  <%= hidden_field_tag 'kitchen_id', kitchen.id %>
+  <%= f.submit 'Create', class: 'btn btn-main' %>
+<% end %>

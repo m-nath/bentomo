@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   #----------usually useless above----------
+  post 'fetch_ingredients', to: 'dishes#fetch_ingr', as: :fetch_ingredients
   mount ActionCable.server => "/cable"
   devise_for :users
   root to: 'pages#home'
