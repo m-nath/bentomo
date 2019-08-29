@@ -8,16 +8,20 @@
             <p class="m-2"><% kitchen.average_rating.to_i.times do  %>
                 <i class="fas fa-star bento-star"></i>
               <% end %>
-              <h4 class="tab-text-content"><%= link_to kitchen.name, kitchen_path(kitchen), { :class=>"stretched-link" }  %></h4>
-            </div>
-            <%= link_to (cl_image_tag kitchen.user.photo, class:"card-trip-user-big avatar-bordered"), kitchen_path(kitchen) %>
+              <% (5 - kitchen.average_rating).to_i.times do  %>
+                <i class="fas fa-star bento-star-gray"></i>
+              <% end %>
+            </p>
+            <h4 class="tab-text-content"><%= link_to kitchen.name, kitchen_path(kitchen), { :class=>"stretched-link" }  %></h4>
           </div>
-          <div class="mx-3">
-            <% kitchen.tag_list.each do |tag| %>
-              <%= link_to '#'+tag, kitchens_path(tag: tag), class: "tab-text-tag mx-1 px-1" %>
-            <% end %>
-          </div>
+          <%= link_to (cl_image_tag kitchen.user.photo, class:"card-trip-user-big avatar-bordered"), kitchen_path(kitchen) %>
+        </div>
+        <div class="mx-3">
+          <% kitchen.tag_list.each do |tag| %>
+            <%= link_to '#'+tag, kitchens_path(tag: tag), class: "tab-text-tag mx-1 px-1" %>
+          <% end %>
         </div>
       </div>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
+</div>
