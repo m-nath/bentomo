@@ -63,9 +63,7 @@ small.help-block {
 .modal-header {
     border-bottom: 0 none;
 }
-.modal-footer {
-    border-top: 0 none;
-}
+
 .modal-body {
     padding: 0;
 }
@@ -295,27 +293,7 @@ th, td {
     font-size: 17px;
     padding: 15px 0 3px;
 }
-/* Footer */
-.footer {
-    background-color: #f5f8fb;
-    bottom: 0;
-    height: 60px;
-    position: absolute;
-    width: 100%;
-    font-size: 10px;
-    text-transform: uppercase;
-}
-.footer .list-inline {
-    margin-left: 0;
-}
-.footer ul.list-inline li:first-child {
-    display: block;
-    float: left;
-    padding: 6px 5px 0 0;
-}
-.footer .container-fluid {
-    padding-top: 20px;
-}
+
 .popupOpen {
     background-color: #ff5a1e;
     border-radius: 5px;
