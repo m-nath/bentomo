@@ -249,7 +249,7 @@ hw_3= User.create!(
 kitchen_3 = Kitchen.create!(
   name: 'Aya kitchen',
   description: 'Healthy homemade food full of nutrition',
-  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566959244/160086_main_otgavs.jpg",
+  remote_photo_url: "https://res.cloudinary.com/duj5vczom/image/upload/v1567078149/425003-svetik_aefk6u.jpg",
   user: hw_3,
   tag_list: ['japanese', 'high protein', 'nutritious'],
   konbini_id: Konbini.all.ids.sample
@@ -509,7 +509,7 @@ hw_7= User.create!(
 kitchen_7 = Kitchen.create!(
   name: 'Wa bento',
   description: 'This is the authentic Japanese style of Bento',
-  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566806332/tfEfVe3jp6BUfqALkJWE74jqdIvIRDigFTcz4xNEFqjsNWnoiIGqAnqaRHYRxvRn_gt1pkm.jpg",
+  remote_photo_url: "https://res.cloudinary.com/duj5vczom/image/upload/v1567076673/washoku-cucina-giapponese-italian-food-academy_tfdx6n.jpg",
   user: hw_7,
   tag_list: ['japanese','nutritious'],
   konbini_id: Konbini.all.ids.sample
