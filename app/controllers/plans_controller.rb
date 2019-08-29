@@ -104,11 +104,15 @@ class PlansController < ApplicationController
   end
 
   def edit
-
+    @plan = Plan.find(params[:id])
+    authorize @plan
   end
 
   def update
-
+    @plan = Plan.find(params[:id])
+    @plan.update(plan_params)
+    authorize @plan
+    redirect_to kitchen_path(@plan.kitchen)
   end
 
   def destroy
