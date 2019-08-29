@@ -14,15 +14,21 @@
       <div class="weekly-plan-card">
         <div class="p-2 bd-highlight d-flex justify-content-between align-items-center mr-3">
           <!-- link to edit plan -->
-          <div class="d-flex align-items-center">
-            <p class="ml-3 mt-4 font-weight-bold">Description:</p>
-            <p class="ml-1 mt-4 description"><%= @plan.description %></p>
+          <div class="d-flex flex-column">
+            <h3 class="ml-3 mt-4 font-weight-bold plancard-text">Description :</h3>
+            <h3 class="ml-3 mb-3"><%= plan.description %></h3>
           </div>
           <%= render 'plans/edit_form', plan: plan %>
         </div>
         <h3 class="plancard-text ml-4">Bento Schedule :</h3>
         <div class="p-2 bd-highlight flex-grow-1 mx-3">
           <%= render 'shared/plancard_empty' %>
+        </div>
+        <div class="mt-5 mx-4">
+          <h3 class="font-weight-bold plancard-text">Weekly Nutrition Details:</h3>
+          <h4>Calories - 510</h4>
+          <h4>Fat - 26g</h4>
+          <h4>Protein - 21g</h4>
         </div>
       </div>
     </div>
