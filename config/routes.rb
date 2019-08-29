@@ -39,7 +39,8 @@ Rails.application.routes.draw do
   end
 
   get 'my_account', to: 'users#edit'
-  resources :users, only: [:edit, :update]
+
+  resources :users, only: [:edit, :update, :update_location]
   resources :dish_plans, only: [:destroy]
   resources :locations, except:[:index, :show]
 

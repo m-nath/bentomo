@@ -2,7 +2,8 @@ class LocationsController < ApplicationController
   before_action :set_user
 
   def create
-    @location = Location.new(location_params)
+    @location = @user.locations.create(params[:location])
+    Location.new(location_params)
     @user = current_user
     @location = @user.locations
     authorize @location
@@ -28,5 +29,4 @@ class LocationsController < ApplicationController
   def location_params
     params.require(:location).permit(:label, :address)
   end
-end
 end

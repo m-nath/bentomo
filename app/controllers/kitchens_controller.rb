@@ -112,7 +112,6 @@ class KitchensController < ApplicationController
                    image_url: helpers.asset_url('konbini.jpg')
 
       }]
-
     end
   end
 

@@ -1,12 +1,11 @@
 <!-- 5 days plan card (finish)-->
 <% @kitchen.plans.each_with_index do |plan, index| %>
-  <% @plan=plan %>
   <div class="accordion" id="accordionExample">
     <div class="dropdown-card-header card-header d-flex justify-content-between" id="headingOne">
       <button class="btn dropdown-long" type="button" data-toggle="collapse" data-target="#plan<%= index %>" aria-expanded="true" aria-controls="collapseOne">
         <div class="d-flex align-self-end justify-content-between">
-          <h2 class="mr-3 dropdown-text"><%= @plan.name %></h2>
-          <h3 class="dropdown-price">¥ <%= @plan.price %> /day</h3>
+          <h2 class="mr-3 dropdown-text"><%= plan.name %></h2>
+          <h3 class="dropdown-price">¥ <%= plan.price %> /day</h3>
         </div>
       </button>
     </div>
@@ -16,7 +15,7 @@
           <!-- link to edit plan -->
           <div class="d-flex align-items-center">
             <p class="ml-3 mt-4 font-weight-bold">Description:</p>
-            <p class="ml-1 mt-4 description"><%= @plan.description %></p>
+            <p class="ml-1 mt-4 description"><%= plan.description %></p>
           </div>
           <%= render 'plans/edit_form', plan: plan %>
         </div>
