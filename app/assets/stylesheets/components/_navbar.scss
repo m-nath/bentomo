@@ -82,10 +82,14 @@
 
 #search_query {
   border-color: $light-gray;
+  padding-left: 30px;
+  font-family: roboto;
+  color: $gray;
 }
 
-#search_query:active {
-  border-color: $pink;
+#search_query::placeholder {
+  font-family: $body-font;
+  font-weight: 400;
 }
 
 .dropdown-item:active {
@@ -99,13 +103,21 @@
 .search_query {
   margin-bottom: 0px;
   margin-right: 20px;
-  margin-left: 5px;
+  margin-left: 3px;
 }
 
 .fa {
   color: $gray;
 }
 
+.fa-search {
+  position: absolute;
+  left: 10px;
+}
+
+.position-search {
+  position: relative;
+}
 
 // .fa:hover {
 //   color: $pink;
