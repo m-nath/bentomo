@@ -87,16 +87,16 @@
           <%= render 'reviews/form' %>
           <!-- this is for showing review -->
           <p class="review-comment mt-4">Review comment</p>
-          <div class="scroll">
+          <div class="scroll p-3">
             <% @kitchen.reviews.each do |review| %>
-              <div class="d-flex align-self-start">
+              <div class="d-flex align-self-start mb-2">
                 <% if review.user.photo.present? %>
                   <%= cl_image_tag review.user.photo, class: "avatar" %>
                 <% else %>
                   <%= image_tag "konbini.jpg", class: "avatar" %>
                 <% end %>
                 <div>
-                  <h6 class="m-2 pt-2"><%= review.user.first_name %> <%= review.user.last_name %></h6>
+                  <h6 class="mx-2"><%= review.user.first_name %> <%= review.user.last_name %></h6>
                   <p class="m-2"><%= review.content %></p>
                   <p class="m-2">
                     <% review.rating.to_i.times do  %>
