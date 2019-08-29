@@ -18,15 +18,37 @@ class PlansController < ApplicationController
       @plans = policy_scope(Plan)
     end
 
-    konbinis = @plans.map do |plan|
-      {
-        lat: plan.kitchen.konbini.latitude,
-        lng: plan.kitchen.konbini.longitude,
-        infoWindow: render_to_string(partial: "shared/info_window", locals: { konbini: plan.kitchen.konbini }),
-        image_url: helpers.asset_url('konbini.jpg')
-      }
+    if user_signed_in? && current_user.default_location.present?
+      @user = current_user
+      location = Location.find(@user.default_location)
+
+      radius = @user.radius || 10
+      @nearby_konbini = Konbini.near([location.latitude, location.longitude], radius)
+      konbinis = @nearby_konbini.joins(:kitchen).map do |search_location|
+        {
+          lat: search_location.latitude,
+          lng: search_location.longitude,
+          infoWindow: render_to_string(partial: "shared/info_window", locals: { konbini: plan.kitchen.konbini }),
+          image_url: helpers.asset_url('konbini.jpg')
+        }
+      end
+      @markers = konbinis.uniq
+      @user_location = [{
+                          lat: location.latitude,
+                          lng: location.longitude,
+                          infoWindow: render_to_string(partial: "shared/your_location_info_window", locals: { user: @user })
+      }]
+    else
+      konbinis = @plans.map do |plan|
+        {
+          lat: plan.kitchen.konbini.latitude,
+          lng: plan.kitchen.konbini.longitude,
+          infoWindow: render_to_string(partial: "shared/info_window", locals: { konbini: plan.kitchen.konbini }),
+          image_url: helpers.asset_url('konbini.jpg')
+        }
+      end
+      @markers = konbinis.uniq
     end
-    @markers = konbinis.uniq
   end
 
   def tagged
@@ -49,11 +71,15 @@ class PlansController < ApplicationController
                  infoWindow: render_to_string(partial: "shared/info_window", locals: { konbini: @konbini }),
                  image_url: helpers.asset_url('konbini.jpg')
     }]
-
-    @user_location = [{
-                        lat: current_user.locations[0].latitude,
-                        lng: current_user.locations[0].longitude
-    }]
+    if user_signed_in? && current_user.default_location.present?
+      @user = current_user
+      location = Location.find(@user.default_location)
+      @user_location = [{
+                          lat: location.latitude,
+                          lng: location.longitude,
+                          infoWindow: render_to_string(partial: "shared/your_location_info_window", locals: { user: @user })
+      }]
+    end
   end
 
   def new
