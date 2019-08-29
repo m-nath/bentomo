@@ -133,6 +133,11 @@ class KitchensController < ApplicationController
           image_url: helpers.asset_url('konbini.jpg')
         }
       end
+      @user_location = [{
+                          lat: location.latitude,
+                          lng: location.longitude,
+                          infoWindow: render_to_string(partial: "shared/your_location_info_window", locals: { user: @user })
+      }]
       @markers = konbinis.uniq
     else
       konbinis = @konbinis.map do |konbini|
@@ -144,11 +149,6 @@ class KitchensController < ApplicationController
         }
       end
       @markers = konbinis.uniq
-      @user_location = [{
-                          lat: location.latitude,
-                          lng: location.longitude,
-                          infoWindow: render_to_string(partial: "shared/your_location_info_window", locals: { user: @user })
-      }]
       # @markers = @konbinis.map do |konbini|
       #   {
       #     lat: konbini.latitude,
