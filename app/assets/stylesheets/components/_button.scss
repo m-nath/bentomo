@@ -174,11 +174,29 @@ button.stripe-button-el {
   text-decoration: none;
 }
 
+.pay-btn {
+  color: $red;
+}
+
+.pay-btn a {
+  color: $red;
+}
+
+.pay-btn:hover a {
+  color: $pink;
+  text-decoration: none;
+}
+
+.order-again-form {
+  width: 200px;
+  position: absolute;
+  top: -50px;
+}
+
 .price-text {
   margin-bottom: 0px;
   margin-right: 16px;
   margin-left: 10px;
-
 }
 
 .kill-margin {

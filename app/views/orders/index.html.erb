@@ -12,7 +12,22 @@
             <!-- plan name and order date - START -->
             <div class="d-flex justify-content-between order-info">
               <h5 class="order-text"><%= link_to order.plan.name, plan_path(order.plan) %></h5>
-              <h5>Dates: <%= order.date %></h5>
+              <div class="d-flex">
+                <p class="mr-2">Dates: </p>
+                <% order.date.split(', ').each do |order| %>
+                  <div class="day-dot mx-1 px-1 d-flex justify-content-center">
+                    <p class="ml-1">
+                      <% weeks = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] %>
+                      <%= weeks[order.to_date.wday - 1] %>
+                    </p>
+                    <p class="text-center ml-1"> - <%= order.to_date.day %></p>
+                    <p class="mx-1 kill-margin">
+                      <% months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] %>
+                      <%= months[order.to_date.month - 1] %>
+                    </p>
+                  </div>
+                <% end %>
+              </div>
             </div>
             <!-- plan name and order date - END -->
             <div class="d-flex flex-column">
@@ -83,7 +98,22 @@
             </div>
           </div>
           <div class="d-flex justify-content-between">
-            <p>Dates: <%= order.date %></p>
+            <div class="d-flex">
+              <p class="mr-2">Dates: </p>
+              <% order.date.split(', ').each do |order| %>
+                <div class="day-dot mx-1 px-1 d-flex justify-content-center">
+                  <p class="ml-1">
+                    <% weeks = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] %>
+                    <%= weeks[order.to_date.wday - 1] %>
+                  </p>
+                  <p class="text-center ml-1"> - <%= order.to_date.day %></p>
+                  <p class="mx-1 kill-margin">
+                    <% months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] %>
+                    <%= months[order.to_date.month - 1] %>
+                  </p>
+                </div>
+              <% end %>
+            </div>
             <p>Total Amount: <%= humanized_money_with_symbol(order.amount) %></p>
           </div>
         </div>
@@ -105,12 +135,34 @@
         <div class="d-flex align-items-end">
           <div class="mr-1 my-2 d-flex justify-content-between align-items-end" style="width: 100%;">
             <%= link_to (cl_image_tag order.plan.kitchen.user.photo, class:"card-trip-user-big avatar-bordered-order"), kitchen_path(order.plan.kitchen) %>
-            <p class="ml-1" id="pay-btn"><%= link_to 'Order again', new_order_payment_path(order) %></p>
+            <div class="dropleft">
+              <button class="dropdown-toggle btn pay-btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Order again
+              </button>
+              <div class="dropdown-menu order-again-form" aria-labelledby="dropdownMenuButton">
+                <a class="flatpickr-calendar.open" href="#"><%= render 'orders/form' , plan: order.plan %></a>
+              </div>
+            </div>
           </div>
           <!--  <p class="order-kitchen"><%#= link_to 'Kitchen: '+order.plan.kitchen.name, kitchen_path(order.plan.kitchen) %></p> -->
         </div>
         <div class="d-flex justify-content-between">
-          <p>Dates: <%= order.date %></p>
+          <div class="d-flex">
+            <p class="mr-2">Dates: </p>
+            <% order.date.split(', ').each do |order| %>
+              <div class="day-dot mx-1 px-1 d-flex justify-content-center">
+                <p class="ml-1">
+                  <% weeks = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'] %>
+                  <%= weeks[order.to_date.wday - 1] %>
+                </p>
+                <p class="text-center ml-1"> - <%= order.to_date.day %></p>
+                <p class="mx-1 kill-margin">
+                  <% months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'] %>
+                  <%= months[order.to_date.month - 1] %>
+                </p>
+              </div>
+            <% end %>
+          </div>
           <p>Total Amount: <%= humanized_money_with_symbol(order.amount) %></p>
         </div>
       </div>
