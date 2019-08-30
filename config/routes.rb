@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'uikit_kid', to: 'pages#uikit_kid'
   get 'plans/tagged', to: "plans#tagged", as: :plans_tagged
   get 'kitchens/tagged', to: "kitchens#tagged", as: :kitchens_tagged
+  get '/404', to: "errors#not_found"
 
 
   mount ActionCable.server => "/cable"
