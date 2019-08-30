@@ -8,7 +8,6 @@
           <%= f.input :default_location, collection: @locations, as: :radio_buttons, label_method: :full_label %>
           <%= f.simple_fields_for :locations do |p| %>
             <%= p.input :address %>
-            <%= p.button :submit, "Add Address", class: "btn btn" %>
           <% end %>
           <%= f.input :radius, input_html: { value: 1 }, collection: 0..5, label: "Distance from your default location (km)" %>
           <%= f.input :preference,
