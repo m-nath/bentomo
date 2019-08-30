@@ -22,9 +22,8 @@
           <%= f.input :password_confirmation,
                       required: true,
                       input_html: { autocomplete: "new-password" } %>
-          <%= simple_form_for :search, url: locations_path, method: "GET" do |f| %>
-            <%= f.input :query, label: 'Address', input_html: {class: 'form-control', value: (params[:search][:query] if params[:search])}, placeholder: "Find your nearest konbini" %>
-            <%= f.submit "Search" %>
+          <%= f.simple_fields_for :locations do |p| %>
+            <%= p.input :address %>
           <% end %>
           <%= f.input :photo %>
           <%= f.input :photo_cache, as: :hidden %>
