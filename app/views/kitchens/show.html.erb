@@ -19,7 +19,7 @@
       <!-- title <%#= image_url "video.mp4" %>  embed-->
       <div class="d-flex align-items-end justify-content-center" >
         <h2 class="white banner-name"><%= @kitchen.name %></h2>
-        <p class="banner-p text-break"><%= @kitchen.description %></p>
+        <p class="banner-p-short text-break"><%= @kitchen.description %></p>
         <%= cl_image_tag @kitchen.user.photo, class: "avatar-extra-large" %>
       </div>
     </div>
