@@ -26,20 +26,24 @@
         </div>
         <div class="mt-5 mx-4">
           <h3 class="font-weight-bold plancard-text">Average Nutrition Details: (per meal)</h3>
-          <ul>
-            <li>
-              <h6 class="font-weight-bold">Calories - <%= plan.average_calories %></h6>
-            </li>
-            <li>
-              <h6 class="font-weight-bold">Fat - <%= plan.average_fat %>g</h6>
-            </li>
-            <li>
-              <h6 class="font-weight-bold">Carbs - <%= plan.average_carbs %>g</h6>
-            </li>
-            <li>
-              <h6 class="font-weight-bold">Protein - <%= plan.average_protein %>g</h6>
-            </li>
-          </ul>
+          <div class="d-flex justify-content-start">
+            <div class="nutri-card mt-3 mr-2 py-1 pt-2 d-flex flex-column">
+              <h6 class="font-weight-bold kill-margin">Calories</h6>
+              <h4><%= plan.average_calories %></h4>
+            </div>
+            <div class="nutri-card mt-3 mr-2 py-1 pt-2 d-flex flex-column">
+              <h6 class="font-weight-bold kill-margin">Fat</h6>
+              <h4><%= plan.average_fat %>g</h4>
+            </div>
+            <div class="nutri-card mt-3 mr-2 py-1 pt-2 d-flex flex-column">
+              <h6 class="font-weight-bold kill-margin">Carbs</h6>
+              <h4><%= plan.average_carbs %>g</h4>
+            </div>
+            <div class="nutri-card mt-3 mr-2 py-1 pt-2 d-flex flex-column">
+              <h6 class="font-weight-bold kill-margin">Protein</h6>
+              <h4><%= plan.average_protein %>g</h4>
+            </div>
+          </div>
         </div>
       </div>
     </div>
