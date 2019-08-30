@@ -133,7 +133,7 @@ hw_1= User.create!(
 kitchen_1 = Kitchen.create!(
   name: 'Wafu kitchen',
   description: 'Healthy homemade food full of nutrition. Especially recommended for people who are trying to limit carbohydrates intake',
-  remote_photo_url: "https://res.cloudinary.com/duj5vczom/image/upload/v1567075981/462835_tarelki_ovoshhi_pomidory_krasnyj_1680x1050_www.Gde-Fon.com_mw4gxl.jpg",
+  remote_photo_url: "https://res.cloudinary.com/duj5vczom/image/upload/v1567134161/pc_39_m8tf2a.png",
   user: hw_1,
   tag_list: ['low carb', 'japanese', 'healthy', 'nutritious'],
   konbini_id: Konbini.all.ids.sample,
@@ -315,7 +315,7 @@ kitchen_3 = Kitchen.create!(
 )
 
 plan_3 = Plan.create!(
-  name: 'Weekday nutrition plan',
+  name: 'weekdays plan',
   description: 'weekday balance lunch bento plan with varieties',
   price: 800,
   kitchen: kitchen_3,
@@ -648,7 +648,7 @@ hw_7= User.create!(
 kitchen_7 = Kitchen.create!(
   name: 'Wa bento',
   description: 'This is the authentic Japanese style of Bento',
-  remote_photo_url: "https://res.cloudinary.com/duj5vczom/image/upload/v1567076673/washoku-cucina-giapponese-italian-food-academy_tfdx6n.jpg",
+  remote_photo_url: "https://res.cloudinary.com/duj5vczom/image/upload/v1567135627/healthy-cooking_zqiwbp.jpg",
   user: hw_7,
   tag_list: ['japanese','nutritious'],
   konbini_id: Konbini.all.ids.sample
@@ -733,7 +733,7 @@ hw_8= User.create!(
 kitchen_8 = Kitchen.create!(
   name: 'Organic home',
   description: 'This is especially for those who wants food with fresh organic ingredients and richer in certain nutrients',
-  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566870862/pic11_n5vrqs.jpg",
+  remote_photo_url: "https://res.cloudinary.com/duj5vczom/image/upload/v1567134602/160311_smbzms.jpg",
   user: hw_8,
   tag_list: ['organic','healthy','nutritious'],
   konbini_id: Konbini.all.ids.sample
@@ -744,7 +744,7 @@ plan_8 = Plan.create!(
   description: 'weekday organic challenge plan',
   price: 1100,
   kitchen: kitchen_8,
-  remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566815469/pei-wei-bento-promo_v7b3kz.gif",
+  remote_photo_url: "https://res.cloudinary.com/duj5vczom/image/upload/v1567136069/LB_012midorie-10_960_570_dfueyc.jpg",
   tag_list: ['organic','healthy','nutritious']
 )
 
