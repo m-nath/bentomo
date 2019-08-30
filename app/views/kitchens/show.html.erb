@@ -19,7 +19,7 @@
       <!-- title <%#= image_url "video.mp4" %>  embed-->
       <div class="d-flex align-items-end justify-content-center" >
         <h2 class="white banner-name"><%= @kitchen.name %></h2>
-        <p class="banner-p text-break"><%= @kitchen.description %></p>
+        <p class="banner-p-short text-break"><%= @kitchen.description %></p>
         <%= cl_image_tag @kitchen.user.photo, class: "avatar-extra-large" %>
       </div>
     </div>
@@ -60,10 +60,21 @@
             <%= render 'shared/plancard', plan: plan %>
           </div>
           <div class="mt-5 mx-4">
-            <h3 class="font-weight-bold plancard-text">Weekly Nutrition Details:</h3>
-            <h4>Calories - 510</h4>
-            <h4>Fat - 26g</h4>
-            <h4>Protein - 21g</h4>
+            <h3 class="font-weight-bold plancard-text">Average Nutrition Details: (per meal)</h3>
+            <ul>
+              <li>
+                <h6 class="font-weight-bold">Calories - <%= plan.average_calories %></h6>
+              </li>
+              <li>
+                <h6 class="font-weight-bold">Fat - <%= plan.average_fat %>g</h6>
+              </li>
+              <li>
+                <h6 class="font-weight-bold">Carbs - <%= plan.average_carbs %>g</h6>
+              </li>
+              <li>
+                <h6 class="font-weight-bold">Protein - <%= plan.average_protein %>g</h6>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

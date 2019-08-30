@@ -20,4 +20,37 @@ class Plan < ApplicationRecord
   using: {
     tsearch: { prefix: true }
   }
+
+  def average_calories
+    sum_calories = 0
+    self.dishes.each do |dish|
+      sum_calories += dish.calories
+    end
+    return sum_calories / self.dishes.size
+  end
+
+  def average_carbs
+    sum_carbs = 0
+    self.dishes.each do |dish|
+      sum_carbs += dish.carbs
+    end
+    return sum_carbs / self.dishes.size
+  end
+
+  def average_fat
+    sum_fat = 0
+    self.dishes.each do |dish|
+      sum_fat += dish.fat
+    end
+    return sum_fat / self.dishes.size
+  end
+
+  def average_protein
+    sum_protein = 0
+    self.dishes.each do |dish|
+      sum_protein += dish.protein
+    end
+    return sum_protein / self.dishes.size
+  end
+
 end
