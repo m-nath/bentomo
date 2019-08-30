@@ -26,7 +26,11 @@ class Plan < ApplicationRecord
     self.dishes.each do |dish|
       sum_calories += dish.calories
     end
-    return sum_calories / self.dishes.size
+    if self.dishes.size != 0
+      return sum_calories / self.dishes.size
+    else
+      return 0
+    end
   end
 
   def average_carbs
@@ -34,7 +38,11 @@ class Plan < ApplicationRecord
     self.dishes.each do |dish|
       sum_carbs += dish.carbs
     end
-    return sum_carbs / self.dishes.size
+    if self.dishes.size != 0
+      return sum_carbs / self.dishes.size
+    else
+      return 0
+    end
   end
 
   def average_fat
@@ -42,7 +50,11 @@ class Plan < ApplicationRecord
     self.dishes.each do |dish|
       sum_fat += dish.fat
     end
-    return sum_fat / self.dishes.size
+    if self.dishes.size != 0
+      return sum_fat / self.dishes.size
+    else
+      return 0
+    end
   end
 
   def average_protein
@@ -50,7 +62,11 @@ class Plan < ApplicationRecord
     self.dishes.each do |dish|
       sum_protein += dish.protein
     end
-    return sum_protein / self.dishes.size
+    if self.dishes.size != 0
+      return sum_protein / self.dishes.size
+    else
+      return 0
+    end
   end
 
 end
