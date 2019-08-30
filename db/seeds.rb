@@ -87,6 +87,23 @@ huishu = User.create!(
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566268731/huishu_fdebjg.jpg"
 )
 
+doug = User.create!(
+  email: "doug@gmail.com",
+  password: "123123",
+  first_name: "Doug",
+  last_name: "Berkley",
+  remote_photo_url: "https://scontent.fkix2-1.fna.fbcdn.net/v/t31.0-8/1495219_10101955351342190_1468891878_o.jpg?_nc_cat=106&_nc_oc=AQnAb76Yhxp74tsJE4u9B-AZx3Zy71vGuIeCLMTK6dyBR5b6bXL4M8Pj59Zvn8Vk3Uw&_nc_ht=scontent.fkix2-1.fna&oh=d6db9d3f172948c1fe478ca78bf18086&oe=5DCC4E95"
+)
+
+sylvain = User.create!(
+  email: "sylvain@gmail.com",
+  password: "123123",
+  first_name: "Sylvain",
+  last_name: "Pierre",
+  remote_photo_url: "https://scontent.fkix2-2.fna.fbcdn.net/v/t1.0-9/10394021_10155168033840300_2776513019293723727_n.jpg?_nc_cat=108&_nc_oc=AQlBKh4gNUO-AgZAGpKQIH0xhhqJcZz4RAmURU6qfIrZx1c_B8eCJOuo0FJ0qc7LMt4&_nc_ht=scontent.fkix2-2.fna&oh=a1ea7baef47e31908113bdb8a19b3435&oe=5E07AE49"
+)
+
+
 # avatar =
 #   ["https://res.cloudinary.com/dxouryvao/image/upload/v1566268732/hw7_v3hxdi.jpg",
 #    "https://res.cloudinary.com/dxouryvao/image/upload/v1566268732/hw8_db3gqr.jpg",
@@ -111,20 +128,20 @@ hw_1= User.create!(
   remote_photo_url: 'https://res.cloudinary.com/dxouryvao/image/upload/v1566956558/Screen_Shot_2019-08-28_at_10.41.46_bhvycz.png'
 )
 
-konbini_1 = Konbini.find_by(mapbox_id: "e7b032ed39c419052f22a37fd9b17f647e146f37")
+
 
 kitchen_1 = Kitchen.create!(
-  name: 'Grandma kitchen',
+  name: 'Wafu kitchen',
   description: 'Healthy homemade food full of nutrition. Especially recommended for people who are trying to limit carbohydrates intake',
   remote_photo_url: "https://res.cloudinary.com/duj5vczom/image/upload/v1567075981/462835_tarelki_ovoshhi_pomidory_krasnyj_1680x1050_www.Gde-Fon.com_mw4gxl.jpg",
   user: hw_1,
   tag_list: ['low carb', 'japanese', 'healthy', 'nutritious'],
-  konbini_id: konbini_1.id
+  konbini_id: Konbini.all.ids.sample,
 )
 
 plan_1 = Plan.create!(
   name: 'Healthy bento plan',
-  description: '5 Days healthy lunch bento plan: each meal has high protein content and low carbohydrates.',
+  description: 'weekday healthy lunch bento plan: each meal has high protein content and low carbohydrates.',
   price: 600,
   kitchen: kitchen_1,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566797616/09d90a044e3723351bcb1177813730bd7070814c_curxdw.jpg",
@@ -134,28 +151,48 @@ plan_1 = Plan.create!(
 Dish.create!(
   name: 'Salmon bento with cauliflower rice',
   kitchen: kitchen_1,
+  calories: 798,
+  fat: 98,
+  protein: 78,
+  carbs: 20,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566797877/eb9fe25a56fa5bd32e6ea839e16763123aa9659c_k0zpd6.jpg"
 )
 Dish.create!(
   name: '3 colour bento',
   kitchen: kitchen_1,
+  calories: 676,
+  fat: 78,
+  protein: 83,
+  carbs: 30,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566799087/348d2f8f6f8ca22173be85bac1ad209ce9bdde64_y7iqns.jpg"
 )
 
 Dish.create!(
   name: 'Oden bento',
   kitchen: kitchen_1,
+  calories: 523,
+  fat: 59,
+  protein: 78,
+  carbs: 28,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566798597/649b65f93bc49abd9b27d5621c68e001ec61deb4_ficikm.jpg"
 )
 
 Dish.create!(
   name: 'Juicy chicken bento',
   kitchen: kitchen_1,
+  calories: 676,
+  fat: 75,
+  protein: 90,
+  carbs: 20,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566797740/b497627bb27affe0e4bf43703808ee727010a993_s7y0bv.jpg"
 )
 Dish.create!(
   name: 'Tara white fish bento',
   kitchen: kitchen_1,
+  calories: 562,
+  fat: 72,
+  protein: 78,
+  carbs: 20,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566797840/8e8c2686f374e20f756282d20e7d3487c728c163_uytllu.jpg"
 )
 
@@ -179,19 +216,21 @@ hw_2= User.create!(
   remote_photo_url: 'https://res.cloudinary.com/dxouryvao/image/upload/v1566959416/Screen_Shot_2019-08-28_at_11.29.48_pgatn7.png'
 )
 
+konbini_2 = Konbini.find_by(mapbox_id: "e7b032ed39c419052f22a37fd9b17f647e146f37")
+
 kitchen_2 = Kitchen.create!(
   name: 'Yuko`s kitchen',
   description: 'Healthy homemade food full of nutrition',
   remote_photo_url: "https://www.besthealthmag.ca/wp-content/uploads/sites/16/2017/10/healthy-cooking-classes-in-Canada.jpg",
   user: hw_2,
   tag_list: ['japanese', 'healthy', 'nutritious','diet'],
-  konbini_id: Konbini.all.ids.sample,
+  konbini_id: konbini_2.id,
   video: 'https://youtu.be/6RuShc7NSV4?t=20'
 )
 
 plan_2 = Plan.create!(
   name: 'Nutrition protein plan',
-  description: '5 Days balance lunch bento plan with varieties',
+  description: 'weekday balance lunch bento plan with varieties',
   price: 700,
   kitchen: kitchen_2,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566803219/media_ddu2xi.jpg",
@@ -201,28 +240,48 @@ plan_2 = Plan.create!(
 Dish.create!(
   name: 'Maguro bento',
   kitchen: kitchen_2,
+  calories: 698,
+  fat: 98,
+  protein: 78,
+  carbs: 20,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566995150/pabsmyql8fph2vzetzt8.jpg"
 )
 Dish.create!(
   name: 'Tofu bento',
   kitchen: kitchen_2,
+  calories: 598,
+  fat: 58,
+  protein: 98,
+  carbs: 25,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566965299/rr35y2jxewozyig61a2g.jpg"
 )
 
 Dish.create!(
   name: 'Prawn curry',
   kitchen: kitchen_2,
+  calories: 734,
+  fat: 68,
+  protein: 69,
+  carbs: 40,
   remote_photo_url: "https://www.foodforfitness.co.uk/wp-content/uploads/2017/10/IMG_7262-2000x1333.jpg"
 )
 
 Dish.create!(
   name: 'Seafood soup',
   kitchen: kitchen_2,
+  calories: 593,
+  fat: 58,
+  protein: 81,
+  carbs: 29,
   remote_photo_url: "https://img.taste.com.au/4CIb5Btg/w720-h480-cfill-q80/taste/2016/11/italian-seafood-soup-with-garlic-croutons-88578-1.jpeg"
 )
 Dish.create!(
   name: 'Cheese pasta',
   kitchen: kitchen_2,
+  calories: 798,
+  fat: 79,
+  protein: 54,
+  carbs: 56,
   remote_photo_url: "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2011/11/14/0/FNM_120111-WN-Dinners-015_s4x3.jpg"
 )
 
@@ -251,13 +310,13 @@ kitchen_3 = Kitchen.create!(
   description: 'Healthy homemade food full of nutrition',
   remote_photo_url: "https://res.cloudinary.com/duj5vczom/image/upload/v1567078149/425003-svetik_aefk6u.jpg",
   user: hw_3,
-  tag_list: ['japanese', 'high protein', 'nutritious'],
+  tag_list: ['japanese', 'high protein', 'nutritious', 'healthy'],
   konbini_id: Konbini.all.ids.sample
 )
 
 plan_3 = Plan.create!(
   name: 'Weekday nutrition plan',
-  description: '5 Days balance lunch bento plan with varieties',
+  description: 'weekday balance lunch bento plan with varieties',
   price: 800,
   kitchen: kitchen_3,
   remote_photo_url: "https://www.eatright.org/-/media/eatrightimages/food/nutrition/nutritionfactsandfoodlabels/portion-serving-920931456.jpg",
@@ -267,28 +326,48 @@ plan_3 = Plan.create!(
 Dish.create!(
   name: 'Maguro bento',
   kitchen: kitchen_3,
+  calories: 593,
+  fat: 58,
+  protein: 81,
+  carbs: 29,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566802230/cg4novwi51skxog6ojno.jpg"
 )
 Dish.create!(
   name: 'Tofu bento',
   kitchen: kitchen_3,
+  calories: 593,
+  fat: 58,
+  protein: 81,
+  carbs: 29,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566965299/rr35y2jxewozyig61a2g.jpg"
 )
 
 Dish.create!(
   name: 'Prawn curry',
   kitchen: kitchen_3,
+  calories: 593,
+  fat: 58,
+  protein: 81,
+  carbs: 29,
   remote_photo_url: "https://www.foodforfitness.co.uk/wp-content/uploads/2017/10/IMG_7262-2000x1333.jpg"
 )
 
 Dish.create!(
   name: 'Seafood soup',
   kitchen: kitchen_3,
+  calories: 593,
+  fat: 58,
+  protein: 81,
+  carbs: 29,
   remote_photo_url: "https://img.taste.com.au/4CIb5Btg/w720-h480-cfill-q80/taste/2016/11/italian-seafood-soup-with-garlic-croutons-88578-1.jpeg"
 )
 Dish.create!(
   name: 'Cheese pasta',
   kitchen: kitchen_3,
+  calories: 593,
+  fat: 58,
+  protein: 81,
+  carbs: 29,
   remote_photo_url: "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2011/11/14/0/FNM_120111-WN-Dinners-015_s4x3.jpg"
 )
 
@@ -315,13 +394,13 @@ kitchen_4 = Kitchen.create!(
   description: 'Healthy homemade food full of nutrition',
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566806151/Mmb5LIozlndS42We9fWsluvEbinl54lxYjVPCaIKQkQhDrdkbs8aY2yPaJij5rsL_tj4bcw.jpg",
   user: hw_4,
-  tag_list: ['high protein', 'nutritious'],
+  tag_list: ['high protein', 'nutritious', 'japanese'],
   konbini_id: Konbini.all.ids.sample
 )
 
 plan_4 = Plan.create!(
   name: 'Protein plan',
-  description: '5 Days protein bento plan with varieties',
+  description: 'weekday protein bento plan with varieties',
   price: 800,
   kitchen: kitchen_4,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566799058/aa8fdf9deed8ec996bddbe7ebe7afb0519ede164_hhnlrt.jpg",
@@ -331,28 +410,48 @@ plan_4 = Plan.create!(
 Dish.create!(
   name: 'Maguro bento',
   kitchen: kitchen_4,
+  calories: 593,
+  fat: 58,
+  protein: 81,
+  carbs: 29,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566802230/cg4novwi51skxog6ojno.jpg"
 )
 Dish.create!(
   name: 'Tofu bento',
   kitchen: kitchen_4,
+  calories: 593,
+  fat: 58,
+  protein: 81,
+  carbs: 29,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566965299/rr35y2jxewozyig61a2g.jpg"
 )
 
 Dish.create!(
   name: 'Prawn curry',
   kitchen: kitchen_4,
+  calories: 593,
+  fat: 58,
+  protein: 81,
+  carbs: 29,
   remote_photo_url: "https://www.foodforfitness.co.uk/wp-content/uploads/2017/10/IMG_7262-2000x1333.jpg"
 )
 
 Dish.create!(
   name: 'Seafood soup',
   kitchen: kitchen_4,
+  calories: 593,
+  fat: 58,
+  protein: 81,
+  carbs: 29,
   remote_photo_url: "https://img.taste.com.au/4CIb5Btg/w720-h480-cfill-q80/taste/2016/11/italian-seafood-soup-with-garlic-croutons-88578-1.jpeg"
 )
 Dish.create!(
   name: 'Cheese pasta',
   kitchen: kitchen_4,
+  calories: 593,
+  fat: 58,
+  protein: 81,
+  carbs: 29,
   remote_photo_url: "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2011/11/14/0/FNM_120111-WN-Dinners-015_s4x3.jpg"
 )
 
@@ -386,7 +485,7 @@ kitchen_5 = Kitchen.create!(
 
 plan_5 = Plan.create!(
   name: 'Kids bento plan',
-  description: '5 Days nutritious kids bento plan',
+  description: 'weekday nutritious kids bento plan',
   price: 800,
   kitchen: kitchen_5,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566806459/0f49b057_diutoo.jpg",
@@ -396,28 +495,48 @@ plan_5 = Plan.create!(
 Dish.create!(
   name: 'Maguro bento',
   kitchen: kitchen_5,
+  calories: 593,
+  fat: 58,
+  protein: 81,
+  carbs: 29,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566802230/cg4novwi51skxog6ojno.jpg"
 )
 Dish.create!(
   name: 'Tofu bento',
   kitchen: kitchen_5,
+  calories: 593,
+  fat: 58,
+  protein: 81,
+  carbs: 29,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566965299/rr35y2jxewozyig61a2g.jpg"
 )
 
 Dish.create!(
   name: 'Prawn curry',
   kitchen: kitchen_5,
+  calories: 593,
+  fat: 58,
+  protein: 81,
+  carbs: 29,
   remote_photo_url: "https://www.foodforfitness.co.uk/wp-content/uploads/2017/10/IMG_7262-2000x1333.jpg"
 )
 
 Dish.create!(
   name: 'Seafood soup',
   kitchen: kitchen_5,
+  calories: 593,
+  fat: 58,
+  protein: 81,
+  carbs: 29,
   remote_photo_url: "https://img.taste.com.au/4CIb5Btg/w720-h480-cfill-q80/taste/2016/11/italian-seafood-soup-with-garlic-croutons-88578-1.jpeg"
 )
 Dish.create!(
   name: 'Cheese pasta',
   kitchen: kitchen_5,
+  calories: 593,
+  fat: 58,
+  protein: 81,
+  carbs: 29,
   remote_photo_url: "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2011/11/14/0/FNM_120111-WN-Dinners-015_s4x3.jpg"
 )
 
@@ -452,7 +571,7 @@ kitchen_6 = Kitchen.create!(
 
 plan_6 = Plan.create!(
   name: 'Care bento plan',
-  description: '5 Days character bento plan',
+  description: 'weekday character bento plan',
   price: 1000,
   kitchen: kitchen_6,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566814113/bento-box-eve1001520.jpg.1200x800_q85_crop_hxgzhw.jpg",
@@ -462,28 +581,48 @@ plan_6 = Plan.create!(
 Dish.create!(
   name: 'Mario bento',
   kitchen: kitchen_6,
+  calories: 593,
+  fat: 58,
+  protein: 81,
+  carbs: 29,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566813659/0000001162_1_tw0v5g.jpg"
 )
 Dish.create!(
   name: 'Pikachu bento',
   kitchen: kitchen_6,
+  calories: 593,
+  fat: 58,
+  protein: 81,
+  carbs: 29,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566814362/830c0df582fd42b52e0887d96364d5665ae7c0c1_cfggun.jpg"
 )
 
 Dish.create!(
   name: 'Kitty bento',
   kitchen: kitchen_6,
+  calories: 593,
+  fat: 58,
+  protein: 81,
+  carbs: 29,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566814523/mm461_wtgf9n.jpg"
 )
 
 Dish.create!(
   name: 'Anpanman bento',
   kitchen: kitchen_6,
+  calories: 593,
+  fat: 58,
+  protein: 81,
+  carbs: 29,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566814597/124075282737416413348_20090427_01x_anwwug.jpg"
 )
 Dish.create!(
   name: 'Snoopy bento',
   kitchen: kitchen_6,
+  calories: 593,
+  fat: 58,
+  protein: 81,
+  carbs: 29,
   remote_photo_url: "https://s3-ap-northeast-1.amazonaws.com/images.hintos.jp/wp-content/uploads/2017/08/09195007/obentopark_20170816_03-e1502243543135.jpg"
 )
 
@@ -517,7 +656,7 @@ kitchen_7 = Kitchen.create!(
 
 plan_7 = Plan.create!(
   name: 'Osaka bento plan',
-  description: '5 Days Wa bento plan',
+  description: 'weekday Wa bento plan',
   price: 1000,
   kitchen: kitchen_7,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566815469/pei-wei-bento-promo_v7b3kz.gif",
@@ -527,28 +666,48 @@ plan_7 = Plan.create!(
 Dish.create!(
   name: 'Baked salmon bento',
   kitchen: kitchen_7,
+  calories: 593,
+  fat: 58,
+  protein: 81,
+  carbs: 29,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566815050/new_xl_1488162889_4009_xjjrnh.jpg"
 )
 Dish.create!(
   name: 'Osechi bento',
   kitchen: kitchen_7,
+  calories: 593,
+  fat: 58,
+  protein: 81,
+  carbs: 29,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566815587/598d5ce228726_amrbzv.jpg"
 )
 
 Dish.create!(
   name: 'Mixed bento',
   kitchen: kitchen_7,
+  calories: 593,
+  fat: 58,
+  protein: 81,
+  carbs: 29,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566815717/bento180411_rmcsxz.jpg"
 )
 
 Dish.create!(
   name: 'Teriyaki bento',
   kitchen: kitchen_7,
+  calories: 593,
+  fat: 58,
+  protein: 81,
+  carbs: 29,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566826503/japanese-bento-box_myesfv.jpg"
 )
 Dish.create!(
   name: 'Takikomi bento',
   kitchen: kitchen_7,
+  calories: 593,
+  fat: 58,
+  protein: 81,
+  carbs: 29,
   remote_photo_url: "https://s3-ap-northeast-1.amazonaws.com/testmorimalv2/img/Recipe-Image1-3141e99fb30e95d92cc3238cd125081385abea29b58a0710bb25ce6b74ae10d4f65.jpg"
 )
 
@@ -572,7 +731,7 @@ hw_8= User.create!(
 )
 
 kitchen_8 = Kitchen.create!(
-  name: 'Organic bento',
+  name: 'Organic home',
   description: 'This is especially for those who wants food with fresh organic ingredients and richer in certain nutrients',
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566870862/pic11_n5vrqs.jpg",
   user: hw_8,
@@ -581,8 +740,8 @@ kitchen_8 = Kitchen.create!(
 )
 
 plan_8 = Plan.create!(
-  name: 'Character bento plan',
-  description: '5 Days organic challenge plan',
+  name: 'Organic bento plan',
+  description: 'weekday organic challenge plan',
   price: 1100,
   kitchen: kitchen_8,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566815469/pei-wei-bento-promo_v7b3kz.gif",
@@ -592,28 +751,48 @@ plan_8 = Plan.create!(
 Dish.create!(
   name: 'blessings of nature',
   kitchen: kitchen_8,
+  calories: 593,
+  fat: 58,
+  protein: 81,
+  carbs: 29,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566829323/7287e7c3ee269234ead26299873ce4be_hyn6il.jpg"
 )
 Dish.create!(
   name: 'organic Wa bento',
   kitchen: kitchen_8,
+  calories: 593,
+  fat: 58,
+  protein: 81,
+  carbs: 29,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566829533/51F316E2-750E-4B8C-8476-45B13D2205B4_txqd7i.jpg"
 )
 
 Dish.create!(
   name: 'low-carb organic bento',
   kitchen: kitchen_8,
+  calories: 593,
+  fat: 58,
+  protein: 81,
+  carbs: 29,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566829781/image_ckleii.jpg"
 )
 
 Dish.create!(
   name: 'organic sand',
   kitchen: kitchen_8,
+  calories: 593,
+  fat: 58,
+  protein: 81,
+  carbs: 29,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566830017/58bdb7fcbc8ebd22008b4769-750-563_c8yj6r.jpg"
 )
 Dish.create!(
   name: 'salad bowl',
   kitchen: kitchen_8,
+  calories: 593,
+  fat: 58,
+  protein: 81,
+  carbs: 29,
   remote_photo_url: "https://res.cloudinary.com/dxouryvao/image/upload/v1566830099/healthy-food-inspiration-instagram-e1432362958184_rbzjcw.jpg"
 )
 
@@ -727,12 +906,12 @@ Order.create!(
 )
 
 Kitchen.all.each do |kitchen|
-  rand(3..4).times do
+  rand(4..5).times do
     Review.create!(
-      content: ['Very tasty bento, loved it!', 'I really like this kitchen, it tastes like home', 'Very healthy yummy bento. I have been subscribe for a while! I will continue', 'I like this kitchen, recommend it!'].sample,
-      rating: [4,5].sample,
+      content: ['Very tasty bento, loved it!', 'Her lunch bento gives me motivation to go to work', 'I really like this kitchen, it tastes like home', 'Very healthy yummy bento. I have been subscribe for a while! I will continue', 'I like this kitchen, recommend it!'].sample,
+      rating: [3,4,5].sample,
       kitchen: kitchen,
-      user: User.all.sample
+      user: [nath, shohei, huishu, doug, sylvain].sample
     )
   end
 end

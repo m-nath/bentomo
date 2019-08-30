@@ -37,10 +37,10 @@ class DishesController < ApplicationController
     @info = JSON.parse(response.body)
     @calories = @info["calories"]
     @labels = @info["healthLabels"]
-    @fat = @info["totalNutrients"]["FAT"]["quantity"].truncate(2)
-    @carbs = @info["totalNutrients"]["CHOCDF"]["quantity"].truncate(2)
+    @fat = @info["totalNutrients"]["FAT"]["quantity"].truncate
+    @carbs = @info["totalNutrients"]["CHOCDF"]["quantity"].truncate
     # @sugar = @info["totalNutrients"]["SUGAR"]["quantity"].truncate(2)
-    @protein = @info["totalNutrients"]["PROCNT"]["quantity"].truncate(2)
+    @protein = @info["totalNutrients"]["PROCNT"]["quantity"].truncate
 
     respond_to do |format|
       format.js
@@ -51,6 +51,6 @@ class DishesController < ApplicationController
   private
 
   def dish_params
-    params.require(:dish).permit(:name, :photo)
+    params.require(:dish).permit(:name, :photo, :calories, :fat, :carbs, :protein)
   end
 end
