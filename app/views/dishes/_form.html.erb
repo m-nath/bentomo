@@ -5,7 +5,11 @@
   <%= f.input :photo %>
   <%= f.input :photo_cache, as: :hidden, required: true%>
   <%= f.input :name, input_html: { value: name }, as: :hidden  %>
-  <%= f.input :ingr, input_html: { value: ingr }, as: :hidden  %>
+  <%= f.input :ingr, input_html: { value: calories }, as: :hidden  %>
+  <%= f.input :calories, input_html: { value: ingr }, as: :hidden  %>
+  <%= f.input :fat, input_html: { value: fat }, as: :hidden  %>
+  <%= f.input :carbs, input_html: { value: carbs }, as: :hidden  %>
+  <%= f.input :protein, input_html: { value: protein }, as: :hidden  %>
   <%= hidden_field_tag 'kitchen_id', kitchen.id %>
   <%= f.submit 'Create', class: 'btn btn-main' %>
 <% end %>
