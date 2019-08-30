@@ -4,7 +4,7 @@
       <%= cl_image_tag plan.photo %>
       <div class="card-trip-infos">
         <div>
-          <h4 class="tab-text-content"><%= link_to plan.name, plan_path(plan), { :class=>"stretched-link" }  %></h4>
+          <h4 class="tab-text-content pl-2"><%= link_to plan.name, plan_path(plan), { :class=>"stretched-link" }  %></h4>
           <!-- <p><%= plan.description.truncate_words(10)%></p> -->
         </div>
         <%= link_to (cl_image_tag plan.kitchen.user.photo, class:"card-trip-user-big avatar-bordered"), kitchen_path(plan.kitchen) %>

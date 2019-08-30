@@ -38,7 +38,6 @@ ActiveRecord::Schema.define(version: 2019_08_30_001623) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "photo"
-    t.text "ingr"
     t.integer "calories"
     t.integer "fat"
     t.integer "carbs"
