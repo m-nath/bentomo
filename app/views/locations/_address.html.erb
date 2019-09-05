@@ -1,0 +1,29 @@
+<button type="button" class="btn" data-toggle="modal" data-target="#add_address_form" data-whatever="@getbootstrap">
+  <h2 class="add-address"><i class="fas fa-plus-circle"></i></h2>
+</button>
+<div class="modal fade" id="add_address_form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="exampleModalLabel">Add address</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for (Location.new) do |f| %>
+          <%= f.error_notification %>
+          <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+          <div class="form-inputs">
+            <%= f.input :address %>
+            <%= f.input :label, collection: ['Home', 'Work'] %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondery" data-dismiss="modal">Close</button>
+            <%= f.button :submit, "Add Address", class: "btn btn" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

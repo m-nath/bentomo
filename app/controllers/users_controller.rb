@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
+    @location = Location.new
     authorize @user
     if !params["user"]["locations_attributes"].nil?
       @locations = @user.locations
