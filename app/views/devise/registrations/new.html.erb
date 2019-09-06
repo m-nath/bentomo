@@ -22,7 +22,7 @@
           <%= f.input :password_confirmation,
                       required: true,
                       input_html: { autocomplete: "new-password" } %>
-          <%= f.simple_fields_for :location do |p| %>
+          <%= f.simple_fields_for :locations do |p| %>
             <%= p.input :address %>
             <%= p.input :label, collection: ['Home', 'Work'] %>
           <% end %>

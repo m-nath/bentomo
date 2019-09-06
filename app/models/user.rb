@@ -19,8 +19,4 @@ class User < ApplicationRecord
   # validates :password, presence: true
   mount_uploader :photo, PhotoUploader
 
-  # def with_location
-  #   self.locations = Location.new
-  #   self
-  # end
 end

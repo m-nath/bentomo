@@ -3,7 +3,6 @@ class LocationsController < ApplicationController
 
   def create
     @location = Location.new(location_params)
-    @location.user = @user
     @location.user = current_user
     authorize @location
     if @location.save
