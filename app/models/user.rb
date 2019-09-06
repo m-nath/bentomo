@@ -14,7 +14,9 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, presence: true
+
   accepts_nested_attributes_for :locations
   # validates :password, presence: true
   mount_uploader :photo, PhotoUploader
+
 end

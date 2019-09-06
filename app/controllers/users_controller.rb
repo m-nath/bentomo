@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
+    @location = Location.new
     authorize @user
     if !params["user"]["locations_attributes"].nil?
       @locations = @user.locations
@@ -31,6 +32,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :photo, :password, :default_location, :radius, locations_attributes: [:label, :address])
+    params.require(:user).permit(:email, :first_name, :last_name, :photo, :password, :default_location, :radius, :preference, locations_attributes: [:label, :address])
   end
 end

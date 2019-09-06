@@ -7,9 +7,10 @@
         <div class="form-inputs">
           <%= f.input :default_location, collection: @locations, as: :radio_buttons, label_method: :full_label %>
           <%= f.simple_fields_for :locations do |p| %>
-            <%= p.input :address %>
+            <%= p.input :address, label: "Add/Edit Address" %>
           <% end %>
-          <%= f.input :radius, input_html: { value: 1 }, collection: 0..5, label: "Distance from your default location (km)" %>
+          <%#= render 'locations/address' %>
+          <%= f.input :radius, input_html: { value: 1 }, collection: 0..5, label: "Distance from your default location (km)", required: false %>
           <%= f.input :preference,
                       hint: "we will let the kitchens know your preferences",
                       required: false %>
