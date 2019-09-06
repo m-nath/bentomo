@@ -28,7 +28,8 @@
           <br>
           <%= f.collection_check_boxes :location_ids, Location.where(user_id: current_user), :label, :address %>
           <%= f.simple_fields_for :locations do |location| %>
-            <%= location.input :name, label: "New Address"  %>
+            <%= location.input :label, collection: ['Home', 'Work'] %>
+            <%= location.input :address %>
           <% end %>
           <%= f.input :photo %>
           <%= f.input :photo_cache, as: :hidden %>

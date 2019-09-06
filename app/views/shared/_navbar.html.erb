@@ -13,13 +13,13 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <div class="d-flex align-items-center">
       <!-- search button start -->
-        <div class="input-group-prepend d-flex align-items-center position-search">
+      <div class="input-group-prepend d-flex align-items-center position-search">
         <i class="fas fa-search navbar-search"></i>
-          <%= simple_form_for :search, url: kitchens_path, method: "GET" do |f| %>
-            <%= f.input :query, label: false, input_html: {class: 'form-control d-flex align-items-center fa', value: (params[:search][:query] if params[:search])}, placeholder: "find a kitchen" %>
-            <!-- <button type="submit"></i></button> -->
-          <% end %>
-        </div>
+        <%= simple_form_for :search, url: kitchens_path, method: "GET" do |f| %>
+          <%= f.input :query, label: false, input_html: {class: 'form-control d-flex align-items-center fa', value: (params[:search][:query] if params[:search])}, placeholder: "find a kitchen" %>
+          <!-- <button type="submit"></i></button> -->
+        <% end %>
+      </div>
       <!-- search button end -->
       <!-- location button start -->
       <% if user_signed_in? %>
@@ -57,7 +57,7 @@
             <% end %>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <p class="m-3 ml-1">Hi, <%= current_user.first_name %></p>
-              <%= link_to "Setting", edit_user_path(current_user), class: "dropdown-item navbar-text" %>
+              <%= link_to "Setting", edit_user_registration_path(current_user), class: "dropdown-item navbar-text" %>
               <% if current_user.kitchen.present? %>
                 <%= link_to "My kitchen", kitchen_path(current_user.kitchen), class: "dropdown-item navbar-text" %>
               <% else %>
